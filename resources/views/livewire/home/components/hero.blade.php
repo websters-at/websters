@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Lead;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 
@@ -10,16 +11,36 @@ new class extends Component {
 
     public function save(): void
     {
-        $this->toast(
-            type: 'success',
-            title: 'Danke :)',
-            description: 'Wir werden uns bald bei dir melden!',
-            position: 'toast-bottom toast-end',
-            icon: 'o-x-circle',
-            css: 'alert-info',
-            timeout: 3000,
-            redirectTo: null
-        );
+        $validatedData = $this->validate([
+            'email' => 'required|email|max:255'
+        ]);
+
+        try {
+            $this->toast(
+                type: 'success',
+                title: 'Danke :)',
+                description: 'Wir werden uns bald bei dir melden!',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-info',
+                timeout: 3000,
+                redirectTo: null
+            );
+            Lead::create([
+                "email" => $this->email
+            ]);
+        } catch (Exception $e) {
+            $this->toast(
+                type: 'danger',
+                title: 'Ups :(',
+                description: 'Scheint als wärst du schon in der Liste!',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+                redirectTo: null
+            );
+        }
 
     }
 
