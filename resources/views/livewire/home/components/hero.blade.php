@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Lead;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 
@@ -11,29 +13,50 @@ new class extends Component {
 
     public function save(): void
     {
-        $validatedData = $this->validate([
-            'email' => 'required|email|max:255'
-        ]);
-
         try {
-            $this->toast(
-                type: 'success',
-                title: 'Danke :)',
-                description: 'Wir werden uns bald bei dir melden!',
-                position: 'toast-bottom toast-end',
-                icon: 'o-x-circle',
-                css: 'alert-info',
-                timeout: 3000,
-                redirectTo: null
-            );
+            $validatedData = $this->validate([
+                'email' => [
+                    'required',
+                    'email',
+                    'max:255',
+                    Rule::unique('leads', 'email')
+                ]
+            ]);
+
             Lead::create([
                 "email" => $this->email
             ]);
+
+            $this->toast(
+                type: 'success',
+                title: 'Erfolg!',
+                description: 'Vielen Dank! Wir werden uns bald bei dir melden!',
+                position: 'toast-bottom toast-end',
+                icon: 'o-check-circle',
+                css: 'alert-success',
+                timeout: 3000,
+                redirectTo: null
+            );
+
+            $this->email = "";
+
+        } catch (ValidationException $e) {
+            $this->toast(
+                type: 'error',
+                title: 'Bereits registriert / Ungültig',
+                description: 'Diese E-Mail-Adresse ist bereits in unserer Liste / ungültig!',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+                redirectTo: null
+            );
+
         } catch (Exception $e) {
             $this->toast(
-                type: 'danger',
-                title: 'Ups :(',
-                description: 'Scheint als wärst du schon in der Liste!',
+                type: 'error',
+                title: 'Fehler',
+                description: 'Ein unerwarteter Fehler ist aufgetreten: ' . $e->getMessage(),
                 position: 'toast-bottom toast-end',
                 icon: 'o-x-circle',
                 css: 'alert-error',
@@ -41,9 +64,7 @@ new class extends Component {
                 redirectTo: null
             );
         }
-
     }
-
 }; ?>
 
 
@@ -115,7 +136,7 @@ new class extends Component {
             >
                 <div class="flex w-full flex-col">
                     <x-input
-                        class="shadow-none !outline-none !ring-0 focus:!ring-0 focus:!outline-none text-sm sm:text-base"
+                        class="shadow-none !outline-none font-poppins font-normal !ring-0 focus:!ring-0 focus:!outline-none text-sm sm:text-base"
                         wire:model="email"
                         type="email"
                         placeholder="Deine Email"
@@ -123,7 +144,7 @@ new class extends Component {
                     />
                 </div>
 
-                <button wire:click="save" class="btn btn-sm sm:btn-md btn-primary">Loslegen</button>
+                <x-button label="Loslegen" wire:click="save" class="btn-sm sm:btn-md btn-primary"></x-button>
             </div>
         </div>
     </section>
