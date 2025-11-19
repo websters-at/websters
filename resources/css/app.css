@@ -1,0 +1,333 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+    name: "websters";
+    default: false;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-base-100: oklch(100% 0 0);
+    --color-base-200: oklch(98% 0 0);
+    --color-base-300: oklch(95% 0 0);
+    --color-base-content: #002a42;
+    --color-primary: #ff7ac3;
+    --color-primary-content: oklch(98% 0.003 247.858);
+    --color-secondary: #4dc8e8;
+    --color-secondary-content: oklch(94% 0.028 342.258);
+    --color-accent: #f9c1e1;
+    --color-accent-content: oklch(98% 0.003 247.858);
+    --color-neutral: #002a42;
+    --color-neutral-content: oklch(98% 0.003 247.858);
+    --color-info: #ff7ac3;
+    --color-info-content: oklch(98% 0.003 247.858);
+    --color-success: oklch(76% 0.177 163.223);
+    --color-success-content: oklch(100% 0 0);
+    --color-warning: oklch(82% 0.189 84.429);
+    --color-warning-content: oklch(98% 0.003 247.858);
+    --color-error: oklch(71% 0.194 13.428);
+    --color-error-content: oklch(98% 0.003 247.858);
+    --radius-selector: 0.25rem;
+    --radius-field: 0.5rem;
+    --radius-box: 1rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 0;
+    --noise: 0;
+}
+
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+/* Poppins Font Faces */
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-ExtraLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/public/assets/fonts/Poppins-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@theme {
+    /* Your existing theme configuration... */
+    --font-sans: 'Poppins', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-poppins: 'Poppins', sans-serif;
+
+    /* Brand Colors (Websters) - Now available as Tailwind utilities */
+    --color-brand: #ec65ba;
+    --color-brand-soft: #f9c1e1;
+    --color-brand-accent: #4bc8e7;
+    --color-brand-dark: #002a42;
+    --color-body: rgba(31, 41, 51, 0.68);
+    --color-bg: #ffffff;
+    --color-bg-muted: #f3f4f6;
+    --color-border: #e5e7eb;
+    --color-gradient-from: #ec65ba;
+    --color-gradient-via: #c66edc;
+    --color-gradient-to: #4bc8e7;
+}
+
+/* Alpine x-cloak */
+[x-cloak] {
+    display: none !important;
+}
+
+.hero-bg {
+    background-image: radial-gradient(circle at top left, #4bc8e7 0%, transparent 70%);
+}
+
+
+
+
+/**
+    The lines above are intact.
+    The lines below were added by maryUI installer.
+*/
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+}
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
+
+/* Theme toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+* Paginator - Traditional style
+* Because Laravel defaults does not match well the design of daisyUI.
+*/
+
+.mary-table-pagination span[aria-current="page"] > span {
+    @apply bg-primary text-base-100
+}
+
+.mary-table-pagination button {
+    @apply cursor-pointer
+}
+
+
+/**
+    The lines above are intact.
+    The lines below were added by maryUI installer.
+*/
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+}
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
+
+/* Theme toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+* Paginator - Traditional style
+* Because Laravel defaults does not match well the design of daisyUI.
+*/
+
+.mary-table-pagination span[aria-current="page"] > span {
+    @apply bg-primary text-base-100
+}
+
+.mary-table-pagination button {
+    @apply cursor-pointer
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(20px, -30px) rotate(120deg); }
+    66% { transform: translate(-15px, 15px) rotate(240deg); }
+}
+
+@keyframes float-medium {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-25px, 20px) scale(1.05); }
+}
+
+@keyframes float-fast {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(10px, 8px); }
+    50% { transform: translate(15px, -10px); }
+    75% { transform: translate(-8px, 12px); }
+}
+
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.22; transform: scale(1.03); }
+}
+
+@keyframes pulse-medium {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.18; transform: scale(1.02); }
+}
+
+@keyframes wave {
+    0% { transform: translateX(-100%) rotate(0deg); }
+    100% { transform: translateX(100%) rotate(360deg); }
+}
+
+@keyframes wave-reverse {
+    0% { transform: translateX(100%) rotate(0deg); }
+    100% { transform: translateX(-100%) rotate(-360deg); }
+}
+
+/* Apply animations to elements */
+.animate-float-slow {
+    animation: float-slow 30s ease-in-out infinite;
+}
+
+.animate-float-medium {
+    animation: float-medium 25s ease-in-out infinite;
+}
+
+.animate-float-fast {
+    animation: float-fast 20s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 10s ease-in-out infinite;
+}
+
+.animate-pulse-medium {
+    animation: pulse-medium 8s ease-in-out infinite;
+}
+
+.animate-wave {
+    animation: wave 35s linear infinite;
+}
+
+.animate-wave-reverse {
+    animation: wave-reverse 30s linear infinite;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast,
+    .animate-pulse-slow,
+    .animate-pulse-medium,
+    .animate-wave,
+    .animate-wave-reverse {
+        animation: none;
+    }
+}
