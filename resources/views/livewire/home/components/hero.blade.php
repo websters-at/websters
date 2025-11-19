@@ -1,16 +1,29 @@
 <?php
 
 use Livewire\Volt\Component;
+use Mary\Traits\Toast;
 
 new class extends Component {
+    use Toast;
+
     public string $email = "";
 
     public function save(): void
     {
+        $this->toast(
+            type: 'success',
+            title: 'Danke :)',
+            description: 'Wir werden uns bald bei dir melden!',
+            position: 'toast-bottom toast-end',
+            icon: 'o-x-circle',
+            css: 'alert-info',
+            timeout: 3000,
+            redirectTo: null
+        );
 
     }
 
-};?>
+}; ?>
 
 
 <div class="relative overflow-hidden">
@@ -18,13 +31,17 @@ new class extends Component {
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
         <!-- Large floating orbs - Responsive sizes -->
-        <div class="absolute -top-10 -left-10 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full bg-[#4bc8e7] opacity-20 animate-float-slow"></div>
-        <div class="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-[#4bc8e7] opacity-10 animate-float-fast"></div>
+        <div
+            class="absolute -top-10 -left-10 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full bg-[#4bc8e7] opacity-20 animate-float-slow"></div>
+        <div
+            class="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-[#4bc8e7] opacity-10 animate-float-fast"></div>
 
 
         <!-- Moving gradient waves - Adjusted for mobile -->
-        <div class="absolute -bottom-10 -left-10 w-full h-20 sm:h-32 md:h-40 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>
-        <div class="absolute -bottom-20 left-1/4 w-3/4 h-16 sm:h-24 md:h-32 bg-gradient-to-l from-[#ec65ba] to-[#4bc8e7] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave-reverse"></div>
+        <div
+            class="absolute -bottom-10 -left-10 w-full h-20 sm:h-32 md:h-40 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>
+        <div
+            class="absolute -bottom-20 left-1/4 w-3/4 h-16 sm:h-24 md:h-32 bg-gradient-to-l from-[#ec65ba] to-[#4bc8e7] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave-reverse"></div>
 
         <!-- Grid pattern overlay with low opacity -->
         <div class="absolute inset-0 opacity-3 sm:opacity-5"
@@ -33,7 +50,8 @@ new class extends Component {
     </div>
 
     <!-- Bottom gradient fade to blend with next section -->
-    <div class="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-gradient-to-t from-white to-transparent -z-10"></div>
+    <div
+        class="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-gradient-to-t from-white to-transparent -z-10"></div>
 
     <section class="pt-32 lg:pt-48 md:pt-40" id="home">
         <div
@@ -44,7 +62,8 @@ new class extends Component {
         >
             <!-- Pill -->
             <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">Introducing Websters</div>
+                sm:px-3 sm:py-1.5 sm:text-sm">Introducing Websters
+            </div>
 
             <!-- Heading -->
             <div
@@ -62,7 +81,8 @@ new class extends Component {
                 text-sm sm:text-sm md:text-base lg:text-lg text-gray-600
                 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
-                Gemeinsam bringen wir deine Marke voran – durch liebevolles Design und klare Softwarelösungen, damit du online sichtbar und erfolgreich bist.
+                Gemeinsam bringen wir deine Marke voran – durch liebevolles Design und klare Softwarelösungen, damit du
+                online sichtbar und erfolgreich bist.
             </p>
 
             <!-- Form + Button -->

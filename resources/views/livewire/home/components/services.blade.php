@@ -5,22 +5,22 @@ use Livewire\Volt\Component;
 new class extends Component {
 
 };?>
-<section class="pt-12 lg:pt-16 pb-12 lg:pb-16" id="services">
-    <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center">
+<section class="pt-12 lg:pt-16" id="services">
+    <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
         <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
                 sm:px-3 sm:py-1.5 sm:text-sm">Services</div>
         <div
-            class="bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text font-poppins text-2xl font-semibold text-transparent lg:text-5xl mt-6 text-center sm:mx-auto sm:w-1/2 md:mt-8 md:w-2/5 lg:w-1/2 lg:leading-tight xl:mt-9 xl:w-2/5"
+            class="bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text font-poppins text-2xl font-semibold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9"
         >
             Unsere Dienstleistungen
         </div>
         <p
-            class="text-sm font-medium text-slate-600 leading-normal lg:leading-normal lg:text-base mt-4 text-center sm:mx-auto sm:w-2/3 md:w-1/2 xl:w-2/5"
+            class="text-sm font-medium text-slate-600 leading-normal lg:leading-normal lg:text-base mt-4 text-left lg:text-center w-full lg:w-2/3 xl:w-2/5"
         >
             Von modernem Webdesign bis zu individueller Software – wir entwickeln maßgeschneiderte Lösungen für deinen digitales Wachstum.
         </p>
         <div
-            class="mt-12 grid gap-y-4 sm:mx-auto sm:w-2/3 md:w-1/2 md:gap-y-6 md:px-4 lg:mx-0 lg:mt-16 lg:w-full lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 lg:px-8"
+            class="mt-12 grid gap-y-4 w-full md:gap-y-6 md:px-4 lg:mt-16 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 lg:px-8"
         >
             <!-- Webdesign & Design Card -->
             <article
