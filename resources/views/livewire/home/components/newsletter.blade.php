@@ -1,9 +1,49 @@
 <?php
 
+use App\Models\NewsletterEntry;
 use Livewire\Volt\Component;
+use Mary\Traits\Toast;
 
 new class extends Component {
+    use Toast;
 
+    public string $email = "";
+
+    public function save(): void
+    {
+        $this->validate([
+            'email' => 'required|email',
+        ]);
+
+        try {
+            NewsletterEntry::create([
+                "email" => $this->email,
+            ]);
+            $this->toast(
+                type: 'success',
+                title: 'Erfolg!',
+                description: 'Vielen Dank! Wir werden uns bald bei dir melden!',
+                position: 'toast-bottom toast-end',
+                icon: 'o-check-circle',
+                css: 'alert-success',
+                timeout: 3000,
+                redirectTo: null
+            );
+        } catch (Exception $err) {
+            $this->reset(['email']);
+            $this->toast(
+                type: 'error',
+                title: 'Fehler',
+                description: 'Scheint so, als hättest du dich schon registiert.',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+                redirectTo: null
+            );
+        }
+
+    }
 }; ?>
 
 <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
@@ -18,7 +58,7 @@ new class extends Component {
             >
                 Lust auf Angebote? <br> Trage dich ein
             </div>
-            <div
+            <form
                 class="mt-6 flex w-full flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-9 lg:flex-row lg:items-center lg:gap-x-4 lg:gap-y-0 xl:w-2/5"
             >
                 <div class="flex w-full flex-col">
@@ -27,18 +67,34 @@ new class extends Component {
                     >
                         <x-input
                             id="email"
+                            wire:model="email"
                             name="email"
                             type="email"
+                            required
                             placeholder="Email Adresse"
                         />
                     </div>
                 </div>
-                <x-button
-                    class="items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
-                    type="submit"
-                    label="Senden"
-                />
-            </div>
+                <div x-data="{ loading: false }">
+                    {{-- your form fields here, with wire:model etc. --}}
+                    <button
+                        type="button"
+                        class="btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
+                        x-bind:disabled="loading"
+                        @click="
+                            loading = true;
+                            $wire.save().then(() => {
+                                loading = false;
+                            }).catch(() => {
+                                loading = false;
+                            })
+                        "
+                    >
+                        <span x-show="loading" class="loading loading-spinner w-5 h-5"></span>
+                        <span x-show="!loading">Senden</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </section>

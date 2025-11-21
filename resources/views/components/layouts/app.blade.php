@@ -10,14 +10,16 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-    <livewire:components.nav/>
-    <main class="flex-1">
-        {{ $slot }}
-    </main>
+<livewire:components.nav/>
 
-    <livewire:components.footer/>
-    @livewireScripts(['navigate' => true])
-    {{--  TOAST area --}}
-    <x-toast/>
+
+<main class="flex-1">
+    {{ $slot }}
+</main>
+
+<livewire:components.footer/>
+@livewireScripts(['navigate' => true])
+{{--  TOAST area --}}
+<x-toast/>
 </body>
 </html>

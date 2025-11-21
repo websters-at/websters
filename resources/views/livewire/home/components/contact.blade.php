@@ -36,12 +36,13 @@ new class extends Component {
                 timeout: 3000,
                 redirectTo: null
             );
+            $this->reset(['name', 'company', 'email', 'message']);
         } catch (Exception $err) {
             $this->reset(['name', 'company', 'email', 'message']);
             $this->toast(
                 type: 'error',
-                title: 'Bereits registriert',
-                description: 'Diese E-Mail-Adresse ist bereits in unserer Liste!',
+                title: 'Fehler',
+                description: 'Ein unerwarteter Fehler ist aufgetrete :(',
                 position: 'toast-bottom toast-end',
                 icon: 'o-x-circle',
                 css: 'alert-error',
@@ -72,13 +73,23 @@ new class extends Component {
                     Wir sind für dich da
                 </div>
                 <p class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12">
-                    Melde dich bei unserem engagierten Entwicklerteam, wenn du Unterstützung brauchst, eine Zusammenarbeit planst oder Fragen hast. Wir helfen dir gern weiter und bearbeiten deine Anfrage schnellstmöglich. <br>Mit freundlichen Grüßen - <strong>Dein Websters Team</strong>
+                    Melde dich bei unserem engagierten Entwicklerteam, wenn du Unterstützung brauchst, eine
+                    Zusammenarbeit planst oder Fragen hast. Wir helfen dir gern weiter und bearbeiten deine Anfrage
+                    schnellstmöglich. <br>Mit freundlichen Grüßen - <strong>Dein Websters Team</strong>
                 </p>
             </div>
             <x-form
                 no-separator="true"
                 class="flex flex-col gap-y-6 sm:mx-auto sm:w-2/3 lg:mx-0 lg:w-full lg:gap-y-5"
-                wire:submit="save"
+                x-data="{ loading: false }"
+                x-on:submit.prevent="
+                    loading = true;
+                    $wire.save().then(() => {
+                        loading = false;
+                    }).catch(() => {
+                        loading = false;
+                    })
+                "
             >
                 <div class="flex flex-col gap-y-3 lg:gap-y-5">
                     <div class="grid gap-y-3 lg:grid-cols-2 lg:gap-x-3 lg:gap-y-0">
@@ -139,11 +150,20 @@ new class extends Component {
                     </div>
                 </div>
                 <x-slot:actions>
-                    <x-button
-                        class="items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
+                    <button
                         type="submit"
-                        label="Senden"
-                    />
+                        class="btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
+                        x-bind:disabled="loading"
+                    >
+                        <span
+                            x-show="loading"
+                            class="loading loading-spinner w-5 h-5"
+                        ></span>
+
+                        <span x-show="!loading">
+                Senden
+            </span>
+                    </button>
                 </x-slot:actions>
             </x-form>
         </div>
