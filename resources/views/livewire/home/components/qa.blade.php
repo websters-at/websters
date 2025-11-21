@@ -6,7 +6,7 @@ new class extends Component {
 
 }; ?>
 
-<section class="lg:pt-16 pb-6 lg:pb-16 font-poppins" id="faq" x-data="{ active: 1 }">
+<section class="lg:pt-16 pb-6 lg:pb-16 font-poppins" id="faq" x-data="{ active: 0 }">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div class="flex flex-col items-start md:px-4 lg:items-start lg:px-8">
             <div
