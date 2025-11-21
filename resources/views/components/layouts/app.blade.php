@@ -16,7 +16,7 @@
     </main>
 
     <livewire:components.footer/>
-    @livewireScripts
+    @livewireScripts(['navigate' => true])
     {{--  TOAST area --}}
     <x-toast/>
 </body>

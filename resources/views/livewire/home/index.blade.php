@@ -14,17 +14,12 @@ new class extends Component {
 
     <livewire:home.components.about/>
     <livewire:home.components.technologies/>
-    <livewire:home.components.services/>
-    <livewire:home.components.quoteflow-cta/>
     <livewire:home.components.team/>
+    <livewire:home.components.services/>
+    <livewire:home.components.contact/>
+    <livewire:home.components.qa/>
+    <livewire:home.components.newsletter/>
 
 
-    <!--
-        <livewire:home.components.projects/>
-        <livewire:home.components.team/>
-
-
-        <livewire:home.components.qa/>
-    -->
 
 </div>

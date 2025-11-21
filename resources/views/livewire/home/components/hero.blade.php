@@ -76,19 +76,19 @@ new class extends Component {
         <div
             class="absolute -top-10 -left-10 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full bg-[#4bc8e7] opacity-20 animate-float-slow"></div>
         <div
-            class="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-[#4bc8e7] opacity-10 animate-float-fast"></div>
-
-
+            class="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-[#4bc8e7] opacity-10 animate-float-slow"></div>
+        <div
+            class="absolute top-10 -right-20 w-24 h-24 sm:w-36 sm:h-36 md:w-60 md:h-48 rounded-full bg-primary opacity-30 animate-float-slow"></div>
         <!-- Moving gradient waves - Adjusted for mobile -->
         <div
-            class="absolute -bottom-10 -left-10 w-full h-20 sm:h-32 md:h-40 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>
+            class="absolute -bottom-20 -left-10 w-full h-32 sm:h-48 md:h-56 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>
         <div
-            class="absolute -bottom-20 left-1/4 w-3/4 h-16 sm:h-24 md:h-32 bg-gradient-to-l from-[#ec65ba] to-[#4bc8e7] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave-reverse"></div>
+            class="absolute -bottom-40 left-1/4 w-3/4 h-28 sm:h-40 md:h-48 bg-gradient-to-l from-[#ec65ba] to-[#4bc8e7] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave-reverse"></div>
 
         <!-- Grid pattern overlay with low opacity -->
         <div class="absolute inset-0 opacity-3 sm:opacity-5"
              style="background-image: linear-gradient(#4bc8e7 1px, transparent 1px), linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
-                    background-size: 30px 30px; sm:background-size: 50px 50px;"></div>
+                    background-size: 30px 30px;"></div>
     </div>
 
     <!-- Bottom gradient fade to blend with next section -->
@@ -127,25 +127,6 @@ new class extends Component {
                 online sichtbar und erfolgreich bist.
             </p>
 
-            <!-- Form + Button -->
-            <div
-                class="mt-6 sm:mt-8 flex w-full flex-col gap-y-3 sm:gap-y-4
-                max-w-xl sm:max-w-2xl lg:max-w-3xl
-                md:self-center
-                lg:mt-12 lg:flex-row lg:items-center lg:gap-x-4 lg:gap-y-0"
-            >
-                <div class="flex w-full flex-col">
-                    <x-input
-                        class="shadow-none !outline-none font-poppins font-normal !ring-0 focus:!ring-0 focus:!outline-none text-sm sm:text-base"
-                        wire:model="email"
-                        type="email"
-                        placeholder="Deine Email"
-                        icon="o-envelope"
-                    />
-                </div>
-
-                <x-button label="Loslegen" wire:click="save" class="btn-sm sm:btn-md btn-primary"></x-button>
-            </div>
         </div>
     </section>
 </div>

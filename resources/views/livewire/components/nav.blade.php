@@ -4,23 +4,54 @@ use Livewire\Volt\Component;
 
 new class extends Component {
     public bool $mobileMenuOpen = false;
-}; ?>
+};
+
+?>
 
 <div
-    x-data="{ mobileMenuOpen: @entangle('mobileMenuOpen') }"
-    class="fixed top-0 inset-x-0 z-50 bg-none "
+    x-data="{
+        mobileMenuOpen: @entangle('mobileMenuOpen'),
+        activeSection: null,
+        homePath: '{{ parse_url(route('home'), PHP_URL_PATH) }}',
+
+        init() {
+            // Only care about hash underlines on the home page
+            if (window.location.pathname === this.homePath) {
+                this.setActiveFromHash();
+
+                window.addEventListener('hashchange', () => {
+                    this.setActiveFromHash();
+                });
+            }
+        },
+
+        setActiveFromHash() {
+            const hash = window.location.hash ? window.location.hash.substring(1) : null;
+            // Fallback: if no hash, you can choose a default, e.g. 'about'
+            this.activeSection = hash || null;
+        }
+    }"
+    class="fixed top-0 inset-x-0 z-50 bg-none"
 >
     <livewire:components.upper-nav/>
+
     <header class="py-4">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
-            <div class="bg-white flex items-center justify-between gap-x-4
-            rounded-2xl py-2.5 pl-5 pr-2.5
-
-            shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]
-            border-[1px] border-[#002a421a] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-x-12 lg:rounded-[1.375rem]">
+            <div
+                class="bg-white flex items-center justify-between gap-x-4
+                rounded-2xl py-2.5 pl-5 pr-2.5
+                shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]
+                border-[1px] border-[#002a421a]
+                lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-x-12 lg:rounded-[1.375rem]"
+            >
                 {{-- LEFT LOGO --}}
                 <div class="flex items-center gap-x-10">
-                    <a href="#home" title="Home" class="flex items-center">
+                    <a
+                        href="{{ route('home') }}#home"
+                        @click="activeSection = 'home'"
+                        class="flex items-center"
+                        @click="activeSection = 'home'" {{-- reset when going to plain / --}}
+                    >
                         {{-- Desktop logo --}}
                         <img
                             class="h-7 hidden lg:block"
@@ -42,42 +73,51 @@ new class extends Component {
                     <ul class="flex items-center">
                         <li>
                             <a
+                                href="{{ route('home') }}#about"
                                 class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                href="#about"
+                                @click="activeSection = 'about'"
+                                :class="{ 'underline-secondary': activeSection === 'about' }"
                             >
                                 About
                             </a>
                         </li>
                         <li>
                             <a
+                                href="{{ route('home') }}#team"
                                 class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                href="#services"
+                                @click="activeSection = 'team'"
+                                :class="{ 'underline-secondary': activeSection === 'team' }"
+                            >
+                                Team
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="{{ route('home') }}#services"
+                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                                @click="activeSection = 'services'"
+                                :class="{ 'underline-secondary': activeSection === 'services' }"
                             >
                                 Services
                             </a>
                         </li>
                         <li>
                             <a
-                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                href="#"
+                                href="{{ route('projects') }}"
+                                wire:navigate
+                                class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                                wire:current="underline-secondary"
                             >
-                                Projekte
+                                <span>Projekte</span>
+                                <span class="h-1.5 w-1.5 rounded-full bg-[#ec65ba]"></span>
                             </a>
                         </li>
-
                         <li>
                             <a
+                                href="{{ route('home') }}#faq"
                                 class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                href="#"
-                            >
-                                Team
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                href="#"
+                                @click="activeSection = 'faq'"
+                                :class="{ 'underline-secondary': activeSection === 'faq' }"
                             >
                                 FAQ
                             </a>
@@ -88,7 +128,13 @@ new class extends Component {
                 {{-- RIGHT BUTTONS + BURGER --}}
                 <div class="flex items-center gap-x-10 justify-self-end">
                     <div class="flex items-center gap-x-3 lg:gap-x-2">
-                        <button class="btn btn-sm lg:btn-md btn-primary">Kontakt</button>
+                        <a
+                            href="{{ route('home') }}#contact"
+                            class="btn btn-sm lg:btn-md btn-primary"
+                            @click="activeSection = 'contact'"
+                        >
+                            Kontakt
+                        </a>
 
                         {{-- BURGER BUTTON (MOBILE) --}}
                         <button
@@ -98,20 +144,8 @@ new class extends Component {
                             title="Open menu"
                             @click="mobileMenuOpen = !mobileMenuOpen"
                         >
-                            <svg
-                                class="h-6 text-[#002a42]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                aria-hidden="true"
-                                data-slot="icon"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
+                            <x-icon name="fas.bars" class="h-5 w-5 text-[#002a42] opacity-65" />
+
                         </button>
                     </div>
                 </div>
@@ -119,7 +153,7 @@ new class extends Component {
         </div>
     </header>
 
-    {{-- MOBILE MENU (DROPDOWN) --}}
+    {{-- MOBILE MENU --}}
     <nav
         class="lg:hidden"
         x-show="mobileMenuOpen"
@@ -132,36 +166,58 @@ new class extends Component {
         x-cloak
     >
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
-            <div class="mt-3 bg-white rounded-2xl shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] py-2.5 px-4">
+            <div
+                class="mt-3 bg-white rounded-2xl shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] py-2.5 px-4"
+            >
                 <ul class="flex flex-col">
                     <li>
                         <a
+                            href="{{ route('home') }}#about"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            href="#services"
+                            @click="activeSection = 'about'; mobileMenuOpen = false"
+                            :class="{ 'underline-secondary': activeSection === 'about' }"
                         >
-                            Services
+                            About
                         </a>
                     </li>
                     <li>
                         <a
+                            href="{{ route('home') }}#team"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            href="#"
-                        >
-                            Projekte
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            href="#"
+                            @click="activeSection = 'team'; mobileMenuOpen = false"
+                            :class="{ 'underline-secondary': activeSection === 'team' }"
                         >
                             Team
                         </a>
                     </li>
                     <li>
                         <a
+                            href="{{ route('home') }}#services"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            href="#"
+                            @click="activeSection = 'services'; mobileMenuOpen = false"
+                            :class="{ 'underline-secondary': activeSection === 'services' }"
+                        >
+                            Services
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ route('projects') }}"
+                            wire:navigate
+                            class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                            wire:current="underline-secondary"
+                            @click="mobileMenuOpen = false; activeSection = null"
+                        >
+                            <span>Projekte</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-[#ec65ba]"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ route('home') }}#faq"
+                            class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                            @click="activeSection = 'faq'; mobileMenuOpen = false"
+                            :class="{ 'underline-secondary': activeSection === 'faq' }"
                         >
                             FAQ
                         </a>
@@ -169,9 +225,13 @@ new class extends Component {
                 </ul>
 
                 <div class="mt-3 flex flex-col gap-y-2">
-                    <button class="btn btn-primary btn-sm lg:btn-md">
+                    <a
+                        href="{{ route('home') }}#contact"
+                        class="btn btn-primary btn-sm lg:btn-md"
+                        @click="activeSection = 'contact'; mobileMenuOpen = false"
+                    >
                         Kontaktiere uns
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

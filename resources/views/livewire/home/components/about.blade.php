@@ -4,8 +4,8 @@ use Livewire\Volt\Component;
 
 new class extends Component {
 
-};?>
-<section class="pt-16 lg:pt-20 relative" id="about">
+}; ?>
+<section class="pt-16 mb-8 lg:mb-4 lg:pt-20 relative" id="about">
 
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div
@@ -23,7 +23,8 @@ new class extends Component {
                 class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left order-2 lg:order-1"
             >
                 <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">About</div>
+                sm:px-3 sm:py-1.5 sm:text-sm">About
+                </div>
 
 
                 <div
@@ -32,7 +33,10 @@ new class extends Component {
                     Arbeite mit unserem engagierten Entwicklerteam
                 </div>
                 <p class="mt-4 text-sm font-poppins  text-slate-600 sm:w-1/2 lg:w-11/12">
-                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-absolventen aus Österreich. Wir entwickeln moderne Websites, Blogs, Online-Shops sowie individuelle Softwarelösungen – und übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste Level.
+                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-absolventen aus Österreich. Wir
+                    entwickeln moderne Websites, Blogs, Online-Shops sowie individuelle Softwarelösungen – und
+                    übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste
+                    Level.
                 </p>
                 <x-button
                     class="items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-3 rounded-xl mt-8 flex lg:mt-9"
