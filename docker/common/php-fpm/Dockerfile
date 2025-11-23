@@ -1,9 +1,31 @@
+# Stage 0: Build frontend assets (Vite)
+FROM node:25-alpine3.21 AS assets
+
+WORKDIR /var/www
+
+# Install Node deps
+COPY package*.json ./
+RUN if [ -f package-lock.json ]; then \
+      npm ci; \
+    else \
+      npm install; \
+    fi
+
+# Copy Vite config + frontend sources
+COPY vite.config.js ./
+COPY resources ./resources
+COPY public ./public
+
+# Build Vite assets -> public/build
+RUN npm run build
+
+
+
 # Stage 1: Build environment and Composer dependencies
 FROM php:8.4-fpm AS builder
 
 # Install system dependencies and PHP extensions required for Laravel + MySQL/PostgreSQL support
 # Some dependencies are required for PHP extensions only in the build stage
-# We don't need to install Node.js or build assets, as it was done in the Nginx image
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     unzip \
@@ -27,30 +49,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-enable redis \
     && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
-# Set the working directory inside the container
 WORKDIR /var/www
 
 # Copy the entire Laravel application code into the container
-# -----------------------------------------------------------
-# In Laravel, the `composer install` command often triggers
-# scripts that need access to the entire application code.
-# For example, the `post-autoload-dump` event might execute
-# Artisan commands like `php artisan package:discover`. If the
-# application code (including the `artisan` file) is not
-# present, these commands will fail, leading to build errors.
-#
-# By copying the entire application code before running
-# `composer install`, we ensure that all necessary files are
-# available, allowing these scripts to run successfully.
-# In other cases, it would be possible to copy composer files
-# first, to leverage Docker's layer caching mechanism.
-# -----------------------------------------------------------
 COPY . /var/www
 
 # Install Composer and dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist
+
 
 
 # Stage 2: Production environment
@@ -84,21 +91,23 @@ COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 COPY --from=builder /usr/local/bin/docker-php-ext-* /usr/local/bin/
 
 # Use the recommended production PHP configuration
-# -----------------------------------------------------------
-# PHP provides development and production configurations.
-# Here, we replace the default php.ini with the production
-# version to apply settings optimized for performance and
-# security in a live environment.
-# -----------------------------------------------------------
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# Add custom PHP settings (override via conf.d)
+RUN { \
+    echo "memory_limit=256M"; \
+    echo "max_execution_time=300"; \
+} > /usr/local/etc/php/conf.d/zz-custom.ini
 
 # Enable PHP-FPM status page by modifying zz-docker.conf with sed
 RUN sed -i '/\[www\]/a pm.status_path = /status' /usr/local/etc/php-fpm.d/zz-docker.conf
-# Update the variables_order to include E (for ENV)
-#RUN sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/' "$PHP_INI_DIR/php.ini"
+# RUN sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/' "$PHP_INI_DIR/php.ini"
 
 # Copy the application code and dependencies from the build stage
 COPY --from=builder /var/www /var/www
+
+# 🔹 Copy built Vite assets from the Node assets stage into php-fpm image
+COPY --from=assets /var/www/public/build /var/www/public/build
 
 # Set working directory
 WORKDIR /var/www
@@ -115,6 +124,7 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
+
 
 
 # Stage 3: Development image
@@ -160,20 +170,17 @@ RUN if getent group ${GID}; then \
 RUN sed -i "s/user = www-data/user = www/g" /usr/local/etc/php-fpm.d/www.conf && \
     sed -i "s/group = www-data/group = $group_name/g" /usr/local/etc/php-fpm.d/www.conf
 
-
 # Set the working directory
 WORKDIR /var/www
 
-# Copy the entrypoint script
+# Copy the entrypoint script for development
 COPY ./docker/development/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Switch back to the non-privileged user to run the application
 USER www-data
 
-# Change the default command to run the entrypoint script
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]

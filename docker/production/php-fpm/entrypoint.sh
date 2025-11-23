@@ -18,15 +18,16 @@ rm -rf /var/www/storage-init
 # Run Laravel migrations
 # -----------------------------------------------------------
 # Ensure the database schema is up to date.
+# We bump memory_limit for CLI here to avoid OOM on heavy apps.
 # -----------------------------------------------------------
-php artisan migrate --force
+php -d memory_limit=256M artisan migrate --force
 
 # Clear and cache configurations
 # -----------------------------------------------------------
 # Improves performance by caching config and routes.
 # -----------------------------------------------------------
-php artisan config:cache
-php artisan route:cache
+php -d memory_limit=256M artisan config:cache
+php -d memory_limit=256M artisan route:cache
 
 # Run the default command
 exec "$@"
