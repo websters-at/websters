@@ -69,25 +69,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-
-  # The 'php-cli' service provides a command-line interface for running Artisan commands and other CLI tasks.
-  # -----------------------------------------------------------
-  # This is useful for running migrations, seeders, or any custom scripts.
-  # It shares the same codebase and environment as the 'php-fpm' service.
-  # -----------------------------------------------------------
-  php-cli:
-    build:
-      context: .
-      dockerfile: ./docker/php-cli/Dockerfile
-    tty: true # Enables an interactive terminal
-    stdin_open: true # Keeps standard input open for 'docker exec'
-    env_file:
-      - .env
-    networks:
-      traefik:
-      laravel-production:
-        ipv4_address: 172.28.0.13
-
   mysql:
     container_name: mysql
     image: mysql:latest
@@ -124,7 +105,7 @@ networks:
         - subnet: 172.28.0.0/24
   traefik:
     external: true
-    name: traefik_network  
+    name: traefik_network
 
 volumes:
   mysql_data:
