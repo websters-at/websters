@@ -80,7 +80,7 @@ new class extends Component {
             </div>
             <x-form
                 no-separator="true"
-                class="flex flex-col gap-y-6 sm:mx-auto sm:w-2/3 lg:mx-0 lg:w-full lg:gap-y-5"
+                class="flex flex-col gap-y-2 sm:mx-auto sm:w-2/3 lg:mx-0 lg:w-full lg:gap-y-2"
                 x-data="{ loading: false }"
                 x-on:submit.prevent="
                     loading = true;
