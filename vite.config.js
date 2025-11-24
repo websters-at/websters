@@ -11,12 +11,13 @@ export default defineConfig({
         tailwindcss(),
     ],
     build: {
-        manifest: true,
+        manifest: 'manifest.json',
         rollupOptions: {
             output: {
-                entryFileNames: 'assets/[name].js',
-                chunkFileNames: 'assets/[name].js',
-            },
-        },
-    },
+            entryFileNames: 'assets/[name].js',
+            chunkFileNames: 'assets/[name].js',
+            assetFileNames: 'assets/[name][extname]'
+            }
+        }
+    }
 });

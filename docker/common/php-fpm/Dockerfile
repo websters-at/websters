@@ -20,7 +20,6 @@ COPY public ./public
 RUN npm run build
 
 
-
 # Stage 1: Build environment and Composer dependencies
 FROM php:8.4-fpm AS builder
 

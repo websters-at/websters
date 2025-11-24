@@ -57,6 +57,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 # Copy the application code and dependencies from the build stage
 COPY --from=builder /var/www /var/www
 
+
 # Set working directory
 WORKDIR /var/www
 
