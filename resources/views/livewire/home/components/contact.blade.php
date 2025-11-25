@@ -170,7 +170,7 @@ new class extends Component {
     </div>
     <img
         class="absolute left-0 top-0 -z-10 h-52 w-full object-cover object-left-bottom lg:h-full lg:w-1/2"
-        src="{{asset('/assets/form.png')}}"
+        src="{{ asset('/assets/form.png') }}"
         alt="Features"
     />
 </section>
