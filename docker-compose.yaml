@@ -1,0 +1,68 @@
+services:
+  app:
+    container_name: websters
+    build:
+      context: .
+      target: production
+    restart: always
+    ports:
+      - "6969:80"
+      - "443:443" # HTTPS
+      - "443:443/udp" # HTTP/3
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_network"
+
+      traefik.http.services.websters.loadbalancer.server.port: "80"
+
+      traefik.http.routers.websters.rule: "Host(`websters.stevan.sexidude.com`)"
+      traefik.http.routers.websters.entrypoints: "websecure"
+      traefik.http.routers.websters.tls: "true"
+      traefik.http.routers.websters.tls.certresolver: "ssl"
+
+      traefik.http.routers.websters-http.rule: "Host(`websters.stevan.sexidude.com`)"
+      traefik.http.routers.websters-http.entrypoints: "web"
+      traefik.http.routers.websters-http.middlewares: "redirect-to-https"
+
+      traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: "https"
+    networks:
+      traefik:
+
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: webstersdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      traefik:
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mysql_data:
+
+networks:
+  traefik:
+    external: true
+    name: traefik_network
