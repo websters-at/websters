@@ -12,4 +12,4 @@ php artisan view:cache
 
 echo "Starting FrankenPHP server..."
 
-exec php artisan octane:frankenphp --host=0.0.0.0 --port=69 --workers=4 --watch
+exec php artisan octane:frankenphp --host=0.0.0.0 --port=6980 --workers=4 --watch

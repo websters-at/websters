@@ -6,7 +6,7 @@ services:
       target: production
     restart: always
     ports:
-      - "42060:69"
+      - "42060:80"
       #- "443:443" # HTTPS
       #- "443:443/udp" # HTTP/3
     volumes:
@@ -28,7 +28,7 @@ services:
       traefik.http.middlewares.cors.headers.addvaryheader: "true"
       traefik.http.middlewares.cors.headers.accesscontrolmaxage: "3600"
 
-      traefik.http.services.websters.loadbalancer.server.port: "69"
+      traefik.http.services.websters.loadbalancer.server.port: "80"
 
       # HTTPS router
       traefik.http.routers.websters.rule: "Host(`websters.stevan.sexidude.com`)"
