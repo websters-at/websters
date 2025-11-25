@@ -1,12 +1,12 @@
 services:
-  app:
+  websters:
     container_name: websters
     build:
       context: .
       target: production
     restart: always
-    #ports:
-     # - "42060:80"
+    ports:
+      - "42060:69"
       #- "443:443" # HTTPS
       #- "443:443/udp" # HTTP/3
     volumes:
@@ -21,32 +21,26 @@ services:
       traefik.enable: "true"
       traefik.docker.network: "traefik_network"
 
-      # Updated CORS middleware
-      traefik.http.middlewares.cors.headers.accesscontrolalloworigins: "*"
+      # CORS middleware named “cors”
+      traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist: "*"
       traefik.http.middlewares.cors.headers.accesscontrolallowmethods: "GET,POST,PUT,DELETE,OPTIONS"
       traefik.http.middlewares.cors.headers.accesscontrolallowheaders: "*"
-      traefik.http.middlewares.cors.headers.accesscontrolallowcredentials: "false" # Add this line
       traefik.http.middlewares.cors.headers.addvaryheader: "true"
       traefik.http.middlewares.cors.headers.accesscontrolmaxage: "3600"
 
-      # Special middleware for OPTIONS preflight requests
-      traefik.http.middlewares.cors-options.chain.middlewares: "cors, cors-opt"
-      traefik.http.middlewares.cors-opt.headers.customresponseheaders.Access-Control-Allow-Origin: "*"
-      traefik.http.middlewares.cors-opt.headers.customresponseheaders.Access-Control-Allow-Methods: "GET,POST,PUT,DELETE,OPTIONS"
-
       traefik.http.services.websters.loadbalancer.server.port: "80"
 
-      # HTTPS router (uses the chain that handles preflight)
+      # HTTPS router
       traefik.http.routers.websters.rule: "Host(`websters.stevan.sexidude.com`)"
       traefik.http.routers.websters.entrypoints: "websecure"
-      traefik.http.routers.websters.middlewares: "cors-options" # Now using the chain
+      traefik.http.routers.websters.middlewares: "cors"
       traefik.http.routers.websters.tls: "true"
       traefik.http.routers.websters.tls.certresolver: "ssl"
 
-      # HTTP router (redirect to HTTPS) - ALSO apply the CORS middleware here
+      # HTTP router (redirect to HTTPS)
       traefik.http.routers.websters-http.rule: "Host(`websters.stevan.sexidude.com`)"
       traefik.http.routers.websters-http.entrypoints: "web"
-      traefik.http.routers.websters-http.middlewares: "cors-options, redirect-to-https" # Apply CORS before redirect
+      traefik.http.routers.websters-http.middlewares: "redirect-to-https"
       traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: "https"
 
     networks:

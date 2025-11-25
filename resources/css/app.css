@@ -43,6 +43,7 @@
     --depth: 0;
     --noise: 0;
 }
+
 /* Safelist DaisyUI toast classes */
 @source inline("toast-top");
 @source inline("toast-bottom");
