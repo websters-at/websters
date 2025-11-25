@@ -6,7 +6,7 @@ services:
       target: production
     restart: always
     ports:
-      - "6969:69"
+      - "42060:69"
       #- "443:443" # HTTPS
       #- "443:443/udp" # HTTP/3
     volumes:
