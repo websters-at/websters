@@ -64,13 +64,7 @@ RUN mkdir -p /app/storage/framework/cache/data \
     chown -R www-data:www-data /app/storage /app/bootstrap/cache && \
     chmod -R 775 /app/storage /app/bootstrap/cache
 
-
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-ENV SERVER_NAME=:80
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-ENV OCTANE_SERVER=frankenphp
 
 ENTRYPOINT ["entrypoint.sh"]

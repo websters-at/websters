@@ -7,7 +7,6 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 @source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @plugin "daisyui/theme" {
@@ -44,6 +43,17 @@
     --depth: 0;
     --noise: 0;
 }
+/* Safelist DaisyUI toast classes */
+@source inline("toast-top");
+@source inline("toast-bottom");
+@source inline("toast-start");
+@source inline("toast-end");
+@source inline("toast-center");
+@source inline("toast-middle");
+@source inline("alert-success");
+@source inline("alert-error");
+@source inline("alert-warning");
+@source inline("alert-info");
 
 /* Poppins Font Faces */
 @font-face {
