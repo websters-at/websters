@@ -7,8 +7,8 @@ services:
     restart: always
     ports:
       - "6969:80"
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
+      #- "443:443" # HTTPS
+      #- "443:443/udp" # HTTP/3
     volumes:
       - caddy_data:/data
       - caddy_config:/config
@@ -31,8 +31,12 @@ services:
       traefik.http.routers.websters-http.rule: "Host(`websters.stevan.sexidude.com`)"
       traefik.http.routers.websters-http.entrypoints: "web"
       traefik.http.routers.websters-http.middlewares: "redirect-to-https"
-
       traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: "https"
+
+      traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist: "*"
+      traefik.http.middlewares.cors.headers.accesscontrolallowmethods: "GET,POST,OPTIONS"
+      traefik.http.routers.websters.middlewares: "cors"
+
     networks:
       traefik:
 
