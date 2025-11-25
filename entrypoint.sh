@@ -3,6 +3,8 @@ set -e
 
 echo "Database is ready! Running migrations..."
 
+wait-for-it mysql:3306 -t 30
+
 # Run migrations
 php artisan migrate --force
 
