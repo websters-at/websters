@@ -6,7 +6,7 @@ services:
       target: production
     restart: always
     ports:
-      - "6969:80"
+      - "6969:69"
       #- "443:443" # HTTPS
       #- "443:443/udp" # HTTP/3
     volumes:
@@ -21,13 +21,23 @@ services:
       traefik.enable: "true"
       traefik.docker.network: "traefik_network"
 
+      # CORS middleware named “cors”
+      traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist: "*"
+      traefik.http.middlewares.cors.headers.accesscontrolallowmethods: "GET,POST,PUT,DELETE,OPTIONS"
+      traefik.http.middlewares.cors.headers.accesscontrolallowheaders: "*"
+      traefik.http.middlewares.cors.headers.addvaryheader: "true"
+      traefik.http.middlewares.cors.headers.accesscontrolmaxage: "3600"
+
       traefik.http.services.websters.loadbalancer.server.port: "80"
 
+      # HTTPS router
       traefik.http.routers.websters.rule: "Host(`websters.stevan.sexidude.com`)"
       traefik.http.routers.websters.entrypoints: "websecure"
+      traefik.http.routers.websters.middlewares: "cors"
       traefik.http.routers.websters.tls: "true"
       traefik.http.routers.websters.tls.certresolver: "ssl"
 
+      # HTTP router (redirect to HTTPS)
       traefik.http.routers.websters-http.rule: "Host(`websters.stevan.sexidude.com`)"
       traefik.http.routers.websters-http.entrypoints: "web"
       traefik.http.routers.websters-http.middlewares: "redirect-to-https"
