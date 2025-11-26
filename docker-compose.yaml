@@ -24,12 +24,12 @@ services:
             traefik.http.middlewares.cors.headers.addvaryheader: 'true'
             traefik.http.middlewares.cors.headers.accesscontrolmaxage: '3600'
             traefik.http.services.websters.loadbalancer.server.port: '80'
-            traefik.http.routers.websters.rule: Host(`stevan.sexidude.com`)
+            traefik.http.routers.websters.rule: Host(`websters.stevan.sexidude.com`)
             traefik.http.routers.websters.entrypoints: websecure
             traefik.http.routers.websters.middlewares: cors
             traefik.http.routers.websters.tls: 'true'
             traefik.http.routers.websters.tls.certresolver: ssl
-            traefik.http.routers.websters-http.rule: Host(`stevan.sexidude.com`)
+            traefik.http.routers.websters-http.rule: Host(`websters.stevan.sexidude.com`)
             traefik.http.routers.websters-http.entrypoints: web
             traefik.http.routers.websters-http.middlewares: redirect-to-https
             traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
