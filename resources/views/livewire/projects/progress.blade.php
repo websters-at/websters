@@ -7,8 +7,6 @@ new class extends Component {
 };
 
 ?>
-
-
 <div class="min-h-screen flex items-center justify-center bg-slate-50">
     <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
         <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center">

@@ -152,7 +152,7 @@ new class extends Component {
                 <x-slot:actions>
                     <button
                         type="submit"
-                        class="btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
+                        class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
                         x-bind:disabled="loading"
                     >
                         <span

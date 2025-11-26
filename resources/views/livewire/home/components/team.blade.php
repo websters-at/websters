@@ -118,11 +118,12 @@ new class extends Component {
                         </a>
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
-                            href="https://www.instagram.com/michi4r/"
-                            title="Instagram"
+                            href="#"
+                            title="Linkedin"
                             target="_blank"
                         >
-                            <x-icon name="fab.instagram"  class="h-4 text-brand-dark opacity-60" />
+                            <x-icon name="fab.linkedin-in"  class="h-4 text-brand-dark opacity-60" />
+
                         </a>
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
@@ -142,7 +143,7 @@ new class extends Component {
                 >
                     <img
                         class="h-full w-full rounded-2xl object-cover lg:rounded-3xl"
-                        src="{{asset('/assets/people/manuel.jpeg')}}"
+                        src="{{asset('/assets/people/manuel.png')}}"
                         alt="Emily Thompson - Chief Technology Officer"
                     />
                 </figure>
@@ -160,7 +161,7 @@ new class extends Component {
                     <div class="mt-3 flex flex-wrap items-center gap-2 lg:mt-4">
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
-                            href="#"
+                            href="https://github.com/ManuelPuchner"
                             title="Github"
                             target="_blank"
                         >

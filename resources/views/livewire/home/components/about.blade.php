@@ -22,7 +22,7 @@ new class extends Component {
                 <img
                     src="{{ asset('/assets/rocket.png') }}"
                     alt="Rocket"
-                    class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 w-1/4 lg:w-1/4 xl:w-full pointer-events-none"
+                    class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 w-1/4 lg:w-1/4 xl:w-full pointer-events-none rocket-float"
                 />
             </div>
 
@@ -41,13 +41,13 @@ new class extends Component {
                     Arbeite mit unserem engagierten Entwicklerteam
                 </div>
                 <p class="mt-4 text-sm font-poppins  text-slate-600 sm:w-1/2 lg:w-11/12">
-                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-absolventen aus Österreich. Wir
-                    entwickeln moderne Websites, Blogs, Online-Shops sowie individuelle Softwarelösungen – und
+                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-absolventen. Wir
+                    entwickeln moderne Websites, Blogs, Online-Shops sowie individuelle Softwarelösungen und
                     übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste
                     Level.
                 </p>
                 <a href="/#contact"
-                    class="items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-3 rounded-xl mt-8 flex lg:mt-9"
+                    class="btn-fancy items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-3 rounded-xl mt-8 flex lg:mt-9"
                 >
                     Kontaktiere uns
                 </a>

@@ -123,8 +123,7 @@ new class extends Component {
                 text-sm sm:text-sm md:text-base lg:text-lg text-gray-600
                 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
-                Gemeinsam bringen wir deine Marke voran – durch liebevolles Design und klare Softwarelösungen, damit du
-                online sichtbar und erfolgreich bist.
+                Mit cleanem Design und klaren Software-Lösungen bringen wir dich und deine Marke sichtbar und professionell online voran.
             </p>
 
         </div>

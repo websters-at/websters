@@ -3,10 +3,10 @@
         <div class="flex items-center justify-center gap-x-3 md:gap-x-4">
 
             <div class="flex items-center gap-x-1">
-                <a href="tel:+436604669179"
+                <a href="tel:+4367763177763"
                    class="flex items-center gap-x-1 cursor-pointer text-[12px] text-white font-medium font-poppins">
                     <x-icon name="fas.phone" class="text-white w-3.5"/>
-                    <span class="hidden md:inline">+43 6604669179</span>
+                    <span class="hidden md:inline">+43 677 63177763</span>
                 </a>
             </div>
 

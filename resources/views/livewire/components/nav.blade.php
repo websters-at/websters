@@ -130,7 +130,7 @@ new class extends Component {
                     <div class="flex items-center gap-x-3 lg:gap-x-2">
                         <a
                             href="{{ route('home') }}#contact"
-                            class="btn btn-sm lg:btn-md btn-primary"
+                            class="btn-fancy btn btn-sm lg:btn-md btn-primary"
                             @click="activeSection = 'contact'"
                         >
                             Kontakt
@@ -227,7 +227,7 @@ new class extends Component {
                 <div class="mt-3 flex flex-col gap-y-2">
                     <a
                         href="{{ route('home') }}#contact"
-                        class="btn btn-primary btn-sm lg:btn-md"
+                        class="btn-fancy btn btn-primary btn-sm lg:btn-md"
                         @click="activeSection = 'contact'; mobileMenuOpen = false"
                     >
                         Kontaktiere uns

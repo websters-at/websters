@@ -27,34 +27,37 @@ new class extends Component {
             </div>
             <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
                 <a
-                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-500"
-                    href="#"
-                    title="Terms of use"
-                >Terms of use</a
-                >
-                <span class="h-3 border-l border-l-neutral-300"></span>
-                <a
                     class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-500 before:bg-slate-300"
-                    href="#"
-                    title="Privacy policy"
-                >Privacy policy</a
-                >
+                    href="{{ route('imprint') }}"
+                    wire:navigate
+                    title="Impressum"
+                >Impressum</a>
                 <span class="h-3 border-l border-l-neutral-300"></span>
+
                 <a
                     class="whitespace-nowrap text-sm font-poppins font-medium text-slate-500"
-                    href="#"
-                    title=">Contact us"
-                >Contact us</a
-                >
+                    href="{{ route('data-privacy') }}"
+                    wire:navigate
+                    title="Datenschutz"
+                >Datenschutz</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-500"
+                    href="{{ route('terms') }}"
+                    wire:navigate
+                    title="Terms & Conditions"
+                >AGBs</a>
+
             </div>
             <div
                 class="flex flex-wrap items-center justify-center gap-4 lg:justify-self-end"
             >
-                <a href="#" title="Instagram" target="_blank">
-                    <x-bi-instagram />
+                <a href="https://www.instagram.com/websters.at/" target="_blank">
+                    <x-icon name="fab.instagram" class="text-shadow-slate-500 opacity-60 w-4.5"/>
                 </a>
-                <a href="#" title="Linkedin" target="_blank">
-                    <x-bi-linkedin />
+                <a href="https://github.com/websters-at" target="_blank">
+                    <x-icon name="fab.github" class="text-shadow-slate-500 opacity-60 w-5"/>
                 </a>
 
             </div>

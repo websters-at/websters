@@ -52,7 +52,7 @@ new class extends Component {
                 </div>
                 <x-button
                     link="/projects"
-                    class="items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md btn-primary mt-4"
+                    class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md btn-primary mt-4"
                     label="Projekte ansehen"
                 />
             </article>
@@ -85,7 +85,7 @@ new class extends Component {
                 </div>
                 <x-button
                     link="/projects"
-                    class="items-center justify-center whitespace-nowrap text-white btn btn-sm lg:btn-md btn-secondary mt-4"
+                    class="btn-fancy items-center justify-center whitespace-nowrap text-white btn btn-sm lg:btn-md btn-secondary mt-4"
                     label="Projekte ansehen"
                 />
             </article>
@@ -122,7 +122,7 @@ new class extends Component {
 
                 <x-button
                     link="/projects"
-                    class="items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary mt-4"
+                    class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary mt-4"
                     label="Projekte ansehen"
                 />
             </article>

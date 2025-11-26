@@ -14,3 +14,4 @@ Alpine.plugin(collapse);
 document.querySelectorAll('fieldset').forEach(fieldset => {
   fieldset.removeAttribute('class');
 });
+

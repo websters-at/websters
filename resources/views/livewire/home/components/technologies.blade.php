@@ -35,8 +35,7 @@ new class extends Component {
 
         <div class="mt-6 lg:mt-12 text-left lg:text-center">
             <p class="text-xs lg:text-sm font-poppins text-slate-500 max-w-3xl lg:mx-auto">
-                Von Backend-Entwicklung mit Laravel und Python bis zu Frontend-Lösungen mit React und NextJS –
-                wir finden die passende Technologie für Ihr Projekt.
+                Egal ob Backend mit Laravel und Python oder Frontend mit React und Next.js – wir entwickeln und kombinieren die Technologien so, dass dein Projekt stabil läuft, gut aussieht und einfach skalierbar bleibt.
             </p>
         </div>
     </div>
