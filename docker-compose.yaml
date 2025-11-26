@@ -6,7 +6,7 @@ services:
       target: production
     restart: always
     ports:
-      - "42060:69"
+      - "42069:80"
       #- "443:443" # HTTPS
       #- "443:443/udp" # HTTP/3
     volumes:
@@ -45,7 +45,6 @@ services:
 
     networks:
       traefik:
-
   mysql:
     container_name: mysql
     image: mysql:latest
