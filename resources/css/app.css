@@ -43,19 +43,6 @@
     --depth: 0;
     --noise: 0;
 }
-
-/* Safelist DaisyUI toast classes */
-@source inline("toast-top");
-@source inline("toast-bottom");
-@source inline("toast-start");
-@source inline("toast-end");
-@source inline("toast-center");
-@source inline("toast-middle");
-@source inline("alert-success");
-@source inline("alert-error");
-@source inline("alert-warning");
-@source inline("alert-info");
-
 /* Poppins Font Faces */
 @font-face {
     font-family: 'Poppins';
@@ -356,5 +343,31 @@ html{
 @layer utilities {
     .underline-secondary {
         @apply underline decoration-[3px] underline-offset-4 decoration-[#ec65ba];
+    }
+}
+
+
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@layer utilities {
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
     }
 }

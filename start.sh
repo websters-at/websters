@@ -1,5 +1,4 @@
-docker compose down
-docker compose up -d --build
+#!/usr/bin bash
+cp ./env/.env.prod .env
 
-docker compose exec app php artisan config:clear
-docker compose exec app php artisan migrate
+docker compose up -d --build

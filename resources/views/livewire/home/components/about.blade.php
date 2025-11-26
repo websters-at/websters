@@ -11,12 +11,20 @@ new class extends Component {
         <div
             class="grid gap-y-8 md:px-4 lg:grid-cols-2 lg:items-center lg:gap-x-12 lg:gap-y-0 lg:px-8"
         >
-            <!-- Image - First on mobile, second on desktop -->
-            <img
-                class="h-64 w-full rounded-3xl object-cover object-center lg:h-full order-1 lg:order-2"
-                src="{{ asset('/assets/about.png') }}"
-                alt="Features"
-            />
+            <!-- Image Container - First on mobile, second on desktop -->
+            <div class="relative order-1 lg:order-2">
+                <img
+                    class="h-64 w-full rounded-3xl object-cover object-center lg:h-full"
+                    src="{{ asset('/assets/about.png') }}"
+                    alt="Features"
+                />
+                <!-- Rocket image centered absolutely -->
+                <img
+                    src="{{ asset('/assets/rocket.png') }}"
+                    alt="Rocket"
+                    class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 w-1/4 lg:w-1/4 xl:w-full pointer-events-none"
+                />
+            </div>
 
             <!-- Text content - Second on mobile, first on desktop -->
             <div

@@ -6,7 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ isset($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
 
-    <link rel="icon" href="{{ asset('assets/websters-mobile.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

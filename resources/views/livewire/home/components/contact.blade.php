@@ -33,7 +33,7 @@ new class extends Component {
                 position: 'toast-bottom toast-end',
                 icon: 'o-check-circle',
                 css: 'alert-success',
-                timeout: 3000,
+                timeout: 10000,
                 redirectTo: null
             );
             $this->reset(['name', 'company', 'email', 'message']);
