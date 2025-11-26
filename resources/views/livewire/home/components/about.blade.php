@@ -46,11 +46,11 @@ new class extends Component {
                     übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste
                     Level.
                 </p>
-                <x-button
+                <a href="/#contact"
                     class="items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-3 rounded-xl mt-8 flex lg:mt-9"
                 >
                     Kontaktiere uns
-                </x-button>
+                </a>
             </div>
         </div>
     </div>
