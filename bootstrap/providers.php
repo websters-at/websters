@@ -1,9 +1,16 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\CookiesServiceProvider;
+use App\Providers\Filament\AdminPanelProvider;
+use App\Providers\VoltServiceProvider;
+use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\Filament\AdminPanelProvider::class,
-    App\Providers\VoltServiceProvider::class,
-    App\Providers\AppServiceProvider::class,
-    App\Providers\CookiesServiceProvider::class,
+    AppServiceProvider::class,
+    AdminPanelProvider::class,
+    VoltServiceProvider::class,
+    AppServiceProvider::class,
+    CookiesServiceProvider::class,
+    SEOToolsServiceProvider::class
 ];

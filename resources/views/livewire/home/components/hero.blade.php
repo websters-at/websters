@@ -68,17 +68,23 @@ new class extends Component {
 }; ?>
 
 
-<div class="relative overflow-hidden">
+<div class="relative overflow-hidden opacity-0 pop-in">
 
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
         <!-- Large floating orbs - Responsive sizes -->
-        <div
-            class="absolute -top-10 -left-10 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full bg-[#4bc8e7] opacity-20 animate-float-slow"></div>
-        <div
-            class="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-[#4bc8e7] opacity-10 animate-float-slow"></div>
-        <div
-            class="absolute top-10 -right-20 w-24 h-24 sm:w-36 sm:h-36 md:w-60 md:h-48 rounded-full bg-primary opacity-30 animate-float-slow"></div>
+        <ul class="bubbles pointer-events-none absolute inset-0 overflow-hidden">
+            <li class="bubble bubble1"></li>
+            <li class="bubble bubble2"></li>
+            <li class="bubble bubble3"></li>
+            <li class="bubble bubble4"></li>
+            <li class="bubble bubble5"></li>
+            <li class="bubble bubble6"></li>
+            <li class="bubble bubble7"></li>
+            <li class="bubble bubble8"></li>
+            <li class="bubble bubble9"></li>
+            <li class="bubble bubble10"></li>
+        </ul>
         <!-- Moving gradient waves - Adjusted for mobile -->
         <div
             class="absolute -bottom-20 -left-10 w-full h-32 sm:h-48 md:h-56 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>

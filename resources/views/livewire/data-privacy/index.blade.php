@@ -187,7 +187,7 @@ new class extends Component {
                     <p class="font-semibold text-slate-800">
                         Stevan Vlajic<br>
                         Auwiesenstraße 95, 4030 Linz<br>
-                        Telefon: +43 550 466 9179<br>
+                        Telefon: +43 660 4669179<br>
                         E-Mail:
                         <a href="mailto:office@websters.at" class="underline underline-offset-2 hover:text-primary transition">
                             office@websters.at

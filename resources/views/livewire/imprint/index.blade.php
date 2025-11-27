@@ -65,7 +65,7 @@ new class extends Component {
                             <dl class="text-sm font-poppins text-slate-600 space-y-1.5">
                                 <div>
                                     <dt class="font-medium text-slate-700">Telefon:</dt>
-                                    <dd>+435504669179</dd>
+                                    <dd>+43660466179</dd>
                                 </div>
                                 <div>
                                     <dt class="font-medium text-slate-700">E-Mail:</dt>

@@ -31,7 +31,7 @@ new class extends Component {
                     type="button"
                     @click="active === 1 ? active = null : active = 1"
                     :aria-expanded="active === 1"
-                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
+                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all cursor-pointer"
                 >
                     <div class="font-semibold text-brand-dark md:text-lg xl:text-xl">
                         Wobei unterstützt ihr mich konkret?
@@ -84,7 +84,7 @@ new class extends Component {
                     type="button"
                     @click="active === 2 ? active = null : active = 2"
                     :aria-expanded="active === 2"
-                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
+                    class="cursor-pointer flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
                 >
                     <div class="font-semibold text-brand-dark md:text-lg xl:text-xl">
                         Welche Themen kann ich mit euch besprechen?
@@ -137,7 +137,7 @@ new class extends Component {
                     type="button"
                     @click="active === 3 ? active = null : active = 3"
                     :aria-expanded="active === 3"
-                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
+                    class="cursor-pointer flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
                 >
                     <div class="font-semibold text-brand-dark md:text-lg xl:text-xl">
                         Was passiert, nachdem ich das Kontaktformular abgeschickt habe?
@@ -190,7 +190,7 @@ new class extends Component {
                     type="button"
                     @click="active === 4 ? active = null : active = 4"
                     :aria-expanded="active === 4"
-                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
+                    class="cursor-pointer flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
                 >
                     <div class="font-semibold text-brand-dark md:text-lg xl:text-xl">
                         Mit wem spreche ich im Erstkontakt?
@@ -243,7 +243,7 @@ new class extends Component {
                     type="button"
                     @click="active === 5 ? active = null : active = 5"
                     :aria-expanded="active === 5"
-                    class="flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
+                    class="cursor-pointer flex w-full items-center justify-between gap-x-4 rounded-2xl px-4 py-4 text-left transition-all"
                 >
                     <div class="font-semibold text-brand-dark md:text-lg xl:text-xl">
                         Ist die Anfrage über das Formular unverbindlich?
