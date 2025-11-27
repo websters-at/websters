@@ -363,3 +363,16 @@ html{
         @apply transition transform duration-200 ease-in-out hover:scale-105;
     }
 }
+
+.marquee-content {
+    animation: scroll 60s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}

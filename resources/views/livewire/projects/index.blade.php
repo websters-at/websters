@@ -35,5 +35,4 @@ in arbeit
             </x-button>
         </div>
     </section>
-
 </div>

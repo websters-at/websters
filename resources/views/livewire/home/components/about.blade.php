@@ -22,7 +22,7 @@ new class extends Component {
                 <img
                     src="{{ asset('/assets/rocket.png') }}"
                     alt="Rocket"
-                    class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 w-1/4 lg:w-1/4 xl:w-full pointer-events-none rocket-float"
+                    class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 w-1/4 lg:w-5/4 md:1/4 xl:w-full pointer-events-none rocket-float"
                 />
             </div>
 

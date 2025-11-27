@@ -5,6 +5,7 @@ use Livewire\Volt\Component;
 new class extends Component {
 
 }; ?>
+
 <section class="mt-12 lg:mt-16 bg-slate-50 py-8 md:py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <!-- Text section above logos -->
@@ -18,19 +19,50 @@ new class extends Component {
             </p>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-x-20">
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/laravel.png') }}" alt="Laravel"/>
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/livewire.svg') }}" alt="Livewire"/>
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/nextjs.svg') }}" alt="NextJS"/>
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/python.png') }}" alt="Python"/>
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/react.png') }}" alt="React"/>
-            <img class="h-8 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                 src="{{ asset('/assets/brand-logos/wordpress.svg') }}" alt="WordPress"/>
+        <!-- Marquee Container -->
+        <div
+            x-data="{
+                logos: [
+                    { src: '{{ asset('/assets/brand-logos/laravel.png') }}', alt: 'Laravel' },
+                    { src: '{{ asset('/assets/brand-logos/livewire.svg') }}', alt: 'Livewire' },
+                    { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}', alt: 'NextJS' },
+                    { src: '{{ asset('/assets/brand-logos/python.png') }}', alt: 'Python' },
+                    { src: '{{ asset('/assets/brand-logos/tailwind.png') }}', alt: 'Tailwind' },
+                    { src: '{{ asset('/assets/brand-logos/react.png') }}', alt: 'React' },
+                    { src: '{{ asset('/assets/brand-logos/mysql.png') }}', alt: 'MySQL' },
+                    { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}', alt: 'WordPress' },
+                    { src: '{{ asset('/assets/brand-logos/docker.png') }}', alt: 'Docker' },
+                    { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', alt: 'Kubernetes' },
+                    { src: '{{ asset('/assets/brand-logos/postgres.png') }}', alt: 'Postgres' }
+                ],
+                initMarquee() {
+                    var marqueeContent = this.$el.querySelector('.marquee-content');
+                    // Duplicate logos for seamless loop
+                    for(var i = 0; i < 6; i++) {
+                        var clone = marqueeContent.children[i].cloneNode(true);
+                        marqueeContent.appendChild(clone);
+                    }
+                }
+            }"
+            class="relative w-full h-32 overflow-hidden"
+            x-init="initMarquee()"
+        >
+            <!-- Fade edges -->
+            <div class="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
+            <div class="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
+
+            <!-- Scrolling content -->
+            <ul class="marquee-content flex items-center h-full w-max gap-8 lg:gap-12">
+                <template x-for="(logo, index) in logos" :key="index">
+                    <li class="flex-shrink-0 h-full flex items-center justify-center">
+                        <img
+                            class="h-12 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
+                            :src="logo.src"
+                            :alt="logo.alt"
+                        />
+                    </li>
+                </template>
+            </ul>
         </div>
 
         <div class="mt-6 lg:mt-12 text-left lg:text-center">
@@ -40,3 +72,5 @@ new class extends Component {
         </div>
     </div>
 </section>
+
+

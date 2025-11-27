@@ -6,7 +6,7 @@ echo "Database is ready! Running migrations..."
 wait-for-it mysql:3306 -t 30
 
 # Run migrations
-php artisan migrate --force
+php artisan migrate --seed --force
 
 php artisan config:cache
 php artisan route:cache
