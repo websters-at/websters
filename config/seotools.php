@@ -27,11 +27,11 @@ return [
          * Webmaster tags are always added.
          */
         'webmaster_tags' => [
-            'google'    => null,
-            'bing'      => null,
-            'alexa'     => null,
+            'google'    => 'google-site-verification=pGh45u7BdgfhkpzFjUQm1T6RdzQTWRGJpF4aczKHTgo',
+            'bing'      => null, # same as google because of import
+            'alexa'     => null, # not needed anymore
             'pinterest' => null,
-            'yandex'    => null,
+            'yandex'    => "a3d23409dbeb72e9",
             'norton'    => null,
         ],
 
@@ -42,12 +42,14 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'Websters - Webentwickler aus Linz',
+            'description' => 'Professionelle Digitalagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
-            'site_name'   => false,
-            'images'      => [],
+            'type'        => 'website',
+            'site_name'   => 'Webagentur Websters',
+            'images'      => [
+            //    asset('assets/websters-full-logo.png') => ['width' => 400, 'height' => 400],
+            ],
         ],
     ],
     'twitter' => [
@@ -64,11 +66,26 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
-            'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'type'        => 'WebPage',
-            'images'      => [],
+            'title'        => "Websters",
+            'description' => 'Webagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
+            'url'         => 'full', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'type'        => 'Organization',
+            'images'      => [
+              //  asset('assets/websters-full-logo.png') => ['width' => 400, 'height' => 400],
+            ],
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Auswiesenstraße 95',
+                'addressLocality' => 'Linz',
+                'postalCode' => '4300',
+                'addressRegion' => 'Oberösterreich',
+                'addressCountry' => 'AT'
+            ],
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer service',
+                'availableLanguage' => ['German']
+            ],
         ],
     ],
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\Volt;
+use Spatie\Sitemap\SitemapGenerator;
 
 Volt::route('/', 'home.index')
     ->name('home');
@@ -16,3 +17,5 @@ Volt::route('/data-privacy', 'data-privacy.index')
 
 Volt::route('/terms', 'terms.index')
     ->name('terms');
+
+

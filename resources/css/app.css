@@ -392,60 +392,45 @@ html{
     animation: popIn .8s ease-out forwards;
 }
 
-
-/* Container for bubbles */
-.bubbles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Shared bubble styling */
+/* Responsive scaling for all bubbles */
 .bubble {
     position: absolute;
     display: block;
     list-style: none;
-    bottom: -120px;
+    bottom: -15vh;
     background: radial-gradient(circle at 30% 30%, rgba(75, 200, 231, 0.35), rgba(236, 101, 186, 0.25));
     border-radius: 50%;
-    animation: rise 20s linear infinite;
+    animation: rise var(--dur, 20s) linear infinite;
     backdrop-filter: blur(2px);
+
+    /* size scaling — safe for all screens */
+    width: var(--size);
+    height: var(--size);
+
+    /* smoother render on mobile + GPU acceleration */
+    transform: translateZ(0);
 }
 
-/* Responsive scaling */
-@media (max-width: 640px) {
-    .bubble {
-        transform: scale(0.6);
-    }
-}
+/* KEY: responsive sizes using clamp(min, ideal, max) */
+.bubble1 { --size: clamp(40px, 10vw, 80px); left: 10%; --dur: 20s; }
+.bubble2 { --size: clamp(15px, 4vw, 30px); left: 20%; --dur: 14s; animation-delay: 2s; }
+.bubble3 { --size: clamp(15px, 5vw, 35px); left: 70%; --dur: 20s; animation-delay: 4s; }
+.bubble4 { --size: clamp(30px, 7vw, 60px); left: 50%; --dur: 18s; animation-delay: 1s; }
+.bubble5 { --size: clamp(12px, 3vw, 25px); left: 85%; --dur: 20s; }
+.bubble6 { --size: clamp(60px, 15vw, 110px); left: 30%; --dur: 22s; animation-delay: 3s; }
+.bubble7 { --size: clamp(70px, 18vw, 140px); left: 75%; --dur: 28s; animation-delay: 7s; }
+.bubble8 { --size: clamp(20px, 4vw, 30px); left: 40%; --dur: 40s; animation-delay: 12s; }
+.bubble9 { --size: clamp(10px, 3vw, 15px); left: 5%; --dur: 35s; animation-delay: 5s; }
+.bubble10 { --size: clamp(80px, 20vw, 160px); left: 90%; --dur: 16s; }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-    .bubble {
-        transform: scale(0.8);
-    }
-}
-
-/* Individual bubble sizes & timings */
-.bubble1 { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
-.bubble2 { width: 25px; height: 25px; left: 20%; animation-delay: 2s; animation-duration: 14s; }
-.bubble3 { width: 35px; height: 35px; left: 70%; animation-delay: 4s; }
-.bubble4 { width: 60px; height: 60px; left: 50%; animation-delay: 1s; animation-duration: 18s; }
-.bubble5 { width: 20px; height: 20px; left: 85%; animation-delay: 0s; }
-.bubble6 { width: 110px; height: 110px; left: 30%; animation-delay: 3s; }
-.bubble7 { width: 140px; height: 140px; left: 75%; animation-delay: 7s; }
-.bubble8 { width: 30px; height: 30px; left: 40%; animation-delay: 12s; animation-duration: 40s; }
-.bubble9 { width: 15px; height: 15px; left: 5%; animation-delay: 5s; animation-duration: 35s; }
-.bubble10 { width: 160px; height: 160px; left: 90%; animation-delay: 0s; animation-duration: 16s; }
-
-/* Rise + fade animation */
+/* Vertical drifting animation */
 @keyframes rise {
     0% {
         transform: translateY(0) rotate(0deg) scale(1);
         opacity: 0.9;
     }
     100% {
-        transform: translateY(-1200px) rotate(720deg) scale(1.1);
+        transform: translateY(-120vh) rotate(720deg) scale(1.15);
         opacity: 0;
     }
 }
