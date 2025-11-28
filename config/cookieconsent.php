@@ -36,8 +36,9 @@ return [
     |
     */
 
+    # problems with cookie consent due to Octanes in-memory behavior -> fix https://github.com/whitecube/laravel-cookie-consent
     'cookie' => [
-        'name' => Str::slug(env('APP_NAME', 'laravel'), '_').'_cookie_consent',
+        'name' => 'websters_cookie_consent',#Str::slug(env('APP_NAME', 'laravel'), '_').'_cookie_consent',
         'duration' => (60 * 24 * 365),
         'domain' => null,
     ],

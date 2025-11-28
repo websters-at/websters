@@ -11,9 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )
+    )->withProviders([
+    ])
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(TrustProxies::class);
+        $middleware->encryptCookies(except: ['websters_cookie_consent']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

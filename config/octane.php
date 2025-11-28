@@ -135,7 +135,9 @@ return [
     ],
 
     'flush' => [
-        //
+        'cookie.consent',
+        \Whitecube\LaravelCookieConsent\Cookie::class,
+        \Whitecube\LaravelCookieConsent\CookiesManager::class,
     ],
 
     /*

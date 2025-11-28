@@ -17,5 +17,3 @@ Volt::route('/data-privacy', 'data-privacy.index')
 
 Volt::route('/terms', 'terms.index')
     ->name('terms');
-
-
