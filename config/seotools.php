@@ -10,7 +10,7 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Websters",
+            'title'        => "Webagentur Websters",
             'titleBefore'  => false,
             'description'  => 'Webagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.',
             'separator'    => ' - ',
@@ -43,7 +43,7 @@ return [
          */
         'defaults' => [
             'title'       => 'Websters - Webentwickler aus Linz',
-            'description' => 'Professionelle Digitalagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
+            'description' => 'Professionelle Webagntur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => 'website',
             'site_name'   => 'Webagentur Websters',

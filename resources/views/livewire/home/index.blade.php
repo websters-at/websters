@@ -6,24 +6,23 @@ new class extends Component {
 
     public function mount(): void
     {
-        SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('Websters – Ihre Webagentur aus Linz. Wir realisieren moderne & performante Websites mit Laravel, Livewire & modernen Technologien. Von Webdesign über Entwicklung bis hin zu Hosting – alles aus einer Hand.');
+        SEOMeta::setTitle('Websters - Webagentur Linz | Webdesign & Softwareentwicklung');
+        SEOMeta::setDescription('Websters - Deine Webagentur aus Linz. Wir entwickeln moderne Websites, Web-Apps & Custom Software mit Laravel, Livewire & Python. Individuelle Lösungen von 3 HTL-Absolventen. Jetzt Projekt besprechen!');
         SEOMeta::setCanonical('https://websters.at');
+        SEOMeta::addKeyword(['Webagentur Linz', 'Webdesign Linz', 'Softwareentwicklung Linz', 'Laravel Entwicklung', 'Webentwicklung Österreich', 'Custom Software', 'Python Entwicklung', 'Web Apps']);
 
-        OpenGraph::setTitle('Websters – Ihre Webagentur aus Linz');
-        OpenGraph::setDescription('Professionelle Webentwicklung, Webdesign & digitale Lösungen aus einer Hand. Für moderne, performante Websites.');
+        OpenGraph::setTitle('Websters - Webagentur Linz | Webdesign & Softwareentwicklung');
+        OpenGraph::setDescription('Deine Webagentur aus Linz für moderne Websites, Web-Apps & Custom Software. Laravel, Livewire & Python Entwicklung von 3 HTL-Absolventen.');
         OpenGraph::setUrl('https://websters.at/');
-        OpenGraph::setSiteName('Websters');
+        OpenGraph::setSiteName('Websters Webagentur');
         OpenGraph::setType('website');
-        OpenGraph::addImage('https://websters.at/assets/logo.png');
-
+        OpenGraph::addImage('https://websters.at/assets/people/stevan.png');
+        OpenGraph::addImage('https://websters.at/assets/websters-full-logo.png', ['height' => 630, 'width' => 1200]);
 
     }
 
-
-
-
 }; ?>
+
 
 <div>
 

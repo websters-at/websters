@@ -64,12 +64,11 @@
 
                         @isset($step['pdf'])
                             <div class="flex justify-center md:justify-end lg:justify-center mt-3 w-full">
-                                <x-button
-                                    link="{{ $step['pdf'] }}"
+                                <a
+                                    href="{{ $step['pdf'] }}"
+                                    target="_blank"
                                     class="btn btn-xs btn-primary text-white"
-                                    icon="o-document-arrow-down"
-                                    label="Beispiel ansehen"
-                                />
+                                >Beispiel ansehen</a>
                             </div>
                         @endisset
 

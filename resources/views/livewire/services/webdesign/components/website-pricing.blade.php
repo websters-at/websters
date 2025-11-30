@@ -4,6 +4,11 @@ use Livewire\Volt\Component;
 
 new class extends Component {
 
+    public function selectPackage($package_id): void
+    {
+        $this->dispatch('package-selected', package_id: $package_id);
+    }
+
 }; ?>
 
 <section class="relative lg:pt-24 pt-8 pb-12 lg:pb-16 overflow-hidden" id="website-pricing">
@@ -43,12 +48,13 @@ new class extends Component {
             <div class="grid w-full gap-y-8 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 xl:gap-x-10">
 
                 <!-- STARTER -->
-                <div class="flex flex-col rounded-3xl border border-neutral-200 bg-white/60 backdrop-blur-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
+                <div
+                    class="flex flex-col rounded-3xl border border-neutral-200 bg-white/60 backdrop-blur-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
 
                     <div>
                         <div class="text-lg font-poppins font-semibold text-neutral-800">Website Starter</div>
                         <p class="mt-3 text-sm font-poppins text-neutral-500">
-                            Ideal für kleine Unternehmen und schnelle Online-Präsenz.
+                            Suchst du nach einem ansprechenden Onepager?
                         </p>
 
                         <div class="mt-6 flex items-end gap-x-2">
@@ -57,26 +63,30 @@ new class extends Component {
 
                         <ul class="mt-6 flex flex-col gap-y-2">
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">1–3 Unterseiten</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">Responsives Design</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">Kontaktformular</p>
+                            </li>
+                            <li class="flex items-center gap-x-3">
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
+                                <p class="text-sm font-poppins text-neutral-600">Mehrsprachig</p>
                             </li>
                         </ul>
                     </div>
 
                     <div class="mt-auto pt-6">
-                        <x-button
-                            link="#"
+                        <a
+                            href="#webdesign-contact"
+                            wire:click="selectPackage(1)"
                             class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary w-full"
-                            label="Anfragen"
-                        />
+                        >Anfragen</a>
                     </div>
                 </div>
 
@@ -87,7 +97,8 @@ new class extends Component {
                     <div>
                         <div class="flex items-center gap-x-3">
                             <div class="text-lg font-poppins font-semibold text-neutral-800">Website Komplett</div>
-                            <div class="inline-flex items-center justify-center rounded-full bg-primary text-white px-2 py-0.5 text-xs font-medium">
+                            <div
+                                class="inline-flex items-center justify-center rounded-full bg-primary text-white px-2 py-0.5 text-xs font-medium">
                                 Beliebt
                             </div>
                         </div>
@@ -102,68 +113,73 @@ new class extends Component {
 
                         <ul class="mt-6 flex flex-col gap-y-2">
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-primary" />
+                                <x-icon name="o-check-circle" class="h-5 text-primary"/>
                                 <p class="text-sm font-poppins text-neutral-600">Bis zu 8 Seiten</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-primary" />
-                                <p class="text-sm font-poppins text-neutral-600">Professionelles Copywriting</p>
+                                <x-icon name="o-check-circle" class="h-5 text-primary"/>
+                                <p class="text-sm font-poppins text-neutral-600">Mehrsprachig</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-primary" />
+                                <x-icon name="o-check-circle" class="h-5 text-primary"/>
                                 <p class="text-sm font-poppins text-neutral-600">SEO-Optimierung</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-primary" />
-                                <p class="text-sm font-poppins text-neutral-600">Launch in 5 Wochen</p>
+                                <x-icon name="o-check-circle" class="h-5 text-primary"/>
+                                <p class="text-sm font-poppins text-neutral-600">Launch in 4-6 Wochen</p>
                             </li>
                         </ul>
                     </div>
 
                     <div class="mt-auto pt-6">
-                        <x-button
-                            link="#"
+                        <a
+                            href="#webdesign-contact"
+                            wire:click="selectPackage(2)"
                             class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary w-full"
-                            label="Anfragen"
-                        />
+                        >Anfragen</a>
                     </div>
                 </div>
 
                 <!-- PREMIUM -->
-                <div class="flex flex-col rounded-3xl border border-neutral-200 bg-white/60 backdrop-blur-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
+                <div
+                    class="flex flex-col rounded-3xl border border-neutral-200 bg-white/60 backdrop-blur-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
 
                     <div>
                         <div class="text-lg font-poppins font-semibold text-neutral-800">Website Premium</div>
                         <p class="mt-3 text-sm font-poppins text-neutral-500">
-                            Für Unternehmen, die maximale Performance wollen.
+                            Dich interessiert mehr? Denkst du vielleicht an eine custom web-app?
                         </p>
 
                         <div class="mt-6 flex items-end gap-x-2">
-                            <div class="text-4xl font-poppins font-semibold text-[#002a42]">€2990</div>
+                            <div class="text-4xl font-poppins font-semibold text-[#002a42]"> <span class="text-primary">></span> €2990</div>
                         </div>
 
                         <ul class="mt-6 flex flex-col gap-y-2">
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">Unbegrenzte Seiten</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">Premium Design</p>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]" />
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
                                 <p class="text-sm font-poppins text-neutral-600">Individuelle Software-Features</p>
+                            </li>
+                            <li class="flex items-center gap-x-3">
+                                <x-icon name="o-check-circle" class="h-5 text-[#002a42]"/>
+                                <p class="text-sm font-poppins text-neutral-600">Premium Support</p>
                             </li>
                         </ul>
                     </div>
 
                     <div class="mt-auto pt-6">
-                        <x-button
-                            link="#"
+                        <a
+                            href="#webdesign-contact"
+                            wire:click="selectPackage(3)"
                             class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary w-full"
-                            label="Anfragen"
-                        />
+                        >Anfragen</a>
                     </div>
                 </div>
 
