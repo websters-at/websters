@@ -31,7 +31,7 @@ new class extends Component {
                 class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left order-2 lg:order-1"
             >
                 <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">About
+                sm:px-3 sm:py-1.5 sm:text-sm">Websters - Wer?
                 </div>
 
 
@@ -49,7 +49,7 @@ new class extends Component {
                 <a href="/#contact"
                     class="btn-fancy items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-3 rounded-xl mt-8 flex lg:mt-9"
                 >
-                    Kontaktiere uns
+                    Schreibe uns
                 </a>
             </div>
         </div>

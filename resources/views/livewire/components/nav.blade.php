@@ -47,10 +47,10 @@ new class extends Component {
                 {{-- LEFT LOGO --}}
                 <div class="flex items-center gap-x-10">
                     <a
-                        href="{{ route('home') }}#home"
+                        wire:navigate
+                        href="{{ route('home') }}"
                         @click="activeSection = 'home'"
-                        class="flex items-center"
-                        @click="activeSection = 'home'" {{-- reset when going to plain / --}}
+                        class="flex items-center"{{-- reset when going to plain / --}}
                     >
                         {{-- Desktop logo --}}
                         <img
@@ -73,55 +73,49 @@ new class extends Component {
                     <ul class="flex items-center">
                         <li>
                             <a
-                                href="{{ route('home') }}#about"
+                                wire:navigate
+                                href="{{ route('home') }}"
                                 class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                @click="activeSection = 'about'"
-                                :class="{ 'underline-secondary': activeSection === 'about' }"
+                                :class="{ 'underline-secondary': '{{ Route::currentRouteName() }}' === 'home' }"
+                            >
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                wire:navigate
+                                href="{{ route('projects') }}"
+                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                                wire:current="underline-secondary"
+                            >
+                                Projekte
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                wire:navigate
+                                href="{{ route('services') }}"
+                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                                wire:current="underline-secondary"
+                            >
+                                Leistungen
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                wire:navigate
+                                href="{{ route('about') }}"
+                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
+                                wire:current="underline-secondary"
                             >
                                 About
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href="{{ route('home') }}#team"
-                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                @click="activeSection = 'team'"
-                                :class="{ 'underline-secondary': activeSection === 'team' }"
-                            >
-                                Team
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="{{ route('home') }}#services"
-                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                @click="activeSection = 'services'"
-                                :class="{ 'underline-secondary': activeSection === 'services' }"
-                            >
-                                Services
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="{{ route('projects') }}"
-                                wire:navigate
-                                class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                wire:current="underline-secondary"
-                            >
-                                <span>Projekte</span>
-                                <span class="h-1.5 w-1.5 rounded-full bg-[#ec65ba]"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="{{ route('home') }}#faq"
-                                class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                @click="activeSection = 'faq'"
-                                :class="{ 'underline-secondary': activeSection === 'faq' }"
-                            >
-                                FAQ
-                            </a>
-                        </li>
+
+
                     </ul>
                 </nav>
 
@@ -129,9 +123,9 @@ new class extends Component {
                 <div class="flex items-center gap-x-10 justify-self-end">
                     <div class="flex items-center gap-x-3 lg:gap-x-2">
                         <a
-                            href="{{ route('home') }}#contact"
+                            wire:navigate
+                            href="{{ route('contact') }}"
                             class="btn-fancy btn btn-sm lg:btn-md btn-primary"
-                            @click="activeSection = 'contact'"
                         >
                             Kontakt
                         </a>
@@ -144,7 +138,7 @@ new class extends Component {
                             title="Open menu"
                             @click="mobileMenuOpen = !mobileMenuOpen"
                         >
-                            <x-icon name="fas.bars" class="h-5 w-5 text-[#002a42] opacity-65" />
+                            <x-icon name="fas.bars" class="h-5 w-5 text-[#002a42] opacity-65"/>
 
                         </button>
                     </div>
@@ -172,61 +166,53 @@ new class extends Component {
                 <ul class="flex flex-col">
                     <li>
                         <a
-                            href="{{ route('home') }}#about"
+                            wire:navigate
+                            href="{{ route('home') }}"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            @click="activeSection = 'about'; mobileMenuOpen = false"
-                            :class="{ 'underline-secondary': activeSection === 'about' }"
+                            @click="activeSection = 'home'; mobileMenuOpen = false"
+                            :class="{ 'underline-secondary': '{{ Route::currentRouteName() }}' === 'home' }"
                         >
-                            About
+                            Home
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('home') }}#team"
+                            wire:navigate
+                            href="{{ route('projects') }}"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            @click="activeSection = 'team'; mobileMenuOpen = false"
-                            :class="{ 'underline-secondary': activeSection === 'team' }"
+                            @click="activeSection = 'projects'; mobileMenuOpen = false"
+                            wire:current="underline-secondary"
                         >
-                            Team
+                            Projekte
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('home') }}#services"
+                            wire:navigate
+                            href="{{ route('services') }}"
                             class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
                             @click="activeSection = 'services'; mobileMenuOpen = false"
-                            :class="{ 'underline-secondary': activeSection === 'services' }"
-                        >
-                            Services
+                            wire:current="underline-secondary">
+                            Leistungen
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('projects') }}"
+                            href="{{ route('about') }}"
                             wire:navigate
                             class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
                             wire:current="underline-secondary"
                             @click="mobileMenuOpen = false; activeSection = null"
                         >
-                            <span>Projekte</span>
-                            <span class="h-1.5 w-1.5 rounded-full bg-[#ec65ba]"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="{{ route('home') }}#faq"
-                            class="block px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            @click="activeSection = 'faq'; mobileMenuOpen = false"
-                            :class="{ 'underline-secondary': activeSection === 'faq' }"
-                        >
-                            FAQ
+                            <span>About</span>
                         </a>
                     </li>
                 </ul>
 
                 <div class="mt-3 flex flex-col gap-y-2">
                     <a
-                        href="{{ route('home') }}#contact"
+                        wire:navigate
+                        href="{{ route('contact') }}"
                         class="btn-fancy btn btn-primary btn-sm lg:btn-md"
                         @click="activeSection = 'contact'; mobileMenuOpen = false"
                     >

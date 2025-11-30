@@ -65,7 +65,7 @@ new class extends Component {
                 class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left"
             >
                 <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">Services
+                sm:px-3 sm:py-1.5 sm:text-sm">Nachricht senden
                 </div>
                 <div
                     class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-semibold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight"
@@ -73,7 +73,7 @@ new class extends Component {
                     Wir sind für dich da
                 </div>
                 <p class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12">
-                    Melde dich bei unserem engagierten Entwicklerteam, wenn du Unterstützung brauchst, eine
+                    Melde dich bei unserem Entwicklerteam, wenn du Unterstützung brauchst, eine
                     Zusammenarbeit planst oder Fragen hast. Wir helfen dir gern weiter und bearbeiten deine Anfrage
                     schnellstmöglich. <br>Mit freundlichen Grüßen - <strong>Dein Websters Team</strong>
                 </p>

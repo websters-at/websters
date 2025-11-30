@@ -8,7 +8,7 @@ new class extends Component {
 <section class="lg:pt-16 lg:mb-24" id="services">
     <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
         <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">Services
+                sm:px-3 sm:py-1.5 sm:text-sm">Leistungen Einblick
         </div>
         <div
             class="bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text font-poppins text-2xl font-semibold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9"
@@ -51,9 +51,9 @@ new class extends Component {
                     </p>
                 </div>
                 <x-button
-                    link="/projects"
+                    link="/services/webdesign"
                     class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md btn-primary mt-4"
-                    label="Projekte ansehen"
+                    label="Mehr Erfahren"
                 />
             </article>
 

@@ -110,7 +110,7 @@ new class extends Component {
         >
             <!-- Pill -->
             <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">Introducing Websters
+                sm:px-3 sm:py-1.5 sm:text-sm">Webagentur Websters
             </div>
 
             <!-- Heading -->
