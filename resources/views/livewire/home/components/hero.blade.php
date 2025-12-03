@@ -72,14 +72,7 @@ new class extends Component {
 
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-        <div
-            class="absolute inset-0 z-0"
-            style="
-            background-image:
-                radial-gradient(125% 125% at 40% 70%, #ffffff 40%, rgb(255, 122, 195) 100%);
-            background-size: 100% 100%;
-        "
-        ></div>
+
         <div class="absolute inset-0 opacity-[0.1]"
              style="
                 background-image:
