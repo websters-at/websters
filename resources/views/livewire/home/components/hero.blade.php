@@ -99,30 +99,38 @@ new class extends Component {
 
             <div
                 x-data="typeWriter({
-                    words: ['Webentwicklung', 'Webdesign', 'Custom Software', 'IT-Beratung'],
-                    typeSpeed: 100,
-                    deleteSpeed: 100,
-                    holdTime: 1500
-                })"
-                            x-init="start()"
-                            class="bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba80] to-[#ec65ba]
-                   bg-clip-text text-transparent
-                   text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
-                   font-poppins font-black
-                   mt-4 sm:mt-6 w-full
-                   leading-snug lg:leading-tight break-words"
-                        >
+        words: ['Webentwicklung', 'Webdesign', 'Custom Software', 'IT-Beratung'],
+        typeSpeed: 100,
+        deleteSpeed: 100,
+        holdTime: 1500
+    })"
+                x-init="start()"
+                class="bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba80] to-[#ec65ba]
+        bg-clip-text text-transparent
+        text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
+        font-poppins font-black
+        mt-4 sm:mt-6 w-full
+        leading-snug lg:leading-tight break-words"
+            >
 
                 <span class="invisible absolute font-black pointer-events-none select-none">
                     Webentwicklung Webdesign Softwareentwicklung IT-Beratung
                 </span>
 
-                            Dein pinker Partner für<br>
+                <span class="block sm:inline">Dein pinker</span>
+                <span class="block sm:inline">Partner für</span>
 
-                            <span class="typewriter-wrapper inline-block align-top">
+
+                <br class="hidden sm:block">
+
+                <!-- TYPEWRITER -->
+                <span class="typewriter-wrapper block sm:block align-top">
                     <span x-text="currentText"></span>
-                    <span class="cursor"></span>
+            <span class="cursor inline-block w-[0.7ch]">
+                <span class="block h-full w-full bg-gradient-to-b from-[#4bc8e7] to-[#ec65ba] rounded-full"></span>
+            </span>
                 </span>
+
             </div>
 
 
