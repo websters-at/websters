@@ -392,23 +392,41 @@ html{
     animation: popIn .8s ease-out forwards;
 }
 
-/* Responsive scaling for all bubbles */
 .bubble {
     position: absolute;
-    display: block;
     list-style: none;
-    bottom: -15vh;
-    background: radial-gradient(circle at 30% 30%, rgba(75, 200, 231, 0.35), rgba(236, 101, 186, 0.25));
+    bottom: -15vh; /* still start below viewport */
+    background: rgba(255, 122, 195, 0.2);
     border-radius: 50%;
-    animation: rise var(--dur, 20s) linear infinite;
     backdrop-filter: blur(2px);
 
-    /* size scaling — safe for all screens */
+    /* size via custom property */
     width: var(--size);
     height: var(--size);
 
-    /* smoother render on mobile + GPU acceleration */
     transform: translateZ(0);
+
+    /* start fully visible */
+    opacity: 1;
+
+    /* apply the rise-and-fade animation */
+    animation: riseFade var(--dur, 20s) linear infinite;
+}
+
+@keyframes riseFade {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    70% {
+        /* bubble reaches mid-screen */
+        opacity: 0.6;
+    }
+    100% {
+        /* bubble near top (or some point) */
+        transform: translateY(-110vh) scale(1);
+        opacity: 0;
+    }
 }
 
 /* KEY: responsive sizes using clamp(min, ideal, max) */
@@ -459,3 +477,5 @@ html{
 .mobile-line {
     @apply absolute -left-3 top-8 bottom-0 border-l border-primary/20 md:hidden;
 }
+
+

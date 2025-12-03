@@ -68,7 +68,7 @@ new class extends Component {
                 sm:px-3 sm:py-1.5 sm:text-sm">Nachricht senden
                 </div>
                 <div
-                    class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-semibold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight"
+                    class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight"
                 >
                     Wir sind für dich da
                 </div>

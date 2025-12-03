@@ -49,12 +49,23 @@ new class extends Component {
 <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div
-            class="relative flex flex-col items-center rounded-2xl bg-gradient-to-b from-primary/30 via-white/60 to-secondary/30 px-4 pb-4 pt-16 lg:rounded-[3rem] lg:pb-16 lg:pt-24"
+            class="relative flex flex-col items-center rounded-2xl px-4 pb-4 pt-16 lg:rounded-[3rem] lg:pb-16 lg:pt-24 overflow-hidden"
         >
+
+            {{-- Aurora-like Background – Custom Colors --}}
+            <div
+                class="absolute inset-0 -z-10 pointer-events-none"
+                style="
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 20%, rgba(77, 200, 232, 0.85), transparent 68%),
+                radial-gradient(ellipse 70% 60% at 20% 80%, rgba(255, 122, 192, 0.75), transparent 68%),
+                linear-gradient(180deg, #f7eaff 0%, #fde2ea 100%);
+        "
+            ></div>
 
 
             <div
-                class="mx-auto mt-6 text-center text-2xl font-semibold text-brand-dark font-poppins font-bold sm:w-1/2 md:w-2/5 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-1/3"
+                class="mx-auto mt-6 text-center text-2xl text-brand-dark font-poppins font-bold sm:w-1/2 md:w-2/5 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-1/3"
             >
                 Lust auf Angebote? <br> Trage dich ein
             </div>

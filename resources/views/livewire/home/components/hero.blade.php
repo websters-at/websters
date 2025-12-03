@@ -72,31 +72,20 @@ new class extends Component {
 
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-        <!-- Large floating orbs - Responsive sizes -->
-        <ul class="bubbles pointer-events-none absolute inset-0 overflow-hidden">
-            <li class="bubble bubble1"></li>
-            <li class="bubble bubble2"></li>
-            <li class="bubble bubble3"></li>
-            <li class="bubble bubble4"></li>
-            <li class="bubble bubble5"></li>
-            <li class="bubble bubble6"></li>
-            <li class="bubble bubble7"></li>
-            <li class="bubble bubble8"></li>
-            <li class="bubble bubble9"></li>
-            <li class="bubble bubble10"></li>
-        </ul>
 
-        <!-- Grid pattern overlay with low opacity -->
-        <div class="absolute inset-0 opacity-4 sm:opacity-5"
-             style="background-image: linear-gradient(#4bc8e7 1px, transparent 1px), linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
-                    background-size: 30px 30px;"></div>
+        <div class="absolute inset-0 opacity-[0.1]"
+             style="
+                background-image:
+                    linear-gradient(#4bc8e7 1px, transparent 1px),
+                    linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
+                background-size: 50px 50px;">
+        </div>
     </div>
 
-    <!-- Bottom gradient fade to blend with next section -->
     <div
         class="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-gradient-to-t from-white to-transparent -z-10"></div>
 
-    <section class="pt-32 lg:pt-48 md:pt-40" id="home">
+    <section class="pt-32 lg:pt-52 lg:pb-12 md:pt-40" id="home">
         <div
             class="max-w-6xl mx-auto px-4 xl:px-0
             flex flex-col
@@ -108,15 +97,34 @@ new class extends Component {
                 sm:px-3 sm:py-1.5 sm:text-sm">Webagentur Websters
             </div>
 
-            <!-- Heading -->
             <div
-                class="bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba80] to-[#ec65ba]
-                bg-clip-text text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-poppins font-extrabold text-transparent
-                mt-4 sm:mt-6 w-full max-w-xl sm:max-w-2xl lg:max-w-4xl
-                leading-snug lg:mt-8 lg:leading-tight"
-            >
-                We Design To Inspire & Elevate Your Brand
+                x-data="typeWriter({
+                    words: ['Webentwicklung', 'Webdesign', 'Custom Software', 'IT-Beratung'],
+                    typeSpeed: 100,
+                    deleteSpeed: 100,
+                    holdTime: 1500
+                })"
+                            x-init="start()"
+                            class="bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba80] to-[#ec65ba]
+                   bg-clip-text text-transparent
+                   text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
+                   font-poppins font-black
+                   mt-4 sm:mt-6 w-full
+                   leading-snug lg:leading-tight break-words"
+                        >
+
+                <span class="invisible absolute font-black pointer-events-none select-none">
+                    Webentwicklung Webdesign Softwareentwicklung IT-Beratung
+                </span>
+
+                            Dein pinker Partner für<br>
+
+                            <span class="typewriter-wrapper inline-block align-top">
+                    <span x-text="currentText"></span>
+                    <span class="cursor"></span>
+                </span>
             </div>
+
 
             <!-- Subcopy -->
             <p
@@ -124,9 +132,49 @@ new class extends Component {
                 text-sm sm:text-sm md:text-base lg:text-lg text-gray-600
                 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
-                Mit cleanem Design und klaren Software-Lösungen bringen wir dich und deine Marke sichtbar und professionell online voran.
+                Mit cleanem Design und klaren Software-Lösungen bringen wir dich und deine Marke sichtbar und
+                professionell online voran.
             </p>
 
         </div>
     </section>
 </div>
+
+<script>
+    function typeWriter({words, typeSpeed, deleteSpeed, holdTime}) {
+        return {
+            words,
+            currentText: '',
+            currentWordIndex: 0,
+            isDeleting: false,
+
+            async start() {
+                while (true) {
+                    let word = this.words[this.currentWordIndex];
+
+                    // Typing
+                    for (let i = 1; i <= word.length; i++) {
+                        this.currentText = word.slice(0, i);
+                        await this.sleep(typeSpeed);
+                    }
+
+
+                    await this.sleep(holdTime);
+
+                    // Deleting
+                    for (let i = word.length; i >= 0; i--) {
+                        this.currentText = word.slice(0, i);
+                        await this.sleep(deleteSpeed);
+                    }
+
+                    // Next word
+                    this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
+                }
+            },
+
+            sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+    }
+</script>

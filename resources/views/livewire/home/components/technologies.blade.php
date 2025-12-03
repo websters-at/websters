@@ -8,9 +8,8 @@ new class extends Component {
 
 <section class="mt-12 lg:mt-16 bg-slate-50 py-8 md:py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
-        <!-- Text section above logos -->
         <div class="mb-8 lg:mb-16 text-left lg:text-center">
-            <h2 class="text-xl lg:text-3xl font-poppins font-semibold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
+            <h2 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
                 Unsere Haupttechnologien
             </h2>
             <p class="text-sm lg:text-base font-poppins text-slate-600 max-w-2xl lg:mx-auto">
@@ -19,7 +18,6 @@ new class extends Component {
             </p>
         </div>
 
-        <!-- Marquee Container -->
         <div
             x-data="{
                 logos: [

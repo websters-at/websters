@@ -7,8 +7,8 @@
                 sm:px-3 sm:py-1.5 sm:text-sm">Das Team
             </div>
 
-            <h1 class="text-xl lg:text-3xl font-poppins font-semibold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mt-6">
-                Das Websters Team - Webagentur Linz
+            <h1 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mt-6">
+                Das Websters Team - Webentwicklung Linz
             </h1>
             <p class="mt-4 text-sm font-poppins font-medium text-shadow-slate-600 sm:w-1/2 lg:w-2/5">
                 Unser Antrieb: Einzigartige Köpfe, die im Miteinander Großes bewegen. Gemeinsam setzen wir Maßstäbe in Webdesign & Softwareentwicklung.

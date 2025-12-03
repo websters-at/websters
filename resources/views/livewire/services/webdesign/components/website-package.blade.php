@@ -18,7 +18,6 @@ new class extends Component {
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div class="grid gap-y-8 md:px-4 lg:grid-cols-2 lg:items-center lg:gap-x-12 lg:gap-y-0 lg:px-8">
 
-            <!-- IMAGE - First on mobile -->
             <div class="relative order-1 lg:order-2 flex justify-center">
                 <img
                     class="h-64 w-full rounded-3xl object-contain lg:h-full"

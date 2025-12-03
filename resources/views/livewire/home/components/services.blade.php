@@ -11,7 +11,7 @@ new class extends Component {
                 sm:px-3 sm:py-1.5 sm:text-sm">Leistungen Einblick
         </div>
         <div
-            class="bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text font-poppins text-2xl font-semibold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9"
+            class="bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9"
         >
             Unsere Dienstleistungen
         </div>

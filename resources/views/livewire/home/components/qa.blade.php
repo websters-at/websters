@@ -10,7 +10,7 @@ new class extends Component {
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div class="flex flex-col items-start md:px-4 lg:items-start lg:px-8">
             <div
-                class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-semibold text-transparent sm:w-2/3 md:w-1/2 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-2/3"
+                class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-2/3 md:w-1/2 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-2/3"
             >
                 Häufige Fragen zu Websters
             </div>
