@@ -126,7 +126,7 @@ new class extends Component {
                 <!-- TYPEWRITER -->
                 <span class="typewriter-wrapper block sm:block align-top whitespace-nowrap">
                 <span x-text="currentText"></span>
-                <span class="cursor inline-block w-[0.6ch] font-black text-neutral leading-none">|</span>
+                <span class="cursor inline-block w-[0.6ch] font-black text-neutral opacity-0 leading-none">|</span>
             </span>
 
             </div>
