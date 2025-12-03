@@ -7,7 +7,7 @@
                 Unser Ablauf
             </div>
 
-            <h2 class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-transparent text-2xl md:text-3xl lg:text-4xl font-poppins font-semibold leading-snug lg:leading-tight sm:w-4/5 md:w-3/5 lg:w-3/5">
+            <h2 class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-transparent text-2xl md:text-3xl lg:text-4xl font-poppins font-bold leading-snug lg:leading-tight sm:w-4/5 md:w-3/5 lg:w-3/5">
                 Das ist unsere Vorgehensweise – strukturiert & transparent
             </h2>
 

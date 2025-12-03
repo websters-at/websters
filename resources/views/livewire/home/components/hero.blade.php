@@ -68,11 +68,18 @@ new class extends Component {
 }; ?>
 
 
-<div class="relative overflow-hidden opacity-0 pop-in">
+<div class="relative overflow-hidden opacity-100">
 
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-
+        <div
+            class="absolute inset-0 z-0"
+            style="
+            background-image:
+                radial-gradient(125% 125% at 40% 70%, #ffffff 40%, rgb(255, 122, 195) 100%);
+            background-size: 100% 100%;
+        "
+        ></div>
         <div class="absolute inset-0 opacity-[0.1]"
              style="
                 background-image:
@@ -85,7 +92,7 @@ new class extends Component {
     <div
         class="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-gradient-to-t from-white to-transparent -z-10"></div>
 
-    <section class="pt-32 lg:pt-52 lg:pb-12 md:pt-40" id="home">
+    <section class="pt-32 lg:pt-52 lg:pb-12 md:pt-40 pop-in" id="home">
         <div
             class="max-w-6xl mx-auto px-4 xl:px-0
             flex flex-col
@@ -105,41 +112,37 @@ new class extends Component {
         holdTime: 1500
     })"
                 x-init="start()"
-                class="bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba80] to-[#ec65ba]
-        bg-clip-text text-transparent
-        text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
-        font-poppins font-black
-        mt-4 sm:mt-6 w-full
-        leading-snug lg:leading-tight break-words"
+                class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
+           font-poppins font-black text-neutral
+           mt-4 sm:mt-6 leading-snug lg:leading-tight break-words"
             >
 
-                <span class="invisible absolute font-black pointer-events-none select-none">
-                    Webentwicklung Webdesign Softwareentwicklung IT-Beratung
-                </span>
-
-                <span class="block sm:inline">Dein pinker</span>
-                <span class="block sm:inline">Partner für</span>
-
+                <span class="block sm:inline bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text text-transparent">Dein pinker</span>
+                <span class="block sm:inline bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text text-transparent">Partner für</span>
 
                 <br class="hidden sm:block">
 
                 <!-- TYPEWRITER -->
-                <span class="typewriter-wrapper block sm:block align-top whitespace-nowrap">
-                <span x-text="currentText"></span>
-                <span class="cursor inline-block w-[0.6ch] font-black text-neutral opacity-0 leading-none">|</span>
-            </span>
+                <span
+                    class="typewriter-wrapper block sm:inline align-top whitespace-nowrap
+                        bg-gradient-to-b from-primary to-[#FF7AC3A5] bg-clip-text text-transparent"
 
+                >
+        <span x-text="currentText"></span>
+        <span class="cursor inline-block w-[0.6ch] font-black opacity-0 leading-none">|</span>
+    </span>
             </div>
+
+
 
 
             <!-- Subcopy -->
             <p
                 class="mt-4 sm:mt-6 font-poppins font-medium
-                text-sm sm:text-sm md:text-base lg:text-lg text-gray-600
+                text-sm sm:text-sm md:text-base lg:text-md text-gray-600
                 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
-                Mit cleanem Design und klaren Software-Lösungen bringen wir dich und deine Marke sichtbar und
-                professionell online voran.
+                Egal ob du eine neue Website, eine individuelle Software oder einfach IT-Beratung brauchst - Das Team von Websters steht dir immer gerne zur Seite.
             </p>
 
         </div>

@@ -39,14 +39,14 @@ new class extends Component {
             Seite nicht gefunden
         </h1>
         <div class="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-            <a href="{{ route('home') }}" wire:navigate
-               class="px-6 py-3 bg-primary text-white btn-fancy rounded-xl font-medium shadow-md hover:bg-primary/90 transition">
+            <x-button link="{{ route('home') }}" wire:navigate
+               class="btn-primary btn-fancy">
                 Zur Startseite
-            </a>
-            <a href="{{ route('contact') }}" wire:navigate
-               class="px-6 py-3 border border-primary btn-fancy text-primary rounded-xl font-medium hover:bg-primary/10 transition">
+            </x-button>
+            <x-button link="{{ route('contact') }}" wire:navigate
+               class="btn-neutral btn-fancy">
                 Kontakt
-            </a>
+            </x-button>
         </div>
     </div>
 </section>

@@ -38,7 +38,7 @@ new class extends Component {
                 <!-- HEADLINE (same style as About) -->
                 <div
                     class="mt-8 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text
-                    text-2xl font-poppins font-semibold text-transparent
+                    text-2xl font-poppins font-bold text-transparent
                     sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight xl:w-3/4"
                 >
                     Deine Website – professionell erstellt & bereit für den Launch
