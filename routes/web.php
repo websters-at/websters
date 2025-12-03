@@ -28,3 +28,8 @@ Volt::route('/data-privacy', 'data-privacy.index')
 
 Volt::route('/terms', 'terms.index')
     ->name('terms');
+
+Volt::route('/{any}', 'errors.404')
+    ->where('any', '.*')
+    ->name('not-found');
+

@@ -85,14 +85,9 @@ new class extends Component {
             <li class="bubble bubble9"></li>
             <li class="bubble bubble10"></li>
         </ul>
-        <!-- Moving gradient waves - Adjusted for mobile -->
-        <div
-            class="absolute -bottom-20 -left-10 w-full h-32 sm:h-48 md:h-56 bg-gradient-to-r from-[#4bc8e7] to-[#ec65ba] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave"></div>
-        <div
-            class="absolute -bottom-40 left-1/4 w-3/4 h-28 sm:h-40 md:h-48 bg-gradient-to-l from-[#ec65ba] to-[#4bc8e7] opacity-10 rounded-full blur-lg sm:blur-xl animate-wave-reverse"></div>
 
         <!-- Grid pattern overlay with low opacity -->
-        <div class="absolute inset-0 opacity-3 sm:opacity-5"
+        <div class="absolute inset-0 opacity-4 sm:opacity-5"
              style="background-image: linear-gradient(#4bc8e7 1px, transparent 1px), linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
                     background-size: 30px 30px;"></div>
     </div>

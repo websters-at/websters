@@ -7,7 +7,7 @@ new class extends Component {
 };
 ?>
 <section
-    class="relative pt-32 pb-16 lg:pt-40 lg:pb-28 bg-gradient-to-b from-primary/30 via-[#fff] to-secondary/30 overflow-hidden"
+    class="relative pt-24 pb-16 lg:pt-40 lg:pb-28 bg-gradient-to-b from-secondary/30 via-[#fff] overflow-hidden"
 >
     <!-- Bottom gradient fade to next section -->
     <div

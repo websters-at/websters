@@ -47,7 +47,7 @@ new class extends Component {
         </p>
 
         <!-- Inline Booking Widget Wrapper: jetzt wie Impressum (kein Shadow, Border-Kontrast) -->
-        <div class="w-full mt-12 group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all p-4">
+        <div class="w-full mt-12 group">
             <div style="width:100%;height:100%;overflow:hidden" id="my-cal-inline-websters-meeting"></div>
         </div>
     </div>
