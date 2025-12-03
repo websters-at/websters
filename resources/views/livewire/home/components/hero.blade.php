@@ -124,12 +124,10 @@ new class extends Component {
                 <br class="hidden sm:block">
 
                 <!-- TYPEWRITER -->
-                <span class="typewriter-wrapper block sm:block align-top">
-                    <span x-text="currentText"></span>
-            <span class="cursor inline-block w-[0.7ch]">
-                <span class="block h-full w-full bg-gradient-to-b from-[#4bc8e7] to-[#ec65ba] rounded-full"></span>
+                <span class="typewriter-wrapper block sm:block align-top whitespace-nowrap">
+                <span x-text="currentText"></span>
+                <span class="cursor inline-block w-[0.6ch] font-black text-neutral leading-none">|</span>
             </span>
-                </span>
 
             </div>
 
