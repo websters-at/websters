@@ -5,32 +5,56 @@ use Livewire\Volt\Component;
 new class extends Component {
 
 }; ?>
-<section class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative" id="datenschutz">
+
+<section
+    class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
+    id="datenschutz"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div class="flex flex-col gap-y-8 md:px-4 lg:px-8">
+
             <!-- Header -->
-            <div class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left">
+            <div
+                class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.1s"
+            >
                 <div
-                    class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm"
+                    class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.15s"
                 >
                     Datenschutz
                 </div>
 
                 <div
-                    class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-semibold text-transparent lg:text-4xl lg:leading-tight lg:mt-8"
+                    class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.25s"
                 >
                     Datenschutzerklärung
                 </div>
 
-                <p class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5">
+                <p
+                    class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.3s"
+                >
                     Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Nachfolgend informieren wir Sie
                     über die Verarbeitung personenbezogener Daten auf dieser Website.
                 </p>
             </div>
 
             <!-- 1. Datenschutz auf einen Blick -->
-            <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+            <div
+                class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.35s"
+            >
                 <div class="p-5 sm:p-6 space-y-3 text-sm font-poppins text-slate-600">
+
                     <h3 class="font-semibold text-slate-800">
                         1. Datenschutz auf einen Blick
                     </h3>
@@ -99,7 +123,11 @@ new class extends Component {
             </div>
 
             <!-- 2. Hosting -->
-            <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+            <div
+                class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.4s"
+            >
                 <div class="p-5 sm:p-6 space-y-3 text-sm font-poppins text-slate-600">
                     <h3 class="font-semibold text-slate-800">
                         2. Hosting
@@ -152,8 +180,13 @@ new class extends Component {
             </div>
 
             <!-- 3. Allgemeine Hinweise und Pflichtinformationen -->
-            <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+            <div
+                class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.45s"
+            >
                 <div class="p-5 sm:p-6 space-y-3 text-sm font-poppins text-slate-600">
+
                     <h3 class="font-semibold text-slate-800">
                         3. Allgemeine Hinweise und Pflichtinformationen
                     </h3>
@@ -321,6 +354,7 @@ new class extends Component {
                         verlangen. Hierzu können Sie sich jederzeit an uns wenden. Das Recht auf Einschränkung der
                         Verarbeitung besteht in folgenden Fällen:
                     </p>
+
                     <ul class="list-disc pl-6 space-y-1">
                         <li>
                             Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten,
@@ -343,6 +377,7 @@ new class extends Component {
                             personenbezogenen Daten zu verlangen.
                         </li>
                     </ul>
+
                     <p>
                         Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten –
                         von ihrer Speicherung abgesehen – nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung
@@ -369,8 +404,13 @@ new class extends Component {
             </div>
 
             <!-- 4. Datenerfassung auf dieser Website -->
-            <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+            <div
+                class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.5s"
+            >
                 <div class="p-5 sm:p-6 space-y-3 text-sm font-poppins text-slate-600">
+
                     <h3 class="font-semibold text-slate-800">
                         4. Datenerfassung auf dieser Website
                     </h3>
@@ -378,6 +418,8 @@ new class extends Component {
                     <h4 class="font-semibold text-slate-800">
                         Cookies
                     </h4>
+
+                    <!-- EVERYTHING BELOW REMAINS UNCHANGED -->
                     <p>
                         Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und
                         richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer
@@ -494,6 +536,7 @@ new class extends Component {
                         Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche Aufbewahrungsfristen – bleiben
                         unberührt.
                     </p>
+
                 </div>
             </div>
 

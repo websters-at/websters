@@ -359,17 +359,21 @@ html{
 }
 
 @keyframes float-rocket {
-    0%, 100% {
-        transform: translateY(0);
+    0% {
+        transform: translatey(0px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
     }
 }
 
 .rocket-float {
     animation: float-rocket 3s ease-in-out infinite;
 }
+
 @layer utilities {
     .btn-fancy {
         @apply transition transform duration-200 ease-in-out hover:scale-105;
@@ -499,4 +503,50 @@ html{
 .fade-up.show {
     opacity: 1;
     transform: translateY(0) scale(1);
+}
+@keyframes jiggleAttention {
+    /* LONG PAUSE (idle) */
+    0%, 65% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    /* STRONG SHAKE BURST */
+    70% {
+        transform: translateX(-4px) rotate(-4deg);
+    }
+    75% {
+        transform: translateX(4px) rotate(4deg);
+    }
+    80% {
+        transform: translateX(-3px) rotate(-3deg);
+    }
+    85% {
+        transform: translateX(3px) rotate(3deg);
+    }
+    90% {
+        transform: translateX(-2px) rotate(-2deg);
+    }
+
+    /* RESET */
+    95%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+
+.jiggle-every-few-seconds {
+    animation: jiggleAttention 3s ease-in-out infinite;
+}
+
+.jiggle-every-few-seconds:hover {
+    animation-play-state: paused;
+}
+
+@keyframes teamCardIdle {
+    0%, 100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.015) rotate(.3deg);
+    }
 }

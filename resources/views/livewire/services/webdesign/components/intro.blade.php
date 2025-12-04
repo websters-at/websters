@@ -11,7 +11,7 @@ new class extends Component {
     x-data="{ show: false }"
     x-intersect="show = true"
 >
-    <div class="absolute inset-0 opacity-[0.1] z-[-1]"
+    <div class="absolute inset-0 opacity-[0.2] z-[-1]"
          style="
                 background-image:
                     linear-gradient(#4bc8e7 1px, transparent 1px),

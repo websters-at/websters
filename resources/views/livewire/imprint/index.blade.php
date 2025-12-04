@@ -5,33 +5,58 @@ use Livewire\Volt\Component;
 new class extends Component {
 
 }; ?>
-<section class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative" id="impressum">
+<section
+    class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
+    id="impressum"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
+
         <div class="flex flex-col gap-y-8 md:px-4 lg:px-8">
+
             <!-- Header -->
-            <div class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left">
+            <div
+                class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.1s"
+            >
                 <div
-                    class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm"
+                    class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.2s"
                 >
                     Impressum
                 </div>
 
                 <div
-                    class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-semibold text-transparent lg:text-4xl lg:leading-tight lg:mt-8"
+                    class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.3s"
                 >
                     Rechtliche Informationen & Offenlegung
                 </div>
 
-                <p class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5">
+                <p
+                    class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.35s"
+                >
                     Informationen und Offenlegung gemäß §5 (1) ECG, § 25 MedienG, § 63 GewO und § 14 UGB.
                 </p>
             </div>
 
             <!-- Content -->
             <div class="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
-                <!-- Left column: Betreiber & Kontakt -->
+
+                <!-- Left column -->
                 <div class="space-y-4">
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.4s"
+                    >
                         <div class="p-5 sm:p-6">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase mb-3">
                                 Webseitenbetreiber
@@ -57,7 +82,11 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.45s"
+                    >
                         <div class="p-5 sm:p-6">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase mb-3">
                                 Kontaktdaten
@@ -79,7 +108,11 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.5s"
+                    >
                         <div class="p-5 sm:p-6">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase mb-3">
                                 Anwendbare Rechtsvorschriften
@@ -95,9 +128,14 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- Right column: Rechtliche Hinweise -->
+                <!-- Right column -->
                 <div class="space-y-4">
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.55s"
+                    >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
                                 Online-Streitbeilegung
@@ -115,7 +153,11 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.6s"
+                    >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
                                 Urheberrecht
@@ -129,7 +171,11 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <div class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all">
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.65s"
+                    >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
                                 Haftungsausschluss
@@ -150,6 +196,7 @@ new class extends Component {
                             </p>
                         </div>
                     </div>
+
                 </div>
             </div>
 

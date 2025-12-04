@@ -62,7 +62,7 @@ new class extends Component {};
                 Zur Startseite
             </x-button>
 
-            <x-button link="{{ route('contact') }}" wire:navigate class="btn-neutral btn-fancy">
+            <x-button link="{{ route('contact') }}" wire:navigate class="btn-neutral jiggle-every-few-seconds btn-fancy">
                 Kontakt
             </x-button>
         </div>

@@ -16,7 +16,7 @@ new class extends Component {}?>
 
     <!-- BG GRID -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-        <div class="absolute inset-0 opacity-[0.1]"
+        <div class="absolute inset-0 opacity-[0.2]"
              style="
                 background-image:
                     linear-gradient(#4bc8e7 1px, transparent 1px),
@@ -29,7 +29,7 @@ new class extends Component {}?>
 
     <section class="pt-32 lg:pt-52 lg:pb-12 md:pt-40" id="home">
 
-        <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col items-start md:items-center md:text-center">
+        <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col items-center text-center md:items-center md:text-center">
 
             <!-- BADGE -->
             <div

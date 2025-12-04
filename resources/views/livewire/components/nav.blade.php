@@ -4,6 +4,7 @@ use Livewire\Volt\Component;
 
 new class extends Component {
     public bool $mobileMenuOpen = false;
+    public int $rotation=0;
 };
 
 ?>
@@ -11,6 +12,7 @@ new class extends Component {
 <div
     x-data="{
         mobileMenuOpen: @entangle('mobileMenuOpen'),
+        rotation: @entangle('rotation'),
         activeSection: null,
         homePath: '{{ parse_url(route('home'), PHP_URL_PATH) }}',
 
@@ -136,10 +138,16 @@ new class extends Component {
                             aria-label="Open menu"
                             class="lg:hidden"
                             title="Open menu"
-                            @click="mobileMenuOpen = !mobileMenuOpen"
+                            @click="
+                                mobileMenuOpen = !mobileMenuOpen;
+                                rotation += 90;
+                            "
                         >
-                            <x-icon name="fas.bars" class="h-5 w-5 text-[#002a42] opacity-65"/>
-
+                            <x-icon
+                                name="fas.bars"
+                                class="h-5 w-5 text-[#002a42] opacity-65 transition-transform duration-300"
+                                x-bind:style="'transform: rotate(' + rotation + 'deg)'"
+                            />
                         </button>
                     </div>
                 </div>
