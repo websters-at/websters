@@ -5,28 +5,52 @@ use Livewire\Volt\Component;
 new class extends Component {
 
 }; ?>
-<section class="lg:pt-16 lg:mb-24" id="services">
+<section
+    class="lg:pt-16 lg:mb-24"
+    id="services"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
+
     <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
-        <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs
-                sm:px-3 sm:py-1.5 sm:text-sm">Leistungen Einblick
-        </div>
+
+        <!-- Section Badge -->
         <div
-            class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9"
+            class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.05s"
+        >
+            Leistungen Einblick
+        </div>
+
+        <!-- Section Heading -->
+        <div
+            class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.15s"
         >
             Unsere Dienstleistungen
         </div>
+
+        <!-- Subtext -->
         <p
-            class="text-sm font-medium text-slate-600 leading-normal lg:leading-normal lg:text-base mt-4 text-left lg:text-center w-full lg:w-2/3 xl:w-2/5"
+            class="text-sm font-medium text-slate-600 leading-normal lg:text-base mt-4 text-left lg:text-center w-full lg:w-2/3 xl:w-2/5 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.25s"
         >
-            Von modernem Webdesign bis zu individueller Software – wir entwickeln maßgeschneiderte Lösungen für deinen
-            digitales Wachstum.
+            Von modernem Webdesign bis zu individueller Software – wir entwickeln maßgeschneiderte Lösungen für dein digitales Wachstum.
         </p>
+
+        <!-- Cards -->
         <div
             class="mt-12 grid gap-y-4 w-full md:gap-y-6 md:px-4 lg:mt-16 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 lg:px-8"
         >
-            <!-- Webdesign & Design Card -->
+
+            <!-- CARD 1 -->
             <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6"
+                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.35s"
             >
                 <div>
                     <img
@@ -35,21 +59,15 @@ new class extends Component {
                         alt="Webdesign & Design"
                     />
                     <x-icon name="fas.paint-brush" class="h-5 text-brand-dark opacity-60 lg:h-6"/>
-                    <div
-                        class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6"
-                    >
+                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
                         <div class="font-bold text-brand-dark">Webdesign & Design</div>
-                        <div
-                            class="items-center justify-center rounded-full text-sm font-semibold whitespace-nowrap bg-primary text-white px-2 py-0.5"
-                        >
-                            modern
-                        </div>
+                        <div class="rounded-full text-sm font-semibold bg-primary text-white px-2 py-0.5">modern</div>
                     </div>
                     <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Moderne, responsive Websites und ansprechendes Design, das deine Marke optimal präsentiert und
-                        Besucher begeistert.
+                        Moderne, responsive Websites und ansprechendes Design, das deine Marke optimal präsentiert.
                     </p>
                 </div>
+
                 <x-button
                     link="/services/webdesign"
                     class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md btn-primary mt-4"
@@ -57,9 +75,11 @@ new class extends Component {
                 />
             </article>
 
-            <!-- Dashboards Card -->
+            <!-- CARD 2 -->
             <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6"
+                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.45s"
             >
                 <div>
                     <img
@@ -68,21 +88,17 @@ new class extends Component {
                         alt="Dashboards"
                     />
                     <x-icon name="fas.grip" class="h-5 text-brand-dark opacity-60 lg:h-7"/>
-                    <div
-                        class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6"
-                    >
+
+                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
                         <div class="font-bold text-brand-dark">Dashboards</div>
-                        <div
-                            class="items-center justify-center rounded-full text-sm font-semibold whitespace-nowrap bg-secondary text-white px-2 py-0.5"
-                        >
-                            intuitiv
-                        </div>
+                        <div class="rounded-full text-sm font-semibold bg-secondary text-white px-2 py-0.5">intuitiv</div>
                     </div>
+
                     <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Übersichtliche, sowie maßgescheinderte Dashboards zur Visualisierung deiner Daten und
-                        Prozessoptimierung.
+                        Übersichtliche und maßgeschneiderte Dashboards zur Visualisierung deiner Daten.
                     </p>
                 </div>
+
                 <x-button
                     link="/projects"
                     class="btn-fancy items-center justify-center whitespace-nowrap text-white btn btn-sm lg:btn-md btn-secondary mt-4"
@@ -90,9 +106,11 @@ new class extends Component {
                 />
             </article>
 
-            <!-- Custom Software Card -->
+            <!-- CARD 3 -->
             <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6"
+                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.55s"
             >
                 <div>
                     <img
@@ -102,21 +120,15 @@ new class extends Component {
                     />
                     <x-icon name="fas.rocket" class="h-5 text-brand-dark opacity-60 lg:h-7"/>
 
-                    <div
-                        class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6"
-                    >
-                        <div class="font-bold text-brand-dark">
-                            Custom Software
-                        </div>
-                        <div
-                            class="items-center justify-center rounded-full text-sm font-semibold whitespace-nowrap inline-flex bg-primary text-white px-2 py-0.5"
-                        >
+                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
+                        <div class="font-bold text-brand-dark">Custom Software</div>
+                        <div class="rounded-full text-sm font-semibold inline-flex bg-primary text-white px-2 py-0.5">
                             maßgeschneidert
                         </div>
                     </div>
+
                     <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Individuelle Softwarelösungen, die perfekt auf deine Geschäftsprozesse und Anforderungen
-                        abgestimmt sind.
+                        Individuelle Softwarelösungen, die perfekt auf deine Prozesse abgestimmt sind.
                     </p>
                 </div>
 
@@ -126,6 +138,8 @@ new class extends Component {
                     label="Projekte ansehen"
                 />
             </article>
+
         </div>
     </div>
+
 </section>

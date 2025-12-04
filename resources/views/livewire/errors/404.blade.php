@@ -1,11 +1,14 @@
 <?php
 use Livewire\Volt\Component;
 
-new class extends Component {
-};
+new class extends Component {};
 ?>
 
-<section class="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section
+    class="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
 
     {{-- Aurora Dream Vivid Bloom Background --}}
     <div
@@ -20,7 +23,7 @@ new class extends Component {
         "
     ></div>
 
-    {{-- OPTIONAL: Keep your soft blobs (works beautifully on top of the Aurora background) --}}
+    {{-- Soft Lights --}}
     <div class="absolute inset-0 -z-10 pointer-events-none">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[22rem] h-[22rem] bg-[#4bc8e720] blur-[110px] rounded-full"></div>
         <div class="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-[#ec65ba20] blur-[140px] rounded-full"></div>
@@ -32,21 +35,37 @@ new class extends Component {
 
     {{-- MAIN CONTENT --}}
     <div class="w-full max-w-md text-center space-y-6 relative z-10">
-        <div class="text-[6rem] sm:text-[8rem] leading-none font-extrabold text-slate-800">404</div>
 
-        <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold bg-clip-text text-transparent
-               bg-gradient-to-b from-[#002a42] to-slate-600">
+        <div
+            class="text-[6rem] sm:text-[8rem] leading-none font-extrabold text-slate-800 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.1s"
+        >
+            404
+        </div>
+
+        <h1
+            class="text-xl sm:text-2xl md:text-3xl font-semibold bg-clip-text text-transparent
+               bg-gradient-to-b from-[#002a42] to-slate-600 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.2s"
+        >
             Seite nicht gefunden
         </h1>
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-            <x-button link="{{ route('home') }}" wire:navigate
-               class="btn-primary btn-fancy">
+
+        <div
+            class="flex flex-col sm:flex-row justify-center gap-4 mt-4 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.3s"
+        >
+            <x-button link="{{ route('home') }}" wire:navigate class="btn-primary btn-fancy">
                 Zur Startseite
             </x-button>
-            <x-button link="{{ route('contact') }}" wire:navigate
-               class="btn-neutral btn-fancy">
+
+            <x-button link="{{ route('contact') }}" wire:navigate class="btn-neutral btn-fancy">
                 Kontakt
             </x-button>
         </div>
+
     </div>
 </section>

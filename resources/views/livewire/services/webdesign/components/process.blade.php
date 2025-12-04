@@ -1,8 +1,17 @@
-<section class="relative mt-12 lg:mt-16 overflow-hidden bg-slate-50 py-8" id="process">
+<section
+    class="relative mt-12 lg:mt-16 overflow-hidden bg-slate-50 py-8"
+    id="process"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
 
         <!-- INTRO -->
-        <div class="flex flex-col items-start lg:items-center text-left lg:text-center md:px-4 lg:px-8">
+        <div
+            class="flex flex-col items-start lg:items-center text-left lg:text-center md:px-4 lg:px-8 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.1s"
+        >
             <div class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-3 py-1 text-xs sm:text-sm">
                 Unser Ablauf
             </div>
@@ -17,28 +26,35 @@
         </div>
 
         <!-- TIMELINE -->
-        <div class="mt-12 md:mt-14 lg:mt-16 md:px-4 lg:px-8">
-
+        <div
+            class="mt-12 md:mt-14 lg:mt-16 md:px-4 lg:px-8 fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.2s"
+        >
             <!-- line on desktop -->
             <div class="hidden lg:block relative mb-10">
-                <div class="absolute left-0 right-0 top-1/2 h-[2px]
-             bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba50] to-[#ec65ba] opacity-30"></div>
+                <div class="absolute left-0 right-0 top-1/2 h-[2px] bg-gradient-to-r from-[#4bc8e7] via-[#ec65ba50] to-[#ec65ba] opacity-30"></div>
             </div>
 
             @php
                 $steps = [
-                  ['title' => 'Projektstart', 'text' => 'Wir klären Ziele, Inhalte und den passenden Stil für deine Website.'],
-                  ['title' => 'Designentwürfe', 'text' => 'Du erhältst erste Layouts und visuelle Richtungen für dein Branding.', 'pdf' => asset('assets/example/example-design.pdf')],
-                  ['title' => 'Umsetzung', 'text' => 'Wir entwickeln deine Website technisch sauber und mobil optimiert.'],
-                  ['title' => 'Präsentation', 'text' => 'Gemeinsames Durchgehen, Feedback sammeln und Feinschliffe setzen.'],
-                  ['title' => 'Go-Live', 'text' => 'Nach finaler Prüfung geht deine neue Website offiziell online.'],
+                    ['title' => 'Projektstart', 'text' => 'Wir klären Ziele, Inhalte und den passenden Stil für deine Website.'],
+                    ['title' => 'Designentwürfe', 'text' => 'Du erhältst erste Layouts und visuelle Richtungen für dein Branding.', 'pdf' => asset('assets/example/example-design.pdf')],
+                    ['title' => 'Umsetzung', 'text' => 'Wir entwickeln deine Website technisch sauber und mobil optimiert.'],
+                    ['title' => 'Präsentation', 'text' => 'Gemeinsames Durchgehen, Feedback sammeln und Feinschliffe setzen.'],
+                    ['title' => 'Go-Live', 'text' => 'Nach finaler Prüfung geht deine neue Website offiziell online.'],
                 ];
+                $delay = 0.3;
             @endphp
 
             <div class="grid gap-6 md:gap-10 md:grid-cols-2 lg:grid-cols-5 justify-items-center">
 
                 @foreach($steps as $step)
-                    <div class="relative flex flex-col items-center w-full max-w-[280px] sm:max-w-xs md:max-w-full">
+                    <div
+                        class="relative flex flex-col items-center w-full max-w-[280px] sm:max-w-xs md:max-w-full fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay: {{ $delay }}s"
+                    >
 
                         {{-- mobile vertical connector --}}
                         @if (! $loop->last)
@@ -73,6 +89,8 @@
                         @endisset
 
                     </div>
+
+                    @php $delay += 0.1; @endphp
                 @endforeach
 
             </div>

@@ -84,55 +84,97 @@ new class extends Component {
     }
 }; ?>
 
-<section class="pt-12 mt-10 lg:mt-16 lg:pt-16 relative pb-6 lg:pb-16" id="webdesign-contact">
-    <div class="max-w-7xl mx-auto px-4 xl:px-0">
-        <div id="contact"
-             class="grid gap-y-6 md:px-4 lg:grid-cols-2 lg:items-center lg:gap-x-12 lg:gap-y-0 lg:px-8 xl:gap-x-16">
 
-            <div class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left">
-                <div
-                    class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm">
+<section
+    class="pt-12 mt-10 lg:mt-16 lg:pt-16 relative pb-6 lg:pb-16"
+    id="webdesign-contact"
+    x-data="{ show: false }"
+    x-intersect="show = true"
+>
+    <div class="max-w-7xl mx-auto px-4 xl:px-0">
+
+        <div class="grid gap-y-6 md:px-4 lg:grid-cols-2 lg:items-center lg:gap-x-12 lg:px-8 xl:gap-x-16">
+
+            <!-- LEFT SIDE -->
+            <div
+                class="flex flex-col items-start sm:items-center sm:text-center lg:items-start lg:text-left fade-up"
+                :class="{ 'show': show }"
+                style="transition-delay:.1s"
+            >
+                <div class="inline-flex items-center justify-center rounded-full badge badge-secondary text-white px-3 py-1 text-xs sm:text-sm">
                     Angebot sichern
                 </div>
 
                 <div
-                    class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight">
+                    class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-transparent text-2xl font-bold lg:text-4xl sm:w-4/5 md:w-3/5 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.2s"
+                >
                     Interesse an einem Paket? Sag uns, welches du willst
                 </div>
 
-                <p class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12">
-                    Wähle dein Wunschpaket und schick uns eine Nachricht – wir melden uns schnellstmöglich mit einem
-                    passenden Angebot zurück.
+                <p
+                    class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.3s"
+                >
+                    Wähle dein Wunschpaket und schick uns eine Nachricht – wir melden uns schnellstmöglich zurück.
                 </p>
             </div>
 
-            <x-form no-separator="true"
-                    class="flex flex-col gap-y-2 sm:mx-auto sm:w-2/3 lg:mx-0 lg:w-full lg:gap-y-2"
-                    x-data="{ loading: false }"
-                    x-on:submit.prevent="
-                loading = true;
-                $wire.save().then(() => { loading = false }).catch(() => { loading = false });
-              ">
-                <div class="flex flex-col gap-y-3 lg:gap-y-5">
-                    <div class="grid gap-y-3 lg:grid-cols-2 lg:gap-x-3 lg:gap-y-0">
-                        <div class="flex w-full flex-col">
-                            <x-input required="true" label="Name" wire:model="name" type="text"
-                                     placeholder="Dein voller Name"/>
+            <!-- FORM START -->
+            <x-form
+                no-separator="true"
+                class="flex flex-col gap-y-2 sm:mx-auto sm:w-2/3 lg:w-full fade-up"
+                x-bind:class="{ 'show': show }"
+                style="transition-delay:.25s"
+                x-data="{ loading: false }"
+                x-on:submit.prevent="
+        loading = true;
+        $wire.save().then(() => loading = false).catch(() => loading = false);
+    "
+            >
+                <div class="flex flex-col gap-y-5">
+
+                    <!-- NAME + COMPANY -->
+                    <div class="grid gap-y-3 lg:grid-cols-2 lg:gap-x-3">
+
+                        <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.35s">
+                            <x-input
+                                required
+                                label="Name"
+                                wire:model="name"
+                                type="text"
+                                placeholder="Dein voller Name"
+                            />
                         </div>
-                        <div class="flex w-full flex-col">
-                            <x-input label="Firma (optional)" wire:model="company" type="text"
-                                     placeholder="Firmenname"/>
+
+                        <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.40s">
+                            <x-input
+                                label="Firma (optional)"
+                                wire:model="company"
+                                type="text"
+                                placeholder="Firmenname"
+                            />
                         </div>
-                    </div>
-                    <div class="flex w-full flex-col">
-                        <x-input required="true" label="E-Mail Adresse" wire:model="email" type="email"
-                                 placeholder="Email Adresse"/>
+
                     </div>
 
-                    <!-- Paket Auswahl -->
-                    <div class="flex w-full flex-col">
+                    <!-- EMAIL -->
+                    <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.45s">
+                        <x-input
+                            required
+                            label="E-Mail Adresse"
+                            wire:model="email"
+                            type="email"
+                            placeholder="Email Adresse"
+                        />
+                    </div>
+
+                    <!-- PACKAGE SELECT -->
+                    <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.50s">
                         <x-select
-                            required="true"
+                            required
                             label="Website Paket"
                             wire:model="package"
                             :options="$packages"
@@ -140,26 +182,38 @@ new class extends Component {
                         />
                     </div>
 
-                    <div class="flex flex-col">
-                        <x-textarea label="Nachricht (optional)" wire:model="message"
-                                    placeholder="Deine Wünsche oder Details..."/>
+                    <!-- MESSAGE -->
+                    <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.55s">
+                        <x-textarea
+                            label="Nachricht (optional)"
+                            wire:model="message"
+                            placeholder="Deine Wünsche oder Details…"
+                        />
                     </div>
+
                 </div>
 
+                <!-- BUTTON (SAFE WRAPPED TO AVOID BLADE ERRORS) -->
                 <x-slot:actions>
-                    <button type="submit"
-                            class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
-                            x-bind:disabled="loading">
-                        <span x-show="loading" class="loading loading-spinner w-5 h-5"></span>
-                        <span x-show="!loading">Absenden</span>
-                    </button>
+                    <div class="fade-up" :class="{ 'show': show }" style="transition-delay:.65s">
+                        <button
+                            type="submit"
+                            class="btn-fancy btn bg-primary text-white rounded-xl px-5 py-2 flex items-center gap-x-2"
+                            x-bind:disabled="loading"
+                        >
+                            <span x-show="loading" class="loading loading-spinner w-5 h-5"></span>
+                            <span x-show="!loading">Absenden</span>
+                        </button>
+                    </div>
                 </x-slot:actions>
-            </x-form>
 
+            </x-form>
         </div>
     </div>
 
-    <img class="absolute left-0 top-0 -z-10 h-52 w-full object-cover object-left-bottom lg:h-full lg:w-1/2"
-         src="{{ asset('/assets/form.png') }}"
-         alt="Shape Background"/>
+    <img
+        class="absolute left-0 top-0 -z-10 h-52 w-full object-cover object-left-bottom lg:h-full lg:w-1/2"
+        src="{{ asset('/assets/form.png') }}"
+        alt="Shape Background"
+    />
 </section>

@@ -377,7 +377,7 @@ html{
 }
 
 .marquee-content {
-    animation: scroll 60s linear infinite;
+    animation: scroll 160s linear infinite;
 }
 
 .marquee-content:hover {
@@ -489,4 +489,14 @@ html{
     @apply absolute -left-3 top-8 bottom-0 border-l border-primary/20 md:hidden;
 }
 
+/* Fade-up animation */
+.fade-up {
+    opacity: 0;
+    transform: translateY(25px) scale(.98);
+    transition: all .8s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
