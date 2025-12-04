@@ -98,11 +98,11 @@ new class extends Component {
                 class="flex flex-col gap-y-2 sm:mx-auto sm:w-2/3 lg:mx-0 lg:w-full lg:gap-y-2"
                 x-data="{ loading: false }"
                 x-on:submit.prevent="
-            loading = true;
-            $wire.save()
-                .then(() => loading = false)
-                .catch(() => loading = false)
-        "
+                    loading = true;
+                    $wire.save()
+                        .then(() => loading = false)
+                        .catch(() => loading = false)
+                "
             >
                 <div class="flex flex-col gap-y-3 lg:gap-y-5">
                     <div class="grid gap-y-3 lg:grid-cols-2 lg:gap-x-3 lg:gap-y-0">

@@ -4,7 +4,51 @@ use Livewire\Volt\Component;
 
 new class extends Component {
 
-}; ?>
+};
+?>
+
+@php
+    $cards = [
+        [
+            'title' => 'Webentwicklung',
+            'badge' => 'web',
+            'badge_color' => 'bg-primary',
+            'icon' => 'fas.paint-brush',
+            'image' => 'https://tailkits.com/ui/iframe/assets/img/bg-linear-1.png',
+            'alt' => 'Webdesign & Design',
+            'desc' => 'Einfach, moderne und responsive Websites oder Webapplikationen für dein Unternehmen.',
+            'button' => 'Mehr Erfahren',
+            'btn_color' => 'btn-primary',
+            'link' => '/services/webdesign',
+        ],
+        [
+            'title' => 'Dashboards',
+            'badge' => 'intuitiv',
+            'badge_color' => 'bg-secondary',
+            'icon' => 'fas.grip',
+            'image' => 'https://tailkits.com/ui/iframe/assets/img/bg-linear-3.png',
+            'alt' => 'Dashboards',
+            'desc' => 'Übersichtliche und maßgeschneiderte Dashboards zur Visualisierung deiner Daten.',
+            'button' => 'Projekte ansehen',
+            'btn_color' => 'btn-secondary',
+            'link' => '/projects',
+        ],
+        [
+            'title' => 'Custom Software',
+            'badge' => 'maßgeschneidert',
+            'badge_color' => 'bg-primary',
+            'icon' => 'fas.rocket',
+            'image' => 'https://tailkits.com/ui/iframe/assets/img/bg-linear-4.png',
+            'alt' => 'Custom Software',
+            'desc' => 'Individuelle Softwarelösungen, die perfekt auf deine Prozesse abgestimmt sind.',
+            'button' => 'Projekte ansehen',
+            'btn_color' => 'btn-primary',
+            'link' => '/projects',
+        ],
+    ];
+@endphp
+
+
 <section
     class="lg:pt-16 lg:mb-24"
     id="services"
@@ -42,104 +86,47 @@ new class extends Component {
         </p>
 
         <!-- Cards -->
-        <div
-            class="mt-12 grid gap-y-4 w-full md:gap-y-6 md:px-4 lg:mt-16 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 lg:px-8"
-        >
+        <div class="mt-12 grid gap-y-4 w-full md:gap-y-6 md:px-4 lg:mt-16 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0 lg:px-8">
 
-            <!-- CARD 1 -->
-            <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.35s"
-            >
-                <div>
-                    <img
-                        class="mb-4 h-40 w-full rounded-lg object-cover object-left-top lg:mb-6 lg:h-52 lg:rounded-2xl"
-                        src="https://tailkits.com/ui/iframe/assets/img/bg-linear-1.png"
-                        alt="Webdesign & Design"
-                    />
-                    <x-icon name="fas.paint-brush" class="h-5 text-brand-dark opacity-60 lg:h-6"/>
-                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
-                        <div class="font-bold text-brand-dark">Webdesign & Design</div>
-                        <div class="rounded-full text-sm font-semibold bg-primary text-white px-2 py-0.5">modern</div>
-                    </div>
-                    <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Moderne, responsive Websites und ansprechendes Design, das deine Marke optimal präsentiert.
-                    </p>
-                </div>
+            @foreach ($cards as $i => $card)
+                <article
+                    class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
+                    :class="{ 'show': show }"
+                    style="transition-delay:.{{ 35 + $i * 10 }}s"
+                >
+                    <div>
+                        <img
+                            class="mb-4 h-40 w-full rounded-lg object-cover object-left-top lg:mb-6 lg:h-52 lg:rounded-2xl"
+                            src="{{ $card['image'] }}"
+                            alt="{{ $card['alt'] }}"
+                        />
 
-                <x-button
-                    link="/services/webdesign"
-                    class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md btn-primary mt-4"
-                    label="Mehr Erfahren"
-                />
-            </article>
+                        <x-icon
+                            name="{{ $card['icon'] }}"
+                            class="h-5 text-brand-dark opacity-60 lg:h-6"
+                        />
 
-            <!-- CARD 2 -->
-            <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.45s"
-            >
-                <div>
-                    <img
-                        class="mb-4 h-40 w-full rounded-lg object-cover object-left-top lg:mb-6 lg:h-52 lg:rounded-2xl"
-                        src="https://tailkits.com/ui/iframe/assets/img/bg-linear-3.png"
-                        alt="Dashboards"
-                    />
-                    <x-icon name="fas.grip" class="h-5 text-brand-dark opacity-60 lg:h-7"/>
+                        <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
+                            <div class="font-bold text-brand-dark">{{ $card['title'] }}</div>
 
-                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
-                        <div class="font-bold text-brand-dark">Dashboards</div>
-                        <div class="rounded-full text-sm font-semibold bg-secondary text-white px-2 py-0.5">intuitiv</div>
-                    </div>
-
-                    <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Übersichtliche und maßgeschneiderte Dashboards zur Visualisierung deiner Daten.
-                    </p>
-                </div>
-
-                <x-button
-                    link="/projects"
-                    class="btn-fancy items-center justify-center whitespace-nowrap text-white btn btn-sm lg:btn-md btn-secondary mt-4"
-                    label="Projekte ansehen"
-                />
-            </article>
-
-            <!-- CARD 3 -->
-            <article
-                class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.55s"
-            >
-                <div>
-                    <img
-                        class="mb-4 h-40 w-full rounded-lg object-cover object-left-top lg:mb-6 lg:h-52 lg:rounded-2xl"
-                        src="https://tailkits.com/ui/iframe/assets/img/bg-linear-4.png"
-                        alt="Custom Software"
-                    />
-                    <x-icon name="fas.rocket" class="h-5 text-brand-dark opacity-60 lg:h-7"/>
-
-                    <div class="mt-4 flex flex-wrap items-start gap-x-2 gap-y-1.5 lg:mt-6">
-                        <div class="font-bold text-brand-dark">Custom Software</div>
-                        <div class="rounded-full text-sm font-semibold inline-flex bg-primary text-white px-2 py-0.5">
-                            maßgeschneidert
+                            <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 {{ $card['badge_color'] }}">
+                                {{ $card['badge'] }}
+                            </div>
                         </div>
+
+                        <p class="mt-2 text-sm font-medium text-neutral-500">
+                            {{ $card['desc'] }}
+                        </p>
                     </div>
 
-                    <p class="mt-2 text-sm font-medium text-neutral-500">
-                        Individuelle Softwarelösungen, die perfekt auf deine Prozesse abgestimmt sind.
-                    </p>
-                </div>
-
-                <x-button
-                    link="/projects"
-                    class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm lg:btn-md btn-primary mt-4"
-                    label="Projekte ansehen"
-                />
-            </article>
+                    <x-button
+                        link="{{ $card['link'] }}"
+                        class="btn-fancy items-center justify-center whitespace-nowrap btn btn-sm text-white lg:btn-md mt-4 {{ $card['btn_color'] }}"
+                        label="{{ $card['button'] }}"
+                    />
+                </article>
+            @endforeach
 
         </div>
     </div>
-
 </section>

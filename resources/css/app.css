@@ -30,7 +30,7 @@
     --color-base-200: oklch(98% 0 0);
     --color-base-300: oklch(95% 0 0);
     --color-base-content: #002a42;
-    --color-primary: rgb(255, 122, 195);
+    --color-primary: #FF7AC3FF;
     --color-primary-content: oklch(98% 0.003 247.858);
     --color-secondary: #4dc8e8;
     --color-secondary-content: oklch(94% 0.028 342.258);
@@ -38,7 +38,7 @@
     --color-accent-content: oklch(98% 0.003 247.858);
     --color-neutral: #002a42;
     --color-neutral-content: oklch(98% 0.003 247.858);
-    --color-info: rgb(255, 122, 195);
+    --color-info: #FF7AC3FF;
     --color-info-content: oklch(98% 0.003 247.858);
     --color-success: oklch(76% 0.177 163.223);
     --color-success-content: oklch(100% 0 0);
@@ -541,12 +541,20 @@ html{
 .jiggle-every-few-seconds:hover {
     animation-play-state: paused;
 }
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
 
-@keyframes teamCardIdle {
-    0%, 100% {
-        transform: translateY(0) scale(1) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-4px) scale(1.015) rotate(.3deg);
-    }
+.animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.active-card {
+    z-index: 10;
+}
+
+/* Ensure proper stacking context */
+.group {
+    isolation: isolate;
 }

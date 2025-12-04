@@ -6,7 +6,9 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 
-new class extends Component {}?>
+new class extends Component {
+
+}?>
 
 
 <div class="relative overflow-hidden"
