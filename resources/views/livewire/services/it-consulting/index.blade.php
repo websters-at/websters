@@ -39,7 +39,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'IT-Consulting und Prozessoptimierung Dienstleistungen'
@@ -48,7 +48,7 @@ new class extends Component {
         // --- Twitter Card ---
         TwitterCard::setTitle('IT-Consulting für Prozessoptimierung | Websters');
         TwitterCard::setDescription('Digitale Transformation und Geschäftsprozess-Optimierung aus Linz. Wir machen Ihr Unternehmen effizienter.');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@websters.at');
 
         // --- JSON-LD (Service mit spezifischer Beratung) ---
@@ -67,7 +67,7 @@ new class extends Component {
             'name' => 'Webagentur Websters',
             'description' => 'IT-Consulting und Prozessoptimierung Spezialisten aus Linz',
             'url' => $siteUrl,
-            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',

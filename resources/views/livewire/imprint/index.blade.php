@@ -35,7 +35,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Impressum der Webagentur Websters'
@@ -58,7 +58,7 @@ new class extends Component {
             'name' => 'Webagentur Websters',
             'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting',
             'url' => $siteUrl,
-            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             // ACHTUNG: Andere Adresse als auf der Kontaktseite!
             'address' => [
                 '@type' => 'PostalAddress',

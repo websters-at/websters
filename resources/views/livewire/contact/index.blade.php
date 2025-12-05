@@ -35,7 +35,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Kontakt Webagentur Websters in Außertreffling bei Linz'
@@ -44,7 +44,7 @@ new class extends Component {
         // --- Twitter Card ---
         TwitterCard::setTitle('Kontakt | Webagentur Websters Linz');
         TwitterCard::setDescription('Webdesign, Software & IT-Consulting aus Oberösterreich. Jetzt Beratungstermin vereinbaren!');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setImage($siteUrl . '/assets/logo-og.jpg');
         TwitterCard::setSite('@websters.at');
 
         // --- JSON-LD (LocalBusiness für Kontaktseite) ---
@@ -57,7 +57,7 @@ new class extends Component {
         JsonLd::addValues([
             'name' => 'Webagentur Websters',
             'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting in Oberösterreich.',
-            'image' => $siteUrl . '/assets/websters-full-logo.png',
+            'image' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'telephone' => '+43 677 63177763',
             'email' => 'office@websters.at',
             'address' => [
@@ -84,7 +84,7 @@ new class extends Component {
             'contactPoint' => [
                 '@type' => 'ContactPoint',
                 'contactType' => 'customer service',
-                'availableLanguage' => ['German', 'English'],
+                'availableLanguage' => ['German'],
                 'telephone' => '+43 677 63177763',
                 'email' => 'office@websters.at',
                 'hoursAvailable' => [

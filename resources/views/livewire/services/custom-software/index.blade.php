@@ -41,7 +41,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Individual Software Entwicklung von Websters Linz'
@@ -65,7 +65,7 @@ new class extends Component {
             'name' => 'Webagentur Websters',
             'description' => 'Spezialisiert auf Individual Software Entwicklung in Linz',
             'url' => $siteUrl,
-            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',

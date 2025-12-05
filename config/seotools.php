@@ -55,7 +55,7 @@ return [
             'site_name'   => 'Webagentur Websters',
             'locale'      => 'de_AT',
             'images'      => [
-                 'https://websters.at/assets/websters-full-logo.png', // Ihr angegebenes Bild
+                 'https://websters.at/assets/images/logo-og.jpg', // Ihr angegebenes Bild
             ],
         ],
     ],
@@ -67,7 +67,7 @@ return [
             'creator'     => '@websters.at',
             'title'       => 'Webagentur Websters – IT-Lösungen aus Linz',
             'description' => 'Webdesign ab 990€ | Custom Software ab 3490€ | IT-Consulting für österreichische Unternehmen.',
-            'image'       => 'https://websters.at/assets/websters-full-logo.png',
+            'image'       => 'https://websters.at/assets/images/logo-jsonld.jpg',
         ],
     ],
 
@@ -101,7 +101,7 @@ return [
             'contactPoint' => [
                 '@type'             => 'ContactPoint',
                 'contactType'       => 'customer service',
-                'availableLanguage' => ['German', 'English'],
+                'availableLanguage' => ['German'],
                 'telephone'         => '+43 677 63177763',
                 'email'             => 'office@websters.at',
                 'hoursAvailable'    => [
@@ -162,9 +162,9 @@ return [
                 'https://github.com/websters-at',
             ],
 
-            'logo' => 'https://websters.at' . '/assets/images/logo.png',
+            'logo' => 'https://websters.at' . '/assets/images/logo-jsonld.jpg',
             'image' => [
-                'https://websters.at' . '/assets/websters-full-logo.png',
+                'https://websters.at' . '/assets/images/logo-jsonld.jpg',
             ],
 
             // Zusätzlich: Preisbereich für das gesamte Unternehmen

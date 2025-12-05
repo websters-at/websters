@@ -35,7 +35,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Datenschutzerklärung der Webagentur Websters'
@@ -44,7 +44,7 @@ new class extends Component {
         // --- Twitter Card ---
         TwitterCard::setTitle('Datenschutzerklärung | Webagentur Websters');
         TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign und Softwareentwicklung.');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@websters.at');
 
         // --- JSON-LD (PrivacyPolicy für Datenschutz) ---
@@ -61,9 +61,9 @@ new class extends Component {
                 '@type' => 'Organization',
                 'name' => 'Webagentur Websters',
                 'url' => $siteUrl,
-                'logo' => $siteUrl . '/assets/websters-full-logo.png'
+                'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg'
             ],
-            'jurisdiction' => 'AT', // Österreich
+            'jurisdiction' => 'AT',
             'applicableLaw' => [
                 'DSGVO (Datenschutz-Grundverordnung)',
                 'DSG (Österreichisches Datenschutzgesetz)',

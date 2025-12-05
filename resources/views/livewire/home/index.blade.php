@@ -41,7 +41,7 @@ new class extends Component {
         OpenGraph::setType('website');
 
         // Optimierte Bilder für Social Media
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Webdesign & Development von Websters Linz'
@@ -51,7 +51,7 @@ new class extends Component {
         TwitterCard::setTitle('Webagentur Websters | Linz');
         TwitterCard::setDescription('Webdesign, IT-Consulting & Individualsoftware aus Linz');
         TwitterCard::setUrl($siteUrl);
-        TwitterCard::setImage($siteUrl . '/assets/og-webdesign.jpg');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@websters.at'); // Ihr Instagram als Twitter-Handle
 
         // --- JSON-LD Structured Data (VERBESSERT) ---
@@ -107,7 +107,7 @@ new class extends Component {
             ]
         ]);
 
-        JsonLd::addImage($siteUrl . '/assets/websters-full-logo.png');
+        JsonLd::addImage($siteUrl . '/assets/images/logo-jsonld.jpg');
     }
 
 };

@@ -15,7 +15,7 @@ new class extends Component {
 
         // --- SEO Meta ---
         SEOMeta::setTitle('Team Websters – Webagentur aus Linz | Michael, Stevan & Manuel');
-        SEOMeta::setDescription('Unser Team: Michael Rüp (DevOps), Stevan Vlajic (UI/UX Design) & Manuel Puchner (Webentwicklung). Experten für Webdesign ab 990€ & Individualsoftware ab 3.490€ in Linz.');
+        SEOMeta::setDescription('Unser Team: Michael Ruep (DevOps), Stevan Vlajic (UI/UX Webentwicklung) & Manuel Puchner (Webentwicklung). Experten für Webdesign ab 990€ & Individualsoftware ab 3.490€ in Linz.');
         SEOMeta::setCanonical($pageUrl);
         SEOMeta::addKeyword([
             'Webagentur Linz Team',
@@ -36,16 +36,17 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
+        /*
         OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Websters Team - Michael Rüp, Stevan Vlajic, Manuel Puchner'
-        ]);
+            'alt' => 'Websters Team - Michael Ruep, Stevan Vlajic, Manuel Puchner'
+        ]);*/
 
         // --- Twitter Card ---
         TwitterCard::setTitle('Team Websters – Ihre IT-Experten aus Linz');
         TwitterCard::setDescription('Michael (DevOps), Stevan (UI/UX) & Manuel (Webentwicklung) – Ihr Team für Webdesign & Software.');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@websters.at');
 
         // --- JSON-LD (AboutPage + Team) ---
@@ -97,7 +98,7 @@ new class extends Component {
             'name' => 'Webagentur Websters',
             'description' => 'Webagentur aus Linz mit Fokus auf Webdesign, DevOps und Individualsoftware',
             'url' => $siteUrl,
-            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'foundingDate' => '2024',
             'address' => [
                 '@type' => 'PostalAddress',

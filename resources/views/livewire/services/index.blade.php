@@ -37,7 +37,7 @@ new class extends Component {
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+        OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Websters Dienstleistungen - Webdesign & Softwareentwicklung'
@@ -46,7 +46,7 @@ new class extends Component {
         // --- Twitter Card ---
         TwitterCard::setTitle('Unsere Leistungen | Webagentur Websters');
         TwitterCard::setDescription('Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting & DevOps aus Linz.');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@websters.at');
 
         // --- JSON-LD (ItemList für Services) ---
@@ -161,7 +161,7 @@ new class extends Component {
             'name' => 'Webagentur Websters',
             'description' => 'Full-Service Webagentur aus Linz für Webdesign, Softwareentwicklung & IT-Consulting.',
             'url' => $siteUrl,
-            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
