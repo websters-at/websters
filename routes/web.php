@@ -5,34 +5,40 @@ use Livewire\Volt\Volt;
 Volt::route('/', 'home.index')
     ->name('home');
 
-Volt::route('/projects', 'projects.index')
+Volt::route('/projekte', 'projects.index')
     ->name('projects');
 
-Volt::route('/contact', 'contact.index')
+Volt::route('/kontakt', 'contact.index')
     ->name('contact');
 
-Volt::route('/about', 'about.index')
+Volt::route('/ueber-uns', 'about.index')
     ->name('about');
 
-Volt::route('/services', 'services.index')
+Volt::route('/leistungen', 'services.index')
     ->name('services');
 
-Volt::route('/services/webdesign', 'services.webdesign.index')
+Volt::route('/leistungen/webdesign', 'services.webdesign.index')
     ->name('webdesign');
 
-Volt::route('/services/consulting', 'services.it-consulting.index')
+Volt::route('/leistungen/consulting', 'services.it-consulting.index')
     ->name('consulting');
 
-Volt::route('/services/software', 'services.custom-software.index')
+Volt::route('/leistungen/software', 'services.custom-software.index')
     ->name('software');
 
-Volt::route('/imprint', 'imprint.index')
+Volt::route('/leistungen/design', 'services.design.index')
+    ->name('design');
+
+Volt::route('/leistungen/cloud', 'services.cloud.index')
+    ->name('cloud');
+
+Volt::route('/impressum', 'imprint.index')
     ->name('imprint');
 
-Volt::route('/data-privacy', 'data-privacy.index')
+Volt::route('/datenschutz', 'data-privacy.index')
     ->name('data-privacy');
 
-Volt::route('/terms', 'terms.index')
+Volt::route('/agbs', 'terms.index')
     ->name('terms');
 
 Volt::route('/{any}', 'errors.404')

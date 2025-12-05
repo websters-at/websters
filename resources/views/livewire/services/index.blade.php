@@ -8,74 +8,79 @@ use Artesaos\SEOTools\Facades\TwitterCard;
 new class extends Component {
     public function mount(): void {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/services';
+        $pageUrl = route('services');
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Dienstleistungen – Webdesign ab 990€ & Custom Software ab 3.490€ | Websters Linz');
-        SEOMeta::setDescription('IT-Consulting, Webdesign & Individualsoftware aus Linz: Webdesign ab 990€, WordPress, Custom Software ab 3.490€, DevOps & Cloud-Lösungen. Komplettpaket für Unternehmen.');
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        */
+
+        SEOMeta::setTitle('Leistungen – Webdesign, Softwareentwicklung & IT-Consulting | Websters Linz');
+        SEOMeta::setDescription(
+            'Unsere Dienstleistungen: Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting, Prozessoptimierung, UI/UX Design & moderne Webentwicklung aus Linz.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
         SEOMeta::addKeyword([
-            'Webdesign Linz ab 990€',
-            'Custom Software Entwicklung',
-            'IT-Consulting Oberösterreich',
-            'WordPress Agentur',
-            'DevOps Dienstleistungen',
-            'Cloud Architektur',
-            'Webentwicklung Linz',
-            'Individualsoftware Österreich',
-            'Softwareentwicklung Startup',
-            'Prozessoptimierung IT',
-            'UI/UX Design',
+            'Webdesign Linz',
+            'Softwareentwicklung Linz',
+            'IT-Consulting Linz',
             'Webagentur Leistungen',
-            'Hosting Migration',
-            'Laravel Entwicklung'
+            'Individualsoftware Österreich',
+            'UI/UX Design',
+            'DevOps Agentur Linz'
         ]);
 
-        // --- OpenGraph / Social ---
-        OpenGraph::setTitle('Leistungen: Webdesign ab 990€ & Software ab 3.490€ | Websters');
-        OpenGraph::setDescription('Ihre Full-Service Webagentur in Linz: Webdesign, Custom Software, IT-Consulting & DevOps. Transparente Preise, maßgeschneiderte Lösungen.');
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
+        OpenGraph::setTitle('Leistungen – Webdesign, Software & Consulting | Webagentur Websters Linz');
+        OpenGraph::setDescription('Überblick aller Services: Webdesign, Softwareentwicklung, IT-Consulting, UI/UX Design & moderne Webentwicklung.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
-            'width' => 1200,
+            'width'  => 1200,
             'height' => 630,
-            'alt' => 'Websters Dienstleistungen - Webdesign & Softwareentwicklung'
+            'alt'    => 'Dienstleistungen der Webagentur Websters'
         ]);
 
-        // --- Twitter Card ---
-        TwitterCard::setTitle('Unsere Leistungen | Webagentur Websters');
-        TwitterCard::setDescription('Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting & DevOps aus Linz.');
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
+        TwitterCard::setTitle('Unsere Leistungen | Webagentur Websters Linz');
+        TwitterCard::setDescription('Webdesign, Softwareentwicklung, IT-Consulting und mehr aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (ItemList für Services) ---
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD: SERVICE OVERVIEW AS ITEMLIST
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::setType('ItemList');
         JsonLd::setTitle('Dienstleistungen der Webagentur Websters');
-        JsonLd::setDescription('Alle Service-Leistungen im Überblick: Webdesign, Softwareentwicklung, IT-Consulting und DevOps.');
+        JsonLd::setDescription('Alle Services im Überblick: Webdesign, Softwareentwicklung, IT-Consulting, DevOps, UI/UX und moderne Webentwicklung.');
         JsonLd::setUrl($pageUrl);
 
-        // Service-Liste als ItemList-Elemente
         JsonLd::addValue('itemListElement', [
             [
                 '@type' => 'ListItem',
                 'position' => 1,
                 'item' => [
                     '@type' => 'Service',
-                    'name' => 'Webdesign & WordPress Entwicklung',
-                    'description' => 'Professionelles Webdesign und WordPress-Entwicklung ab 990€. Responsive Websites, Online-Shops und Landing Pages.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ],
-                    'offers' => [
-                        '@type' => 'Offer',
-                        'name' => 'Webdesign Starter Paket',
-                        'price' => '990',
-                        'priceCurrency' => 'EUR'
-                    ],
-                    'areaServed' => ['AT', 'DE']
-                ]
+                    'name' => 'Webdevelopement & WordPress Entwicklung',
+                    'description' => 'Webdesign ab 990€. Responsive Websites, WordPress, Shops & Landing Pages.',
+                    'url' => route('webdesign')
+                ],
             ],
             [
                 '@type' => 'ListItem',
@@ -83,18 +88,9 @@ new class extends Component {
                 'item' => [
                     '@type' => 'Service',
                     'name' => 'Custom Software Entwicklung',
-                    'description' => 'Maßgeschneiderte Softwarelösungen und Individualsoftware ab 3.490€ für spezifische Geschäftsprozesse.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ],
-                    'offers' => [
-                        '@type' => 'Offer',
-                        'name' => 'Custom Software Basis',
-                        'price' => '3490',
-                        'priceCurrency' => 'EUR'
-                    ]
-                ]
+                    'description' => 'Individuelle Softwarelösungen ab 3.490€ für Unternehmen & Startups.',
+                    'url' => route('software')
+                ],
             ],
             [
                 '@type' => 'ListItem',
@@ -102,17 +98,9 @@ new class extends Component {
                 'item' => [
                     '@type' => 'Service',
                     'name' => 'IT-Consulting & Prozessoptimierung',
-                    'description' => 'Digitale Transformation und Prozessoptimierung für Unternehmen. Analyse, Konzeption und Implementierung von IT-Lösungen.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ],
-                    'offers' => [
-                        '@type' => 'Offer',
-                        'priceCurrency' => 'EUR',
-                        'price' => '0' // Auf Anfrage
-                    ]
-                ]
+                    'description' => 'Digitale Transformation, Prozessanalyse & Optimierung.',
+                    'url' => route('consulting')
+                ],
             ],
             [
                 '@type' => 'ListItem',
@@ -120,46 +108,32 @@ new class extends Component {
                 'item' => [
                     '@type' => 'Service',
                     'name' => 'DevOps & Cloud Architektur',
-                    'description' => 'DevOps Engineering, Cloud-Architektur und System-Infrastruktur. Skalierbare und sichere IT-Umgebungen.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ]
-                ]
+                    'description' => 'Skalierbare Systeme, CI/CD Pipelines & Cloud-Infrastruktur.',
+                    'url' => route('cloud')
+                ],
             ],
             [
                 '@type' => 'ListItem',
                 'position' => 5,
                 'item' => [
                     '@type' => 'Service',
-                    'name' => 'UI/UX Design',
-                    'description' => 'Benutzerfreundliche Interfaces und optimierte User Experiences für Websites und Web-Apps.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ]
-                ]
+                    'name' => 'Design',
+                    'description' => 'Fyler, Visitenkarten, Moodboard & alles was das Herz begehrt.',
+                    'url' => route('design')
+                ],
             ],
-            [
-                '@type' => 'ListItem',
-                'position' => 6,
-                'item' => [
-                    '@type' => 'Service',
-                    'name' => 'Webentwicklung mit morderne Frameworks',
-                    'description' => 'Moderne Webentwicklung mit modernen Web-Frameworks für performante Web-Anwendungen.',
-                    'provider' => [
-                        '@type' => 'Organization',
-                        'name' => 'Webagentur Websters'
-                    ]
-                ]
-            ]
         ]);
 
-        // Zusätzlich: Organization-Info für lokale Suche
+        /*
+        |--------------------------------------------------------------------------
+        | ORGANIZATION INFO (LOCAL SEO BOOST)
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('mainEntity', [
             '@type' => 'Organization',
             'name' => 'Webagentur Websters',
-            'description' => 'Full-Service Webagentur aus Linz für Webdesign, Softwareentwicklung & IT-Consulting.',
+            'description' => 'Full-Service Webagentur aus Linz für Webdesign, Softwareentwicklung und IT-Consulting.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
@@ -181,6 +155,8 @@ new class extends Component {
     }
 };
 ?>
+
+
 
 <div>
     <livewire:services.components.hero />

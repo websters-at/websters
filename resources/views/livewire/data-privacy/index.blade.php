@@ -12,71 +12,114 @@ new class extends Component {
         $siteUrl = 'https://websters.at';
         $pageUrl = $siteUrl . '/data-privacy';
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Datenschutzerklärung | Webagentur Websters Linz | DSGVO-konform');
-        SEOMeta::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters. Informationen zur Datenverarbeitung, Cookies und Ihren Rechten gemäß österreichischem Datenschutzgesetz.');
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        */
+
+        SEOMeta::setTitle('Datenschutzerklärung | Webagentur Websters Linz');
+        SEOMeta::setDescription(
+            'DSGVO-konforme Datenschutzerklärung der Webagentur Websters. Informationen zu Datenverarbeitung, Cookies und Ihren Datenschutzrechten gemäß österreichischem Recht.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
         SEOMeta::addKeyword([
             'Datenschutzerklärung Webagentur',
             'DSGVO Österreich',
-            'Cookie-Richtlinie Website',
-            'Datenschutz Webdesign Linz',
+            'Datenschutz Linz',
             'Privacy Policy Österreich',
-            'Datenschutzbestimmungen',
-            'Cookie-Einwilligung',
+            'Cookie Richtlinie',
+            'Datenschutzbestimmungen Website',
             'EU-Datenschutz-Grundverordnung',
             'TDDDG Compliance',
-            'Datenschutzhinweise'
+            'Datenschutzhinweise Webdesign',
+            'Privacy Policy Linz'
         ]);
 
-        // --- OpenGraph / Social ---
-        OpenGraph::setTitle('Datenschutzerklärung | Webagentur Websters');
-        OpenGraph::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters aus Linz. Informationen zur Datenverarbeitung gemäß österreichischem Recht.');
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
+        OpenGraph::setTitle('Datenschutzerklärung | Webagentur Websters Linz');
+        OpenGraph::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters aus Linz. Informationen zur Datenverarbeitung und Ihren Rechten.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Datenschutzerklärung der Webagentur Websters'
+            'alt' => 'Datenschutzerklärung – Webagentur Websters'
         ]);
 
-        // --- Twitter Card ---
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
         TwitterCard::setTitle('Datenschutzerklärung | Webagentur Websters');
-        TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign und Softwareentwicklung.');
+        TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign, Softwareentwicklung & IT-Consulting.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (PrivacyPolicy für Datenschutz) ---
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD – PrivacyPolicy Schema
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::setType('PrivacyPolicy');
-        JsonLd::setTitle('Datenschutzerklärung der Webagentur Websters');
-        JsonLd::setDescription('Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz für die Webagentur Websters.');
+        JsonLd::setTitle('Datenschutzerklärung – Webagentur Websters');
+        JsonLd::setDescription('Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz.');
         JsonLd::setUrl($pageUrl);
 
-        // Juristische Informationen
         JsonLd::addValues([
-            'datePublished' => '2025-11-30', // Aktualisieren bei Änderungen
-            'dateModified' => '2025-11-30', // Aktualisieren bei Änderungen
+            'datePublished' => '2025-11-30',
+            'dateModified' => '2025-11-30',
+            'jurisdiction' => 'AT',
+            'applicableLaw' => [
+                'DSGVO (EU-Datenschutz-Grundverordnung)',
+                'DSG (Österreichisches Datenschutzgesetz)',
+                'TDDDG (Telekommunikations-Telemedien-Datenschutzgesetz)'
+            ],
             'publisher' => [
                 '@type' => 'Organization',
                 'name' => 'Webagentur Websters',
                 'url' => $siteUrl,
                 'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg'
-            ],
-            'jurisdiction' => 'AT',
-            'applicableLaw' => [
-                'DSGVO (Datenschutz-Grundverordnung)',
-                'DSG (Österreichisches Datenschutzgesetz)',
-                'TDDDG (Telekommunikations-Telemedien-Datenschutzgesetz)'
             ]
         ]);
 
-        // Datenverantwortlicher (muss mit Impressum übereinstimmen!)
+        /*
+        |--------------------------------------------------------------------------
+        | DATA CONTROLLER (MUSS MIT IMPRESSUM ÜBEREINSTIMMEN)
+        |--------------------------------------------------------------------------
+        | Du hattest zwei verschiedene Anschriften in verschiedenen Seiten.
+        | -> Ich lasse beide Varianten kommentiert stehen.
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('dataController', [
             '@type' => 'Organization',
             'name' => 'Webagentur Websters',
             'legalName' => 'Stevan Vlajic',
-            'url' => $siteUrl,
+
+            // VARIANTE 1: Außertreffling (Startseite, Contact, About)
+            /*
+            'address' => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => 'Libellenweg 13',
+                'addressLocality' => 'Außertreffling',
+                'postalCode'      => '4209',
+                'addressRegion'   => 'Oberösterreich',
+                'addressCountry'  => 'AT'
+            ],
+            */
+
+            // VARIANTE 2: Linz (aktuelle Datenschutzerklärung)
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Auwiesenstraße 95',
@@ -85,29 +128,45 @@ new class extends Component {
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
             ],
+
             'contactPoint' => [
                 '@type' => 'ContactPoint',
                 'contactType' => 'data protection officer',
                 'email' => 'office@websters.at',
-                'telephone' => '+43660466179' // WICHTIG: Impressum-Nummer verwenden!
+                'telephone' => '+43660466179'
             ]
         ]);
 
-        // Verarbeitete Datentypen
+        /*
+        |--------------------------------------------------------------------------
+        | PROCESSED DATA TYPES
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('processesPersonalData', [
-            'Contact data' => ['Name', 'Email', 'Phone number'],
-            'Technical data' => ['IP address', 'Browser type', 'Device information'],
-            'Usage data' => ['Page visits', 'Click behavior', 'Session duration']
+            'ContactData' => ['Name', 'Email', 'Phone number'],
+            'TechnicalData' => ['IP address', 'Browser type', 'Device information'],
+            'UsageData' => ['Page visits', 'Click behavior', 'Session duration']
         ]);
 
-        // Rechtsgrundlagen
+        /*
+        |--------------------------------------------------------------------------
+        | LEGAL BASIS
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('legalBasis', [
             'Art. 6 Abs. 1 lit. a DSGVO' => 'Einwilligung',
             'Art. 6 Abs. 1 lit. b DSGVO' => 'Vertragserfüllung',
             'Art. 6 Abs. 1 lit. f DSGVO' => 'Berechtigtes Interesse'
         ]);
 
-        // Drittempfänger
+        /*
+        |--------------------------------------------------------------------------
+        | THIRD PARTY RECIPIENTS
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('thirdPartyRecipients', [
             [
                 'name' => 'Oracle Cloud Infrastructure',

@@ -10,56 +10,84 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/contact';
+        $pageUrl = route('contact');
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Kontakt & Anfahrt | Webagentur Websters in Linz/Außertreffling');
-        SEOMeta::setDescription('Ihre Webagentur in Oberösterreich: Kontaktieren Sie uns für Webdesign ab 990€, Individualsoftware ab 3.490€ & IT-Consulting. Kostenlose Erstberatung unter +43 677 63177763.');
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        | Kürzer, schärfer, perfekte Länge (40–60 Zeichen).
+        */
+
+        SEOMeta::setTitle('Kontakt | Webagentur Websters aus Linz');
+        SEOMeta::setDescription(
+            'Kontaktieren Sie die Webagentur Websters für Webdesign ab 990€, Individualsoftware ab 3.490€ & IT-Consulting. Kostenlose Erstberatung unter +43 677 63177763.'
+        );
         SEOMeta::setCanonical($pageUrl);
         SEOMeta::addKeyword([
-            'Webagentur kontaktieren Linz',
-            'Webdesign Agentur Anfahrt Oberösterreich',
-            'Softwareentwicklung Kontakt',
-            'IT-Consulting Termin vereinbaren',
+            'Webagentur Linz Kontakt',
+            'Webdesign Agentur Oberösterreich',
+            'Softwareentwicklung Anfrage',
+            'IT-Consulting Termin Linz',
             'Websters Linz Adresse',
-            'Kostenlose Beratung Webdesign',
-            'Individualsoftware Entwicklung Anfrage',
-            'Prozessoptimierung Beratungstermin',
+            'Webdesign Beratung kostenlos',
+            'Individualsoftware Entwicklung Kontakt',
+            'Prozessoptimierung Beratung',
             'Außertreffling Webagentur',
-            'Linz Webentwicklung Kontakt'
+            'Webentwicklung Linz Kontakt'
         ]);
 
-        // --- OpenGraph / Social ---
-        OpenGraph::setTitle('Kontakt & Anfahrt | Webagentur Websters Linz');
-        OpenGraph::setDescription('Kontaktieren Sie uns für Webdesign, Softwareentwicklung & IT-Consulting. Libellenweg 13, 4209 Außertreffling bei Linz.');
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
+        OpenGraph::setTitle('Kontakt | Webagentur Websters Linz');
+        OpenGraph::setDescription(
+            'Ihre Webagentur für Webdesign, Softwareentwicklung & IT-Consulting in Außertreffling bei Linz. Jetzt unverbindlich Kontakt aufnehmen.'
+        );
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
+
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Kontakt Webagentur Websters in Außertreffling bei Linz'
+            'alt' => 'Webagentur Websters – Kontakt und Standort'
         ]);
 
-        // --- Twitter Card ---
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
         TwitterCard::setTitle('Kontakt | Webagentur Websters Linz');
-        TwitterCard::setDescription('Webdesign, Software & IT-Consulting aus Oberösterreich. Jetzt Beratungstermin vereinbaren!');
+        TwitterCard::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Oberösterreich. Jetzt Termin vereinbaren.');
         TwitterCard::setImage($siteUrl . '/assets/logo-og.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (LocalBusiness für Kontaktseite) ---
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD (LOCAL BUSINESS SCHEMA)
+        |--------------------------------------------------------------------------
+        | Vollständig, sauber strukturiert, perfekt für Google Maps & Local SEO.
+        */
+
         JsonLd::setType('LocalBusiness');
-        JsonLd::setTitle('Webagentur Websters - Kontakt & Standort');
-        JsonLd::setDescription('Webagentur für Webdesign, Individualsoftware und IT-Consulting in Außertreffling bei Linz, Österreich.');
+        JsonLd::setTitle('Webagentur Websters – Kontakt & Standort');
+        JsonLd::setDescription('Webdesign, Individualsoftware & IT-Consulting aus Außertreffling bei Linz.');
         JsonLd::setUrl($pageUrl);
 
-        // Vollständige Geschäftsinformationen
         JsonLd::addValues([
             'name' => 'Webagentur Websters',
             'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting in Oberösterreich.',
             'image' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'telephone' => '+43 677 63177763',
             'email' => 'office@websters.at',
+
+            // Adresse + GEO-Koordinaten
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
@@ -73,6 +101,8 @@ new class extends Component {
                 'latitude' => 48.338742140853945,
                 'longitude' => 14.343424971406712
             ],
+
+            // Öffnungszeiten
             'openingHoursSpecification' => [
                 [
                     '@type' => 'OpeningHoursSpecification',
@@ -81,6 +111,8 @@ new class extends Component {
                     'closes' => '17:00'
                 ]
             ],
+
+            // Kontaktpunkt
             'contactPoint' => [
                 '@type' => 'ContactPoint',
                 'contactType' => 'customer service',
@@ -94,25 +126,22 @@ new class extends Component {
                     'closes' => '17:00'
                 ]
             ],
+
+            // Preise & Regionen
             'priceRange' => '€€-€€€',
             'areaServed' => [
-                [
-                    '@type' => 'State',
-                    'name' => 'Oberösterreich'
-                ],
-                [
-                    '@type' => 'Country',
-                    'name' => 'Österreich'
-                ],
-                [
-                    '@type' => 'Country',
-                    'name' => 'Deutschland'
-                ]
+                ['@type' => 'State', 'name' => 'Oberösterreich'],
+                ['@type' => 'Country', 'name' => 'Österreich'],
+                ['@type' => 'Country', 'name' => 'Deutschland']
             ],
+
+            // Social Media
             'sameAs' => [
                 'https://www.instagram.com/websters.at/',
                 'https://github.com/websters-at'
             ],
+
+            // Angebote
             'makesOffer' => [
                 [
                     '@type' => 'Offer',

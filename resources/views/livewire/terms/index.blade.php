@@ -1,5 +1,4 @@
 <?php
-
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -7,79 +6,102 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
-    public function mount(): void
-    {
-        $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/terms';
+    public function mount(): void {
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Allgemeine Geschäftsbedingungen (AGB) | Webagentur Websters Linz');
-        SEOMeta::setDescription('AGB der Webagentur Websters für Webdesign, Softwareentwicklung & IT-Consulting. Vertragsbedingungen, Honorarvereinbarungen und rechtliche Bestimmungen für Projekte.');
+        $siteUrl = 'https://websters.at';
+        $pageUrl = route('terms');
+
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        */
+
+        SEOMeta::setTitle('AGB – Webagentur Websters Linz | Geschäftsbedingungen');
+        SEOMeta::setDescription(
+            'Allgemeine Geschäftsbedingungen (AGB) der Webagentur Websters für Webdesign, Softwareentwicklung & IT-Consulting. Vertragsbedingungen & rechtliche Hinweise.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
         SEOMeta::addKeyword([
             'AGB Webagentur',
-            'Allgemeine Geschäftsbedingungen Webdesign',
-            'Vertragsbedingungen Softwareentwicklung',
-            'AGB Österreich Webentwicklung',
-            'Projektvertrag IT-Dienstleistungen',
-            'Honorarvereinbarung Webagentur',
-            'Rechtliche Bestimmungen Linz',
-            'AGB für IT-Consulting',
-            'Geschäftsbedingungen Digitalagentur',
-            'Projekt-AGB Websters'
+            'AGB Webdesign Österreich',
+            'Softwareentwicklung Vertragsbedingungen',
+            'IT Consulting AGB',
+            'Websters Linz Geschäftsbedingungen',
+            'Webagentur Linz Geschäftsbedingungen',
+            'Projektvertrag IT Dienstleistungen',
+            'Websters AGB'
         ]);
 
-        // --- OpenGraph / Social ---
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
         OpenGraph::setTitle('AGB | Webagentur Websters Linz');
-        OpenGraph::setDescription('Allgemeine Geschäftsbedingungen für Webdesign, Softwareentwicklung und IT-Consulting Dienstleistungen.');
+        OpenGraph::setDescription('Allgemeine Geschäftsbedingungen für Webdesign, Softwareentwicklung & IT-Consulting.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'AGB der Webagentur Websters'
+            'alt'    => 'AGB der Webagentur Websters'
         ]);
 
-        // --- Twitter Card ---
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
         TwitterCard::setTitle('AGB | Webagentur Websters');
-        TwitterCard::setDescription('Allgemeine Geschäftsbedingungen für Webdesign & Softwareentwicklung.');
+        TwitterCard::setDescription('Allgemeine Geschäftsbedingungen der Webagentur Websters aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (TermsOfService für AGB) ---
-        JsonLd::setType('TermsOfService');
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD (LEGAL / AGB)
+        |--------------------------------------------------------------------------
+        | Struktur: WebPage → mainEntity (Organization) → hasPart (Legal sections)
+        |--------------------------------------------------------------------------
+        */
+
+        // Grundstruktur
+        JsonLd::setType('WebPage');
         JsonLd::setTitle('Allgemeine Geschäftsbedingungen der Webagentur Websters');
-        JsonLd::setDescription('AGB für Webdesign, Softwareentwicklung und IT-Consulting Dienstleistungen.');
+        JsonLd::setDescription('Rechtliche Bestimmungen, Vertragsbedingungen & AGB.');
         JsonLd::setUrl($pageUrl);
 
-        // Juristische Informationen
+        // Rechtsinformationen
         JsonLd::addValues([
-            'datePublished' => '2025-11-30', // Bei Änderungen aktualisieren
-            'dateModified' => '2025-11-30', // Bei Änderungen aktualisieren
-            'publisher' => [
-                '@type' => 'Organization',
-                'name' => 'Webagentur Websters',
-                'url' => $siteUrl,
-                'logo' => $siteUrl . '/assets/websters-full-logo.png'
-            ],
-            'jurisdiction' => 'AT', // Österreichisches Recht
+            'datePublished' => '2025-11-30',
+            'dateModified'  => '2025-11-30',
+            'jurisdiction'  => 'AT',
             'applicableLaw' => [
                 'Österreichisches Unternehmensgesetzbuch (UGB)',
                 'Allgemeines bürgerliches Gesetzbuch (ABGB)',
                 'Bundesgesetz gegen den unlauteren Wettbewerb (UWG)'
             ],
-            'serviceType' => [
-                'Webdesign',
-                'Software Development',
-                'IT Consulting',
-                'Digital Services'
-            ]
         ]);
 
+        /*
+        |--------------------------------------------------------------------------
+        | ORGANIZATION (MAIN ENTITY)
+        |--------------------------------------------------------------------------
+        */
 
-        // WICHTIG: Hier die Betriebsadresse für Local SEO!
-        JsonLd::addValues([
+        JsonLd::addValue('mainEntity', [
+            '@type' => 'Organization',
+            'name' => 'Webagentur Websters',
+            'legalName' => 'Stevan Vlajic',
+            'url'  => $siteUrl,
+            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            'description' => 'Webagentur für Webdesign, Softwareentwicklung & IT-Consulting.',
+
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
@@ -88,52 +110,78 @@ new class extends Component {
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
             ],
+
             'geo' => [
                 '@type' => 'GeoCoordinates',
-                'latitude' => 48.338742140853945,
+                'latitude'  => 48.338742140853945,
                 'longitude' => 14.343424971406712
             ],
-            'telephone' => '+43 677 63177763', // Projekttelefon
-            'openingHours' => 'Mo-Fr 09:00-17:00',
+
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer service',
+                'availableLanguage' => ['German'],
+                'telephone' => '+43 677 63177763',
+                'email' => 'office@websters.at',
+                'hoursAvailable' => [
+                    '@type' => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'],
+                    'opens'  => '09:00',
+                    'closes' => '17:00'
+                ]
+            ],
+
             'priceRange' => '€€-€€€'
         ]);
 
-        // Wichtige Vertragsbestandteile
+        /*
+        |--------------------------------------------------------------------------
+        | HAS PART – AGB TEILBEREICHE
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('hasPart', [
             [
                 '@type' => 'WebPageElement',
                 'name' => 'Honorarvereinbarung',
-                'description' => 'Regelungen zu Honorar, Zahlungsbedingungen und Rechnungslegung'
+                'description' => 'Regelungen zu Preisen, Zahlungsbedingungen & Rechnungslegung'
             ],
             [
                 '@type' => 'WebPageElement',
                 'name' => 'Haftungsbestimmungen',
-                'description' => 'Haftungsausschluss und Schadenersatzregelungen'
+                'description' => 'Haftungsausschluss & Schadenersatzklauseln'
             ],
             [
                 '@type' => 'WebPageElement',
                 'name' => 'Geheimhaltung',
-                'description' => 'Vertraulichkeitsvereinbarungen und Datenschutz'
+                'description' => 'Vertraulichkeitsregeln & Datenschutzgrundlagen'
             ],
             [
                 '@type' => 'WebPageElement',
                 'name' => 'Urheberrecht',
-                'description' => 'Regelungen zu geistigem Eigentum und Nutzungsrechten'
+                'description' => 'Nutzungsrechte & geistiges Eigentum an gelieferten Leistungen'
+            ],
+            [
+                '@type' => 'WebPageElement',
+                'name' => 'Vertragslaufzeit & Kündigung',
+                'description' => 'Regelungen zur Dauer von Projekten & Beendigungsmodalitäten'
             ]
         ]);
 
-        // Geltungsbereich und Bedingungen
+        /*
+        |--------------------------------------------------------------------------
+        | GEBIETE
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('areaServed', [
             ['@type' => 'Country', 'name' => 'Österreich'],
             ['@type' => 'Country', 'name' => 'Deutschland']
         ]);
-
-        // Vertragsdauer und Kündigung
-        JsonLd::addValue('termDuration', 'Projektbezogen');
-        JsonLd::addValue('gracePeriod', '14 Tage für Zahlungen');
     }
 };
 ?>
+
 <section
     class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
     id="agb"

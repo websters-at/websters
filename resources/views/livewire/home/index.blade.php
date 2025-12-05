@@ -11,71 +11,64 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-
-        // --- Meta / Basis SEO ---
-        SEOMeta::setTitle('Webagentur Websters | Webdesign, IT-Consulting & Individualsoftware aus Linz');
+        SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Linz | Webagentur Websters');
         SEOMeta::setDescription(
-            'Webagentur aus Linz: Wir entwickeln maßgeschneiderte Webdesign-Lösungen mit WordPress, erstellen Custom Software ab 3.490€ & optimieren mit IT-Consulting Ihre Geschäftsprozesse – für Startups & Unternehmen in Österreich.'
+            'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Linz für Unternehmen und Startups in Österreich.'
         );
         SEOMeta::setCanonical($siteUrl);
         SEOMeta::addKeyword([
             'Webagentur Linz',
-            'Webdesign Linz ab 990€',
-            'IT-Consulting Oberösterreich',
+            'Webdesign Linz',
+            'Softwareentwicklung Linz',
+            'IT-Consulting Österreich',
             'Individualsoftware Entwicklung',
-            'Custom Software ab 3490€',
-            'Laravel Entwicklung Österreich',
+            'Laravel Agentur Linz',
             'WordPress Agentur Linz',
-            'Prozessoptimierung mit IT',
-            'Softwareentwicklung für Startups',
-            'Web-Apps Entwicklung'
+            'Custom Software ab 3490€',
+            'Prozessoptimierung IT',
+            'Web Entwicklung Oberösterreich'
         ]);
 
-        // --- OpenGraph / Social Sharing ---
-        OpenGraph::setTitle('Websters – Webdesign & Individualsoftware aus Linz');
+        OpenGraph::setTitle('Webdesign & Softwareentwicklung | Webagentur Websters');
         OpenGraph::setDescription(
-            'Webdesign ab 990€ & Custom Software ab 3.490€. Ihre Agentur für WordPress, Laravel & IT-Consulting in Linz. Prozessoptimierung für Unternehmen.'
+            'Professionelles Webdesign ab 990€ & Custom Software ab 3.490€ – Ihre Agentur für WordPress, Laravel & IT-Consulting aus Linz.'
         );
         OpenGraph::setUrl($siteUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
-
-        // Optimierte Bilder für Social Media
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Webdesign & Development von Websters Linz'
+            'alt' => 'Webdesign & Development – Webagentur Websters Linz'
         ]);
 
-        // --- Twitter Card ---
-        TwitterCard::setTitle('Webagentur Websters | Linz');
-        TwitterCard::setDescription('Webdesign, IT-Consulting & Individualsoftware aus Linz');
+        TwitterCard::setTitle('Webdesign & Softwareentwicklung aus Linz | Websters');
+        TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Linz.');
         TwitterCard::setUrl($siteUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@WebstersAgency'); // Ihr Instagram als Twitter-Handle
+        TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD Structured Data (VERBESSERT) ---
+// --- JSON-LD ---
         JsonLd::setType('ProfessionalService');
-        JsonLd::setTitle('Webagentur Websters - IT-Dienstleistungen aus Linz');
-        JsonLd::setDescription('Webdesign, IT-Consulting und Individualsoftware-Entwicklung mit Sitz in Außertreffling bei Linz.');
+        JsonLd::setTitle('Webagentur Websters – Webdesign & Softwareentwicklung aus Linz');
+        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Außertreffling bei Linz.');
         JsonLd::setUrl($siteUrl);
 
-        // KORRIGIERTE ADRESSE (basierend auf Ihren Google Maps Daten)
         JsonLd::addValues([
             'address' => [
-                '@type'           => 'PostalAddress',
-                'streetAddress'   => 'Libellenweg 13',
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Libellenweg 13',
                 'addressLocality' => 'Außertreffling',
-                'postalCode'      => '4209',
-                'addressRegion'   => 'Oberösterreich',
-                'addressCountry'  => 'AT',
+                'postalCode' => '4209',
+                'addressRegion' => 'Oberösterreich',
+                'addressCountry' => 'AT',
             ],
             'contactPoint' => [
-                '@type'             => 'ContactPoint',
-                'contactType'       => 'customer service',
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer service',
                 'availableLanguage' => ['German'],
                 'telephone' => '+43 677 63177763',
-                'email'     => 'office@websters.at',
+                'email' => 'office@websters.at',
                 'hoursAvailable' => [
                     '@type' => 'OpeningHoursSpecification',
                     'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -83,13 +76,11 @@ new class extends Component {
                     'closes' => '17:00'
                 ]
             ],
-            // NEU: Geo-Koordinaten aus Ihrer Google Maps URL
             'geo' => [
                 '@type' => 'GeoCoordinates',
                 'latitude' => 48.338742140853945,
                 'longitude' => 14.343424971406712
             ],
-            // NEU: Preisbereich und Angebote
             'priceRange' => '€€-€€€',
             'makesOffer' => [
                 [
@@ -108,6 +99,7 @@ new class extends Component {
         ]);
 
         JsonLd::addImage($siteUrl . '/assets/images/logo-jsonld.jpg');
+
     }
 
 };

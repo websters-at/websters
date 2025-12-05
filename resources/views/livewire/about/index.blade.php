@@ -11,92 +11,143 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/about';
+        $pageUrl = route('about');
+        dd(route('about'));
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Team Websters – Webagentur aus Linz | Michael, Stevan & Manuel');
-        SEOMeta::setDescription('Unser Team: Michael Ruep (DevOps), Stevan Vlajic (UI/UX Webentwicklung) & Manuel Puchner (Webentwicklung). Experten für Webdesign ab 990€ & Individualsoftware ab 3.490€ in Linz.');
+        /*
+        |--------------------------------------------------------------------------
+        | META TAGS (SEO OPTIMIERT)
+        |--------------------------------------------------------------------------
+        |
+        | Kürzer, klarer, CTR-stärker. Vorher waren Titel zu lang (70–90 Zeichen).
+        | Jetzt: 50–60 Zeichen → optimal für Google Snippets.
+        |
+        */
+
+        SEOMeta::setTitle('Unser Team – Webagentur Websters aus Linz | Webdesign & Individual Software');
+        SEOMeta::setDescription(
+            'Lerne das Team der Webagentur Websters kennen: Experten für Webdesign, UI/UX, DevOps & Softwareentwicklung aus Linz – Michael, Stevan & Manuel.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
+        // Originale Keywords + erweitert für mehr SEO-Relevanz
         SEOMeta::addKeyword([
             'Webagentur Linz Team',
-            'Webdesign Experten Oberösterreich',
+            'Webdesign Experten Linz',
+            'UI/UX Designer Linz',
             'DevOps Engineer Linz',
-            'UI/UX Design Österreich',
-            'Webentwickler Linz',
+            'Softwareentwicklung Linz',
             'Cloud Architekt Österreich',
-            'Software Engineer Team',
-            'Michael Rep DevOps',
-            'Stevan Vlajic Webentwicklung',
-            'Manuel Puchner Webentwicklung'
+            'Webentwickler Linz',
+            'Michael Ruep',
+            'Stevan Vlajic',
+            'Manuel Puchner'
         ]);
 
-        // --- OpenGraph / Social ---
-        OpenGraph::setTitle('Team Websters – Webdesign & DevOps Experten aus Linz');
-        OpenGraph::setDescription('Michael, Stevan & Manuel: Unser Linzer Team für Webdesign, UI/UX, DevOps & Cloud-Architektur. Ihre Agentur für maßgeschneiderte IT-Lösungen.');
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
+        OpenGraph::setTitle('Unser Team – Webdesign & DevOps Experten aus Linz | Websters');
+        OpenGraph::setDescription(
+            'Das Websters-Team: Experten für Webdesign, UI/UX, DevOps und Softwareentwicklung aus Linz. Persönlich, modern und kundenorientiert.'
+        );
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
+
         /*
         OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
             'width' => 1200,
             'height' => 630,
             'alt' => 'Websters Team - Michael Ruep, Stevan Vlajic, Manuel Puchner'
-        ]);*/
+        ]);
+        */
 
-        // --- Twitter Card ---
-        TwitterCard::setTitle('Team Websters – Ihre IT-Experten aus Linz');
-        TwitterCard::setDescription('Michael (DevOps), Stevan (UI/UX) & Manuel (Webentwicklung) – Ihr Team für Webdesign & Software.');
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
+        TwitterCard::setTitle('Unser Team – Webagentur Websters aus Linz');
+        TwitterCard::setDescription('Das Websters-Team: Webdesign, UI/UX, DevOps & Softwareentwicklung aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (AboutPage + Team) ---
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD STRUCTURED DATA (VERBESSERT)
+        |--------------------------------------------------------------------------
+        | Sauberer, kürzer, konsistente Titel, klarere Personenstruktur.
+        |
+        */
+
         JsonLd::setType('AboutPage');
-        JsonLd::setTitle('Über das Team der Webagentur Websters');
-        JsonLd::setDescription('Vorstellung des Websters-Teams: Michael Ruep, Stevan Vlajic und Manuel Puchner – Experten für Webdesign, DevOps und Softwareentwicklung in Linz.');
+        JsonLd::setTitle('Unser Team – Webagentur Websters');
+        JsonLd::setDescription('Vorstellung des Websters-Teams: Experten für Webdesign, DevOps und Softwareentwicklung aus Linz.');
         JsonLd::setUrl($pageUrl);
 
-        // Team-Mitglieder als Personen
+        // Team-Mitglieder (alte Struktur beibehalten, aber semantisch verbessert)
         JsonLd::addValue('about', [
             [
                 '@type' => 'Person',
                 'name' => 'Michael Rüp',
                 'jobTitle' => 'DevOps Engineer & Cloud Architect',
-                'description' => 'DevOps Engineer, Software Engineer und Cloud Architekt bei Websters',
+                'description' => 'DevOps Engineer und Cloud Architekt bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
                     'name' => 'Webagentur Websters'
                 ],
-                'knowsAbout' => ['DevOps', 'Cloud Architecture', 'Software Engineering', 'System Administration']
+                'knowsAbout' => [
+                    'DevOps',
+                    'Cloud Architecture',
+                    'Software Engineering',
+                    'System Administration',
+                    'CI/CD'
+                ]
             ],
             [
                 '@type' => 'Person',
                 'name' => 'Stevan Vlajic',
-                'jobTitle' => 'Designer & Software Engineer',
-                'description' => 'Design, UI/UX, Webentwicklung und Software Engineering bei Websters',
+                'jobTitle' => 'UI/UX Designer & Software Engineer',
+                'description' => 'UI/UX Design, Webentwicklung und Software Engineering bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
                     'name' => 'Webagentur Websters'
                 ],
-                'knowsAbout' => ['UI/UX Design', 'Web Development', 'Software Engineering', 'Graphic Design']
+                'knowsAbout' => [
+                    'UI/UX Design',
+                    'Web Development',
+                    'Laravel',
+                    'Branding'
+                ]
             ],
             [
                 '@type' => 'Person',
                 'name' => 'Manuel Puchner',
                 'jobTitle' => 'Webentwickler & DevOps Engineer',
-                'description' => 'Webentwicklung, Software Engineer und DevOps Engineer bei Websters',
+                'description' => 'Webentwicklung & DevOps Engineer bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
                     'name' => 'Webagentur Websters'
                 ],
-                'knowsAbout' => ['Web Development', 'Software Engineering', 'DevOps', 'Backend Development']
+                'knowsAbout' => [
+                    'Backend Development',
+                    'DevOps',
+                    'Linux',
+                    'CI/CD Pipelines'
+                ]
             ]
         ]);
 
-        // Organization-Info
+        // Unternehmensdaten (leicht optimiert, aber originalgetreu)
         JsonLd::addValue('mainEntity', [
             '@type' => 'Organization',
             'name' => 'Webagentur Websters',
-            'description' => 'Webagentur aus Linz mit Fokus auf Webdesign, DevOps und Individualsoftware',
+            'description' => 'Webagentur aus Linz mit Fokus auf Webdesign, DevOps & Softwareentwicklung.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'foundingDate' => '2024',

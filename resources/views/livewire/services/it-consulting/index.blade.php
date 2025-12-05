@@ -10,62 +10,87 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/services/consulting';
+        $pageUrl = route('consulting');
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('IT-Consulting & Prozessoptimierung Linz | Websters Webagentur');
-        SEOMeta::setDescription('IT-Consulting in Oberösterreich: Wir optimieren Ihre Geschäftsprozesse mit maßgeschneiderter IT. Digitale Transformation, Workflow-Automatisierung & Effizienzsteigerung für Unternehmen.');
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        */
+
+        SEOMeta::setTitle('IT-Consulting Linz – Prozessoptimierung & Digitalisierung | Websters');
+        SEOMeta::setDescription(
+            'IT-Consulting aus Linz: Prozessoptimierung, digitale Transformation, Automatisierung & IT-Strategie. Optimieren Sie Ihre Geschäftsprozesse nachhaltig.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
         SEOMeta::addKeyword([
             'IT-Consulting Linz',
             'Prozessoptimierung Österreich',
             'Digitale Transformation Unternehmen',
             'Workflow Automatisierung',
-            'Geschäftsprozess-Optimierung',
-            'IT-Beratung Oberösterreich',
+            'Geschäftsprozess Optimierung',
+            'IT-Beratung Linz',
+            'Digitalisierung Beratung',
             'Business Process Optimization',
-            'Software Implementierung Beratung',
-            'Digitalisierungsberatung Linz',
-            'Effizienzsteigerung IT',
-            'IT-Strategie Entwicklung',
-            'Change Management IT',
             'Systemintegration Beratung',
-            'MVP Entwicklung Beratung Startups'
+            'Change Management IT',
+            'IT Strategie Entwicklung'
         ]);
 
-        // --- OpenGraph / Social ---
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
         OpenGraph::setTitle('IT-Consulting & Prozessoptimierung aus Linz | Websters');
-        OpenGraph::setDescription('Wir optimieren Ihre Geschäftsprozesse durch strategische IT-Beratung. Digitale Transformation für Unternehmen in Österreich.');
+        OpenGraph::setDescription('Strategische IT-Beratung zur digitalen Transformation & Prozessoptimierung. Für Unternehmen in Österreich & Deutschland.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
+
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'IT-Consulting und Prozessoptimierung Dienstleistungen'
+            'alt' => 'IT-Consulting und Prozessoptimierung – Webagentur Websters'
         ]);
 
-        // --- Twitter Card ---
-        TwitterCard::setTitle('IT-Consulting für Prozessoptimierung | Websters');
-        TwitterCard::setDescription('Digitale Transformation und Geschäftsprozess-Optimierung aus Linz. Wir machen Ihr Unternehmen effizienter.');
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
+        TwitterCard::setTitle('IT-Consulting & Prozessoptimierung | Webagentur Websters');
+        TwitterCard::setDescription('Digitale Transformation, Prozessanalyse & Automatisierung für Unternehmen in Österreich.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (Service mit spezifischer Beratung) ---
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD (Google-valid, korrigiert & optimiert)
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::setType('Service');
-        JsonLd::setTitle('IT-Consulting und Prozessoptimierung Dienstleistungen');
-        JsonLd::setDescription('Professionelle IT-Beratung für digitale Transformation und Geschäftsprozess-Optimierung in Unternehmen.');
+        JsonLd::setTitle('IT-Consulting & Prozessoptimierung');
+        JsonLd::setDescription('IT-Beratung für digitale Transformation, Effizienzsteigerung & Prozessoptimierung.');
         JsonLd::setUrl($pageUrl);
 
-        // Spezifische Service-Details für Beratung
-        JsonLd::addValue('serviceType', 'ConsultingService');
+        JsonLd::addValue('serviceType', 'IT Consulting');
         JsonLd::addValue('category', 'BusinessConsulting');
 
-        // Anbieter-Informationen
+        /*
+        |--------------------------------------------------------------------------
+        | PROVIDER (DEIN UNTERNEHMEN)
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('provider', [
             '@type' => 'ProfessionalService',
             'name' => 'Webagentur Websters',
-            'description' => 'IT-Consulting und Prozessoptimierung Spezialisten aus Linz',
+            'description' => 'IT-Consulting & Prozessoptimierung für Unternehmen in Österreich',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
@@ -81,26 +106,20 @@ new class extends Component {
                 'contactType' => 'consulting support',
                 'availableLanguage' => ['German'],
                 'telephone' => '+43 677 63177763',
-                'email' => 'office@websters.at',
-                'hoursAvailable' => [
-                    '@type' => 'OpeningHoursSpecification',
-                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                    'opens' => '09:00',
-                    'closes' => '17:00'
-                ]
+                'email' => 'office@websters.at'
             ],
             'employee' => [
                 [
                     '@type' => 'Person',
                     'name' => 'Michael Ruep',
                     'jobTitle' => 'DevOps Engineer & Cloud Architect',
-                    'knowsAbout' => ['Cloud Architecture', 'System Infrastructure', 'IT Strategy']
+                    'knowsAbout' => ['Cloud Architecture', 'IT Strategy', 'Infrastructure']
                 ],
                 [
                     '@type' => 'Person',
                     'name' => 'Stevan Vlajic',
-                    'jobTitle' => 'UI/UX Designer & Software Engineer',
-                    'knowsAbout' => ['User Experience', 'Digital Workflows', 'Process Design']
+                    'jobTitle' => 'UX Designer & Software Engineer',
+                    'knowsAbout' => ['User Experience', 'Process Design', 'Digital Workflows']
                 ],
                 [
                     '@type' => 'Person',
@@ -111,18 +130,19 @@ new class extends Component {
             ]
         ]);
 
-        // Beratungsangebote mit Preis "Auf Anfrage"
+        /*
+        |--------------------------------------------------------------------------
+        | OFFERS (BERATUNG – PREIS AUF ANFRAGE)
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('offers', [
             [
                 '@type' => 'Offer',
-                'name' => 'IT-Consulting Initial-Analyse',
-                'description' => 'Erstanalyse Ihrer Geschäftsprozesse und Identifikation von Optimierungspotenzialen.',
-                'priceSpecification' => [
-                    '@type' => 'UnitPriceSpecification',
-                    'priceType' => 'SRP',
-                    'priceCurrency' => 'EUR',
-                    'price' => '0' // Auf Anfrage
-                ],
+                'name' => 'IT-Consulting Initialanalyse',
+                'description' => 'Analyse Ihrer Geschäftsprozesse & Identifikation von Optimierungs-Potenzialen.',
+                'priceCurrency' => 'EUR',
+                'price' => 0, // Auf Anfrage
                 'itemOffered' => [
                     '@type' => 'Service',
                     'name' => 'Prozessanalyse'
@@ -131,49 +151,47 @@ new class extends Component {
             [
                 '@type' => 'Offer',
                 'name' => 'Digitale Transformations-Beratung',
-                'description' => 'Strategische Beratung zur digitalen Transformation Ihres Unternehmens.',
-                'priceSpecification' => [
-                    '@type' => 'UnitPriceSpecification',
-                    'priceType' => 'SRP',
-                    'priceCurrency' => 'EUR',
-                    'price' => '0' // Auf Anfrage
-                ]
+                'description' => 'Strategische Beratung zur digitalen Weiterentwicklung Ihres Unternehmens.',
+                'priceCurrency' => 'EUR',
+                'price' => 0
             ],
             [
                 '@type' => 'Offer',
                 'name' => 'Workflow-Automatisierung',
-                'description' => 'Konzeption und Implementierung automatisierter Arbeitsabläufe.',
-                'priceSpecification' => [
-                    '@type' => 'UnitPriceSpecification',
-                    'priceType' => 'SRP',
-                    'priceCurrency' => 'EUR',
-                    'price' => '0' // Auf Anfrage
-                ]
+                'description' => 'Planung & Implementierung automatisierter digitaler Workflows.',
+                'priceCurrency' => 'EUR',
+                'price' => 0
             ]
         ]);
 
-        // Beratungsbereiche
+        /*
+        |--------------------------------------------------------------------------
+        | REGIONS / ZIELGEBIETE
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('areaServed', [
             ['@type' => 'State', 'name' => 'Oberösterreich'],
-            ['@type' => 'State', 'name' => 'Niederösterreich'],
-            ['@type' => 'State', 'name' => 'Salzburg'],
-            ['@type' => 'State', 'name' => 'Steiermark'],
-            ['@type' => 'State', 'name' => 'Tirol'],
             ['@type' => 'Country', 'name' => 'Österreich'],
             ['@type' => 'Country', 'name' => 'Deutschland']
         ]);
 
-        // Spezifische Beratungsthemen
+        /*
+        |--------------------------------------------------------------------------
+        | OFFER KATALOG (THEMENBEREICHE)
+        |--------------------------------------------------------------------------
+        */
+
         JsonLd::addValue('hasOfferCatalog', [
             '@type' => 'OfferCatalog',
-            'name' => 'IT-Consulting Dienstleistungen',
+            'name' => 'IT-Consulting Katalog',
             'itemListElement' => [
                 [
                     '@type' => 'Offer',
                     'itemOffered' => [
                         '@type' => 'Service',
                         'name' => 'Prozessanalyse & Optimierung',
-                        'description' => 'Analyse und Optimierung von Geschäftsprozessen'
+                        'description' => 'Analyse und Optimierung bestehender Workflows.'
                     ]
                 ],
                 [
@@ -181,7 +199,7 @@ new class extends Component {
                     'itemOffered' => [
                         '@type' => 'Service',
                         'name' => 'Software-Auswahl & Implementierung',
-                        'description' => 'Beratung bei Softwareauswahl und Implementierung'
+                        'description' => 'Beratung & Begleitung bei Softwareintegration.'
                     ]
                 ],
                 [
@@ -189,7 +207,7 @@ new class extends Component {
                     'itemOffered' => [
                         '@type' => 'Service',
                         'name' => 'Digitalisierungsstrategie',
-                        'description' => 'Entwicklung einer Digitalisierungsstrategie'
+                        'description' => 'Strategische digitale Roadmaps für Unternehmen.'
                     ]
                 ],
                 [
@@ -197,9 +215,9 @@ new class extends Component {
                     'itemOffered' => [
                         '@type' => 'Service',
                         'name' => 'IT-Infrastruktur Consulting',
-                        'description' => 'Beratung zur IT-Infrastruktur'
+                        'description' => 'Beratung zur Modernisierung Ihrer IT-Systeme.'
                     ]
-                ]
+                ],
             ]
         ]);
     }

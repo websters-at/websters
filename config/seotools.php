@@ -9,7 +9,7 @@ return [
 
     'meta' => [
         'defaults' => [
-            'title'       => "Webagentur Websters – Webdesign, Webentwicklung & Individualsoftware aus Linz",
+            'title'       => "Webdesign & Softwareentwicklung aus Linz | Webagentur Websters",
             'titleBefore' => false,
             'description' => 'Webagentur aus Linz: Wir entwickeln maßgeschneiderte Webdesign-Lösungen mit WordPress, erstellen Custom Software ab 3.490€ & optimieren mit IT-Consulting Ihre Geschäftsprozesse – für Startups & Unternehmen in Österreich.',
             'separator'   => ' – ',
@@ -48,8 +48,8 @@ return [
 
     'opengraph' => [
         'defaults' => [
-            'title'       => 'Webagentur Websters – Webdesign ab 990€ & Individualsoftware aus Linz',
-            'description' => 'Professionelle Webagentur aus Linz/Umgebung: Webdesign ab 990€, Custom Software ab 3490€, IT-Consulting & Prozessoptimierung für Unternehmen.',
+            'title'       => 'Webdesign ab 990€ & Softwareentwicklung | Webagentur Websters',
+            'description' => 'Professionelle Webagentur aus Linz: Webdesign ab 990€, Custom Software ab 3490€, IT-Consulting & Prozessoptimierung.',
             'url'         => false,
             'type'        => 'website',
             'site_name'   => 'Webagentur Websters',

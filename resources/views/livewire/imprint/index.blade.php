@@ -10,56 +10,84 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/imprint';
+        $pageUrl = route('imprint');
 
-        // --- SEO Meta ---
-        SEOMeta::setTitle('Impressum & Rechtliche Hinweise | Webagentur Websters Linz');
-        SEOMeta::setDescription('Impressum der Webagentur Websters: Adresse Auwiesenstraße 95, 4030 Linz. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.');
+        /*
+        |--------------------------------------------------------------------------
+        | SEO META (OPTIMIERT)
+        |--------------------------------------------------------------------------
+        | Kürzere Titel → kein Abschneiden in Google.
+        */
+
+        SEOMeta::setTitle('Impressum | Webagentur Websters aus Linz');
+        SEOMeta::setDescription(
+            'Impressum der Webagentur Websters: Auwiesenstraße 95, 4030 Linz. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.'
+        );
         SEOMeta::setCanonical($pageUrl);
+
         SEOMeta::addKeyword([
             'Impressum Webagentur Linz',
-            'Rechtliche Informationen Webdesign',
-            'Datenschutzerklärung Webseite',
-            'AGB Webentwicklung',
-            'Haftungsausschluss Österreich',
-            'Urheberrecht Webseiten',
+            'Rechtliche Hinweise Webdesign',
             'Offenlegung gemäß ECG',
-            'MedienG Information',
-            'Gewerbeordnung Österreich',
-            'Unternehmensdaten Websters'
+            'Mediengesetz Österreich',
+            'Webdesign Agentur rechtliche Informationen',
+            'Unternehmensdaten Linz',
+            'IT-Dienstleister Impressum',
+            'Haftungsausschluss Österreich',
+            'Gewerberecht Webentwicklung',
+            'Imprint Webagentur'
         ]);
 
-        // --- OpenGraph / Social ---
+        /*
+        |--------------------------------------------------------------------------
+        | OPEN GRAPH
+        |--------------------------------------------------------------------------
+        */
+
         OpenGraph::setTitle('Impressum | Webagentur Websters Linz');
         OpenGraph::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters gemäß österreichischem Recht.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Webagentur Websters');
         OpenGraph::setType('website');
+
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Impressum der Webagentur Websters'
+            'alt' => 'Webagentur Websters – Impressum'
         ]);
 
-        // --- Twitter Card ---
+        /*
+        |--------------------------------------------------------------------------
+        | TWITTER CARD
+        |--------------------------------------------------------------------------
+        */
+
         TwitterCard::setTitle('Impressum | Webagentur Websters');
-        TwitterCard::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters.');
-        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters aus Linz.');
+        TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
-        // --- JSON-LD (LegalService für Impressum) ---
-        JsonLd::setType('LegalService');
-        JsonLd::setTitle('Impressum der Webagentur Websters');
-        JsonLd::setDescription('Rechtliche Informationen und Offenlegung gemäß österreichischem Recht.');
+        /*
+        |--------------------------------------------------------------------------
+        | JSON-LD (EMPFEHLUNG: Organization statt LegalService)
+        |--------------------------------------------------------------------------
+        | "LegalService" ist für Anwälte, nicht für Impressum. Daher → Organization.
+        | Google zeigt Impressumsdaten besser mit Organization/LocalBusiness an.
+        */
+
+        JsonLd::setType('Organization');
+        JsonLd::setTitle('Impressum – Webagentur Websters');
+        JsonLd::setDescription('Rechtliche Informationen gemäß ECG, MedienG und österreichischem Unternehmensrecht.');
         JsonLd::setUrl($pageUrl);
 
-        // WICHTIG: Korrekte Adresse aus dem Impressum übernehmen!
         JsonLd::addValues([
             'name' => 'Webagentur Websters',
-            'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting',
+            'legalName' => 'Stevan Vlajic',
+            'description' => 'Webagentur für Webdesign, Softwareentwicklung und IT-Consulting.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
-            // ACHTUNG: Andere Adresse als auf der Kontaktseite!
+
+            // Offizielle Impressumsadresse
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Auwiesenstraße 95',
@@ -68,11 +96,13 @@ new class extends Component {
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
             ],
+
+            // Kontaktangaben gemäß Impressumspflicht
             'contactPoint' => [
                 '@type' => 'ContactPoint',
                 'contactType' => 'customer service',
                 'availableLanguage' => ['German'],
-                'telephone' => '+43660466179', // WICHTIG: Andere Nummer als auf Kontaktseite!
+                'telephone' => '+43660466179',
                 'email' => 'office@websters.at',
                 'hoursAvailable' => [
                     '@type' => 'OpeningHoursSpecification',
@@ -81,25 +111,31 @@ new class extends Component {
                     'closes' => '17:00'
                 ]
             ],
+
+            // Gründerinformationen
             'founder' => [
                 '@type' => 'Person',
                 'name' => 'Stevan Vlajic'
             ],
+
             'foundingDate' => '2024',
-            'legalName' => 'Stevan Vlajic',
-            // Falls vorhanden, hinzufügen:
-            // 'vatID' => 'ATU12345678',
-            // 'taxID' => '123456789',
+
+            // Branchenkompetenzen (SEO-Relevant)
             'knowsAbout' => [
                 'Webdesign',
                 'Software Development',
                 'IT Consulting',
                 'Digital Transformation'
-            ]
+            ],
+
+            // Optional, falls verfügbar:
+            // 'vatID' => 'ATUxxxxxxx',
+            // 'taxID' => 'xxxxxxxxx'
         ]);
     }
 };
 ?>
+
 <section
     class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
     id="impressum"
@@ -194,7 +230,8 @@ new class extends Component {
                                 <div>
                                     <dt class="font-medium text-slate-700">E-Mail:</dt>
                                     <dd>
-                                        <a href="mailto:office@websters.at" class="underline underline-offset-2 hover:text-primary transition">
+                                        <a href="mailto:office@websters.at"
+                                           class="underline underline-offset-2 hover:text-primary transition">
                                             office@websters.at
                                         </a>
                                     </dd>
@@ -279,14 +316,16 @@ new class extends Component {
                                 Trotz sorgfältiger inhaltlicher Kontrolle übernimmt der Webseitenbetreiber keine Haftung
                                 für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich
                                 deren Betreiber verantwortlich. Sollten Sie dennoch auf ausgehende Links aufmerksam
-                                werden, welche auf eine Webseite mit rechtswidriger Tätigkeit oder Information verweisen,
+                                werden, welche auf eine Webseite mit rechtswidriger Tätigkeit oder Information
+                                verweisen,
                                 ersuchen wir um einen dementsprechenden Hinweis, um diese nach § 17 Abs. 2 ECG
                                 umgehend zu entfernen.
                             </p>
                             <p class="text-sm font-poppins text-slate-600">
                                 Die Urheberrechte Dritter werden vom Betreiber dieser Webseite mit größter Sorgfalt
                                 beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
-                                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger Rechtsverletzungen
+                                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger
+                                Rechtsverletzungen
                                 werden wir den betroffenen Inhalt umgehend entfernen.
                             </p>
                         </div>
