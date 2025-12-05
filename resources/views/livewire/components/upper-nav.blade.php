@@ -19,7 +19,8 @@
             </div>
 
             <div class="flex items-center gap-x-1">
-                <a href="https://www.instagram.com/websters.at/"
+                <a href="https://www.facebook.com/profile.php?id=61569509807621"
+                   target="_blank"
                    class="flex items-center gap-x-1 cursor-pointer text-[12px] text-white font-medium font-poppins">
                     <x-icon name="fab.facebook-f" class="text-white w-2"/>
                 </a>

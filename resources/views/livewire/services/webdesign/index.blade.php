@@ -49,7 +49,7 @@ new class extends Component {
         TwitterCard::setTitle('Webdesign Linz ab 990€ | Websters');
         TwitterCard::setDescription('Starter: 990€, Komplett: 1.990€, Premium: >2.990€. Professionelles Webdesign aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD Structured Data (KRITISCH für Preise!) ---
         JsonLd::setType('Service');

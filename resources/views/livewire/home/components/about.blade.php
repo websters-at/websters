@@ -35,14 +35,14 @@ new class extends Component {
                     Websters – Wer?
                 </div>
 
-                <div
+                <h1
                     class="mt-8 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold
                     text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight xl:w-3/4 fade-up"
                     :class="{ 'show': show }"
                     style="transition-delay: .25s"
                 >
                     Arbeite mit unserem engagierten Entwicklerteam
-                </div>
+                </h1>
 
                 <p
                     class="mt-4 text-sm font-poppins text-slate-600 sm:w-1/2 lg:w-11/12 fade-up"
@@ -75,6 +75,7 @@ new class extends Component {
                 <img
                     src="{{ asset('/assets/team.png') }}"
                     alt="Team"
+                    title="Team Stock Image"
                     class="
                         pointer-events-none rocket-float fade-up
                         w-full

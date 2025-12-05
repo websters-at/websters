@@ -15,7 +15,7 @@ new class extends Component {
         // --- Meta / Basis SEO ---
         SEOMeta::setTitle('Webagentur Websters | Webdesign, IT-Consulting & Individualsoftware aus Linz');
         SEOMeta::setDescription(
-            'Ihre Webagentur in Linz für Webdesign ab 990€, WordPress-Entwicklung, IT-Consulting & maßgeschneiderte Individualsoftware ab 3.490€. Wir optimieren Ihre Geschäftsprozesse mit Laravel, Livewire & Python.'
+            'Webagentur aus Linz: Wir entwickeln maßgeschneiderte Webdesign-Lösungen mit WordPress, erstellen Custom Software ab 3.490€ & optimieren mit IT-Consulting Ihre Geschäftsprozesse – für Startups & Unternehmen in Österreich.'
         );
         SEOMeta::setCanonical($siteUrl);
         SEOMeta::addKeyword([
@@ -52,7 +52,7 @@ new class extends Component {
         TwitterCard::setDescription('Webdesign, IT-Consulting & Individualsoftware aus Linz');
         TwitterCard::setUrl($siteUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at'); // Ihr Instagram als Twitter-Handle
+        TwitterCard::setSite('@WebstersAgency'); // Ihr Instagram als Twitter-Handle
 
         // --- JSON-LD Structured Data (VERBESSERT) ---
         JsonLd::setType('ProfessionalService');

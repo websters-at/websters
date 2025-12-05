@@ -69,13 +69,13 @@ new class extends Component {
         </div>
 
         <!-- Section Heading -->
-        <div
+        <h1
             class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.15s"
         >
             Unsere Dienstleistungen
-        </div>
+        </h1>
 
         <!-- Subtext -->
         <p

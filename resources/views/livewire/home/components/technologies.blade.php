@@ -3,17 +3,17 @@
     x-data="{
         show: false,
         logos: [
-            { src: '{{ asset('/assets/brand-logos/laravel.png') }}',     alt: 'Laravel',    href: 'https://laravel.com/' },
-            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}',   alt: 'Livewire',   href: 'https://laravel-livewire.com/' },
-            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}',     alt: 'NextJS',     href: 'https://nextjs.org/' },
-            { src: '{{ asset('/assets/brand-logos/python.png') }}',     alt: 'Python',     href: 'https://www.python.org/' },
-            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}',   alt: 'Tailwind',   href: 'https://tailwindcss.com/' },
-            { src: '{{ asset('/assets/brand-logos/react.png') }}',      alt: 'React',      href: 'https://react.dev/' },
-            { src: '{{ asset('/assets/brand-logos/mysql.png') }}',      alt: 'MySQL',      href: 'https://www.mysql.com/' },
-            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}',  alt: 'WordPress',  href: 'https://wordpress.org/' },
-            { src: '{{ asset('/assets/brand-logos/docker.png') }}',     alt: 'Docker',     href: 'https://www.docker.com/' },
-            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', alt: 'Kubernetes', href: 'https://kubernetes.io/' },
-            { src: '{{ asset('/assets/brand-logos/postgres.png') }}',   alt: 'Postgres',   href: 'https://www.postgresql.org/' },
+            { src: '{{ asset('/assets/brand-logos/laravel.png') }}', alt: 'Laravel', title: 'Laravel',   href: 'https://laravel.com/' },
+            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}',   alt: 'Livewire', title: 'Livewire',   href: 'https://laravel-livewire.com/' },
+            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}',     alt: 'NextJS',   title: 'NextJS',  href: 'https://nextjs.org/' },
+            { src: '{{ asset('/assets/brand-logos/python.png') }}',     alt: 'Python',  title: 'Python',   href: 'https://www.python.org/' },
+            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}',   alt: 'Tailwind', title: 'Tailwind v4',   href: 'https://tailwindcss.com/' },
+            { src: '{{ asset('/assets/brand-logos/react.png') }}',      alt: 'React',  title: 'React',   href: 'https://react.dev/' },
+            { src: '{{ asset('/assets/brand-logos/mysql.png') }}',      alt: 'MySQL',   title: 'MySQL',   href: 'https://www.mysql.com/' },
+            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}',  alt: 'WordPress', title: 'WordPress',  href: 'https://wordpress.org/' },
+            { src: '{{ asset('/assets/brand-logos/docker.png') }}',     alt: 'Docker',  title: 'Docker',   href: 'https://www.docker.com/' },
+            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', alt: 'Kubernetes', title: 'Kubernetes',  href: 'https://kubernetes.io/' },
+            { src: '{{ asset('/assets/brand-logos/postgres.png') }}',   alt: 'Postgres', title: 'Postgres',   href: 'https://www.postgresql.org/' },
         ],
         initMarquee() {
                 const marqueeContent = this.$el.querySelector('.marquee-content');
@@ -40,9 +40,9 @@
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <!-- Heading -->
         <div class="mb-8 lg:mb-16 text-left lg:text-center fade-up" :class="{ 'show': show }">
-            <h2 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
+            <h1 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
                 Unsere Haupttechnologien
-            </h2>
+            </h1>
             <p class="text-sm lg:text-base font-poppins text-slate-600 max-w-2xl lg:mx-auto">
                 Wir setzen auf moderne Technologien und Frameworks, um skalierbare, performante und zukunftssichere
                 Lösungen für unsere Kunden zu entwickeln.
@@ -68,6 +68,7 @@
                                 class="h-12 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
                                 :src="logo.src"
                                 :alt="logo.alt"
+                                :title="logo.title"
                             />
                         </a>
                     </li>

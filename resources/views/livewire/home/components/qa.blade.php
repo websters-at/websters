@@ -20,11 +20,11 @@ new class extends Component {
              :class="{ 'show': show }"
              style="transition-delay:.05s">
 
-            <div
+            <h1
                 class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-2/3 md:w-1/2 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-2/3"
             >
                 Häufige Fragen zu Websters
-            </div>
+            </h1>
 
             <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5">
                 Alles über unsere Webagentur, unsere Dienstleistungen und wie wir arbeiten.

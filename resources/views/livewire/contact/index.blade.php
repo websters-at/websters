@@ -45,7 +45,7 @@ new class extends Component {
         TwitterCard::setTitle('Kontakt | Webagentur Websters Linz');
         TwitterCard::setDescription('Webdesign, Software & IT-Consulting aus Oberösterreich. Jetzt Beratungstermin vereinbaren!');
         TwitterCard::setImage($siteUrl . '/assets/logo-og.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (LocalBusiness für Kontaktseite) ---
         JsonLd::setType('LocalBusiness');

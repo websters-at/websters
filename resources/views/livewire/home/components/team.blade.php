@@ -37,7 +37,8 @@
                     <img
                         class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
                         src="{{asset('/assets/people/stevan.png')}}"
-                        alt="Stevan V. - Webdesigner & Software Engineer"
+                        alt="Stevan Vlajic - Webdeveloper & Software Engineer"
+                        title="Stevan Vlajic - Webdeveloper & Software Engineer"
                         loading="lazy"
                     />
                 </figure>
@@ -103,6 +104,7 @@
                         class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
                         src="{{asset('/assets/people/michi.png')}}"
                         alt="Michael R. - DevOps Engineer & Cloud Architect"
+                        title="Michael Ruep - DevOps Engineer & Cloud Architect"
                         loading="lazy"
                     />
                 </figure>
@@ -158,7 +160,8 @@
                     <img
                         class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
                         src="{{asset('/assets/people/manuel.png')}}"
-                        alt="Manuel P. - Webentwickler & DevOps Engineer"
+                        alt="Manuel Puchner - Webentwickler & DevOps Engineer"
+                        title="Manuel Puchner - Webentwickler & DevOps Engineer"
                         loading="lazy"
                     />
                 </figure>

@@ -78,11 +78,11 @@ new class extends Component {
                     Nachricht senden
                 </div>
 
-                <div
+                <h1
                     class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight"
                 >
                     Wir sind für dich da
-                </div>
+                </h1>
 
                 <p class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12">
                     Melde dich bei unserem Entwicklerteam, wenn du Unterstützung brauchst,

@@ -47,7 +47,7 @@ new class extends Component {
         TwitterCard::setTitle('Team Websters – Ihre IT-Experten aus Linz');
         TwitterCard::setDescription('Michael (DevOps), Stevan (UI/UX) & Manuel (Webentwicklung) – Ihr Team für Webdesign & Software.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (AboutPage + Team) ---
         JsonLd::setType('AboutPage');

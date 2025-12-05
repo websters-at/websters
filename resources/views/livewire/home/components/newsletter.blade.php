@@ -69,13 +69,13 @@ new class extends Component {
             ></div>
 
             <!-- Headline -->
-            <div
+            <h1
                 class="mx-auto mt-6 text-center text-2xl text-brand-dark font-poppins font-bold sm:w-1/2 md:w-2/5 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-1/3 fade-up"
                 :class="{ 'show': show }"
                 style="transition-delay:.25s"
             >
                 Lust auf Angebote? <br> Trage dich ein
-            </div>
+            </h1>
 
             <!-- Form -->
             <form

@@ -47,7 +47,7 @@ new class extends Component {
         TwitterCard::setTitle('Unsere Leistungen | Webagentur Websters');
         TwitterCard::setDescription('Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting & DevOps aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (ItemList für Services) ---
         JsonLd::setType('ItemList');

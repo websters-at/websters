@@ -43,7 +43,7 @@ return [
             'norton'    => null,
         ],
 
-        'add_notranslate_class' => false,
+        'add_notranslate_class' => true,
     ],
 
     'opengraph' => [
@@ -63,7 +63,7 @@ return [
     'twitter' => [
         'defaults' => [
             'card'        => 'summary_large_image',
-            'site'        => '@websters.at', // Instagram als Twitter-Handle, falls kein Twitter
+            'site'        => '@WebstersAgency', // Instagram als Twitter-Handle, falls kein Twitter
             'creator'     => '@websters.at',
             'title'       => 'Webagentur Websters – IT-Lösungen aus Linz',
             'description' => 'Webdesign ab 990€ | Custom Software ab 3490€ | IT-Consulting für österreichische Unternehmen.',

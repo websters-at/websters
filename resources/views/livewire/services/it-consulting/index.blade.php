@@ -49,7 +49,7 @@ new class extends Component {
         TwitterCard::setTitle('IT-Consulting für Prozessoptimierung | Websters');
         TwitterCard::setDescription('Digitale Transformation und Geschäftsprozess-Optimierung aus Linz. Wir machen Ihr Unternehmen effizienter.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (Service mit spezifischer Beratung) ---
         JsonLd::setType('Service');

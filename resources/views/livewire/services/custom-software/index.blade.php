@@ -51,7 +51,7 @@ new class extends Component {
         TwitterCard::setTitle('Custom Software Entwicklung ab 3.490€ | Websters');
         TwitterCard::setDescription('Individuelle Softwarelösungen für Unternehmen in Linz und ganz Österreich.');
         TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (SoftwareDevelopment Service) ---
         JsonLd::setType('Service');

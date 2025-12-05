@@ -10,7 +10,6 @@ new class extends Component {
 
 }?>
 
-
 <div class="relative overflow-hidden"
      x-data="{ show: false }"
      x-intersect="show = true"
@@ -35,7 +34,7 @@ new class extends Component {
 
 
             <!-- HEADLINE -->
-            <div
+            <h1
                 x-data="typeWriter({
                     words: ['Webentwicklung', 'Webdesign', 'Custom Software', 'IT-Beratung'],
                     typeSpeed: 100,
@@ -61,7 +60,7 @@ new class extends Component {
                     <span x-text="currentText"></span>
                     <span class="cursor inline-block w-[0.6ch] font-black opacity-0">|</span>
                 </span>
-            </div>
+            </h1>
 
             <!-- SUBTEXT -->
             <p

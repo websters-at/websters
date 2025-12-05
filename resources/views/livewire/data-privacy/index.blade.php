@@ -45,7 +45,7 @@ new class extends Component {
         TwitterCard::setTitle('Datenschutzerklärung | Webagentur Websters');
         TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign und Softwareentwicklung.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (PrivacyPolicy für Datenschutz) ---
         JsonLd::setType('PrivacyPolicy');

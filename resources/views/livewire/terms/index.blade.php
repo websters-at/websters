@@ -45,7 +45,7 @@ new class extends Component {
         TwitterCard::setTitle('AGB | Webagentur Websters');
         TwitterCard::setDescription('Allgemeine Geschäftsbedingungen für Webdesign & Softwareentwicklung.');
         TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (TermsOfService für AGB) ---
         JsonLd::setType('TermsOfService');

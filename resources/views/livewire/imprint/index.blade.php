@@ -45,7 +45,7 @@ new class extends Component {
         TwitterCard::setTitle('Impressum | Webagentur Websters');
         TwitterCard::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters.');
         TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
-        TwitterCard::setSite('@websters.at');
+        TwitterCard::setSite('@WebstersAgency');
 
         // --- JSON-LD (LegalService für Impressum) ---
         JsonLd::setType('LegalService');
