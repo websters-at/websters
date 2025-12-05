@@ -12,7 +12,6 @@ new class extends Component {
     {
         $siteUrl = 'https://websters.at';
         $pageUrl = route('about');
-        dd(route('about'));
 
         /*
         |--------------------------------------------------------------------------
