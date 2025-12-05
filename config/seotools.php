@@ -1,90 +1,176 @@
 <?php
 /**
- * @see https://github.com/artesaos/seotools
+ * Volloptimierte SEO-Konfiguration für Artesaos/SEOTools
+ * Webagentur Websters - Linz/Außertreffling, Österreich
  */
 
 return [
     'inertia' => env('SEO_TOOLS_INERTIA', false),
+
     'meta' => [
-        /*
-         * The default configurations to be used by the meta generator.
-         */
-        'defaults'       => [
-            'title'        => "Webagentur Websters",
-            'titleBefore'  => false,
-            'description'  => 'Webagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.',
-            'separator'    => ' - ',
-            'keywords'     => [
-                'Webagentur Linz', 'Webentwicklung Oberösterreich', 'WordPress Entwicklung', 'Webdesign Linz', 'Custom Software',
-                'Logo Design', 'Branding', 'Webhosting', 'Website Migration', 'SPA Entwicklung',
-                'Laravel', 'NextJS', 'React', 'Tailwind CSS', 'Docker', 'Kubernetes',
-                'Webentwicklung Oberösterreich', 'Webagentur Österreich'
+        'defaults' => [
+            'title'       => "Webagentur Websters – Webdesign, Webentwicklung & Individualsoftware aus Linz",
+            'titleBefore' => false,
+            'description' => 'Webagentur aus Linz: Wir entwickeln maßgeschneiderte Webdesign-Lösungen mit WordPress, erstellen Custom Software ab 3.490€ & optimieren mit IT-Consulting Ihre Geschäftsprozesse – für Startups & Unternehmen in Österreich.',
+            'separator'   => ' – ',
+            'keywords'    => [
+                'Webagentur Linz',
+                'Webdesign Linz ab 990€',
+                'Webentwicklung Oberösterreich',
+                'Individualsoftware Entwicklung',
+                'Custom Software ab 3490€',
+                'IT Consulting Österreich',
+                'Prozessoptimierung mit IT',
+                'Landing Page Entwicklung',
+                'WordPress Entwicklung',
+                'Software-Entwicklung für Startups',
+                'Hosting Linz',
+                'Website Migration',
+                'Digitalisierungsberatung Oberösterreich',
+                'Webapplikationen Entwicklung',
+                'Maßgeschneiderte Softwarelösungen',
             ],
-            'canonical'    => 'full',
-            'robots'       => 'all',
+            'canonical'   => 'full',
+            'robots'      => 'index, follow',
         ],
-        /*
-         * Webmaster tags are always added.
-         */
+
         'webmaster_tags' => [
             'google'    => 'google-site-verification=pGh45u7BdgfhkpzFjUQm1T6RdzQTWRGJpF4aczKHTgo',
-            'bing'      => null, # same as google because of import
-            'alexa'     => null, # not needed anymore
+            'bing'      => null,
+            'alexa'     => null,
             'pinterest' => null,
-            'yandex'    => "a3d23409dbeb72e9",
+            'yandex'    => null,
             'norton'    => null,
         ],
 
         'add_notranslate_class' => false,
     ],
+
     'opengraph' => [
-        /*
-         * The default configurations to be used by the opengraph generator.
-         */
         'defaults' => [
-            'title'       => 'Websters - Webentwickler aus Linz',
-            'description' => 'Professionelle Webagntur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
+            'title'       => 'Webagentur Websters – Webdesign ab 990€ & Individualsoftware aus Linz',
+            'description' => 'Professionelle Webagentur aus Linz/Umgebung: Webdesign ab 990€, Custom Software ab 3490€, IT-Consulting & Prozessoptimierung für Unternehmen.',
+            'url'         => false,
             'type'        => 'website',
             'site_name'   => 'Webagentur Websters',
+            'locale'      => 'de_AT',
             'images'      => [
-            //    asset('assets/websters-full-logo.png') => ['width' => 400, 'height' => 400],
+                 'https://websters.at/assets/websters-full-logo.png', // Ihr angegebenes Bild
             ],
         ],
     ],
+
     'twitter' => [
-        /*
-         * The default values to be used by the twitter cards generator.
-         */
         'defaults' => [
-            //'card'        => 'summary',
-            //'site'        => '@LuizVinicius73',
+            'card'        => 'summary_large_image',
+            'site'        => '@websters.at', // Instagram als Twitter-Handle, falls kein Twitter
+            'creator'     => '@websters.at',
+            'title'       => 'Webagentur Websters – IT-Lösungen aus Linz',
+            'description' => 'Webdesign ab 990€ | Custom Software ab 3490€ | IT-Consulting für österreichische Unternehmen.',
+            'image'       => 'https://websters.at/assets/websters-full-logo.png',
         ],
     ],
+
     'json-ld' => [
-        /*
-         * The default configurations to be used by the json-ld generator.
-         */
         'defaults' => [
-            'title'        => "Websters",
-            'description' => 'Webagentur aus Linz: WordPress-Entwicklung, Custom Software, Webdesign, Logo-Design, Branding, Fotografie, Hosting & Website-Migration. Komplette Webentwicklung von A-Z.', // set false to total remove
-            'url'         => 'full', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'type'        => 'Organization',
-            'images'      => [
-              //  asset('assets/websters-full-logo.png') => ['width' => 400, 'height' => 400],
-            ],
+            '@context'    => 'https://schema.org',
+            '@type'       => 'ProfessionalService',
+            'name'        => 'Webagentur Websters',
+            'description' => 'IT-Consulting, Webdesign und Individualsoftware-Entwicklung mit Sitz in Außertreffling bei Linz, Österreich.',
+            'url'         => 'https://websters.at',
+            'telephone'   => '+43 677 63177763',
+            'email'       => 'office@websters.at',
+
+            // KORRIGIERTE ADRESSE basierend auf Google Maps
             'address' => [
-                '@type' => 'PostalAddress',
-                'streetAddress' => 'Auswiesenstraße 95',
-                'addressLocality' => 'Linz',
-                'postalCode' => '4300',
-                'addressRegion' => 'Oberösterreich',
-                'addressCountry' => 'AT'
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => 'Libellenweg 13',
+                'addressLocality' => 'Außertreffling',
+                'postalCode'      => '4209',
+                'addressRegion'   => 'Oberösterreich',
+                'addressCountry'  => 'AT',
             ],
+
+            // Präzise Geo-Koordinaten aus Ihrer Google Maps URL
+            'geo' => [
+                '@type'     => 'GeoCoordinates',
+                'latitude'  => 48.338742140853945,
+                'longitude' => 14.343424971406712,
+            ],
+
             'contactPoint' => [
-                '@type' => 'ContactPoint',
-                'contactType' => 'customer service',
-                'availableLanguage' => ['German']
+                '@type'             => 'ContactPoint',
+                'contactType'       => 'customer service',
+                'availableLanguage' => ['German', 'English'],
+                'telephone'         => '+43 677 63177763',
+                'email'             => 'office@websters.at',
+                'hoursAvailable'    => [
+                    '@type' => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                    'opens'    => '09:00',
+                    'closes'   => '17:00',
+                ],
+            ],
+
+            // OPTIMIERT: Mit konkreten Preisen und mehr Dienstleistungen
+            'makesOffer' => [
+                [
+                    '@type'           => 'Offer',
+                    'name'            => 'Webdesign Starter',
+                    'description'     => 'Professionelles Webdesign für kleine Unternehmen und Startups',
+                    'priceSpecification' => [
+                        '@type' => 'PriceSpecification',
+                        'priceCurrency' => 'EUR',
+                        'price' => '990',
+                    ]
+                ],
+                [
+                    '@type'           => 'Offer',
+                    'name'            => 'IT-Consulting & Prozessoptimierung',
+                    'description'     => 'Digitalisierungsberatung und Prozessoptimierung für Unternehmen',
+                    'priceSpecification' => [
+                        '@type' => 'PriceSpecification',
+                        'priceCurrency' => 'EUR',
+                        'price' => '0', // Auf Anfrage
+                    ]
+                ],
+                [
+                    '@type'           => 'Offer',
+                    'name'            => 'Custom Software Entwicklung',
+                    'description'     => 'Maßgeschneiderte Softwarelösungen für spezifische Geschäftsprozesse',
+                    'priceSpecification' => [
+                        '@type' => 'PriceSpecification',
+                        'priceCurrency' => 'EUR',
+                        'price' => '3490',
+                    ]
+                ],
+                [
+                    '@type'           => 'Offer',
+                    'name'            => 'Individualsoftware-Entwicklung',
+                    'description'     => 'Komplette Individualsoftware für komplexe Geschäftsanforderungen',
+                    'priceSpecification' => [
+                        '@type' => 'PriceSpecification',
+                        'priceCurrency' => 'EUR',
+                        'price' => '0', // Auf Anfrage (höhere Budgets)
+                    ]
+                ],
+            ],
+
+            // Social Media Profile - nur Instagram aktiv
+            'sameAs' => [
+                'https://www.instagram.com/websters.at/',
+                'https://github.com/websters-at',
+            ],
+
+            'logo' => 'https://websters.at' . '/assets/images/logo.png',
+            'image' => [
+                'https://websters.at' . '/assets/websters-full-logo.png',
+            ],
+
+            // Zusätzlich: Preisbereich für das gesamte Unternehmen
+            'priceRange' => '€€-€€€',
+            'areaServed' => [
+                'AT', 'DE'
             ],
         ],
     ],

@@ -27,10 +27,19 @@ class GenerateSitemap extends Command
      */
     public function handle(): void
     {
-        SitemapGenerator::create('127.0.0.1:8080')
+        SitemapGenerator::create('https://websters.at')
             ->getSitemap()
             ->add(Url::create('/'))
+            ->add(Url::create('/projects'))
+            ->add(Url::create('/contact'))
             ->add(Url::create('/about'))
+            ->add(Url::create('/services'))
+            ->add(Url::create('/services/webdesign'))
+            ->add(Url::create('/services/consulting'))
+            ->add(Url::create('/services/software'))
+            ->add(Url::create('/imprint'))
+            ->add(Url::create('/data-privacy'))
+            ->add(Url::create('/terms'))
             ->writeToFile(public_path('sitemap.xml'));
     }
 }

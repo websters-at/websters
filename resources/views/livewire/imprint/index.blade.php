@@ -1,10 +1,105 @@
 <?php
 
 use Livewire\Volt\Component;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public function mount(): void
+    {
+        $siteUrl = 'https://websters.at';
+        $pageUrl = $siteUrl . '/imprint';
 
-}; ?>
+        // --- SEO Meta ---
+        SEOMeta::setTitle('Impressum & Rechtliche Hinweise | Webagentur Websters Linz');
+        SEOMeta::setDescription('Impressum der Webagentur Websters: Adresse Auwiesenstraße 95, 4030 Linz. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.');
+        SEOMeta::setCanonical($pageUrl);
+        SEOMeta::addKeyword([
+            'Impressum Webagentur Linz',
+            'Rechtliche Informationen Webdesign',
+            'Datenschutzerklärung Webseite',
+            'AGB Webentwicklung',
+            'Haftungsausschluss Österreich',
+            'Urheberrecht Webseiten',
+            'Offenlegung gemäß ECG',
+            'MedienG Information',
+            'Gewerbeordnung Österreich',
+            'Unternehmensdaten Websters'
+        ]);
+
+        // --- OpenGraph / Social ---
+        OpenGraph::setTitle('Impressum | Webagentur Websters Linz');
+        OpenGraph::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters gemäß österreichischem Recht.');
+        OpenGraph::setUrl($pageUrl);
+        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setType('website');
+        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+            'width' => 1200,
+            'height' => 630,
+            'alt' => 'Impressum der Webagentur Websters'
+        ]);
+
+        // --- Twitter Card ---
+        TwitterCard::setTitle('Impressum | Webagentur Websters');
+        TwitterCard::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters.');
+        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setSite('@websters.at');
+
+        // --- JSON-LD (LegalService für Impressum) ---
+        JsonLd::setType('LegalService');
+        JsonLd::setTitle('Impressum der Webagentur Websters');
+        JsonLd::setDescription('Rechtliche Informationen und Offenlegung gemäß österreichischem Recht.');
+        JsonLd::setUrl($pageUrl);
+
+        // WICHTIG: Korrekte Adresse aus dem Impressum übernehmen!
+        JsonLd::addValues([
+            'name' => 'Webagentur Websters',
+            'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting',
+            'url' => $siteUrl,
+            'logo' => $siteUrl . '/assets/websters-full-logo.png',
+            // ACHTUNG: Andere Adresse als auf der Kontaktseite!
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Auwiesenstraße 95',
+                'addressLocality' => 'Linz',
+                'postalCode' => '4030',
+                'addressRegion' => 'Oberösterreich',
+                'addressCountry' => 'AT'
+            ],
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer service',
+                'availableLanguage' => ['German'],
+                'telephone' => '+43660466179', // WICHTIG: Andere Nummer als auf Kontaktseite!
+                'email' => 'office@websters.at',
+                'hoursAvailable' => [
+                    '@type' => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                    'opens' => '09:00',
+                    'closes' => '17:00'
+                ]
+            ],
+            'founder' => [
+                '@type' => 'Person',
+                'name' => 'Stevan Vlajic'
+            ],
+            'foundingDate' => '2024',
+            'legalName' => 'Stevan Vlajic',
+            // Falls vorhanden, hinzufügen:
+            // 'vatID' => 'ATU12345678',
+            // 'taxID' => '123456789',
+            'knowsAbout' => [
+                'Webdesign',
+                'Software Development',
+                'IT Consulting',
+                'Digital Transformation'
+            ]
+        ]);
+    }
+};
+?>
 <section
     class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
     id="impressum"

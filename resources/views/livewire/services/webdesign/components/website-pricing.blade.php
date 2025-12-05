@@ -212,9 +212,7 @@ new class extends Component {
                         >Anfragen</a>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>

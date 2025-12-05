@@ -1,11 +1,123 @@
 <?php
 
 use Livewire\Volt\Component;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public function mount(): void
+    {
+        $siteUrl = 'https://websters.at';
+        $pageUrl = $siteUrl . '/data-privacy';
 
-}; ?>
+        // --- SEO Meta ---
+        SEOMeta::setTitle('Datenschutzerklärung | Webagentur Websters Linz | DSGVO-konform');
+        SEOMeta::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters. Informationen zur Datenverarbeitung, Cookies und Ihren Rechten gemäß österreichischem Datenschutzgesetz.');
+        SEOMeta::setCanonical($pageUrl);
+        SEOMeta::addKeyword([
+            'Datenschutzerklärung Webagentur',
+            'DSGVO Österreich',
+            'Cookie-Richtlinie Website',
+            'Datenschutz Webdesign Linz',
+            'Privacy Policy Österreich',
+            'Datenschutzbestimmungen',
+            'Cookie-Einwilligung',
+            'EU-Datenschutz-Grundverordnung',
+            'TDDDG Compliance',
+            'Datenschutzhinweise'
+        ]);
 
+        // --- OpenGraph / Social ---
+        OpenGraph::setTitle('Datenschutzerklärung | Webagentur Websters');
+        OpenGraph::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters aus Linz. Informationen zur Datenverarbeitung gemäß österreichischem Recht.');
+        OpenGraph::setUrl($pageUrl);
+        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setType('website');
+        OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
+            'width' => 1200,
+            'height' => 630,
+            'alt' => 'Datenschutzerklärung der Webagentur Websters'
+        ]);
+
+        // --- Twitter Card ---
+        TwitterCard::setTitle('Datenschutzerklärung | Webagentur Websters');
+        TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign und Softwareentwicklung.');
+        TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
+        TwitterCard::setSite('@websters.at');
+
+        // --- JSON-LD (PrivacyPolicy für Datenschutz) ---
+        JsonLd::setType('PrivacyPolicy');
+        JsonLd::setTitle('Datenschutzerklärung der Webagentur Websters');
+        JsonLd::setDescription('Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz für die Webagentur Websters.');
+        JsonLd::setUrl($pageUrl);
+
+        // Juristische Informationen
+        JsonLd::addValues([
+            'datePublished' => '2025-11-30', // Aktualisieren bei Änderungen
+            'dateModified' => '2025-11-30', // Aktualisieren bei Änderungen
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => 'Webagentur Websters',
+                'url' => $siteUrl,
+                'logo' => $siteUrl . '/assets/websters-full-logo.png'
+            ],
+            'jurisdiction' => 'AT', // Österreich
+            'applicableLaw' => [
+                'DSGVO (Datenschutz-Grundverordnung)',
+                'DSG (Österreichisches Datenschutzgesetz)',
+                'TDDDG (Telekommunikations-Telemedien-Datenschutzgesetz)'
+            ]
+        ]);
+
+        // Datenverantwortlicher (muss mit Impressum übereinstimmen!)
+        JsonLd::addValue('dataController', [
+            '@type' => 'Organization',
+            'name' => 'Webagentur Websters',
+            'legalName' => 'Stevan Vlajic',
+            'url' => $siteUrl,
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Auwiesenstraße 95',
+                'addressLocality' => 'Linz',
+                'postalCode' => '4030',
+                'addressRegion' => 'Oberösterreich',
+                'addressCountry' => 'AT'
+            ],
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'data protection officer',
+                'email' => 'office@websters.at',
+                'telephone' => '+43660466179' // WICHTIG: Impressum-Nummer verwenden!
+            ]
+        ]);
+
+        // Verarbeitete Datentypen
+        JsonLd::addValue('processesPersonalData', [
+            'Contact data' => ['Name', 'Email', 'Phone number'],
+            'Technical data' => ['IP address', 'Browser type', 'Device information'],
+            'Usage data' => ['Page visits', 'Click behavior', 'Session duration']
+        ]);
+
+        // Rechtsgrundlagen
+        JsonLd::addValue('legalBasis', [
+            'Art. 6 Abs. 1 lit. a DSGVO' => 'Einwilligung',
+            'Art. 6 Abs. 1 lit. b DSGVO' => 'Vertragserfüllung',
+            'Art. 6 Abs. 1 lit. f DSGVO' => 'Berechtigtes Interesse'
+        ]);
+
+        // Drittempfänger
+        JsonLd::addValue('thirdPartyRecipients', [
+            [
+                'name' => 'Oracle Cloud Infrastructure',
+                'purpose' => 'Hosting der Website',
+                'location' => 'EU'
+            ]
+        ]);
+    }
+};
+?>
 <section
     class="mt-32 lg:mt-16 mb-8 lg:mb-4 lg:pt-20 relative"
     id="datenschutz"

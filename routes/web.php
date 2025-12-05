@@ -20,6 +20,12 @@ Volt::route('/services', 'services.index')
 Volt::route('/services/webdesign', 'services.webdesign.index')
     ->name('webdesign');
 
+Volt::route('/services/consulting', 'services.it-consulting.index')
+    ->name('consulting');
+
+Volt::route('/services/software', 'services.custom-software.index')
+    ->name('software');
+
 Volt::route('/imprint', 'imprint.index')
     ->name('imprint');
 

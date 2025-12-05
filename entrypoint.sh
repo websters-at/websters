@@ -12,6 +12,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+php artisan websters:generate-sitemap
+
 echo "Starting FrankenPHP server..."
 
 exec php artisan octane:frankenphp --host=0.0.0.0 --port=80 --workers=4 --watch
