@@ -34,7 +34,7 @@ new class extends Component {
 
 
             <!-- HEADLINE -->
-            <h1
+            <div
                 x-data="typeWriter({
                     words: ['Webentwicklung', 'Webdesign', 'Custom Software', 'IT-Beratung'],
                     typeSpeed: 100,
@@ -60,7 +60,7 @@ new class extends Component {
                     <span x-text="currentText"></span>
                     <span class="cursor inline-block w-[0.6ch] font-black opacity-0">|</span>
                 </span>
-            </h1>
+            </div>
 
             <!-- SUBTEXT -->
             <p
