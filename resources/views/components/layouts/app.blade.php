@@ -20,6 +20,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
+
 <livewire:components.nav/>
 
 
@@ -36,3 +37,4 @@
 
 </body>
 </html>
+

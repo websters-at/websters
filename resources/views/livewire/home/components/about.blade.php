@@ -54,15 +54,16 @@ new class extends Component {
                     übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste Level.
                 </p>
 
-                <a
-                    href="/#contact"
-                    class="jiggle-every-few-seconds btn-fancy text-sm font-medium font-poppins bg-primary text-white
-                    px-5 py-3 rounded-xl mt-8 flex items-center justify-center whitespace-nowrap lg:mt-9 fade-up"
+
+                <div
+                    class="mt-4 flex flex-wrap items-center justify-center gap-3 lg:mt-5 fade-up"
                     :class="{ 'show': show }"
-                    style="transition-delay: .45s"
+                    style="transition-delay:.3s"
                 >
-                    Schreibe uns
-                </a>
+                    <a wire:navigate href="{{route('about')}}" class="btn btn-sm lg:btn-md btn-primary mt-4 btn-fancy text-white">Mehr zu Websters</a>
+                    <a href="#contact" class="jiggle-every-few-seconds btn btn-sm btn-neutral lg:btn-md mt-4 btn-fancy text-white">Schreibe uns</a>
+                </div>
+
             </div>
 
             <!-- IMAGE SECOND (mobile and desktop) -->

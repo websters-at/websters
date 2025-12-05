@@ -21,27 +21,24 @@ new class extends Component {};
                    bg-[#4bc8e7]/20 blur-3xl opacity-30 rounded-full">
         </div>
 
-        <!-- Grid Pattern -->
-        <div class="absolute inset-0 opacity-[0.09]"
-             style="background-image:
-                 linear-gradient(#4bc8e7 1px, transparent 1px),
-                 linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
-                 background-size: 60px 60px;">
+
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.2]"
+                 style="
+                background-image:
+                    linear-gradient(#4bc8e7 1px, transparent 1px),
+                    linear-gradient(90deg, #4bc8e7 1px, transparent 1px);
+                background-size: 50px 50px;">
+            </div>
         </div>
+
+        <div class="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-gradient-to-t from-white to-transparent -z-10"></div>
+
+
     </div>
 
 
     <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
-
-        <!-- Badge -->
-        <div
-            class="inline-flex items-center justify-center rounded-full font-poppins
-                   font-medium text-white bg-primary/90 px-3 py-1 text-xs sm:text-sm fade-up"
-            :class="{ 'show': show }"
-            style="transition-delay:.1s"
-        >
-            Termin buchen
-        </div>
 
         <!-- Headline -->
         <h2

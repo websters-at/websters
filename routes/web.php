@@ -14,7 +14,7 @@ Volt::route('/contact', 'contact.index')
 Volt::route('/about', 'about.index')
     ->name('about');
 
-Volt::route('/services', 'services.webdesign.index')
+Volt::route('/services', 'services.index')
     ->name('services');
 
 Volt::route('/services/webdesign', 'services.webdesign.index')

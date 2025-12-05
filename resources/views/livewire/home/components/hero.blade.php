@@ -31,16 +31,8 @@ new class extends Component {
 
     <section class="pt-32 lg:pt-52 lg:pb-12 md:pt-40" id="home">
 
-        <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col items-center text-center md:items-center md:text-center">
+        <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col md:items-center md:text-center">
 
-            <!-- BADGE -->
-            <div
-                class="inline-flex items-center justify-center rounded-full font-poppins font-medium text-white badge badge-secondary badge-lg sm:badge-xl px-3 py-1 text-xs sm:text-sm fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.1s"
-            >
-                Webagentur Websters
-            </div>
 
             <!-- HEADLINE -->
             <div
@@ -80,7 +72,7 @@ new class extends Component {
                 style="transition-delay:.3s"
             >
                 Egal ob du eine neue Website, eine individuelle Software oder einfach IT-Beratung brauchst –
-                das Team von Websters steht dir immer gerne zur Seite.
+                Das Team von Websters steht dir immer gerne zur Seite.
             </p>
         </div>
 

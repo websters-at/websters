@@ -193,7 +193,7 @@
     --color-gradient-to: #4bc8e7;
 }
 
-html{
+html, body{
     scroll-behavior: smooth;
 }
 
