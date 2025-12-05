@@ -6,8 +6,6 @@
     {!! SEO::generate() !!}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-    <title>{{ isset($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
