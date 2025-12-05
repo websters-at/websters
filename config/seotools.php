@@ -9,7 +9,7 @@ return [
 
     'meta' => [
         'defaults' => [
-            'title' => "Webagentur Websters",
+            'title' => "",
             'titleBefore' => false,
             'description' => 'Webagentur aus Linz: Wir entwickeln maßgeschneiderte Webdesign-Lösungen mit WordPress, erstellen Custom Software ab 3.490€ & optimieren mit IT-Consulting Ihre Geschäftsprozesse – für Startups & Unternehmen in Österreich.',
             'separator'   => ' – ',
