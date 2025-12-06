@@ -23,7 +23,7 @@
 
 
 <main class="flex-1">
-    <livewire:errors.volt-error-page>
+    <livewire:errors.volt-error-page/>
 </main>
 
 <livewire:components.footer/>
