@@ -17,7 +17,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('AGB – Webagentur Websters Linz | Geschäftsbedingungen');
+        SEOMeta::setTitle('Geschäftsbedingungen');
         SEOMeta::setDescription(
             'Allgemeine Geschäftsbedingungen (AGB) der Webagentur Websters für Webdesign, Softwareentwicklung & IT-Consulting. Vertragsbedingungen & rechtliche Hinweise.'
         );

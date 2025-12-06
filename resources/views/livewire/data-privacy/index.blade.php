@@ -18,7 +18,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Datenschutzerklärung | Webagentur Websters Linz');
+        SEOMeta::setTitle('Datenschutzerklärung');
         SEOMeta::setDescription(
             'DSGVO-konforme Datenschutzerklärung der Webagentur Websters. Informationen zu Datenverarbeitung, Cookies und Ihren Datenschutzrechten gemäß österreichischem Recht.'
         );

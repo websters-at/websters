@@ -19,7 +19,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Webdesign Linz – Websites ab 990€ | Webagentur Websters');
+        SEOMeta::setTitle('Webdesign Linz – Websites ab 990€');
         SEOMeta::setDescription(
             'Professionelles Webdesign in Linz: Starter 990€, Komplett 1.990€, Premium ab 2.990€. Responsiv, SEO-optimiert, WordPress & Webdevelopment. Jetzt Beratung sichern!'
         );

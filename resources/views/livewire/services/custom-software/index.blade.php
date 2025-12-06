@@ -18,7 +18,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Individualsoftware Entwicklung Linz – Custom Software ab 3.490€ | Websters');
+        SEOMeta::setTitle('Individualsoftware Entwicklung Linz – Custom Software ab 3.490€');
         SEOMeta::setDescription(
             'Individuelle Softwarelösungen aus Linz: Web-Apps, Prozess-Tools & Business-Software ab 3.490€. Maßgeschneiderte Entwicklung für Unternehmen & Startups.'
         );

@@ -16,7 +16,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Leistungen – Webdesign, Softwareentwicklung & IT-Consulting | Websters Linz');
+        SEOMeta::setTitle('Leistungen – Webdesign, Softwareentwicklung & IT-Consulting');
         SEOMeta::setDescription(
             'Unsere Dienstleistungen: Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting, Prozessoptimierung, UI/UX Design & moderne Webentwicklung aus Linz.'
         );

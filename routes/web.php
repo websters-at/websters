@@ -41,7 +41,7 @@ Volt::route('/datenschutz', 'data-privacy.index')
 Volt::route('/agbs', 'terms.index')
     ->name('terms');
 
-Volt::route('/{any}', 'errors.404')
-    ->where('any', '.*')
-    ->name('not-found');
 
+Route::fallback(function () {
+    return response()->view('livewire.errors.404', [], 404);
+});

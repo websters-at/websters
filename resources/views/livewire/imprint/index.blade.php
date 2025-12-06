@@ -19,7 +19,7 @@ new class extends Component {
         | Kürzere Titel → kein Abschneiden in Google.
         */
 
-        SEOMeta::setTitle('Impressum | Webagentur Websters aus Linz');
+        SEOMeta::setTitle('Impressum');
         SEOMeta::setDescription(
             'Impressum der Webagentur Websters: Auwiesenstraße 95, 4030 Linz. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.'
         );

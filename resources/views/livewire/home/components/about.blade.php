@@ -49,7 +49,7 @@ new class extends Component {
                     :class="{ 'show': show }"
                     style="transition-delay: .35s"
                 >
-                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-Absolventen.
+                    Bei Websters erwartet dich ein junges, dynamisches Team aus drei HTL-Absolventen aus Linz.
                     Wir entwickeln moderne Websites, Blogs, Online-Shops sowie individuelle Softwarelösungen und
                     übernehmen auch das komplette Design. Zusammen bringen wir dein digitales Projekt auf das nächste Level.
                 </p>

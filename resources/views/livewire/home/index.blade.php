@@ -11,7 +11,7 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Linz | Webagentur Websters');
+        SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Linz');
         SEOMeta::setDescription(
             'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Linz für Unternehmen und Startups in Österreich.'
         );
@@ -29,6 +29,7 @@ new class extends Component {
             'Web Entwicklung Oberösterreich'
         ]);
 
+
         OpenGraph::setTitle('Webdesign & Softwareentwicklung | Webagentur Websters');
         OpenGraph::setDescription(
             'Professionelles Webdesign ab 990€ & Custom Software ab 3.490€ – Ihre Agentur für WordPress, Laravel & IT-Consulting aus Linz.'
@@ -42,6 +43,7 @@ new class extends Component {
             'alt' => 'Webdesign & Development – Webagentur Websters Linz'
         ]);
 
+// --- Twitter Card ---
         TwitterCard::setTitle('Webdesign & Softwareentwicklung aus Linz | Websters');
         TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Linz.');
         TwitterCard::setUrl($siteUrl);

@@ -23,7 +23,7 @@ new class extends Component {
         |
         */
 
-        SEOMeta::setTitle('Unser Team – Webagentur Websters aus Linz | Webdesign & Individual Software');
+        SEOMeta::setTitle('Unser Team – Webagentur Websters aus Linz');
         SEOMeta::setDescription(
             'Lerne das Team der Webagentur Websters kennen: Experten für Webdesign, UI/UX, DevOps & Softwareentwicklung aus Linz – Michael, Stevan & Manuel.'
         );

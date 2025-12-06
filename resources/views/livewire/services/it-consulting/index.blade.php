@@ -18,7 +18,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('IT-Consulting Linz – Prozessoptimierung & Digitalisierung | Websters');
+        SEOMeta::setTitle('IT-Consulting Linz – Prozessoptimierung & Digitalisierung');
         SEOMeta::setDescription(
             'IT-Consulting aus Linz: Prozessoptimierung, digitale Transformation, Automatisierung & IT-Strategie. Optimieren Sie Ihre Geschäftsprozesse nachhaltig.'
         );
