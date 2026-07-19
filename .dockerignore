@@ -12,4 +12,11 @@ storage/logs/
 storage/framework/cache/
 storage/framework/sessions/
 storage/framework/views/
-#.env
+
+# Bind-mount data dirs must NOT enter the build context
+caddy/
+mysql/
+redis/
+# NOTE: .env IS intentionally included in the build context because the
+# entrypoint runs `php artisan config:cache` at container start. It is
+# gitignored, so it never enters the git repository.
