@@ -1,7 +1,7 @@
 <?php
 /**
  * Volloptimierte SEO-Konfiguration für Artesaos/SEOTools
- * Webagentur Websters - Linz/Außertreffling, Österreich
+ * Websters - Engerwitzdorf, Österreich
  */
 
 return [
@@ -10,32 +10,32 @@ return [
     'meta' => [
         'defaults' => [
             // Wird als Standard-Brand-Title verwendet und an Seitentitel angehängt
-            'title'       => 'Webagentur Websters',
+            'title'       => 'Websters',
             'titleBefore'  => false,
 
             // ~150 Zeichen, fokussiert auf Kern-Keywords (AT + DE)
-            'description'  => 'Webagentur in Linz für Webdesign, Webentwicklung, Individualsoftware & IT-Consulting – digitale Lösungen für Unternehmen in Österreich & Deutschland.',
+            'description'  => 'Websters aus Engerwitzdorf für Webdesign, Webentwicklung, Individualsoftware & IT-Consulting – digitale Lösungen für Unternehmen in Österreich & Deutschland.',
             'separator'   => ' | ',   // oder ' – '
 
 
             // Meta-Keywords spielen für Google kaum noch eine Rolle,
             // sind aber sauber auf Wunsch-Keywords für AT/DE optimiert
             'keywords'     => [
-                'Webagentur Linz',
-                'Webdesign Linz',
-                'Webdesign Agentur Linz',
-                'Webentwicklung Linz',
-                'Softwareentwicklung Linz',
-                'Individualsoftware Linz',
-                'IT-Consulting Linz',
+                'Websters Engerwitzdorf',
+                'Webdesign Oberösterreich',
+                'Webdesign Agentur',
+                'Webentwicklung Oberösterreich',
+                'Softwareentwicklung Oberösterreich',
+                'Individualsoftware Oberösterreich',
+                'IT-Consulting Oberösterreich',
                 'Webagentur Oberösterreich',
                 'Webdesign Oberösterreich',
-                'Homepage erstellen lassen Linz',
-                'Website erstellen Linz',
-                'WordPress Agentur Linz',
+                'Homepage erstellen lassen',
+                'Website erstellen Oberösterreich',
+                'WordPress Agentur',
                 'Webapplikationen Entwicklung',
                 'Digitalisierungsberatung Oberösterreich',
-                'Agentur für Startups Linz',
+                'Agentur für Startups',
             ],
 
             // "full" = aktuelle URL inkl. Query als Canonical
@@ -61,11 +61,11 @@ return [
     'opengraph' => [
         'defaults' => [
             // Starker Social-Titel mit Location + Pricing
-            'title'       => 'Webdesign Linz ab 990€ & Softwareentwicklung | Webagentur Websters',
-            'description' => 'Webagentur aus Linz für Webdesign ab 990€, individuelle Webentwicklung, Custom Software ab 3.490€ & IT-Consulting für Unternehmen in Österreich & Deutschland.',
+            'title'       => 'Webdesign ab 990€ & Softwareentwicklung | Websters',
+            'description' => 'Websters aus Engerwitzdorf für Webdesign ab 990€, individuelle Webentwicklung, Custom Software ab 3.490€ & IT-Consulting für Unternehmen in Österreich & Deutschland.',
             'url'         => false,
             'type'        => 'website',
-            'site_name'   => 'Webagentur Websters',
+            'site_name'   => 'Websters',
             'locale'      => 'de_AT',
             'images'      => [
                 'https://websters.at/assets/images/logo-og.jpg',
@@ -81,7 +81,7 @@ return [
             'site'        => null,
             'creator'     => null,
 
-            'title'       => 'Webagentur Websters – Webdesign & Softwareentwicklung aus Linz',
+            'title'       => 'Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf',
             'description' => 'Webdesign ab 990€, individuelle Webentwicklung & Custom Software ab 3.490€ für Unternehmen in Österreich & Deutschland.',
             'image'       => 'https://websters.at/assets/images/logo-jsonld.jpg',
         ],
@@ -93,10 +93,10 @@ return [
 
             // LocalBusiness ist für eine Webagentur mit physischer Adresse optimal
             '@type'       => 'LocalBusiness',
-            '@id'         => 'https://websters.at/#webagentur-websters',
+            '@id'         => 'https://websters.at/#websters',
 
-            'name'        => 'Webagentur Websters',
-            'description' => 'Webagentur für Webdesign, Webentwicklung, Individualsoftware & IT-Consulting mit Sitz in Außertreffling bei Linz, Österreich.',
+            'name'        => 'Websters',
+            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung & Medienproduktion mit Sitz in Engerwitzdorf, Österreich.',
             'url'         => 'https://websters.at',
             'telephone'   => '+43 677 63177763',
             'email'       => 'office@websters.at',
@@ -104,7 +104,7 @@ return [
             'address' => [
                 '@type'           => 'PostalAddress',
                 'streetAddress'   => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode'      => '4209',
                 'addressRegion'   => 'Oberösterreich',
                 'addressCountry'  => 'AT',

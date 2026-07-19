@@ -1,67 +1,87 @@
 services:
-    websters:
-        container_name: websters
-        build:
-            context: .
-            target: production
-        restart: always
-        ports:
-            - '42069:80'
-        volumes:
-            - 'caddy_data:/data'
-            - 'caddy_config:/config'
-        depends_on:
-            mysql:
-                condition: service_healthy
-        environment:
-            - DB_HOST=mysql
-        labels:
-            traefik.enable: 'true'
-            traefik.docker.network: traefik_network
-            traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist: '*'
-            traefik.http.middlewares.cors.headers.accesscontrolallowmethods: 'GET,POST,PUT,DELETE,OPTIONS'
-            traefik.http.middlewares.cors.headers.accesscontrolallowheaders: '*'
-            traefik.http.middlewares.cors.headers.addvaryheader: 'true'
-            traefik.http.middlewares.cors.headers.accesscontrolmaxage: '3600'
-            traefik.http.services.websters.loadbalancer.server.port: '80'
-            traefik.http.routers.websters.rule: Host(`websters.stevan.sexidude.com`)
-            traefik.http.routers.websters.entrypoints: websecure
-            traefik.http.routers.websters.middlewares: cors
-            traefik.http.routers.websters.tls: 'true'
-            traefik.http.routers.websters.tls.certresolver: ssl
-            traefik.http.routers.websters-http.rule: Host(`websters.stevan.sexidude.com`)
-            traefik.http.routers.websters-http.entrypoints: web
-            traefik.http.routers.websters-http.middlewares: redirect-to-https
-            traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
-        networks:
-            traefik: null
-    mysql:
-        container_name: mysql
-        image: 'mysql:latest'
-        restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: webstersdb
-            MYSQL_USER: admin
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: rootpassword
-        volumes:
-            - 'mysql_data:/var/lib/mysql'
-        ports:
-            - '3306:3306'
-        healthcheck:
-          test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-          interval: 5s
-          timeout: 5s
-          retries: 10
-        networks:
-            traefik: null
+  websters:
+    container_name: websters
+    build:
+      context: .
+      target: production
+    restart: always
+    ports:
+      - '42069:80'
+    volumes:
+      - 'caddy_data:/data'
+      - 'caddy_config:/config'
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=
+      - REDIS_PORT=6379
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.redirect-to-main.redirectregex.regex=^https?://${SECONDARY_DOMAIN}/(.*)"
+      - "traefik.http.middlewares.redirect-to-main.redirectregex.replacement=https://${DOMAIN}/$$1"
+      - "traefik.http.middlewares.redirect-to-main.redirectregex.permanent=true"
+      - "traefik.http.routers.${ROUTER_NAME}.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${ROUTER_NAME}.entrypoints=https"
+      - "traefik.http.routers.${ROUTER_NAME}.tls=true"
+      - "traefik.http.routers.${ROUTER_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.rule=Host(`${SECONDARY_DOMAIN}`)"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.entrypoints=https"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.tls=true"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.middlewares=redirect-to-main"
+
+  mysql:
+    container_name: mysql
+    image: 'mysql:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: webstersdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - 'mysql_data:/var/lib/mysql'
+    ports:
+      - '3306:3306'
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - traefik
+
+  redis:
+    container_name: redis
+    image: 'redis:7-alpine'
+    restart: unless-stopped
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - 'redis_data:/data'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - traefik
+
 volumes:
-    caddy_data: null
-    caddy_config: null
-    mysql_data: null
-    sail-mysql:
-        driver: local
+  caddy_data: null
+  caddy_config: null
+  mysql_data: null
+  redis_data: null
+  sail-mysql:
+    driver: local
+
 networks:
-    traefik:
-        external: true
-        name: traefik_network
+  traefik:
+    external: true
+    name: ${TRAEFIK_NETWORK}
