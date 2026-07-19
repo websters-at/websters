@@ -48,8 +48,8 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - 'mysql_data:/var/lib/mysql'
-    ports:
-      - '3306:3306'
+    # Port intentionally NOT published: MySQL stays internal to the Docker
+    # network and is only reachable by the websters container.
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 5s
