@@ -102,7 +102,7 @@ new class extends Component {
                 '@type' => 'ContactPoint',
                 'contactType' => 'customer service',
                 'availableLanguage' => ['German'],
-                'telephone' => '+43660466179',
+                'telephone' => '+43 677 63177763',
                 'email' => 'office@websters.at',
                 'hoursAvailable' => [
                     '@type' => 'OpeningHoursSpecification',
@@ -135,6 +135,9 @@ new class extends Component {
                 'name' => 'Firmenbuchnummer',
                 'value' => '672300b'
             ],
+
+            // EU-Unternehmensidentifikationsnummer (EUID)
+            'euid' => 'ATBRA.672300-000',
         ]);
     }
 };
@@ -198,36 +201,55 @@ new class extends Component {
                                 </h3>
                                 <dl class="text-sm font-poppins text-slate-600 space-y-1.5">
                                     <div>
-                                        <dt class="font-medium text-slate-700">Unternehmen:</dt>
+                                        <dt class="font-medium text-slate-700">Firmenname:</dt>
                                         <dd>Websters e.U.</dd>
                                     </div>
                                     <div>
                                         <dt class="font-medium text-slate-700">Rechtsform:</dt>
-                                        <dd>Einzelunternehmen (e.U.)</dd>
+                                        <dd>Eingetragener Unternehmer (e.U.)</dd>
                                     </div>
                                     <div>
                                         <dt class="font-medium text-slate-700">Inhaber:</dt>
                                         <dd>Michael Elias Ruep</dd>
                                     </div>
                                     <div>
-                                        <dt class="font-medium text-slate-700">Anschrift:</dt>
-                                        <dd>Libellenweg 13, 4209 Engerwitzdorf</dd>
+                                        <dt class="font-medium text-slate-700">Adresse:</dt>
+                                        <dd>Libellenweg 13, 4209 Engerwitzdorf, Österreich</dd>
                                     </div>
                                     <div>
-                                        <dt class="font-medium text-slate-700">Sitz:</dt>
-                                        <dd>Engerwitzdorf</dd>
+                                        <dt class="font-medium text-slate-700">Unternehmensgegenstand:</dt>
+                                        <dd>IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion</dd>
                                     </div>
                                     <div>
                                         <dt class="font-medium text-slate-700">Firmenbuchnummer:</dt>
                                         <dd>672300b</dd>
                                     </div>
                                     <div>
-                                        <dt class="font-medium text-slate-700">Eingetragen am:</dt>
-                                        <dd>11.02.2026</dd>
+                                        <dt class="font-medium text-slate-700">Firmenbuchgericht:</dt>
+                                        <dd>Landesgericht Linz</dd>
                                     </div>
                                     <div>
-                                        <dt class="font-medium text-slate-700">Geschäftszweig:</dt>
-                                        <dd>IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion</dd>
+                                        <dt class="font-medium text-slate-700">EUID:</dt>
+                                        <dd>ATBRA.672300-000</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">UID-Nummer:</dt>
+                                        <dd>Umsatzsteuerfrei aufgrund der Kleinunternehmerregelung</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Mitgliedschaft:</dt>
+                                        <dd>WKO Oberösterreich, Fachgruppe UBIT</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Aufsichtsbehörde / Gewerbebehörde:</dt>
+                                        <dd>Bezirkshauptmannschaft Urfahr-Umgebung</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Berufsrecht:</dt>
+                                        <dd>
+                                            <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer"
+                                               class="underline underline-offset-2 hover:text-primary transition">Gewerbeordnung (RIS)</a>
+                                        </dd>
                                     </div>
                                 </dl>
                             </div>
@@ -243,10 +265,15 @@ new class extends Component {
                                 Kontaktdaten
                             </h3>
                             <dl class="text-sm font-poppins text-slate-600 space-y-1.5">
-                                <div>
-                                    <dt class="font-medium text-slate-700">Telefon:</dt>
-                                    <dd>+43660466179</dd>
-                                </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Telefon:</dt>
+                                        <dd>
+                                            <a href="tel:+4367763177763"
+                                               class="underline underline-offset-2 hover:text-primary transition">
+                                                +43 677 63177763
+                                            </a>
+                                        </dd>
+                                    </div>
                                 <div>
                                     <dt class="font-medium text-slate-700">E-Mail:</dt>
                                     <dd>
@@ -280,7 +307,7 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- Right column -->
+                    <!-- Right column -->
                 <div class="space-y-4">
 
                     <div
@@ -290,17 +317,20 @@ new class extends Component {
                     >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
-                                Online-Streitbeilegung
+                                EU-Streitbeilegung
                             </h3>
                             <p class="text-sm font-poppins text-slate-600">
-                                Verbraucher, welche in Österreich oder in einem sonstigen Vertragsstaat der ODR-VO
-                                niedergelassen sind, haben die Möglichkeit, Probleme bezüglich dem entgeltlichen Kauf
-                                von Waren oder Dienstleistungen im Rahmen einer Online-Streitbeilegung (nach OS, AStG)
-                                zu lösen. Die Europäische Kommission stellt eine Plattform hierfür bereit:
+                                Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten
+                                (ODR-Verordnung) informieren wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform)
+                                der Europäischen Kommission:
                                 <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer"
                                    class="underline underline-offset-2 hover:text-primary transition">
                                     https://ec.europa.eu/consumers/odr
                                 </a>
+                            </p>
+                            <p class="text-sm font-poppins text-slate-600">
+                                Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind,
+                                an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                             </p>
                         </div>
                     </div>
@@ -312,13 +342,14 @@ new class extends Component {
                     >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
-                                Urheberrecht
+                                Haftung für Inhalte
                             </h3>
                             <p class="text-sm font-poppins text-slate-600">
-                                Die Inhalte dieser Webseite unterliegen, soweit dies rechtlich möglich ist, diversen
-                                Schutzrechten (z.&nbsp;B. dem Urheberrecht). Jegliche Verwendung oder Verbreitung von
-                                bereitgestelltem Material, welche urheberrechtlich untersagt ist, bedarf der
-                                schriftlichen Zustimmung des Webseitenbetreibers.
+                                Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns, korrekte und
+                                aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit
+                                aller Inhalte auf dieser Webseite übernehmen, speziell für jene, die seitens Dritter
+                                bereitgestellt werden. Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen,
+                                bitten wir Sie, uns umgehend über die im Impressum genannten Kontaktdaten zu kontaktieren.
                             </p>
                         </div>
                     </div>
@@ -326,27 +357,38 @@ new class extends Component {
                     <div
                         class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
                         :class="{ 'show': show }"
-                        style="transition-delay:.65s"
+                        style="transition-delay:.62s"
                     >
                         <div class="p-5 sm:p-6 space-y-3">
                             <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
-                                Haftungsausschluss
+                                Haftung für Links
                             </h3>
                             <p class="text-sm font-poppins text-slate-600">
-                                Trotz sorgfältiger inhaltlicher Kontrolle übernimmt der Webseitenbetreiber keine Haftung
-                                für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich
-                                deren Betreiber verantwortlich. Sollten Sie dennoch auf ausgehende Links aufmerksam
-                                werden, welche auf eine Webseite mit rechtswidriger Tätigkeit oder Information
-                                verweisen,
-                                ersuchen wir um einen dementsprechenden Hinweis, um diese nach § 17 Abs. 2 ECG
-                                umgehend zu entfernen.
+                                Unsere Webseite enthält Links zu anderen Webseiten, für deren Inhalt wir nicht
+                                verantwortlich sind. Haftung für verlinkte Websites besteht für uns nicht, da wir keine
+                                Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtsverletzungen auch
+                                bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns
+                                Rechtsverletzungen bekannt werden. Sollten Ihnen rechtswidrige Links auf unserer Website
+                                auffallen, bitten wir Sie, uns zu kontaktieren.
                             </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.64s"
+                    >
+                        <div class="p-5 sm:p-6 space-y-3">
+                            <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase">
+                                Urheberrechtshinweis
+                            </h3>
                             <p class="text-sm font-poppins text-slate-600">
-                                Die Urheberrechte Dritter werden vom Betreiber dieser Webseite mit größter Sorgfalt
-                                beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
-                                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger
-                                Rechtsverletzungen
-                                werden wir den betroffenen Inhalt umgehend entfernen.
+                                Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht.
+                                Bitte fragen Sie uns, bevor Sie die Inhalte dieser Website verbreiten, vervielfältigen
+                                oder verwerten, wie zum Beispiel auf anderen Websites erneut veröffentlichen. Falls
+                                notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite
+                                rechtlich verfolgen.
                             </p>
                         </div>
                     </div>

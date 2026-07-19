@@ -126,7 +126,7 @@ new class extends Component {
                 '@type' => 'ContactPoint',
                 'contactType' => 'data protection officer',
                 'email' => 'office@websters.at',
-                'telephone' => '+43660466179'
+                'telephone' => '+43 677 63177763'
             ]
         ]);
 
@@ -385,7 +385,7 @@ new class extends Component {
                         Websters e.U.<br>
                         Michael Elias Ruep<br>
                         Libellenweg 13, 4209 Engerwitzdorf<br>
-                        Telefon: +43 660 4669179<br>
+                        Telefon: +43 677 63177763<br>
                         E-Mail:
                         <a href="mailto:office@websters.at" class="underline underline-offset-2 hover:text-primary transition">
                             office@websters.at
