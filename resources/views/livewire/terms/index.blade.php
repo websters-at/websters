@@ -19,7 +19,7 @@ new class extends Component {
 
         SEOMeta::setTitle('Geschäftsbedingungen');
         SEOMeta::setDescription(
-            'Allgemeine Geschäftsbedingungen (AGB) der Webagentur Websters für Webdesign, Softwareentwicklung & IT-Consulting. Vertragsbedingungen & rechtliche Hinweise.'
+            'Allgemeine Geschäftsbedingungen (AGB) der Websters e.U. für Webdesign, Softwareentwicklung & IT-Consulting. Vertragsbedingungen & rechtliche Hinweise.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -28,8 +28,8 @@ new class extends Component {
             'AGB Webdesign Österreich',
             'Softwareentwicklung Vertragsbedingungen',
             'IT Consulting AGB',
-            'Websters Linz Geschäftsbedingungen',
-            'Webagentur Linz Geschäftsbedingungen',
+            'Websters e.U. Geschäftsbedingungen',
+            'Websters e.U. Geschäftsbedingungen',
             'Projektvertrag IT Dienstleistungen',
             'Websters AGB'
         ]);
@@ -40,15 +40,15 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('AGB | Webagentur Websters Linz');
+        OpenGraph::setTitle('AGB | Websters');
         OpenGraph::setDescription('Allgemeine Geschäftsbedingungen für Webdesign, Softwareentwicklung & IT-Consulting.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/websters-full-logo.png', [
             'width' => 1200,
             'height' => 630,
-            'alt'    => 'AGB der Webagentur Websters'
+            'alt'    => 'AGB der Websters'
         ]);
 
         /*
@@ -57,8 +57,8 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('AGB | Webagentur Websters');
-        TwitterCard::setDescription('Allgemeine Geschäftsbedingungen der Webagentur Websters aus Linz.');
+        TwitterCard::setTitle('AGB | Websters');
+        TwitterCard::setDescription('Allgemeine Geschäftsbedingungen der Websters e.U. aus Linz.');
         TwitterCard::setImage($siteUrl . '/assets/websters-full-logo.png');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -72,7 +72,7 @@ new class extends Component {
 
         // Grundstruktur
         JsonLd::setType('WebPage');
-        JsonLd::setTitle('Allgemeine Geschäftsbedingungen der Webagentur Websters');
+        JsonLd::setTitle('Allgemeine Geschäftsbedingungen der Websters');
         JsonLd::setDescription('Rechtliche Bestimmungen, Vertragsbedingungen & AGB.');
         JsonLd::setUrl($pageUrl);
 
@@ -96,16 +96,16 @@ new class extends Component {
 
         JsonLd::addValue('mainEntity', [
             '@type' => 'Organization',
-            'name' => 'Webagentur Websters',
-            'legalName' => 'Stevan Vlajic',
+            'name' => 'Websters e.U.',
+            'legalName' => 'Websters e.U.',
             'url'  => $siteUrl,
             'logo' => $siteUrl . '/assets/websters-full-logo.png',
-            'description' => 'Webagentur für Webdesign, Softwareentwicklung & IT-Consulting.',
+            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung & Medienproduktion.',
 
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
@@ -218,7 +218,7 @@ new class extends Component {
                     :class="{ 'show': show }"
                     style="transition-delay:.3s"
                 >
-                    Nachfolgend finden Sie die Allgemeinen Geschäftsbedingungen (AGB) von Stevan Vlajic.
+                    Nachfolgend finden Sie die Allgemeinen Geschäftsbedingungen (AGB) von Websters e.U..
                 </p>
             </div>
 
@@ -231,7 +231,7 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">1. Allgemeine Grundlagen / Geltungsbereich</h3>
 
                     <p><span class="font-semibold">1.1</span>
-                        Für sämtliche Rechtsgeschäfte zwischen dem Auftraggeber und Stevan Vlajic gelten ausschließlich
+                        Für sämtliche Rechtsgeschäfte zwischen dem Auftraggeber und Websters e.U. gelten ausschließlich
                         diese Allgemeinen Geschäftsbedingungen. Maßgeblich ist jeweils die zum Zeitpunkt des
                         Vertragsabschlusses gültige Fassung.
                     </p>
@@ -243,7 +243,7 @@ new class extends Component {
 
                     <p><span class="font-semibold">1.3</span>
                         Entgegenstehende Allgemeine Geschäftsbedingungen des Auftraggebers sind ungültig, es sei denn,
-                        diese werden von Stevan Vlajic ausdrücklich schriftlich anerkannt.
+                        diese werden von Websters e.U. ausdrücklich schriftlich anerkannt.
                     </p>
 
                     <p><span class="font-semibold">1.4</span>
@@ -271,8 +271,8 @@ new class extends Component {
                     </p>
 
                     <p><span class="font-semibold">2.2</span>
-                        Stevan Vlajic ist berechtigt, die ihm obliegenden Aufgaben ganz oder teilweise durch Dritte
-                        erbringen zu lassen. Die Bezahlung des Dritten erfolgt ausschließlich durch Stevan Vlajic
+                        Websters e.U. ist berechtigt, die ihm obliegenden Aufgaben ganz oder teilweise durch Dritte
+                        erbringen zu lassen. Die Bezahlung des Dritten erfolgt ausschließlich durch Websters e.U.
                         selbst. Es entsteht kein wie immer geartetes direktes Vertragsverhältnis zwischen dem Dritten
                         und dem Auftraggeber.
                     </p>
@@ -280,9 +280,9 @@ new class extends Component {
                     <p><span class="font-semibold">2.3</span>
                         Der Auftraggeber verpflichtet sich, während sowie bis zum Ablauf von drei Jahren nach
                         Beendigung dieses Vertragsverhältnisses keine wie immer geartete Geschäftsbeziehung zu Personen
-                        oder Gesellschaften einzugehen, deren sich Stevan Vlajic zur Erfüllung seiner vertraglichen
+                        oder Gesellschaften einzugehen, deren sich Websters e.U. zur Erfüllung seiner vertraglichen
                         Pflichten bedient. Der Auftraggeber wird diese Personen und Gesellschaften insbesondere nicht
-                        mit solchen oder ähnlichen Leistungen beauftragen, die auch Stevan Vlajic anbietet.
+                        mit solchen oder ähnlichen Leistungen beauftragen, die auch Websters e.U. anbietet.
                     </p>
 
                 </div>
@@ -305,22 +305,22 @@ new class extends Component {
                     </p>
 
                     <p><span class="font-semibold">3.2</span>
-                        Der Auftraggeber wird Stevan Vlajic auch über vorher durchgeführte und/oder laufende Leistungen
+                        Der Auftraggeber wird Websters e.U. auch über vorher durchgeführte und/oder laufende Leistungen
                         – auch auf anderen Fachgebieten – umfassend informieren.
                     </p>
 
                     <p><span class="font-semibold">3.3</span>
-                        Der Auftraggeber sorgt dafür, dass Stevan Vlajic auch ohne dessen besondere Aufforderung alle
+                        Der Auftraggeber sorgt dafür, dass Websters e.U. auch ohne dessen besondere Aufforderung alle
                         für die Erfüllung und Ausführung des Auftrags notwendigen Unterlagen zeitgerecht vorgelegt
                         werden und ihm von allen Vorgängen und Umständen Kenntnis gegeben wird, die für die Ausführung
                         des Auftrags von Bedeutung sind. Dies gilt auch für alle Unterlagen, Vorgänge und Umstände, die
-                        erst während der Tätigkeit von Stevan Vlajic bekannt werden.
+                        erst während der Tätigkeit von Websters e.U. bekannt werden.
                     </p>
 
                     <p><span class="font-semibold">3.4</span>
                         Der Auftraggeber sorgt dafür, dass seine Mitarbeiter und die gesetzlich vorgesehene und
                         gegebenenfalls eingerichtete Arbeitnehmervertretung (Betriebsrat) bereits vor Beginn der
-                        Tätigkeit von Stevan Vlajic von dieser informiert werden.
+                        Tätigkeit von Websters e.U. von dieser informiert werden.
                     </p>
 
                 </div>
@@ -357,7 +357,7 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">5. Berichterstattung / Berichtspflicht</h3>
 
                     <p><span class="font-semibold">5.1</span>
-                        Stevan Vlajic verpflichtet sich, über seine Arbeit, die seiner Mitarbeiter und gegebenenfalls
+                        Websters e.U. verpflichtet sich, über seine Arbeit, die seiner Mitarbeiter und gegebenenfalls
                         auch die beauftragter Dritter dem Arbeitsfortschritt entsprechend dem Auftraggeber Bericht zu
                         erstatten.
                     </p>
@@ -368,7 +368,7 @@ new class extends Component {
                     </p>
 
                     <p><span class="font-semibold">5.3</span>
-                        Stevan Vlajic ist bei der Herstellung des vereinbarten Werkes weisungsfrei, handelt nach
+                        Websters e.U. ist bei der Herstellung des vereinbarten Werkes weisungsfrei, handelt nach
                         eigenem Gutdünken und in eigener Verantwortung. Er ist an keinen bestimmten Arbeitsort und
                         keine bestimmte Arbeitszeit gebunden.
                     </p>
@@ -385,19 +385,19 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">6. Schutz des geistigen Eigentums</h3>
 
                     <p><span class="font-semibold">6.1</span>
-                        Die Urheberrechte an den von Stevan Vlajic und seinen Mitarbeitern und beauftragten Dritten
+                        Die Urheberrechte an den von Websters e.U. und seinen Mitarbeitern und beauftragten Dritten
                         geschaffenen Werken (insbesondere Anbote, Berichte, Analysen, Gutachten, Organisationspläne,
                         Programme, Leistungsbeschreibungen, Entwürfe, Berechnungen, Zeichnungen, Datenträger etc.)
-                        verbleiben bei Stevan Vlajic. Sie dürfen vom Auftraggeber während und nach Beendigung des
+                        verbleiben bei Websters e.U.. Sie dürfen vom Auftraggeber während und nach Beendigung des
                         Vertragsverhältnisses ausschließlich für vom Vertrag umfasste Zwecke verwendet werden. Der
                         Auftraggeber ist insofern nicht berechtigt, das Werk (die Werke) ohne ausdrückliche Zustimmung
-                        von Stevan Vlajic zu vervielfältigen und/oder zu verbreiten. Keinesfalls entsteht durch eine
-                        unberechtigte Vervielfältigung/Verbreitung des Werkes eine Haftung von Stevan Vlajic –
+                        von Websters e.U. zu vervielfältigen und/oder zu verbreiten. Keinesfalls entsteht durch eine
+                        unberechtigte Vervielfältigung/Verbreitung des Werkes eine Haftung von Websters e.U. –
                         insbesondere etwa für die Richtigkeit des Werkes – gegenüber Dritten.
                     </p>
 
                     <p><span class="font-semibold">6.2</span>
-                        Der Verstoß des Auftraggebers gegen diese Bestimmungen berechtigt Stevan Vlajic zur sofortigen
+                        Der Verstoß des Auftraggebers gegen diese Bestimmungen berechtigt Websters e.U. zur sofortigen
                         vorzeitigen Beendigung des Vertragsverhältnisses und zur Geltendmachung anderer gesetzlicher
                         Ansprüche, insbesondere auf Unterlassung und/oder Schadenersatz.
                     </p>
@@ -414,8 +414,8 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">7. Schlechtleistung</h3>
 
                     <p><span class="font-semibold">7.1</span>
-                        Stevan Vlajic ist ohne Rücksicht auf ein Verschulden berechtigt und verpflichtet, bekannt
-                        werdende Unrichtigkeiten und Mängel an seiner Leistung zu beheben. Stevan Vlajic wird den
+                        Websters e.U. ist ohne Rücksicht auf ein Verschulden berechtigt und verpflichtet, bekannt
+                        werdende Unrichtigkeiten und Mängel an seiner Leistung zu beheben. Websters e.U. wird den
                         Auftraggeber hievon unverzüglich in Kenntnis setzen.
                     </p>
 
@@ -436,9 +436,9 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">8. Haftung / Schadenersatz</h3>
 
                     <p><span class="font-semibold">8.1</span>
-                        Stevan Vlajic haftet dem Auftraggeber für Schäden – ausgenommen für Personenschäden – nur im
+                        Websters e.U. haftet dem Auftraggeber für Schäden – ausgenommen für Personenschäden – nur im
                         Falle groben Verschuldens (Vorsatz oder grobe Fahrlässigkeit). Dies gilt sinngemäß auch für
-                        Schäden, die auf von Stevan Vlajic beigezogene Dritte zurückgehen. Sowohl die Haftung für
+                        Schäden, die auf von Websters e.U. beigezogene Dritte zurückgehen. Sowohl die Haftung für
                         leichte Fahrlässigkeit als auch jede Haftung für entgangenen Gewinn wird ausgeschlossen.
                     </p>
 
@@ -450,18 +450,18 @@ new class extends Component {
 
                     <p><span class="font-semibold">8.3</span>
                         Der Auftraggeber hat jeweils den Beweis zu erbringen, dass der Schaden auf ein Verschulden von
-                        Stevan Vlajic zurückzuführen ist.
+                        Websters e.U. zurückzuführen ist.
                     </p>
 
                     <p><span class="font-semibold">8.4</span>
-                        Sofern Stevan Vlajic die Leistung unter Zuhilfenahme Dritter erbringt und in diesem Zusammenhang
+                        Sofern Websters e.U. die Leistung unter Zuhilfenahme Dritter erbringt und in diesem Zusammenhang
                         Gewährleistungs- und/oder Haftungsansprüche gegenüber diesen Dritten entstehen, tritt Stevan
                         Vlajic diese Ansprüche an den Auftraggeber ab. Der Auftraggeber wird sich in diesem Fall
                         vorrangig an diese Dritten halten.
                     </p>
 
                     <p><span class="font-semibold">8.5</span>
-                        In jedem Fall ist die Haftung von Stevan Vlajic, im gesetzlich zulässigen Rahmen, auf die Höhe
+                        In jedem Fall ist die Haftung von Websters e.U., im gesetzlich zulässigen Rahmen, auf die Höhe
                         des halben Honorars beschränkt.
                     </p>
 
@@ -477,21 +477,21 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">9. Geheimhaltung / Datenschutz</h3>
 
                     <p><span class="font-semibold">9.1</span>
-                        Stevan Vlajic verpflichtet sich zu unbedingtem Stillschweigen über alle ihm zur Kenntnis
+                        Websters e.U. verpflichtet sich zu unbedingtem Stillschweigen über alle ihm zur Kenntnis
                         gelangenden geschäftlichen Angelegenheiten, insbesondere Geschäfts- und Betriebsgeheimnisse
                         sowie jedwede Information, die er über Art, Betriebsumfang und praktische Tätigkeit des
                         Auftraggebers erhält.
                     </p>
 
                     <p><span class="font-semibold">9.2</span>
-                        Weiters verpflichtet sich Stevan Vlajic, über den gesamten Inhalt des Werkes sowie sämtliche
+                        Weiters verpflichtet sich Websters e.U., über den gesamten Inhalt des Werkes sowie sämtliche
                         Informationen und Umstände, die ihm im Zusammenhang mit der Erstellung des Werkes zugegangen
                         sind, insbesondere auch über die Daten von Klienten des Auftraggebers, Dritten gegenüber
                         Stillschweigen zu bewahren.
                     </p>
 
                     <p><span class="font-semibold">9.3</span>
-                        Stevan Vlajic ist von der Schweigepflicht gegenüber allfälligen Gehilfen und Stellvertretern,
+                        Websters e.U. ist von der Schweigepflicht gegenüber allfälligen Gehilfen und Stellvertretern,
                         denen er sich bedient, entbunden. Er hat die Schweigepflicht aber auf diese vollständig zu
                         überbinden und haftet für deren Verstoß gegen die Verschwiegenheitsverpflichtung wie für einen
                         eigenen Verstoß.
@@ -503,7 +503,7 @@ new class extends Component {
                     </p>
 
                     <p><span class="font-semibold">9.5</span>
-                        Stevan Vlajic ist berechtigt, ihm anvertraute personenbezogene Daten im Rahmen der
+                        Websters e.U. ist berechtigt, ihm anvertraute personenbezogene Daten im Rahmen der
                         Zweckbestimmung des Vertragsverhältnisses zu verarbeiten. Der Auftraggeber leistet Stevan
                         Vlajic Gewähr, dass hierfür sämtliche erforderlichen Maßnahmen insbesondere jene im Sinne des
                         Datenschutzgesetzes, wie etwa Zustimmungserklärungen der Betroffenen, getroffen worden sind.
@@ -521,27 +521,27 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">10. Honorar</h3>
 
                     <p><span class="font-semibold">10.1</span>
-                        Nach Vollendung der vereinbarten Leistung erhält Stevan Vlajic ein Honorar gemäß der
-                        Vereinbarung zwischen dem Auftraggeber und Stevan Vlajic. Stevan Vlajic ist berechtigt,
-                        entsprechend der Vereinbarung zwischen dem Auftraggeber und Stevan Vlajic Zwischenabrechnungen
+                        Nach Vollendung der vereinbarten Leistung erhält Websters e.U. ein Honorar gemäß der
+                        Vereinbarung zwischen dem Auftraggeber und Websters e.U.. Websters e.U. ist berechtigt,
+                        entsprechend der Vereinbarung zwischen dem Auftraggeber und Websters e.U. Zwischenabrechnungen
                         zu legen und dem jeweiligen Fortschritt entsprechende Akonti zu verlangen. Das Honorar ist
-                        jeweils mit Rechnungslegung durch Stevan Vlajic fällig.
+                        jeweils mit Rechnungslegung durch Websters e.U. fällig.
                     </p>
 
                     <p><span class="font-semibold">10.2</span>
-                        Stevan Vlajic wird jeweils eine zum Vorsteuerabzug berechtigende Rechnung mit allen gesetzlich
+                        Websters e.U. wird jeweils eine zum Vorsteuerabzug berechtigende Rechnung mit allen gesetzlich
                         erforderlichen Merkmalen ausstellen.
                     </p>
 
                     <p><span class="font-semibold">10.3</span>
-                        Anfallende Barauslagen, Spesen, Reisekosten etc. sind gegen Rechnungslegung von Stevan Vlajic
+                        Anfallende Barauslagen, Spesen, Reisekosten etc. sind gegen Rechnungslegung von Websters e.U.
                         vom Auftraggeber mit einem Verwaltungsaufschlag von 3&nbsp;% zusätzlich zu ersetzen.
                     </p>
 
                     <p><span class="font-semibold">10.4</span>
                         Unterbleibt die Ausführung der vereinbarten Leistung aus Gründen, die auf Seiten des
                         Auftraggebers liegen, oder aufgrund einer berechtigten vorzeitigen Beendigung des
-                        Vertragsverhältnisses durch Stevan Vlajic, so behält Stevan Vlajic den Anspruch auf Zahlung des
+                        Vertragsverhältnisses durch Websters e.U., so behält Websters e.U. den Anspruch auf Zahlung des
                         gesamten vereinbarten Honorars abzüglich ersparter Aufwendungen. Im Falle der Vereinbarung
                         eines Stundenhonorars ist das Honorar für jene Stundenanzahl, die für die gesamte vereinbarte
                         Leistung zu erwarten gewesen ist, abzüglich der ersparten Aufwendungen zu leisten. Die
@@ -551,7 +551,7 @@ new class extends Component {
                     </p>
 
                     <p><span class="font-semibold">10.5</span>
-                        Im Falle der Nichtzahlung von Zwischenabrechnungen ist Stevan Vlajic von seiner Verpflichtung,
+                        Im Falle der Nichtzahlung von Zwischenabrechnungen ist Websters e.U. von seiner Verpflichtung,
                         weitere Leistungen zu erbringen, befreit. Die Geltendmachung weiterer aus der Nichtzahlung
                         resultierender Ansprüche wird dadurch aber nicht berührt.
                     </p>
@@ -568,9 +568,9 @@ new class extends Component {
                     <h3 class="font-semibold text-slate-800">11. Elektronische Rechnungslegung</h3>
 
                     <p><span class="font-semibold">11.1</span>
-                        Stevan Vlajic ist berechtigt, dem Auftraggeber Rechnungen auch in elektronischer Form zu
+                        Websters e.U. ist berechtigt, dem Auftraggeber Rechnungen auch in elektronischer Form zu
                         übermitteln. Der Auftraggeber erklärt sich mit der Zusendung von Rechnungen in elektronischer
-                        Form durch Stevan Vlajic ausdrücklich einverstanden.
+                        Form durch Websters e.U. ausdrücklich einverstanden.
                     </p>
 
                 </div>
@@ -625,8 +625,8 @@ new class extends Component {
                     <p><span class="font-semibold">13.3</span>
                         Auf diesen Vertrag ist materielles österreichisches Recht unter Ausschluss der
                         Verweisungsnormen des internationalen Privatrechts anwendbar. Erfüllungsort ist der Ort der
-                        beruflichen Niederlassung von Stevan Vlajic. Für Streitigkeiten ist das Gericht am
-                        Unternehmensort von Stevan Vlajic zuständig.
+                        beruflichen Niederlassung von Websters e.U.. Für Streitigkeiten ist das Gericht am
+                        Unternehmensort von Websters e.U. zuständig.
                     </p>
 
                 </div>

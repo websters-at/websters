@@ -19,9 +19,9 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Webdesign Linz – Websites ab 990€');
+        SEOMeta::setTitle('Webdesign aus Engerwitzdorf – Websites ab 990€');
         SEOMeta::setDescription(
-            'Professionelles Webdesign in Linz: Starter 990€, Komplett 1.990€, Premium ab 2.990€. Responsiv, SEO-optimiert, WordPress & Webdevelopment. Jetzt Beratung sichern!'
+            'Professionelles Webdesign in Engerwitzdorf: Starter 990€, Komplett 1.990€, Premium ab 2.990€. Responsiv, SEO-optimiert, WordPress & Webdevelopment. Jetzt Beratung sichern!'
         );
 
         SEOMeta::setCanonical($pageUrl);
@@ -32,7 +32,7 @@ new class extends Component {
             'SEO optimierte Website',
             'Responsive Webdesign',
             'Website erstellen Linz',
-            'Webagentur Linz Preise',
+            'Websters Preise',
             'OnePager Webdesign',
             'Landingpage erstellen',
             'Website Komplett Paket',
@@ -47,14 +47,14 @@ new class extends Component {
         */
 
         OpenGraph::setTitle('Webdesign Linz – Websites ab 990€ | Websters');
-        OpenGraph::setDescription('Starter 990€, Komplett 1.990€, Premium ab 2.990€. Webdesign aus Linz mit SEO & Responsive Design.');
+        OpenGraph::setDescription('Starter 990€, Komplett 1.990€, Premium ab 2.990€. Webdesign aus Engerwitzdorf mit SEO & Responsive Design.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width'  => 1200,
             'height' => 630,
-            'alt'    => 'Webdesign Dienstleistungen von Websters Linz'
+            'alt'    => 'Webdesign Dienstleistungen von Websters'
         ]);
 
         /*
@@ -63,8 +63,8 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Webdesign Linz ab 990€ | Webagentur Websters');
-        TwitterCard::setDescription('Starter: 990€, Komplett: 1.990€, Premium ab 2.990€. Professionelles Webdesign aus Linz.');
+        TwitterCard::setTitle('Webdesign Linz ab 990€ | Websters');
+        TwitterCard::setDescription('Starter: 990€, Komplett: 1.990€, Premium ab 2.990€. Professionelles Webdesign aus Engerwitzdorf.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -75,21 +75,21 @@ new class extends Component {
         */
 
         JsonLd::setType('Service');
-        JsonLd::setTitle('Webdesign Dienstleistungen in Linz');
+        JsonLd::setTitle('Webdesign Dienstleistungen in Engerwitzdorf');
         JsonLd::setDescription('Professionelles Webdesign mit transparenten Preisen: Starter, Komplett und Premium.');
         JsonLd::setUrl($pageUrl);
 
         // Provider (deine Firma)
         JsonLd::addValue('provider', [
             '@type' => 'ProfessionalService',
-            'name' => 'Webagentur Websters',
-            'description' => 'Webdesign Agentur aus Linz, Österreich',
+            'name' => 'Websters',
+            'description' => 'Webdesign Agentur aus Engerwitzdorf, Österreich',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
@@ -180,10 +180,10 @@ new class extends Component {
             '@type' => 'ServiceChannel',
             'serviceLocation' => [
                 '@type' => 'Place',
-                'name' => 'Webagentur Websters – Standort Linz',
+                'name' => 'Websters – Standort Linz',
                 'address' => [
                     '@type' => 'PostalAddress',
-                    'addressLocality' => 'Außertreffling',
+                    'addressLocality' => 'Engerwitzdorf',
                     'addressRegion' => 'Oberösterreich',
                     'addressCountry' => 'AT'
                 ]

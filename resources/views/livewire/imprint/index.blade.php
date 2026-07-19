@@ -21,21 +21,21 @@ new class extends Component {
 
         SEOMeta::setTitle('Impressum');
         SEOMeta::setDescription(
-            'Impressum der Webagentur Websters: Auwiesenstraße 95, 4030 Linz. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.'
+            'Impressum von Websters e.U.: Libellenweg 13, 4209 Engerwitzdorf. IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.'
         );
         SEOMeta::setCanonical($pageUrl);
 
         SEOMeta::addKeyword([
-            'Impressum Webagentur Linz',
+            'Impressum Websters e.U.',
             'Rechtliche Hinweise Webdesign',
             'Offenlegung gemäß ECG',
             'Mediengesetz Österreich',
-            'Webdesign Agentur rechtliche Informationen',
-            'Unternehmensdaten Linz',
+            'Webdesign Unternehmen rechtliche Informationen',
+            'Unternehmensdaten Engerwitzdorf',
             'IT-Dienstleister Impressum',
             'Haftungsausschluss Österreich',
             'Gewerberecht Webentwicklung',
-            'Imprint Webagentur'
+            'Imprint Websters'
         ]);
 
         /*
@@ -44,16 +44,16 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Impressum | Webagentur Websters Linz');
-        OpenGraph::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters gemäß österreichischem Recht.');
+        OpenGraph::setTitle('Impressum | Websters');
+        OpenGraph::setDescription('Rechtliche Informationen und Offenlegung von Websters gemäß österreichischem Recht.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
 
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Webagentur Websters – Impressum'
+            'alt' => 'Websters – Impressum'
         ]);
 
         /*
@@ -62,8 +62,8 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Impressum | Webagentur Websters');
-        TwitterCard::setDescription('Rechtliche Informationen und Offenlegung der Webagentur Websters aus Linz.');
+        TwitterCard::setTitle('Impressum | Websters');
+        TwitterCard::setDescription('Rechtliche Informationen und Offenlegung von Websters aus Engerwitzdorf.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -76,23 +76,23 @@ new class extends Component {
         */
 
         JsonLd::setType('Organization');
-        JsonLd::setTitle('Impressum – Webagentur Websters');
+        JsonLd::setTitle('Impressum – Websters');
         JsonLd::setDescription('Rechtliche Informationen gemäß ECG, MedienG und österreichischem Unternehmensrecht.');
         JsonLd::setUrl($pageUrl);
 
         JsonLd::addValues([
-            'name' => 'Webagentur Websters',
-            'legalName' => 'Stevan Vlajic',
-            'description' => 'Webagentur für Webdesign, Softwareentwicklung und IT-Consulting.',
+            'name' => 'Websters',
+            'legalName' => 'Websters e.U.',
+            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
 
-            // Offizielle Impressumsadresse
+            // Offizielle Impressumsadresse (Firmenbuch)
             'address' => [
                 '@type' => 'PostalAddress',
-                'streetAddress' => 'Auwiesenstraße 95',
-                'addressLocality' => 'Linz',
-                'postalCode' => '4030',
+                'streetAddress' => 'Libellenweg 13',
+                'addressLocality' => 'Engerwitzdorf',
+                'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
             ],
@@ -112,25 +112,29 @@ new class extends Component {
                 ]
             ],
 
-            // Gründerinformationen
+            // Firmenbuchdaten
             'founder' => [
                 '@type' => 'Person',
-                'name' => 'Stevan Vlajic'
+                'name' => 'Michael Elias Ruep'
             ],
 
-            'foundingDate' => '2024',
+            'foundingDate' => '2026-02-11',
 
             // Branchenkompetenzen (SEO-Relevant)
             'knowsAbout' => [
                 'Webdesign',
                 'Software Development',
                 'IT Consulting',
-                'Digital Transformation'
+                'Media Production',
+                'IT-Dienstleistung'
             ],
 
-            // Optional, falls verfügbar:
-            // 'vatID' => 'ATUxxxxxxx',
-            // 'taxID' => 'xxxxxxxxx'
+            // Firmenbuch (Offenlegung gemäß §25 MedienG / §63 GewO)
+            'identifier' => [
+                '@type' => 'PropertyValue',
+                'name' => 'Firmenbuchnummer',
+                'value' => 'FN 672300b'
+            ],
         ]);
     }
 };
@@ -160,58 +164,78 @@ new class extends Component {
                     Impressum
                 </div>
 
-                <div
-                    class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
-                    :class="{ 'show': show }"
-                    style="transition-delay:.3s"
-                >
-                    Rechtliche Informationen & Offenlegung
+                    <div
+                        class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.3s"
+                    >
+                        Rechtliche Informationen & Offenlegung
+                    </div>
+
+                    <p
+                        class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"
+                        :class="{ 'show': show }"
+                        style="transition-delay:.35s"
+                    >
+                        Informationen und Offenlegung gemäß §5 (1) ECG, § 25 MedienG, § 63 GewO und § 14 UGB.
+                    </p>
                 </div>
 
-                <p
-                    class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"
-                    :class="{ 'show': show }"
-                    style="transition-delay:.35s"
-                >
-                    Informationen und Offenlegung gemäß §5 (1) ECG, § 25 MedienG, § 63 GewO und § 14 UGB.
-                </p>
-            </div>
+                <!-- Content -->
+                <div class="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
 
-            <!-- Content -->
-            <div class="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
+                    <!-- Left column -->
+                    <div class="space-y-4">
 
-                <!-- Left column -->
-                <div class="space-y-4">
-
-                    <div
-                        class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
-                        :class="{ 'show': show }"
-                        style="transition-delay:.4s"
-                    >
-                        <div class="p-5 sm:p-6">
-                            <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase mb-3">
-                                Webseitenbetreiber
-                            </h3>
-                            <dl class="text-sm font-poppins text-slate-600 space-y-1.5">
-                                <div>
-                                    <dt class="font-medium text-slate-700">Webseitenbetreiber:</dt>
-                                    <dd>Stevan Vlajic</dd>
-                                </div>
-                                <div>
-                                    <dt class="font-medium text-slate-700">Geschäftsführer:</dt>
-                                    <dd>Stevan Vlajic</dd>
-                                </div>
-                                <div>
-                                    <dt class="font-medium text-slate-700">Anschrift:</dt>
-                                    <dd>Auwiesenstraße 95, 4030 Linz</dd>
-                                </div>
-                                <div>
-                                    <dt class="font-medium text-slate-700">Gewerbeaufsichtbehörde:</dt>
-                                    <dd>Magistrat der Stadt Linz</dd>
-                                </div>
-                            </dl>
+                        <div
+                            class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
+                            :class="{ 'show': show }"
+                            style="transition-delay:.4s"
+                        >
+                            <div class="p-5 sm:p-6">
+                                <h3 class="font-poppins font-semibold text-sm text-slate-800 tracking-wide uppercase mb-3">
+                                    Webseitenbetreiber
+                                </h3>
+                                <dl class="text-sm font-poppins text-slate-600 space-y-1.5">
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Unternehmen:</dt>
+                                        <dd>Websters e.U.</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Rechtsform:</dt>
+                                        <dd>Einzelunternehmen (e.U.)</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Inhaber:</dt>
+                                        <dd>Michael Elias Ruep</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Anschrift:</dt>
+                                        <dd>Libellenweg 13, 4209 Engerwitzdorf</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Sitz:</dt>
+                                        <dd>Engerwitzdorf</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Firmenbuchnummer:</dt>
+                                        <dd>FN 672300b (Handelsgericht Wien)</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Eingetragen am:</dt>
+                                        <dd>11.02.2026</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Geschäftszweig:</dt>
+                                        <dd>IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion</dd>
+                                    </div>
+                                    <div>
+                                        <dt class="font-medium text-slate-700">Gewerbeaufsichtsbehörde:</dt>
+                                        <dd>Bezirkshauptmannschaft Freistadt</dd>
+                                    </div>
+                                </dl>
+                            </div>
                         </div>
-                    </div>
 
                     <div
                         class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"

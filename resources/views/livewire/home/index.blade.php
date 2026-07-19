@@ -11,56 +11,56 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Linz');
+        SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Engerwitzdorf');
         SEOMeta::setDescription(
-            'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Linz für Unternehmen und Startups in Österreich.'
+            'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Engerwitzdorf für Unternehmen und Startups in Österreich.'
         );
         SEOMeta::setCanonical($siteUrl);
         SEOMeta::addKeyword([
-            'Webagentur Linz',
-            'Webdesign Linz',
-            'Softwareentwicklung Linz',
+            'Websters Engerwitzdorf',
+            'Webdesign Oberösterreich',
+            'Softwareentwicklung Oberösterreich',
             'IT-Consulting Österreich',
             'Individualsoftware Entwicklung',
-            'Laravel Agentur Linz',
-            'WordPress Agentur Linz',
+            'Laravel Agentur',
+            'WordPress Agentur',
             'Custom Software ab 3490€',
             'Prozessoptimierung IT',
             'Web Entwicklung Oberösterreich'
         ]);
 
 
-        OpenGraph::setTitle('Webdesign & Softwareentwicklung | Webagentur Websters');
+        OpenGraph::setTitle('Webdesign & Softwareentwicklung | Websters');
         OpenGraph::setDescription(
             'Professionelles Webdesign ab 990€ & Custom Software ab 3.490€ – Ihre Agentur für WordPress, Laravel & IT-Consulting aus Linz.'
         );
         OpenGraph::setUrl($siteUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Webdesign & Development – Webagentur Websters Linz'
+            'alt' => 'Webdesign & Development – Websters'
         ]);
 
 // --- Twitter Card ---
-        TwitterCard::setTitle('Webdesign & Softwareentwicklung aus Linz | Websters');
-        TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Linz.');
+        TwitterCard::setTitle('Webdesign & Softwareentwicklung aus Engerwitzdorf | Websters');
+        TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Engerwitzdorf.');
         TwitterCard::setUrl($siteUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
 // --- JSON-LD ---
         JsonLd::setType('ProfessionalService');
-        JsonLd::setTitle('Webagentur Websters – Webdesign & Softwareentwicklung aus Linz');
-        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Außertreffling bei Linz.');
+        JsonLd::setTitle('Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf');
+        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Engerwitzdorf.');
         JsonLd::setUrl($siteUrl);
 
         JsonLd::addValues([
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT',

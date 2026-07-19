@@ -18,9 +18,9 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Individualsoftware Entwicklung Linz – Custom Software ab 3.490€');
+        SEOMeta::setTitle('Individualsoftware Entwicklung aus Engerwitzdorf – Custom Software ab 3.490€');
         SEOMeta::setDescription(
-            'Individuelle Softwarelösungen aus Linz: Web-Apps, Prozess-Tools & Business-Software ab 3.490€. Maßgeschneiderte Entwicklung für Unternehmen & Startups.'
+            'Individuelle Softwarelösungen aus Engerwitzdorf: Web-Apps, Prozess-Tools & Business-Software ab 3.490€. Maßgeschneiderte Entwicklung für Unternehmen & Startups.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -44,16 +44,16 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Individualsoftware Entwicklung ab 3.490€ | Websters Linz');
-        OpenGraph::setDescription('Custom Software, Web-Apps & Prozesslösungen aus Linz. Maßgeschneidert für Unternehmen und Startups.');
+        OpenGraph::setTitle('Individualsoftware Entwicklung ab 3.490€ | Websters');
+        OpenGraph::setDescription('Custom Software, Web-Apps & Prozesslösungen aus Engerwitzdorf. Maßgeschneidert für Unternehmen und Startups.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
 
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Individualsoftware Entwicklung von Websters Linz'
+            'alt' => 'Individualsoftware Entwicklung von Websters'
         ]);
 
         /*
@@ -63,7 +63,7 @@ new class extends Component {
         */
 
         TwitterCard::setTitle('Custom Software Entwicklung ab 3.490€ | Websters');
-        TwitterCard::setDescription('Individuelle Softwarelösungen für Unternehmen & Startups aus Linz.');
+        TwitterCard::setDescription('Individuelle Softwarelösungen für Unternehmen & Startups aus Engerwitzdorf.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -86,14 +86,14 @@ new class extends Component {
 
         JsonLd::addValue('provider', [
             '@type' => 'Organization',
-            'name' => 'Webagentur Websters',
+            'name' => 'Websters',
             'description' => 'Spezialisiert auf individuelle Softwareentwicklung in Österreich',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'

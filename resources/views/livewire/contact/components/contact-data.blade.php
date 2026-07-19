@@ -48,7 +48,7 @@ new class extends Component {};
                 >
                     <a href="tel:+43 677 63177763" target="_blank">+43 677 63177763</a>
                     <a href="mailto:office@websters.at" target="_blank">office@websters.at</a>
-                    Libellenweg 13, 4209 Außertreffling
+                    Libellenweg 13, 4209 Engerwitzdorf
                 </div>
 
                 <!-- SOCIAL ICONS -->

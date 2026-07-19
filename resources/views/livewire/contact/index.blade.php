@@ -21,19 +21,19 @@ new class extends Component {
 
         SEOMeta::setTitle('Kontakt');
         SEOMeta::setDescription(
-            'Kontaktieren Sie die Webagentur Websters für Webdesign ab 990€, Individualsoftware ab 3.490€ & IT-Consulting. Kostenlose Erstberatung unter +43 677 63177763.'
+            'Kontaktieren Sie Websters für Webdesign ab 990€, Individualsoftware ab 3.490€ & IT-Consulting. Kostenlose Erstberatung unter +43 677 63177763.'
         );
         SEOMeta::setCanonical($pageUrl);
         SEOMeta::addKeyword([
-            'Webagentur Linz Kontakt',
+            'Websters Kontakt',
             'Webdesign Agentur Oberösterreich',
             'Softwareentwicklung Anfrage',
             'IT-Consulting Termin Linz',
-            'Websters Linz Adresse',
+            'Websters Adresse',
             'Webdesign Beratung kostenlos',
             'Individualsoftware Entwicklung Kontakt',
             'Prozessoptimierung Beratung',
-            'Außertreffling Webagentur',
+            'Engerwitzdorf Webagentur',
             'Webentwicklung Linz Kontakt'
         ]);
 
@@ -43,18 +43,18 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Kontakt | Webagentur Websters Linz');
+        OpenGraph::setTitle('Kontakt | Websters');
         OpenGraph::setDescription(
-            'Ihre Webagentur für Webdesign, Softwareentwicklung & IT-Consulting in Außertreffling bei Linz. Jetzt unverbindlich Kontakt aufnehmen.'
+            'Ihre Ansprechstelle für Webdesign, Softwareentwicklung & IT-Consulting in Engerwitzdorf. Jetzt unverbindlich Kontakt aufnehmen.'
         );
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
 
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Webagentur Websters – Kontakt und Standort'
+            'alt' => 'Websters – Kontakt und Standort'
         ]);
 
         /*
@@ -63,7 +63,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Kontakt | Webagentur Websters Linz');
+        TwitterCard::setTitle('Kontakt | Websters');
         TwitterCard::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Oberösterreich. Jetzt Termin vereinbaren.');
         TwitterCard::setImage($siteUrl . '/assets/logo-og.jpg');
         TwitterCard::setSite('@WebstersAgency');
@@ -76,13 +76,13 @@ new class extends Component {
         */
 
         JsonLd::setType('LocalBusiness');
-        JsonLd::setTitle('Webagentur Websters – Kontakt & Standort');
-        JsonLd::setDescription('Webdesign, Individualsoftware & IT-Consulting aus Außertreffling bei Linz.');
+        JsonLd::setTitle('Websters – Kontakt & Standort');
+        JsonLd::setDescription('Webdesign, Individualsoftware & IT-Consulting aus Engerwitzdorf.');
         JsonLd::setUrl($pageUrl);
 
         JsonLd::addValues([
-            'name' => 'Webagentur Websters',
-            'description' => 'Webagentur für Webdesign, Individualsoftware und IT-Consulting in Oberösterreich.',
+            'name' => 'Websters',
+            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung & Medienproduktion und IT-Consulting in Oberösterreich.',
             'image' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'telephone' => '+43 677 63177763',
             'email' => 'office@websters.at',
@@ -91,7 +91,7 @@ new class extends Component {
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'

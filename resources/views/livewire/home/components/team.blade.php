@@ -59,7 +59,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://github.com/stevan06v"
-                            title="Stevan V. GitHub Profile - Websters Linz"
+                            title="Stevan V. GitHub Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -68,7 +68,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://www.linkedin.com/in/stevan-vlajic-a7b433347/"
-                            title="Stevan V. LinkedIn Profile - Websters Linz"
+                            title="Stevan V. LinkedIn Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -77,7 +77,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://www.instagram.com/stevan._v/"
-                            title="Stevan V. Instagram - Websters Linz"
+                            title="Stevan V. Instagram - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -86,7 +86,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://homelab.stevan.sexidude.com"
-                            title="Stevan V. Persönliche Website - Websters Linz"
+                            title="Stevan V. Persönliche Website - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -124,7 +124,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://github.com/michi4"
-                            title="Michael R. GitHub Profile - Websters Linz"
+                            title="Michael R. GitHub Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                             itemprop="sameAs"
@@ -134,7 +134,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="#"
-                            title="Michael R. LinkedIn Profile - Websters Linz"
+                            title="Michael R. LinkedIn Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -143,7 +143,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://michi.is-a.dev/"
-                            title="Michael R. Persönliche Website - Websters Linz"
+                            title="Michael R. Persönliche Website - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -181,7 +181,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://github.com/ManuelPuchner"
-                            title="Manuel P. GitHub Profile - Websters Linz"
+                            title="Manuel P. GitHub Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -190,7 +190,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://www.linkedin.com/in/manuel-puchner-66a449232/"
-                            title="Manuel P. LinkedIn Profile - Websters Linz"
+                            title="Manuel P. LinkedIn Profile - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -199,7 +199,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://www.instagram.com/manuel.pchnr/"
-                            title="Manuel P. Instagram - Websters Linz"
+                            title="Manuel P. Instagram - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -208,7 +208,7 @@
                         <a
                             class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
                             href="https://manuelpuchner.duckdns.org"
-                            title="Manuel P. Persönliche Website - Websters Linz"
+                            title="Manuel P. Persönliche Website - Websters"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

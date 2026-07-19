@@ -23,19 +23,19 @@ new class extends Component {
         |
         */
 
-        SEOMeta::setTitle('Unser Team – Webagentur Websters aus Linz');
+        SEOMeta::setTitle('Unser Team – Websters aus Engerwitzdorf');
         SEOMeta::setDescription(
-            'Lerne das Team der Webagentur Websters kennen: Experten für Webdesign, UI/UX, DevOps & Softwareentwicklung aus Linz – Michael, Stevan & Manuel.'
+            'Lerne das Team von Websters kennen: Experten für Webdesign, UI/UX, DevOps & Softwareentwicklung aus Engerwitzdorf – Michael, Stevan & Manuel.'
         );
         SEOMeta::setCanonical($pageUrl);
 
         // Originale Keywords + erweitert für mehr SEO-Relevanz
         SEOMeta::addKeyword([
-            'Webagentur Linz Team',
-            'Webdesign Experten Linz',
-            'UI/UX Designer Linz',
-            'DevOps Engineer Linz',
-            'Softwareentwicklung Linz',
+            'Websters Team Engerwitzdorf',
+            'Webdesign Experten Oberösterreich',
+            'UI/UX Designer',
+            'DevOps Engineer',
+            'Softwareentwicklung Oberösterreich',
             'Cloud Architekt Österreich',
             'Webentwickler Linz',
             'Michael Ruep',
@@ -49,12 +49,12 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Unser Team – Webdesign & DevOps Experten aus Linz | Websters');
+        OpenGraph::setTitle('Unser Team – Webdesign & DevOps Experten | Websters');
         OpenGraph::setDescription(
-            'Das Websters-Team: Experten für Webdesign, UI/UX, DevOps und Softwareentwicklung aus Linz. Persönlich, modern und kundenorientiert.'
+            'Das Websters-Team: Experten für Webdesign, UI/UX, DevOps und Softwareentwicklung. Persönlich, modern und kundenorientiert.'
         );
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
 
         /*
@@ -71,8 +71,8 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Unser Team – Webagentur Websters aus Linz');
-        TwitterCard::setDescription('Das Websters-Team: Webdesign, UI/UX, DevOps & Softwareentwicklung aus Linz.');
+        TwitterCard::setTitle('Unser Team – Websters');
+        TwitterCard::setDescription('Das Websters-Team: Webdesign, UI/UX, DevOps & Softwareentwicklung.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -85,8 +85,8 @@ new class extends Component {
         */
 
         JsonLd::setType('AboutPage');
-        JsonLd::setTitle('Unser Team – Webagentur Websters');
-        JsonLd::setDescription('Vorstellung des Websters-Teams: Experten für Webdesign, DevOps und Softwareentwicklung aus Linz.');
+        JsonLd::setTitle('Unser Team – Websters');
+        JsonLd::setDescription('Vorstellung des Websters-Teams: Experten für Webdesign, DevOps und Softwareentwicklung.');
         JsonLd::setUrl($pageUrl);
 
         // Team-Mitglieder (alte Struktur beibehalten, aber semantisch verbessert)
@@ -98,7 +98,7 @@ new class extends Component {
                 'description' => 'DevOps Engineer und Cloud Architekt bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
-                    'name' => 'Webagentur Websters'
+                    'name' => 'Websters'
                 ],
                 'knowsAbout' => [
                     'DevOps',
@@ -115,7 +115,7 @@ new class extends Component {
                 'description' => 'UI/UX Design, Webentwicklung und Software Engineering bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
-                    'name' => 'Webagentur Websters'
+                    'name' => 'Websters'
                 ],
                 'knowsAbout' => [
                     'UI/UX Design',
@@ -131,7 +131,7 @@ new class extends Component {
                 'description' => 'Webentwicklung & DevOps Engineer bei Websters',
                 'worksFor' => [
                     '@type' => 'Organization',
-                    'name' => 'Webagentur Websters'
+                    'name' => 'Websters'
                 ],
                 'knowsAbout' => [
                     'Backend Development',
@@ -145,18 +145,23 @@ new class extends Component {
         // Unternehmensdaten (leicht optimiert, aber originalgetreu)
         JsonLd::addValue('mainEntity', [
             '@type' => 'Organization',
-            'name' => 'Webagentur Websters',
-            'description' => 'Webagentur aus Linz mit Fokus auf Webdesign, DevOps & Softwareentwicklung.',
+            'name' => 'Websters',
+            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung und Medienproduktion aus Engerwitzdorf.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
-            'foundingDate' => '2024',
+            'foundingDate' => '2026-02-11',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT',
+            ],
+            'identifier' => [
+                '@type' => 'PropertyValue',
+                'name' => 'Firmenbuchnummer',
+                'value' => 'FN 672300b'
             ],
             'contactPoint' => [
                 '@type' => 'ContactPoint',

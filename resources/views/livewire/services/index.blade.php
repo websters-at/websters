@@ -18,7 +18,7 @@ new class extends Component {
 
         SEOMeta::setTitle('Leistungen – Webdesign, Softwareentwicklung & IT-Consulting');
         SEOMeta::setDescription(
-            'Unsere Dienstleistungen: Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting, Prozessoptimierung, UI/UX Design & moderne Webentwicklung aus Linz.'
+            'Unsere Dienstleistungen: Webdesign ab 990€, Custom Software ab 3.490€, IT-Consulting, Prozessoptimierung, UI/UX Design & moderne Webentwicklung aus Engerwitzdorf.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -26,7 +26,7 @@ new class extends Component {
             'Webdesign Linz',
             'Softwareentwicklung Linz',
             'IT-Consulting Linz',
-            'Webagentur Leistungen',
+            'Websters Leistungen',
             'Individualsoftware Österreich',
             'UI/UX Design',
             'DevOps Agentur Linz'
@@ -38,15 +38,15 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Leistungen – Webdesign, Software & Consulting | Webagentur Websters Linz');
+        OpenGraph::setTitle('Leistungen – Webdesign, Software & Consulting | Websters');
         OpenGraph::setDescription('Überblick aller Services: Webdesign, Softwareentwicklung, IT-Consulting, UI/UX Design & moderne Webentwicklung.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width'  => 1200,
             'height' => 630,
-            'alt'    => 'Dienstleistungen der Webagentur Websters'
+            'alt'    => 'Dienstleistungen der Websters'
         ]);
 
         /*
@@ -55,8 +55,8 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Unsere Leistungen | Webagentur Websters Linz');
-        TwitterCard::setDescription('Webdesign, Softwareentwicklung, IT-Consulting und mehr aus Linz.');
+        TwitterCard::setTitle('Unsere Leistungen | Websters');
+        TwitterCard::setDescription('Webdesign, Softwareentwicklung, IT-Consulting und mehr aus Engerwitzdorf.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
@@ -67,7 +67,7 @@ new class extends Component {
         */
 
         JsonLd::setType('ItemList');
-        JsonLd::setTitle('Dienstleistungen der Webagentur Websters');
+        JsonLd::setTitle('Dienstleistungen der Websters');
         JsonLd::setDescription('Alle Services im Überblick: Webdesign, Softwareentwicklung, IT-Consulting, DevOps, UI/UX und moderne Webentwicklung.');
         JsonLd::setUrl($pageUrl);
 
@@ -132,14 +132,14 @@ new class extends Component {
 
         JsonLd::addValue('mainEntity', [
             '@type' => 'Organization',
-            'name' => 'Webagentur Websters',
+            'name' => 'Websters',
             'description' => 'Full-Service Webagentur aus Linz für Webdesign, Softwareentwicklung und IT-Consulting.',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'

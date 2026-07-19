@@ -18,9 +18,9 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('IT-Consulting Linz – Prozessoptimierung & Digitalisierung');
+        SEOMeta::setTitle('IT-Consulting aus Engerwitzdorf – Prozessoptimierung & Digitalisierung');
         SEOMeta::setDescription(
-            'IT-Consulting aus Linz: Prozessoptimierung, digitale Transformation, Automatisierung & IT-Strategie. Optimieren Sie Ihre Geschäftsprozesse nachhaltig.'
+            'IT-Consulting aus Engerwitzdorf: Prozessoptimierung, digitale Transformation, Automatisierung & IT-Strategie. Optimieren Sie Ihre Geschäftsprozesse nachhaltig.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -44,16 +44,16 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('IT-Consulting & Prozessoptimierung aus Linz | Websters');
+        OpenGraph::setTitle('IT-Consulting & Prozessoptimierung aus Engerwitzdorf | Websters');
         OpenGraph::setDescription('Strategische IT-Beratung zur digitalen Transformation & Prozessoptimierung. Für Unternehmen in Österreich & Deutschland.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
 
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'IT-Consulting und Prozessoptimierung – Webagentur Websters'
+            'alt' => 'IT-Consulting und Prozessoptimierung – Websters'
         ]);
 
         /*
@@ -62,7 +62,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('IT-Consulting & Prozessoptimierung | Webagentur Websters');
+        TwitterCard::setTitle('IT-Consulting & Prozessoptimierung | Websters');
         TwitterCard::setDescription('Digitale Transformation, Prozessanalyse & Automatisierung für Unternehmen in Österreich.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
@@ -89,14 +89,14 @@ new class extends Component {
 
         JsonLd::addValue('provider', [
             '@type' => 'ProfessionalService',
-            'name' => 'Webagentur Websters',
+            'name' => 'Websters',
             'description' => 'IT-Consulting & Prozessoptimierung für Unternehmen in Österreich',
             'url' => $siteUrl,
             'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
+                'addressLocality' => 'Engerwitzdorf',
                 'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'

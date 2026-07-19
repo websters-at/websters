@@ -20,7 +20,7 @@ new class extends Component {
 
         SEOMeta::setTitle('Datenschutzerklärung');
         SEOMeta::setDescription(
-            'DSGVO-konforme Datenschutzerklärung der Webagentur Websters. Informationen zu Datenverarbeitung, Cookies und Ihren Datenschutzrechten gemäß österreichischem Recht.'
+            'DSGVO-konforme Datenschutzerklärung der Websters. Informationen zu Datenverarbeitung, Cookies und Ihren Datenschutzrechten gemäß österreichischem Recht.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -43,15 +43,15 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        OpenGraph::setTitle('Datenschutzerklärung | Webagentur Websters Linz');
-        OpenGraph::setDescription('DSGVO-konforme Datenschutzerklärung der Webagentur Websters aus Linz. Informationen zur Datenverarbeitung und Ihren Rechten.');
+        OpenGraph::setTitle('Datenschutzerklärung | Websters');
+        OpenGraph::setDescription('DSGVO-konforme Datenschutzerklärung der Websters aus Linz. Informationen zur Datenverarbeitung und Ihren Rechten.');
         OpenGraph::setUrl($pageUrl);
-        OpenGraph::setSiteName('Webagentur Websters');
+        OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
         OpenGraph::addImage($siteUrl . '/assets/logo-og.jpg', [
             'width' => 1200,
             'height' => 630,
-            'alt' => 'Datenschutzerklärung – Webagentur Websters'
+            'alt' => 'Datenschutzerklärung – Websters'
         ]);
 
         /*
@@ -60,7 +60,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        TwitterCard::setTitle('Datenschutzerklärung | Webagentur Websters');
+        TwitterCard::setTitle('Datenschutzerklärung | Websters');
         TwitterCard::setDescription('DSGVO-konforme Datenschutzerklärung für Webdesign, Softwareentwicklung & IT-Consulting.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
@@ -72,7 +72,7 @@ new class extends Component {
         */
 
         JsonLd::setType('PrivacyPolicy');
-        JsonLd::setTitle('Datenschutzerklärung – Webagentur Websters');
+        JsonLd::setTitle('Datenschutzerklärung – Websters');
         JsonLd::setDescription('Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz.');
         JsonLd::setUrl($pageUrl);
 
@@ -87,7 +87,7 @@ new class extends Component {
             ],
             'publisher' => [
                 '@type' => 'Organization',
-                'name' => 'Webagentur Websters',
+                'name' => 'Websters e.U.',
                 'url' => $siteUrl,
                 'logo' => $siteUrl . '/assets/images/logo-jsonld.jpg'
             ]
@@ -104,29 +104,22 @@ new class extends Component {
 
         JsonLd::addValue('dataController', [
             '@type' => 'Organization',
-            'name' => 'Webagentur Websters',
-            'legalName' => 'Stevan Vlajic',
+            'name' => 'Websters e.U.',
+            'legalName' => 'Websters e.U.',
 
-            // VARIANTE 1: Außertreffling (Startseite, Contact, About)
-            /*
-            'address' => [
-                '@type'           => 'PostalAddress',
-                'streetAddress'   => 'Libellenweg 13',
-                'addressLocality' => 'Außertreffling',
-                'postalCode'      => '4209',
-                'addressRegion'   => 'Oberösterreich',
-                'addressCountry'  => 'AT'
-            ],
-            */
-
-            // VARIANTE 2: Linz (aktuelle Datenschutzerklärung)
             'address' => [
                 '@type' => 'PostalAddress',
-                'streetAddress' => 'Auwiesenstraße 95',
-                'addressLocality' => 'Linz',
-                'postalCode' => '4030',
+                'streetAddress' => 'Libellenweg 13',
+                'addressLocality' => 'Engerwitzdorf',
+                'postalCode' => '4209',
                 'addressRegion' => 'Oberösterreich',
                 'addressCountry' => 'AT'
+            ],
+
+            'identifier' => [
+                '@type' => 'PropertyValue',
+                'name' => 'Firmenbuchnummer',
+                'value' => 'FN 672300b'
             ],
 
             'contactPoint' => [
@@ -389,8 +382,9 @@ new class extends Component {
                         Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
                     </p>
                     <p class="font-semibold text-slate-800">
-                        Stevan Vlajic<br>
-                        Auwiesenstraße 95, 4030 Linz<br>
+                        Websters e.U.<br>
+                        Michael Elias Ruep<br>
+                        Libellenweg 13, 4209 Engerwitzdorf<br>
                         Telefon: +43 660 4669179<br>
                         E-Mail:
                         <a href="mailto:office@websters.at" class="underline underline-offset-2 hover:text-primary transition">
