@@ -133,7 +133,7 @@ new class extends Component {
             'identifier' => [
                 '@type' => 'PropertyValue',
                 'name' => 'Firmenbuchnummer',
-                'value' => 'FN 672300b'
+                'value' => '672300b'
             ],
         ]);
     }
@@ -219,7 +219,7 @@ new class extends Component {
                                     </div>
                                     <div>
                                         <dt class="font-medium text-slate-700">Firmenbuchnummer:</dt>
-                                        <dd>FN 672300b (Handelsgericht Wien)</dd>
+                                        <dd>672300b</dd>
                                     </div>
                                     <div>
                                         <dt class="font-medium text-slate-700">Eingetragen am:</dt>
@@ -228,10 +228,6 @@ new class extends Component {
                                     <div>
                                         <dt class="font-medium text-slate-700">Geschäftszweig:</dt>
                                         <dd>IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion</dd>
-                                    </div>
-                                    <div>
-                                        <dt class="font-medium text-slate-700">Gewerbeaufsichtsbehörde:</dt>
-                                        <dd>Bezirkshauptmannschaft Freistadt</dd>
                                     </div>
                                 </dl>
                             </div>

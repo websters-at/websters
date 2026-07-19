@@ -119,7 +119,7 @@ new class extends Component {
             'identifier' => [
                 '@type' => 'PropertyValue',
                 'name' => 'Firmenbuchnummer',
-                'value' => 'FN 672300b'
+                'value' => '672300b'
             ],
 
             'contactPoint' => [
