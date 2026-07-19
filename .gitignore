@@ -27,3 +27,6 @@ mysql-data
 **/caddy
 frankenphp
 frankenphp-worker.php
+
+# local env (contains secrets)
+.env

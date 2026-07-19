@@ -8,8 +8,8 @@ services:
     ports:
       - '42069:80'
     volumes:
-      - 'caddy_data:/data'
-      - 'caddy_config:/config'
+      - './caddy/data:/data'
+      - './caddy/config:/config'
     depends_on:
       mysql:
         condition: service_healthy
@@ -17,8 +17,11 @@ services:
         condition: service_healthy
     environment:
       - DB_HOST=mysql
+      - DB_DATABASE=${MYSQL_DATABASE}
+      - DB_USERNAME=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
       - REDIS_HOST=redis
-      - REDIS_PASSWORD=
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=6379
     networks:
       - traefik
@@ -42,10 +45,10 @@ services:
     image: 'mysql:latest'
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: webstersdb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - 'mysql_data:/var/lib/mysql'
     # Port intentionally NOT published: MySQL stays internal to the Docker
@@ -62,7 +65,7 @@ services:
     container_name: redis
     image: 'redis:7-alpine'
     restart: unless-stopped
-    command: ['redis-server', '--appendonly', 'yes']
+    command: ['redis-server', '--appendonly', 'yes', '--requirepass', '${REDIS_PASSWORD}']
     volumes:
       - 'redis_data:/data'
     healthcheck:
@@ -73,9 +76,10 @@ services:
     networks:
       - traefik
 
+# mysql_data / redis_data remain named volumes (production best-practice:
+# better performance + correct ownership for the DB/redis internal users).
+# Caddy TLS data is a bind mount so certs survive rebuilds on the host.
 volumes:
-  caddy_data: null
-  caddy_config: null
   mysql_data: null
   redis_data: null
   sail-mysql:
