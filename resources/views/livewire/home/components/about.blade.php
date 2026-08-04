@@ -74,8 +74,8 @@ new class extends Component {
             >
                 <img
                     src="{{ asset('/assets/team.png') }}"
-                    alt="Team"
-                    title="Team Stock Image"
+                    alt="Websters Team – Michael, Stevan & Manuel"
+                    title="Websters Team"
                     class="
                         pointer-events-none rocket-float fade-up
                         w-full
@@ -84,6 +84,10 @@ new class extends Component {
                     "
                     :class="{ 'show': show }"
                     style="transition-delay: .2s"
+                    width="1764"
+                    height="1152"
+                    fetchpriority="high"
+                    decoding="async"
                 >
             </div>
 

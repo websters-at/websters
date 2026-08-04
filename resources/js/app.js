@@ -10,10 +10,3 @@ import.meta.glob([
 Alpine.plugin(collapse);
 
 Alpine.plugin(intersect)
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-WREHCH7Q7Y');
-
-

@@ -34,13 +34,19 @@
             <!-- CARD 1 — STEVAN -->
             <article class="flex flex-col fade-up" style="transition-delay:.1s" :class="{ 'show': show }">
                 <figure class="team-img-wrapper w-full aspect-square rounded-2xl lg:rounded-3xl overflow-hidden">
-                    <img
-                        class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
-                        src="{{asset('/assets/people/stevan.png')}}"
-                        alt="Stevan Vlajic - Webdeveloper & Software Engineer"
-                        title="Stevan Vlajic - Webdeveloper & Software Engineer"
-                        loading="lazy"
-                    />
+                    <picture>
+                        <source srcset="{{ asset('/assets/people/stevan.webp') }}" type="image/webp">
+                        <img
+                            class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
+                            src="{{ asset('/assets/people/stevan.png') }}"
+                            alt="Stevan Vlajic - Webdeveloper & Software Engineer"
+                            title="Stevan Vlajic - Webdeveloper & Software Engineer"
+                            loading="lazy"
+                            width="638"
+                            height="638"
+                            decoding="async"
+                        >
+                    </picture>
                 </figure>
 
                 <div class="flex flex-col items-start p-2 lg:px-0 lg:pt-4">
@@ -100,13 +106,19 @@
             <!-- CARD 2 — MICHI -->
             <article class="flex flex-col fade-up" style="transition-delay:.2s" :class="{ 'show': show }">
                 <figure class="team-img-wrapper w-full aspect-square rounded-2xl lg:rounded-3xl overflow-hidden">
-                    <img
-                        class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
-                        src="{{asset('/assets/people/michi.png')}}"
-                        alt="Michael R. - DevOps Engineer & Cloud Architect"
-                        title="Michael Ruep - DevOps Engineer & Cloud Architect"
-                        loading="lazy"
-                    />
+                    <picture>
+                        <source srcset="{{ asset('/assets/people/michi.webp') }}" type="image/webp">
+                        <img
+                            class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
+                            src="{{ asset('/assets/people/michi.png') }}"
+                            alt="Michael R. - DevOps Engineer & Cloud Architect"
+                            title="Michael Ruep - DevOps Engineer & Cloud Architect"
+                            loading="lazy"
+                            width="638"
+                            height="638"
+                            decoding="async"
+                        >
+                    </picture>
                 </figure>
 
                 <div class="flex flex-col items-start p-2 lg:px-0 lg:pt-4">
@@ -157,13 +169,19 @@
             <!-- CARD 3 — MANUEL -->
             <article class="flex flex-col fade-up" style="transition-delay:.3s" :class="{ 'show': show }">
                 <figure class="team-img-wrapper w-full aspect-square rounded-2xl lg:rounded-3xl overflow-hidden">
-                    <img
-                        class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
-                        src="{{asset('/assets/people/manuel.png')}}"
-                        alt="Manuel Puchner - Webentwickler & DevOps Engineer"
-                        title="Manuel Puchner - Webentwickler & DevOps Engineer"
-                        loading="lazy"
-                    />
+                    <picture>
+                        <source srcset="{{ asset('/assets/people/manuel.webp') }}" type="image/webp">
+                        <img
+                            class="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
+                            src="{{ asset('/assets/people/manuel.png') }}"
+                            alt="Manuel Puchner - Webentwickler & DevOps Engineer"
+                            title="Manuel Puchner - Webentwickler & DevOps Engineer"
+                            loading="lazy"
+                            width="638"
+                            height="638"
+                            decoding="async"
+                        >
+                    </picture>
                 </figure>
 
                 <div class="flex flex-col items-start p-2 lg:px-0 lg:pt-4">

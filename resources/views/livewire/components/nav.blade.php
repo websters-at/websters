@@ -55,18 +55,30 @@ new class extends Component {
                         class="flex items-center"{{-- reset when going to plain / --}}
                     >
                         {{-- Desktop logo --}}
-                        <img
-                            class="h-7 hidden lg:block"
-                            src="{{ asset('assets/websters-full-logo.png') }}"
-                            alt="Logo"
-                        />
+                        <picture>
+                            <source srcset="{{ asset('assets/websters-full-logo.webp') }}" type="image/webp">
+                            <img
+                                class="h-7 hidden lg:block"
+                                src="{{ asset('assets/websters-full-logo.png') }}"
+                                alt="Websters Logo"
+                                width="120"
+                                height="48"
+                                decoding="async"
+                            />
+                        </picture>
 
                         {{-- Mobile logo (icon) --}}
-                        <img
-                            class="h-7 lg:hidden"
-                            src="{{ asset('assets/websters-mobile.png') }}"
-                            alt="Logo"
-                        />
+                        <picture>
+                            <source srcset="{{ asset('assets/websters-mobile.webp') }}" type="image/webp">
+                            <img
+                                class="h-7 lg:hidden"
+                                src="{{ asset('assets/websters-mobile.png') }}"
+                                alt="Websters Logo"
+                                width="48"
+                                height="48"
+                                decoding="async"
+                            />
+                        </picture>
                     </a>
                 </div>
 

@@ -110,6 +110,10 @@ new class extends Component {
 
 <div>
 
+    @push('head-preloads')
+        <link rel="preload" as="image" href="{{ asset('assets/team.webp') }}" type="image/webp">
+    @endpush
+
     <livewire:home.components.hero/>
 
     <livewire:home.components.about/>

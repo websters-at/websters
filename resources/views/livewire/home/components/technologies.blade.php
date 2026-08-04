@@ -3,17 +3,17 @@
     x-data="{
         show: false,
         logos: [
-            { src: '{{ asset('/assets/brand-logos/laravel.png') }}', alt: 'Laravel', title: 'Laravel',   href: 'https://laravel.com/' },
-            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}',   alt: 'Livewire', title: 'Livewire',   href: 'https://laravel-livewire.com/' },
-            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}',     alt: 'NextJS',   title: 'NextJS',  href: 'https://nextjs.org/' },
-            { src: '{{ asset('/assets/brand-logos/python.png') }}',     alt: 'Python',  title: 'Python',   href: 'https://www.python.org/' },
-            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}',   alt: 'Tailwind', title: 'Tailwind v4',   href: 'https://tailwindcss.com/' },
-            { src: '{{ asset('/assets/brand-logos/react.png') }}',      alt: 'React',  title: 'React',   href: 'https://react.dev/' },
-            { src: '{{ asset('/assets/brand-logos/mysql.png') }}',      alt: 'MySQL',   title: 'MySQL',   href: 'https://www.mysql.com/' },
-            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}',  alt: 'WordPress', title: 'WordPress',  href: 'https://wordpress.org/' },
-            { src: '{{ asset('/assets/brand-logos/docker.png') }}',     alt: 'Docker',  title: 'Docker',   href: 'https://www.docker.com/' },
-            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', alt: 'Kubernetes', title: 'Kubernetes',  href: 'https://kubernetes.io/' },
-            { src: '{{ asset('/assets/brand-logos/postgres.png') }}',   alt: 'Postgres', title: 'Postgres',   href: 'https://www.postgresql.org/' },
+            { src: '{{ asset('/assets/brand-logos/laravel.png') }}', webpSrc: '{{ asset('/assets/brand-logos/laravel.webp') }}', alt: 'Laravel', title: 'Laravel',   href: 'https://laravel.com/' },
+            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/livewire.webp') }}', alt: 'Livewire', title: 'Livewire',   href: 'https://laravel-livewire.com/' },
+            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/nextjs.webp') }}', alt: 'NextJS',   title: 'NextJS',  href: 'https://nextjs.org/' },
+            { src: '{{ asset('/assets/brand-logos/python.png') }}', webpSrc: '{{ asset('/assets/brand-logos/python.webp') }}', alt: 'Python',  title: 'Python',   href: 'https://www.python.org/' },
+            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}', webpSrc: '{{ asset('/assets/brand-logos/tailwind.webp') }}', alt: 'Tailwind', title: 'Tailwind v4',   href: 'https://tailwindcss.com/' },
+            { src: '{{ asset('/assets/brand-logos/react.png') }}', webpSrc: '{{ asset('/assets/brand-logos/react.webp') }}', alt: 'React',  title: 'React',   href: 'https://react.dev/' },
+            { src: '{{ asset('/assets/brand-logos/mysql.png') }}', webpSrc: '{{ asset('/assets/brand-logos/mysql.webp') }}', alt: 'MySQL',   title: 'MySQL',   href: 'https://www.mysql.com/' },
+            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/wordpress.webp') }}', alt: 'WordPress', title: 'WordPress',  href: 'https://wordpress.org/' },
+            { src: '{{ asset('/assets/brand-logos/docker.png') }}', webpSrc: '{{ asset('/assets/brand-logos/docker.webp') }}', alt: 'Docker',  title: 'Docker',   href: 'https://www.docker.com/' },
+            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', webpSrc: '{{ asset('/assets/brand-logos/kubernetes.webp') }}', alt: 'Kubernetes', title: 'Kubernetes',  href: 'https://kubernetes.io/' },
+            { src: '{{ asset('/assets/brand-logos/postgres.png') }}', webpSrc: '{{ asset('/assets/brand-logos/postgres.webp') }}', alt: 'Postgres', title: 'Postgres',   href: 'https://www.postgresql.org/' },
         ],
         initMarquee() {
                 const marqueeContent = this.$el.querySelector('.marquee-content');
@@ -64,12 +64,18 @@
                 <template x-for="(logo, index) in logos" :key="index">
                     <li class="flex-shrink-0 h-full flex items-center justify-center">
                         <a :href="logo.href" target="_blank" rel="noopener noreferrer">
-                            <img
-                                class="h-12 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                                :src="logo.src"
-                                :alt="logo.alt"
-                                :title="logo.title"
-                            />
+                            <picture>
+                                <source :srcset="logo.webpSrc" type="image/webp">
+                                <img
+                                    class="h-12 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
+                                    :src="logo.src"
+                                    :alt="logo.alt"
+                                    :title="logo.title"
+                                    width="48"
+                                    height="48"
+                                    decoding="async"
+                                >
+                            </picture>
                         </a>
                     </li>
                 </template>
