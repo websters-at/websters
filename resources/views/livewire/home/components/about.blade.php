@@ -72,23 +72,26 @@ new class extends Component {
                 :class="{ 'show': show }"
                 style="transition-delay: .1s"
             >
-                <img
-                    src="{{ asset('/assets/team.png') }}"
-                    alt="Websters Team – Michael, Stevan & Manuel"
-                    title="Websters Team"
-                    class="
-                        pointer-events-none rocket-float fade-up
-                        w-full
-                        max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl
-                        mx-auto
-                    "
-                    :class="{ 'show': show }"
-                    style="transition-delay: .2s"
-                    width="1764"
-                    height="1152"
-                    fetchpriority="high"
-                    decoding="async"
-                >
+                <picture>
+                    <source srcset="{{ asset('/assets/team.webp') }}" type="image/webp">
+                    <img
+                        src="{{ asset('/assets/team.png') }}"
+                        alt="Websters Team – Michael, Stevan & Manuel"
+                        title="Websters Team"
+                        class="
+                            pointer-events-none rocket-float fade-up
+                            w-full
+                            max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl
+                            mx-auto
+                        "
+                        :class="{ 'show': show }"
+                        style="transition-delay: .2s"
+                        width="1764"
+                        height="1152"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+                </picture>
             </div>
 
         </div>

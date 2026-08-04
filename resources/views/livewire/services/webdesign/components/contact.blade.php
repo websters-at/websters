@@ -211,9 +211,15 @@ new class extends Component {
         </div>
     </div>
 
-    <img
-        class="absolute left-0 top-0 -z-10 h-52 w-full object-cover object-left-bottom lg:h-full lg:w-1/2"
-        src="{{ asset('/assets/form.png') }}"
-        alt="Shape Background"
-    />
+    <picture>
+        <source srcset="{{ asset('/assets/form.webp') }}" type="image/webp">
+        <img
+            class="absolute left-0 top-0 -z-10 h-52 w-full object-cover object-left-bottom lg:h-full lg:w-1/2"
+            src="{{ asset('/assets/form.png') }}"
+            alt="Websters Shape Background"
+            width="507"
+            height="257"
+            decoding="async"
+        >
+    </picture>
 </section>
