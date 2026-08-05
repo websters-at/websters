@@ -68,9 +68,7 @@ new class extends Component {
 
             <!-- IMAGE SECOND (mobile and desktop) -->
             <div
-                class="order-1 lg:order-2 fade-up flex justify-center"
-                :class="{ 'show': show }"
-                style="transition-delay: .1s"
+                class="order-1 lg:order-2 flex justify-center"
             >
                 <picture>
                     <source
@@ -83,13 +81,11 @@ new class extends Component {
                         alt="Websters Team – Michael, Stevan & Manuel"
                         title="Websters Team"
                         class="
-                            pointer-events-none rocket-float fade-up
+                            pointer-events-none rocket-float
                             w-full
                             max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl
                             mx-auto
                         "
-                        :class="{ 'show': show }"
-                        style="transition-delay: .2s"
                         width="1152"
                         height="752"
                         fetchpriority="high"

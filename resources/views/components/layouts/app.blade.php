@@ -15,7 +15,6 @@
     <!-- Preload critical fonts (LCP text uses Poppins Black + body Regular) -->
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Regular.woff2') }}" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Black.woff2') }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Bold.woff2') }}" type="font/woff2" crossorigin>
 
     <!-- Preload LCP image (team.png) - only on home page -->
     @stack('head-preloads')
@@ -41,11 +40,7 @@
             var s = document.createElement('script');
             s.async = true;
             s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WREHCH7Q7Y';
-            if (window.requestIdleCallback) {
-                window.requestIdleCallback(function(){ document.head.appendChild(s); }, { timeout: 3000 });
-            } else {
-                window.addEventListener('load', function(){ document.head.appendChild(s); });
-            }
+            window.addEventListener('load', function(){ document.head.appendChild(s); });
         })();
     </script>
 

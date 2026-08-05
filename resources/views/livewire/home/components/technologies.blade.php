@@ -67,7 +67,7 @@
                             <picture>
                                 <source :srcset="logo.webpSrc" type="image/webp">
                                 <img
-                                    class="h-12 lg:h-14 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
+                                    class="h-12 lg:h-14 w-auto max-w-none transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
                                     :src="logo.src"
                                     :alt="logo.alt"
                                     :title="logo.title"
