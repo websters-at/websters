@@ -64,6 +64,9 @@ RUN mkdir -p /app/storage/framework/cache/data \
     chown -R www-data:www-data /app/storage /app/bootstrap/cache && \
     chmod -R 775 /app/storage /app/bootstrap/cache
 
+# Create Caddyfile (static cache headers are applied by Traefik above)
+RUN printf ':80 {\n    root * /app/public\n    encode zstd gzip\n    php_server\n}\n' > /etc/caddy/Caddyfile
+
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 

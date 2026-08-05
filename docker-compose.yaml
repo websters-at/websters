@@ -38,6 +38,17 @@ services:
       - "traefik.http.routers.${ROUTER_NAME}.entrypoints=https"
       - "traefik.http.routers.${ROUTER_NAME}.tls=true"
       - "traefik.http.routers.${ROUTER_NAME}.tls.certresolver=letsencrypt"
+      # --- Router (static assets: long-lived immutable cache) ---
+      # Dedicated router so Cache-Control only applies to /assets/ and /build/.
+      # Higher priority wins over the catch-all router for these paths.
+      - "traefik.http.routers.${ROUTER_NAME}-static.rule=Host(`${DOMAIN}`) && (PathPrefix(`/assets/`) || PathPrefix(`/build/`))"
+      - "traefik.http.routers.${ROUTER_NAME}-static.entrypoints=https"
+      - "traefik.http.routers.${ROUTER_NAME}-static.tls=true"
+      - "traefik.http.routers.${ROUTER_NAME}-static.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}-static.priority=1000"
+      - "traefik.http.routers.${ROUTER_NAME}-static.middlewares=security-headers@docker,static-cache@docker"
+      - "traefik.http.routers.${ROUTER_NAME}-static.service=${ROUTER_NAME}"
+      - "traefik.http.middlewares.static-cache.headers.customresponseheaders.Cache-Control=public, max-age=31536000, immutable"
       # --- Router (www -> redirect to main) ---
       - "traefik.http.routers.${ROUTER_NAME}-secondary.rule=Host(`${SECONDARY_DOMAIN}`)"
       - "traefik.http.routers.${ROUTER_NAME}-secondary.entrypoints=https"
@@ -48,6 +59,19 @@ services:
       - "traefik.http.middlewares.redirect-to-main.redirectregex.regex=^https?://${SECONDARY_DOMAIN}/(.*)"
       - "traefik.http.middlewares.redirect-to-main.redirectregex.replacement=https://${DOMAIN}/$$1"
       - "traefik.http.middlewares.redirect-to-main.redirectregex.permanent=true"
+      # --- Security headers ---
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-Content-Type-Options=nosniff"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-Frame-Options=DENY"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-XSS-Protection=1; mode=block"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Referrer-Policy=strict-origin-when-cross-origin"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Permissions-Policy=geolocation=(), microphone=(), camera=()"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Cross-Origin-Opener-Policy=same-origin"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Cross-Origin-Resource-Policy=same-origin"
+      - "traefik.http.middlewares.security-headers.headers.stsseconds=31536000"
+      - "traefik.http.middlewares.security-headers.headers.stsincludesubdomains=true"
+      - "traefik.http.middlewares.security-headers.headers.stspreload=true"
+      # Apply security headers to all responses
+      - "traefik.http.routers.${ROUTER_NAME}.middlewares=security-headers@docker"
       # --- Service + Zero-Downtime: only route to healthy backends ---
       - "traefik.http.services.${ROUTER_NAME}.loadbalancer.server.port=80"
       - "traefik.http.services.${ROUTER_NAME}.loadbalancer.healthcheck.path=/"
