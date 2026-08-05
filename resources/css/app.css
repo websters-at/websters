@@ -108,7 +108,7 @@
 /* Poppins Fallback (metric-matched so font swaps cause no layout shift) */
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     size-adjust: 107.6%;
@@ -118,50 +118,50 @@
 }
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
-    size-adjust: 111.5%;
+    size-adjust: 108.9%;
     ascent-override: 105%;
     descent-override: 35%;
     line-gap-override: 10%;
 }
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
-    size-adjust: 113.2%;
+    size-adjust: 110.2%;
     ascent-override: 105%;
     descent-override: 35%;
     line-gap-override: 10%;
 }
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
-    size-adjust: 115.2%;
+    size-adjust: 111.7%;
     ascent-override: 105%;
     descent-override: 35%;
     line-gap-override: 10%;
 }
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 800;
     font-style: normal;
-    size-adjust: 116.8%;
+    size-adjust: 112.9%;
     ascent-override: 105%;
     descent-override: 35%;
     line-gap-override: 10%;
 }
 @font-face {
     font-family: 'Poppins Fallback';
-    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    src: url('../fonts/Roboto-Variable.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
-    size-adjust: 118.5%;
+    size-adjust: 114.0%;
     ascent-override: 105%;
     descent-override: 35%;
     line-gap-override: 10%;
