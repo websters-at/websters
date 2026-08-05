@@ -111,7 +111,15 @@ new class extends Component {
 <div>
 
     @push('head-preloads')
-        <link rel="preload" as="image" href="{{ asset('assets/team.webp') }}" type="image/webp">
+        <link
+            rel="preload"
+            as="image"
+            href="{{ asset('assets/team.webp') }}"
+            imagesrcset="{{ asset('assets/team-576.webp') }} 576w, {{ asset('assets/team.webp') }} 1152w"
+            imagesizes="(min-width: 1280px) 576px, (min-width: 1024px) 512px, (min-width: 768px) 448px, 320px"
+            type="image/webp"
+            fetchpriority="high"
+        >
     @endpush
 
     <livewire:home.components.hero/>
