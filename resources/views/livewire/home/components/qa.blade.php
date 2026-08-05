@@ -100,6 +100,7 @@ new class extends Component {
 
                         <div class="flex items-center gap-x-2">
                             <span
+                                x-cloak
                                 class="hidden text-xs font-medium text-slate-600 md:inline-block"
                                 x-show="active === {{ $id }}"
                                 x-transition.opacity
@@ -123,7 +124,8 @@ new class extends Component {
                     </button>
 
                     <div
-                        class="overflow-hidden transition-[max-height] duration-200 ease-out"
+                        x-cloak
+                        class="max-h-0 overflow-hidden transition-[max-height] duration-200 ease-out"
                         :class="active === {{ $id }} ? 'max-h-96' : 'max-h-0'"
                     >
                         <div class="px-4 pb-4 pt-0 text-sm text-neutral-600 lg:text-base">

@@ -28,10 +28,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 40s
+      start_period: 15s
     networks:
       - traefik
-    labels:
+    labels: &websters-labels
       - "traefik.enable=true"
       # --- Router (main domain) ---
       - "traefik.http.routers.${ROUTER_NAME}.rule=Host(`${DOMAIN}`)"
@@ -72,18 +72,43 @@ services:
       - "traefik.http.middlewares.security-headers.headers.stspreload=true"
       # Apply security headers to all responses
       - "traefik.http.routers.${ROUTER_NAME}.middlewares=security-headers@docker"
-      # --- Service + Zero-Downtime: only route to healthy backends ---
+      # --- Service: traefik routes only to containers whose docker healthcheck passed ---
       - "traefik.http.services.${ROUTER_NAME}.loadbalancer.server.port=80"
-      - "traefik.http.services.${ROUTER_NAME}.loadbalancer.healthcheck.path=/"
-      - "traefik.http.services.${ROUTER_NAME}.loadbalancer.healthcheck.interval=10s"
-      - "traefik.http.services.${ROUTER_NAME}.loadbalancer.healthcheck.timeout=5s"
-    # Zero-downtime rollout: stop old container only after new one is healthy
-    deploy:
-      update_config:
-        order: start-first
-        failure_action: rollback
-      rollback_config:
-        parallelism: 1
+
+  # Blue-green twin: shares the same traefik router labels as `websters`, so
+  # traefik load-balances across both and only sends traffic to healthy
+  # containers. deploy.sh builds/starts the idle twin, waits for its
+  # healthcheck, then stops the other one -> zero downtime deploys.
+  websters2:
+    container_name: websters2
+    build:
+      context: .
+      target: production
+    restart: always
+    pull_policy: build
+    volumes: []
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql
+      - DB_DATABASE=${MYSQL_DATABASE}
+      - DB_USERNAME=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=6379
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - traefik
+    labels: *websters-labels
 
   mysql:
     container_name: mysql

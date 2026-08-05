@@ -11,8 +11,20 @@ new class extends Component {
 
 <div
     x-data="{
-        mobileMenuOpen: @entangle('mobileMenuOpen'),
-        rotation: @entangle('rotation'),
+        mobileMenuOpen: (() => {
+            try {
+                const c = window.Livewire && window.Livewire.find('{{ $this->getId() }}');
+                if (c && c.entangle) return c.entangle('mobileMenuOpen');
+            } catch (e) {}
+            return false;
+        })(),
+        rotation: (() => {
+            try {
+                const c = window.Livewire && window.Livewire.find('{{ $this->getId() }}');
+                if (c && c.entangle) return c.entangle('rotation');
+            } catch (e) {}
+            return 0;
+        })(),
         activeSection: null,
         homePath: '{{ parse_url(route('home'), PHP_URL_PATH) }}',
 

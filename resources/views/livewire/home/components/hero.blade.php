@@ -53,10 +53,10 @@ new class extends Component {
                 </span>
                 <br class="hidden sm:block">
 
-                <span class="typewriter-wrapper block sm:inline-block sm:text-left align-top whitespace-nowrap min-w-[17ch] overflow-hidden
+                <span class="typewriter-wrapper relative block sm:inline-block sm:text-left align-top whitespace-nowrap min-w-[17ch] h-[1.375em] overflow-hidden
                              bg-gradient-to-b from-primary to-[#FF7AC3A5] bg-clip-text text-transparent">
-                    <span x-text="currentText"></span>
-                    <span class="cursor inline-block w-[0.6ch] font-black opacity-0">|</span>
+                    <span class="block overflow-hidden" x-text="currentText"></span>
+                    <span class="cursor absolute right-0 top-0 inline-block w-[0.6ch] font-black opacity-0">|</span>
                 </span>
             </div>
 

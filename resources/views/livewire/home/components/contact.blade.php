@@ -155,7 +155,7 @@ new class extends Component {
                             class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex self-end"
                             x-bind:disabled="loading"
                         >
-                            <span x-show="loading" class="loading loading-spinner w-5 h-5"></span>
+                            <span x-cloak x-show="loading" class="loading loading-spinner w-5 h-5"></span>
                             <span x-show="!loading">Senden</span>
                         </button>
                     </div>

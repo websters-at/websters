@@ -113,7 +113,7 @@ new class extends Component {
                                 .catch(() => loading = false)
                         "
                     >
-                        <span x-show="loading" class="loading loading-spinner w-5 h-5"></span>
+                        <span x-cloak x-show="loading" class="loading loading-spinner w-5 h-5"></span>
                         <span x-show="!loading">Senden</span>
                     </button>
                 </div>

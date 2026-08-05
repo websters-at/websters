@@ -27,16 +27,22 @@
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Regular.woff2') }}" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Black.woff2') }}" type="font/woff2" crossorigin>
 
-    <!-- Async CSS: preload then swap to stylesheet (removes render-blocking) -->
-    <link
-        rel="preload"
-        as="style"
-        href="{{ Vite::asset('resources/css/app.css') }}"
-        onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <noscript>
-        <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
-    </noscript>
+    <!-- Render-blocking CSS: guarantees the first paint uses the styled layout.
+         Async (preload+onload) CSS caused a flaky CLS ~1.0 when the stylesheet
+         landed after first paint (page collapsed from unstyled 19078px to 5404px). -->
+    <style>
+        /* Critical preflight: matches Tailwind's layout-affecting resets so the
+           pre-CSS paint is identical to the styled paint (prevents CLS). */
+        *,::before,::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}
+        html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4}
+        body{margin:0;line-height:inherit}
+        h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd{margin:0}
+        ul,ol,menu{margin:0;padding:0}
+        img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}
+        img,video{max-width:100%;height:auto}
+        button,input,select,textarea{font:inherit;color:inherit;border-radius:0;background-color:transparent}
+    </style>
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
 
     {{-- GTM, Livewire and cookie-consent are deferred until the first real user interaction
          (pointer/keyboard/touch/scroll). Their JS bundles (gtag ~50KB, livewire ~150KB,
@@ -65,7 +71,7 @@
                 }
             ];
             var injected = {};
-            var events = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'keydown', 'touchstart', 'scroll', 'click', 'submit', 'visibilitychange'];
+            var events = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'keydown', 'touchstart', 'scroll', 'click', 'submit'];
             function inject(cfg) {
                 if (injected[cfg.src] || (cfg.guard && cfg.guard())) return;
                 injected[cfg.src] = true;
@@ -77,16 +83,6 @@
             function loadAll() {
                 scripts.forEach(inject);
             }
-            function warm() {
-                scripts.forEach(function (cfg) {
-                    var l = document.createElement('link');
-                    l.rel = 'preload';
-                    l.as = 'script';
-                    l.href = cfg.src;
-                    document.head.appendChild(l);
-                });
-            }
-            window.addEventListener('load', warm, { once: true });
             events.forEach(function (e) { window.addEventListener(e, loadAll, { passive: true }); });
         })();
     </script>
