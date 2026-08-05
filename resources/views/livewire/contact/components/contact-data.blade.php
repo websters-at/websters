@@ -46,8 +46,8 @@ new class extends Component {};
                     :class="{ 'show': show }"
                     style="transition-delay:.35s"
                 >
-                    <a href="tel:+43 677 63177763" target="_blank">+43 677 63177763</a>
-                    <a href="mailto:office@websters.at" target="_blank">office@websters.at</a>
+                    <a href="tel:+4367763177763">+43 677 63177763</a>
+                    <a href="mailto:office@websters.at">office@websters.at</a>
                     Libellenweg 13, 4209 Engerwitzdorf
                 </div>
 
@@ -57,26 +57,26 @@ new class extends Component {};
                     :class="{ 'show': show }"
                     style="transition-delay:.45s"
                 >
-                    <a href="https://github.com/websters-at" target="_blank" class="group">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
+                    <a href="https://github.com/websters-at" target="_blank" rel="noopener noreferrer" aria-label="Websters auf GitHub" title="GitHub" class="group">
+                        <div class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
                             <x-icon name="fab.github" class="h-5 w-5 text-slate-600 opacity-70 transition-all group-hover:opacity-100 group-hover:text-[#002a42]" />
                         </div>
                     </a>
 
-                    <a href="https://www.instagram.com/websters.at/" target="_blank" class="group">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
+                    <a href="https://www.instagram.com/websters.at/" target="_blank" rel="noopener noreferrer" aria-label="Websters auf Instagram" title="Instagram" class="group">
+                        <div class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
                             <x-icon name="fab.instagram" class="h-5 w-5 text-slate-600 opacity-70 transition-all group-hover:opacity-100 group-hover:text-[#002a42]" />
                         </div>
                     </a>
 
-                    <a href="https://www.instagram.com/websters.at/" target="_blank" class="group">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
+                    <a href="https://www.facebook.com/profile.php?id=61569509807621" target="_blank" rel="noopener noreferrer" aria-label="Websters auf Facebook" title="Facebook" class="group">
+                        <div class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
                             <x-icon name="fab.facebook" class="h-5 w-5 text-slate-600 opacity-70 transition-all group-hover:opacity-100 group-hover:text-[#002a42]" />
                         </div>
                     </a>
 
-                    <a href="tel:+43 677 63177763" target="_blank" class="group">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
+                    <a href="tel:+4367763177763" aria-label="Telefon: +43 677 63177763" title="+43 677 63177763" class="group">
+                        <div class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-all group-hover:border-[#4bc8e7] group-hover:shadow-md">
                             <x-icon name="fas.mobile" class="h-5 w-5 text-slate-600 opacity-70 transition-all group-hover:opacity-100 group-hover:text-[#002a42]" />
                         </div>
                     </a>

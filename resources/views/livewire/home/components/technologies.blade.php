@@ -3,17 +3,17 @@
     x-data="{
         show: false,
         logos: [
-            { src: '{{ asset('/assets/brand-logos/laravel.png') }}', webpSrc: '{{ asset('/assets/brand-logos/laravel.webp') }}', alt: 'Laravel', title: 'Laravel',   href: 'https://laravel.com/' },
-            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/livewire.webp') }}', alt: 'Livewire', title: 'Livewire',   href: 'https://laravel-livewire.com/' },
-            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/nextjs.webp') }}', alt: 'NextJS',   title: 'NextJS',  href: 'https://nextjs.org/' },
-            { src: '{{ asset('/assets/brand-logos/python.png') }}', webpSrc: '{{ asset('/assets/brand-logos/python.webp') }}', alt: 'Python',  title: 'Python',   href: 'https://www.python.org/' },
-            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}', webpSrc: '{{ asset('/assets/brand-logos/tailwind.webp') }}', alt: 'Tailwind', title: 'Tailwind v4',   href: 'https://tailwindcss.com/' },
-            { src: '{{ asset('/assets/brand-logos/react.png') }}', webpSrc: '{{ asset('/assets/brand-logos/react.webp') }}', alt: 'React',  title: 'React',   href: 'https://react.dev/' },
-            { src: '{{ asset('/assets/brand-logos/mysql.png') }}', webpSrc: '{{ asset('/assets/brand-logos/mysql.webp') }}', alt: 'MySQL',   title: 'MySQL',   href: 'https://www.mysql.com/' },
-            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/wordpress.webp') }}', alt: 'WordPress', title: 'WordPress',  href: 'https://wordpress.org/' },
-            { src: '{{ asset('/assets/brand-logos/docker.png') }}', webpSrc: '{{ asset('/assets/brand-logos/docker.webp') }}', alt: 'Docker',  title: 'Docker',   href: 'https://www.docker.com/' },
-            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', webpSrc: '{{ asset('/assets/brand-logos/kubernetes.webp') }}', alt: 'Kubernetes', title: 'Kubernetes',  href: 'https://kubernetes.io/' },
-            { src: '{{ asset('/assets/brand-logos/postgres.png') }}', webpSrc: '{{ asset('/assets/brand-logos/postgres.webp') }}', alt: 'Postgres', title: 'Postgres',   href: 'https://www.postgresql.org/' },
+            { src: '{{ asset('/assets/brand-logos/laravel.png') }}', webpSrc: '{{ asset('/assets/brand-logos/laravel.webp') }}', alt: 'Laravel', title: 'Laravel',   href: 'https://laravel.com/', width: 160, height: 166 },
+            { src: '{{ asset('/assets/brand-logos/livewire.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/livewire.webp') }}', alt: 'Livewire', title: 'Livewire',   href: 'https://laravel-livewire.com/', width: 160, height: 160 },
+            { src: '{{ asset('/assets/brand-logos/nextjs.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/nextjs.webp') }}', alt: 'NextJS',   title: 'NextJS',  href: 'https://nextjs.org/', width: 160, height: 160 },
+            { src: '{{ asset('/assets/brand-logos/python.png') }}', webpSrc: '{{ asset('/assets/brand-logos/python.webp') }}', alt: 'Python',  title: 'Python',   href: 'https://www.python.org/', width: 160, height: 160 },
+            { src: '{{ asset('/assets/brand-logos/tailwind.png') }}', webpSrc: '{{ asset('/assets/brand-logos/tailwind.webp') }}', alt: 'Tailwind', title: 'Tailwind v4',   href: 'https://tailwindcss.com/', width: 160, height: 97 },
+            { src: '{{ asset('/assets/brand-logos/react.png') }}', webpSrc: '{{ asset('/assets/brand-logos/react.webp') }}', alt: 'React',  title: 'React',   href: 'https://react.dev/', width: 160, height: 144 },
+            { src: '{{ asset('/assets/brand-logos/mysql.png') }}', webpSrc: '{{ asset('/assets/brand-logos/mysql.webp') }}', alt: 'MySQL',   title: 'MySQL',   href: 'https://www.mysql.com/', width: 160, height: 82 },
+            { src: '{{ asset('/assets/brand-logos/wordpress.svg') }}', webpSrc: '{{ asset('/assets/brand-logos/wordpress.webp') }}', alt: 'WordPress', title: 'WordPress',  href: 'https://wordpress.org/', width: 160, height: 160 },
+            { src: '{{ asset('/assets/brand-logos/docker.png') }}', webpSrc: '{{ asset('/assets/brand-logos/docker.webp') }}', alt: 'Docker',  title: 'Docker',   href: 'https://www.docker.com/', width: 160, height: 134 },
+            { src: '{{ asset('/assets/brand-logos/kubernetes.png') }}', webpSrc: '{{ asset('/assets/brand-logos/kubernetes.webp') }}', alt: 'Kubernetes', title: 'Kubernetes',  href: 'https://kubernetes.io/', width: 160, height: 155 },
+            { src: '{{ asset('/assets/brand-logos/postgres.png') }}', webpSrc: '{{ asset('/assets/brand-logos/postgres.webp') }}', alt: 'Postgres', title: 'Postgres',   href: 'https://www.postgresql.org/', width: 160, height: 164 },
         ],
         initMarquee() {
                 const marqueeContent = this.$el.querySelector('.marquee-content');
@@ -71,8 +71,8 @@
                                     :src="logo.src"
                                     :alt="logo.alt"
                                     :title="logo.title"
-                                    width="48"
-                                    height="48"
+                                    :width="logo.width"
+                                    :height="logo.height"
                                     decoding="async"
                                 >
                             </picture>

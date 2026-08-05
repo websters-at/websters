@@ -73,7 +73,11 @@ new class extends Component {
                 style="transition-delay: .1s"
             >
                 <picture>
-                    <source srcset="{{ asset('/assets/team.webp') }}" type="image/webp">
+                    <source
+                        srcset="{{ asset('/assets/team-576.webp') }} 576w, {{ asset('/assets/team.webp') }} 1152w"
+                        type="image/webp"
+                        sizes="(min-width: 1280px) 576px, (min-width: 1024px) 512px, (min-width: 768px) 448px, 320px"
+                    >
                     <img
                         src="{{ asset('/assets/team.png') }}"
                         alt="Websters Team – Michael, Stevan & Manuel"
@@ -86,8 +90,8 @@ new class extends Component {
                         "
                         :class="{ 'show': show }"
                         style="transition-delay: .2s"
-                        width="1764"
-                        height="1152"
+                        width="1152"
+                        height="752"
                         fetchpriority="high"
                         decoding="async"
                     >

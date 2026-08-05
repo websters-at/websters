@@ -12,11 +12,16 @@ new class extends Component {
 
     <article class="font-poppins">
         <header class="relative py-12 lg:py-16 overflow-hidden">
-            <img
-                class="pointer-events-none absolute -top-60 left-0 -z-10 h-[calc(100%+15rem)] w-full object-cover object-bottom lg:-top-36 lg:h-[calc(100%+9rem)]"
-                src="https://tailkits.com/ui/iframe/assets/img/bg-1.png"
-                alt="Background Gradient"
-            />
+            <picture>
+                <source srcset="{{ asset('/assets/blog-bgs/bg-1.webp') }}" type="image/webp">
+                <img
+                    class="pointer-events-none absolute -top-60 left-0 -z-10 h-[calc(100%+15rem)] w-full object-cover object-bottom lg:-top-36 lg:h-[calc(100%+9rem)]"
+                    src="{{ asset('/assets/blog-bgs/bg-1.png') }}"
+                    alt="Background Gradient"
+                    fetchpriority="low"
+                    decoding="async"
+                />
+            </picture>
             <div class="max-w-7xl mx-auto px-4 xl:px-0">
                 <div class="flex flex-col items-start lg:px-8 xl:px-24">
                     <h1
@@ -135,12 +140,18 @@ new class extends Component {
                             tristique turpis non nibh tincidunt, nec eleifend nisl laoreet.
                         </p>
 
-                        <img
-                            class="h-52 rounded-2xl object-cover object-left-top lg:h-80"
-                            src="https://tailkits.com/ui/iframe/assets/img/bg-linear-3.png"
-                            alt="Placeholder image"
-                            loading="lazy"
-                        />
+                        <picture>
+                            <source srcset="{{ asset('/assets/service-bgs/bg-linear-3.webp') }}" type="image/webp">
+                            <img
+                                class="h-52 rounded-2xl object-cover object-left-top lg:h-80"
+                                src="{{ asset('/assets/service-bgs/bg-linear-3.png') }}"
+                                alt="Placeholder image"
+                                width="720"
+                                height="516"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </picture>
 
                         <h2
                             class="mt-6 text-2xl font-semibold text-slate-900 lg:mt-8 lg:text-3xl"
@@ -210,12 +221,18 @@ new class extends Component {
                     class="group flex flex-col items-center rounded-2xl border border-slate-200 bg-white/60 p-6 transition-all hover:border-slate-300 md:flex-row md:gap-x-6"
                 >
                     <figure class="shrink-0">
+                        <picture>
+                        <source srcset="{{ asset('/assets/blog-bgs/testimonial-1.webp') }}" type="image/webp">
                         <img
                             class="aspect-square h-24 rounded-full border border-slate-100 object-cover md:h-32"
-                            src="https://tailkits.com/ui/iframe/assets/img/testimonial-1.png"
+                            src="{{ asset('/assets/blog-bgs/testimonial-1.png') }}"
                             alt="Author"
+                            width="256"
+                            height="308"
                             loading="lazy"
+                            decoding="async"
                         />
+                    </picture>
                     </figure>
                     <div
                         class="mt-6 flex flex-col items-center text-center md:mt-0 md:items-start md:text-left"
@@ -243,7 +260,7 @@ new class extends Component {
                         </p>
 
                         <div class="mt-6 flex flex-wrap items-center gap-4">
-                            <a href="#" title="LinkedIn" target="_blank" rel="noreferrer">
+                            <a href="#" title="LinkedIn" aria-label="LinkedIn Profil" target="_blank" rel="noreferrer">
                                 <svg
                                     class="h-5 text-slate-700 transition hover:text-slate-900"
                                     viewBox="0 0 16 16"
@@ -258,7 +275,7 @@ new class extends Component {
                                     />
                                 </svg>
                             </a>
-                            <a href="#" title="X" target="_blank" rel="noreferrer">
+                            <a href="#" title="X" aria-label="X Profil" target="_blank" rel="noreferrer">
                                 <svg
                                     class="h-5 text-slate-700 transition hover:text-slate-900"
                                     viewBox="0 0 16 16"

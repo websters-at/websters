@@ -63,36 +63,36 @@
                     <!-- Social Links -->
                     <div class="mt-3 flex flex-wrap items-center gap-2 lg:mt-4">
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://github.com/stevan06v"
-                            title="Stevan V. GitHub Profile - Websters"
+                            title="Stevan V. GitHub Profile - Websters" aria-label="Stevan V. auf GitHub"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.github"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://www.linkedin.com/in/stevan-vlajic-a7b433347/"
-                            title="Stevan V. LinkedIn Profile - Websters"
+                            title="Stevan V. LinkedIn Profile - Websters" aria-label="Stevan V. auf LinkedIn"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.linkedin-in"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://www.instagram.com/stevan._v/"
-                            title="Stevan V. Instagram - Websters"
+                            title="Stevan V. Instagram - Websters" aria-label="Stevan V. auf Instagram"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.instagram"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://homelab.stevan.sexidude.com"
-                            title="Stevan V. Persönliche Website - Websters"
+                            title="Stevan V. Persönliche Website - Websters" aria-label="Stevan V. Persönliche Website"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -134,9 +134,9 @@
 
                     <div class="mt-3 flex flex-wrap items-center gap-2 lg:mt-4">
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://github.com/michi4"
-                            title="Michael R. GitHub Profile - Websters"
+                            title="Michael R. GitHub Profile - Websters" aria-label="Michael R. auf GitHub"
                             target="_blank"
                             rel="noopener noreferrer"
                             itemprop="sameAs"
@@ -144,18 +144,18 @@
                             <x-icon name="fab.github"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="#"
-                            title="Michael R. LinkedIn Profile - Websters"
+                            title="Michael R. LinkedIn Profile - Websters" aria-label="Michael R. auf LinkedIn"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.linkedin-in"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://michi.is-a.dev/"
-                            title="Michael R. Persönliche Website - Websters"
+                            title="Michael R. Persönliche Website - Websters" aria-label="Michael R. Persönliche Website"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -197,36 +197,36 @@
 
                     <div class="mt-3 flex flex-wrap items-center gap-2 lg:mt-4">
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://github.com/ManuelPuchner"
-                            title="Manuel P. GitHub Profile - Websters"
+                            title="Manuel P. GitHub Profile - Websters" aria-label="Manuel P. auf GitHub"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.github"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://www.linkedin.com/in/manuel-puchner-66a449232/"
-                            title="Manuel P. LinkedIn Profile - Websters"
+                            title="Manuel P. LinkedIn Profile - Websters" aria-label="Manuel P. auf LinkedIn"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.linkedin-in"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://www.instagram.com/manuel.pchnr/"
-                            title="Manuel P. Instagram - Websters"
+                            title="Manuel P. Instagram - Websters" aria-label="Manuel P. auf Instagram"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.instagram"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                         <a
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-10 lg:w-10 lg:p-3"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
                             href="https://manuelpuchner.duckdns.org"
-                            title="Manuel P. Persönliche Website - Websters"
+                            title="Manuel P. Persönliche Website - Websters" aria-label="Manuel P. Persönliche Website"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

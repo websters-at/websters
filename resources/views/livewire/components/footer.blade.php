@@ -27,7 +27,7 @@ new class extends Component {
             </div>
             <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
                 <a
-                    class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-500 before:bg-slate-300"
+                    class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-600 before:bg-slate-300"
                     href="{{ route('imprint') }}"
                     wire:navigate
                     title="Impressum"
@@ -35,7 +35,7 @@ new class extends Component {
                 <span class="h-3 border-l border-l-neutral-300"></span>
 
                 <a
-                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-500"
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
                     href="{{ route('data-privacy') }}"
                     wire:navigate
                     title="Datenschutz"
@@ -43,7 +43,7 @@ new class extends Component {
                 <span class="h-3 border-l border-l-neutral-300"></span>
 
                 <a
-                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-500"
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
                     href="{{ route('terms') }}"
                     wire:navigate
                     title="Terms & Conditions"
@@ -53,11 +53,25 @@ new class extends Component {
             <div
                 class="flex flex-wrap items-center justify-center gap-4 lg:justify-self-end"
             >
-                <a href="https://www.instagram.com/websters.at/" target="_blank">
-                    <x-icon name="fab.instagram" class="text-shadow-slate-500 opacity-60 w-4.5"/>
+                <a
+                    href="https://www.instagram.com/websters.at/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Instagram"
+                    aria-label="Websters auf Instagram"
+                    class="flex h-11 w-11 items-center justify-center rounded-full transition hover:opacity-80"
+                >
+                    <x-icon name="fab.instagram" class="text-slate-600 w-5"/>
                 </a>
-                <a href="https://github.com/websters-at" target="_blank">
-                    <x-icon name="fab.github" class="text-shadow-slate-500 opacity-60 w-5"/>
+                <a
+                    href="https://github.com/websters-at"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="GitHub"
+                    aria-label="Websters auf GitHub"
+                    class="flex h-11 w-11 items-center justify-center rounded-full transition hover:opacity-80"
+                >
+                    <x-icon name="fab.github" class="text-slate-600 w-5"/>
                 </a>
 
             </div>

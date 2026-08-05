@@ -61,8 +61,8 @@ new class extends Component {
                                 class="h-7 hidden lg:block"
                                 src="{{ asset('assets/websters-full-logo.png') }}"
                                 alt="Websters Logo"
-                                width="120"
-                                height="48"
+                                width="145"
+                                height="28"
                                 decoding="async"
                             />
                         </picture>
@@ -74,8 +74,8 @@ new class extends Component {
                                 class="h-7 lg:hidden"
                                 src="{{ asset('assets/websters-mobile.png') }}"
                                 alt="Websters Logo"
-                                width="48"
-                                height="48"
+                                width="44"
+                                height="28"
                                 decoding="async"
                             />
                         </picture>
@@ -148,7 +148,7 @@ new class extends Component {
                         <button
                             type="button"
                             aria-label="Open menu"
-                            class="lg:hidden"
+                            class="lg:hidden flex h-11 w-11 items-center justify-center rounded-xl transition hover:bg-slate-100"
                             title="Open menu"
                             @click="
                                 mobileMenuOpen = !mobileMenuOpen;

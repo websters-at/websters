@@ -92,6 +92,7 @@ new class extends Component {
                             name="email"
                             type="email"
                             required
+                            aria-label="Email Adresse"
                             placeholder="Email Adresse"
                         />
                     </div>
