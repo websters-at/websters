@@ -105,11 +105,73 @@
     font-display: swap;
 }
 
+/* Poppins Fallback (metric-matched so font swaps cause no layout shift) */
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 400;
+    font-style: normal;
+    size-adjust: 107.6%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 500;
+    font-style: normal;
+    size-adjust: 111.5%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 600;
+    font-style: normal;
+    size-adjust: 113.2%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 700;
+    font-style: normal;
+    size-adjust: 115.2%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 800;
+    font-style: normal;
+    size-adjust: 116.8%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('system-ui'), local('Roboto'), local('Arial'), local('Helvetica');
+    font-weight: 900;
+    font-style: normal;
+    size-adjust: 118.5%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+}
+
 @theme {
     /* Your existing theme configuration... */
-    --font-sans: 'Poppins', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+    --font-sans: 'Poppins', 'Poppins Fallback', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-poppins: 'Poppins', sans-serif;
+    --font-poppins: 'Poppins', 'Poppins Fallback', sans-serif;
 
     /* Brand Colors (Websters) - Now available as Tailwind utilities */
     --color-brand: #ec65ba;

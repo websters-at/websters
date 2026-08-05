@@ -55,7 +55,7 @@ new class extends Component {
                 </span>
                 <br class="hidden sm:block">
 
-                <span class="typewriter-wrapper block sm:inline align-top whitespace-nowrap
+                <span class="typewriter-wrapper block sm:inline-block sm:text-left align-top whitespace-nowrap min-w-[14ch]
                              bg-gradient-to-b from-primary to-[#FF7AC3A5] bg-clip-text text-transparent">
                     <span x-text="currentText"></span>
                     <span class="cursor inline-block w-[0.6ch] font-black opacity-0">|</span>

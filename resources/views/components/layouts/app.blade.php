@@ -12,20 +12,15 @@
     @php
         $livewireManifest = json_decode(file_get_contents(base_path('vendor/livewire/livewire/dist/manifest.json')), true);
         $livewireHash = $livewireManifest['/livewire.js'] ?? '';
-    @endphp
-
-    <!-- Preload critical fonts (LCP text uses Poppins Black + body Regular) -->
-    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Regular.woff2') }}" type="font/woff2" crossorigin fetchpriority="low">
-    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Black.woff2') }}" type="font/woff2" crossorigin fetchpriority="low">
-
-    <!-- Preload Livewire core at low priority: downloads in parallel without competing with CSS/LCP -->
-    <link rel="preload" as="script" href="/livewire/livewire.min.js?id={{ $livewireHash }}" fetchpriority="low">
-    @php
         \Livewire\Livewire::useScriptTagAttributes(['defer' => true]);
     @endphp
 
     <!-- Preload LCP image (team.png) - only on home page -->
     @stack('head-preloads')
+
+    <!-- Preload critical fonts (Poppins Fallback is metric-matched, so swaps don't shift layout) -->
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Regular.woff2') }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Black.woff2') }}" type="font/woff2" crossorigin>
 
     <!-- Async CSS: preload then swap to stylesheet (removes render-blocking) -->
     <link
