@@ -43,9 +43,7 @@ new class extends Component {
                 })"
                 x-init="start()"
                 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl
-                       font-poppins font-black text-neutral mt-4 sm:mt-6 leading-snug lg:leading-tight break-words fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.2s"
+                       font-poppins font-black text-neutral mt-4 sm:mt-6 leading-snug lg:leading-tight break-words"
             >
                 <span class="block sm:inline bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text text-transparent">
                     Dein pinker
@@ -55,7 +53,7 @@ new class extends Component {
                 </span>
                 <br class="hidden sm:block">
 
-                <span class="typewriter-wrapper block sm:inline-block sm:text-left align-top whitespace-nowrap min-w-[14ch]
+                <span class="typewriter-wrapper block sm:inline-block sm:text-left align-top whitespace-nowrap min-w-[17ch] overflow-hidden
                              bg-gradient-to-b from-primary to-[#FF7AC3A5] bg-clip-text text-transparent">
                     <span x-text="currentText"></span>
                     <span class="cursor inline-block w-[0.6ch] font-black opacity-0">|</span>
@@ -66,9 +64,7 @@ new class extends Component {
             <p
                 class="mt-4 sm:mt-6 font-poppins font-medium
                        text-sm sm:text-sm md:text-base lg:text-md text-gray-600
-                       w-full max-w-xl sm:max-w-2xl lg:max-w-3xl fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.3s"
+                       w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
                 Egal ob du eine neue Website, eine individuelle Software oder einfach IT-Beratung brauchst –
                 Das Team von Websters steht dir immer gerne zur Seite.

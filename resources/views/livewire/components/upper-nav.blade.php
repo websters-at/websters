@@ -1,13 +1,13 @@
-<section class="bg-primary py-1.5">
+<section class="bg-primary">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
-        <div class="flex items-center justify-center gap-x-3 md:gap-x-4">
+        <div class="flex items-center justify-center gap-x-3 md:gap-x-4 py-1">
 
             <div class="flex items-center gap-x-1">
                 <a href="tel:+4367763177763"
                    aria-label="Telefon: +43 677 63177763"
                    title="+43 677 63177763"
-                   class="flex items-center gap-x-1 cursor-pointer text-[12px] text-brand-dark font-medium font-poppins min-h-[44px] py-2">
-                    <x-icon name="fas.phone" class="text-brand-dark w-3.5"/>
+                   class="flex items-center gap-x-1 cursor-pointer text-[11px] text-[#6b1241] font-medium font-poppins py-0.5">
+                    <x-icon name="fas.phone" class="text-[#6b1241] w-3"/>
                     <span class="hidden md:inline">+43 677 63177763</span>
                 </a>
             </div>
@@ -16,8 +16,8 @@
                 <a href="mailto:office@websters.at"
                    aria-label="E-Mail: office@websters.at"
                    title="office@websters.at"
-                   class="flex items-center gap-x-1 cursor-pointer text-[12px] text-brand-dark font-medium font-poppins min-h-[44px] py-2">
-                    <x-icon name="fas.envelope" class="text-brand-dark w-3.5"/>
+                   class="flex items-center gap-x-1 cursor-pointer text-[11px] text-[#6b1241] font-medium font-poppins py-0.5">
+                    <x-icon name="fas.envelope" class="text-[#6b1241] w-3"/>
                     <span class="hidden md:inline">office@websters.at</span>
                 </a>
             </div>
@@ -28,8 +28,8 @@
                    rel="noopener noreferrer"
                    aria-label="Websters auf Facebook"
                    title="Facebook"
-                   class="flex items-center gap-x-1 cursor-pointer text-[12px] text-brand-dark font-medium font-poppins min-h-[44px] min-w-[44px] justify-center py-2">
-                    <x-icon name="fab.facebook-f" class="text-brand-dark w-2"/>
+                   class="flex items-center gap-x-1 cursor-pointer text-[11px] text-[#6b1241] font-medium font-poppins py-0.5">
+                    <x-icon name="fab.facebook-f" class="text-[#6b1241] w-2.5"/>
                 </a>
             </div>
 
@@ -39,8 +39,8 @@
                    rel="noopener noreferrer"
                    aria-label="Websters auf Instagram"
                    title="Instagram"
-                   class="flex items-center gap-x-1 cursor-pointer text-[12px] text-brand-dark font-medium font-poppins min-h-[44px] min-w-[44px] justify-center py-2">
-                    <x-icon name="fab.instagram" class="text-brand-dark w-3.5"/>
+                   class="flex items-center gap-x-1 cursor-pointer text-[11px] text-[#6b1241] font-medium font-poppins py-0.5">
+                    <x-icon name="fab.instagram" class="text-[#6b1241] w-3"/>
                 </a>
             </div>
         </div>
