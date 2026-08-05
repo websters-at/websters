@@ -79,7 +79,7 @@ new class extends Component {
     function typeWriter({words, typeSpeed, deleteSpeed, holdTime}) {
         return {
             words,
-            currentText: '',
+            currentText: words[0],
             currentWordIndex: 0,
             isDeleting: false,
 
@@ -87,10 +87,13 @@ new class extends Component {
                 while (true) {
                     let word = this.words[this.currentWordIndex];
 
-                    // Typing
-                    for (let i = 1; i <= word.length; i++) {
-                        this.currentText = word.slice(0, i);
-                        await this.sleep(typeSpeed);
+                    // Only type if the word isn't already displayed (first word is pre-filled
+                    // so the hero is fully rendered at FCP instead of typing char-by-char)
+                    if (this.currentText !== word) {
+                        for (let i = 1; i <= word.length; i++) {
+                            this.currentText = word.slice(0, i);
+                            await this.sleep(typeSpeed);
+                        }
                     }
 
 
