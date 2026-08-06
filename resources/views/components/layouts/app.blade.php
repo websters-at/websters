@@ -25,7 +25,10 @@
     <!-- Preload critical fonts (Poppins Fallback is metric-matched, so swaps don't shift layout) -->
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Roboto-Variable.woff2') }}" type="font/woff2" crossorigin fetchpriority="high">
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Regular.woff2') }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Black.woff2') }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Medium.woff2') }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-SemiBold.woff2') }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Bold.woff2') }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-ExtraBold.woff2') }}" type="font/woff2" crossorigin>
 
     <!-- Render-blocking CSS: guarantees the first paint uses the styled layout.
          Async (preload+onload) CSS caused a flaky CLS ~1.0 when the stylesheet

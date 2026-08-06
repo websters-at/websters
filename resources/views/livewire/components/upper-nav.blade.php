@@ -1,4 +1,4 @@
-<section class="bg-primary">
+<section class="upper-banner bg-primary">
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div class="flex items-center justify-center gap-x-8 md:gap-x-10 py-2">
 
