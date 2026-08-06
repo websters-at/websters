@@ -64,8 +64,10 @@ RUN mkdir -p /app/storage/framework/cache/data \
     chown -R www-data:www-data /app/storage /app/bootstrap/cache && \
     chmod -R 775 /app/storage /app/bootstrap/cache
 
-# Create Caddyfile (static cache headers are applied by Traefik above)
-RUN printf ':80 {\n    root * /app/public\n    encode zstd gzip\n    php_server\n}\n' > /etc/caddy/Caddyfile
+# Cache policy: hashed build assets are immutable (1y); other static assets
+# (non-hashed logos/images/favicons) get 1 day; HTML is never cached, so
+# stale pages referencing deleted asset hashes can't linger in browsers.
+RUN printf ':80 {\n    root * /app/public\n    encode zstd gzip\n    php_server\n\n    @build path /build/*\n    @static path /assets/* /favicon.png /apple-touch.png\n    header Cache-Control "no-store"\n    header @build Cache-Control "public, max-age=31536000, immutable"\n    header @static Cache-Control "public, max-age=86400"\n}\n' > /etc/caddy/Caddyfile
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
