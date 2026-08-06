@@ -487,14 +487,21 @@ html, body{
     @apply absolute -left-3 top-8 bottom-0 border-l border-primary/20 md:hidden;
 }
 
-/* Fade-up animation */
+/* Fade-up animation - progressive enhancement: content is visible without JS
+   and only animates in when Alpine is running (body.js-anim) and the element
+   starts below the fold (hidden until scrolled into view, then fades in). */
 .fade-up {
+    opacity: 1;
+    transform: none;
+}
+
+body.js-anim .fade-up.below-fold {
     opacity: 0;
     transform: translateY(25px) scale(.98);
     transition: all .8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.fade-up.show {
+body.js-anim .fade-up.below-fold.show {
     opacity: 1;
     transform: translateY(0) scale(1);
 }

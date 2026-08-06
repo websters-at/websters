@@ -17,6 +17,15 @@ let started = false;
 function startAlpine() {
     if (started) return;
     started = true;
+    // Progressive-enhancement reveal: content is fully visible without JS.
+    // Only once Alpine runs, hide elements that start below the fold so the
+    // scroll-reveal can animate them in; above-fold content never flickers.
+    document.body.classList.add('js-anim');
+    document.querySelectorAll('.fade-up').forEach(function (el) {
+        if (el.getBoundingClientRect().top > window.innerHeight) {
+            el.classList.add('below-fold');
+        }
+    });
     Alpine.start();
 }
 

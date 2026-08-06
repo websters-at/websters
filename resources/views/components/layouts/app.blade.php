@@ -29,19 +29,9 @@
 
     <!-- Render-blocking CSS: guarantees the first paint uses the styled layout.
          Async (preload+onload) CSS caused a flaky CLS ~1.0 when the stylesheet
-         landed after first paint (page collapsed from unstyled 19078px to 5404px). -->
-    <style>
-        /* Critical preflight: matches Tailwind's layout-affecting resets so the
-           pre-CSS paint is identical to the styled paint (prevents CLS). */
-        *,::before,::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}
-        html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4}
-        body{margin:0;line-height:inherit}
-        h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd{margin:0}
-        ul,ol,menu{margin:0;padding:0}
-        img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}
-        img,video{max-width:100%;height:auto}
-        button,input,select,textarea{font:inherit;color:inherit;border-radius:0;background-color:transparent}
-    </style>
+         landed after first paint (page collapsed from unstyled 19078px to 5404px).
+         Tailwind's own preflight (in @layer base) provides the reset; utilities
+         must stay in higher-priority layers, so no inline unlayered reset here. -->
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
 
     {{-- GTM, Livewire and cookie-consent are deferred until the first real user interaction
