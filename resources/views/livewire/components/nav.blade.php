@@ -52,7 +52,7 @@ new class extends Component {
     <header class="py-4">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
             <div
-                class="bg-white flex items-center justify-between gap-x-4
+                class="bg-white flex items-center justify-between gap-x-3
                 rounded-2xl py-2.5 pl-5 pr-2.5
                 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]
                 border-[1px] border-[#002a421a]
@@ -70,7 +70,7 @@ new class extends Component {
                         <picture>
                             <source srcset="{{ asset('assets/websters-full-logo.webp') }}" type="image/webp">
                             <img
-                                class="h-7 hidden lg:block"
+                                class="h-7 hidden min-[360px]:block"
                                 src="{{ asset('assets/websters-full-logo.png') }}"
                                 alt="Websters Logo"
                                 width="145"
@@ -83,7 +83,7 @@ new class extends Component {
                         <picture>
                             <source srcset="{{ asset('assets/websters-mobile.webp') }}" type="image/webp">
                             <img
-                                class="h-7 lg:hidden"
+                                class="h-7 min-[360px]:hidden"
                                 src="{{ asset('assets/websters-mobile.png') }}"
                                 alt="Websters Logo"
                                 width="44"

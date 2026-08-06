@@ -42,7 +42,7 @@
                             alt="Stevan Vlajic - Webdeveloper & Software Engineer"
                             title="Stevan Vlajic - Webdeveloper & Software Engineer"
                             loading="lazy"
-                            width="638"
+                            width="830"
                             height="638"
                             decoding="async"
                         >
@@ -114,7 +114,7 @@
                             alt="Michael R. - DevOps Engineer & Cloud Architect"
                             title="Michael Ruep - DevOps Engineer & Cloud Architect"
                             loading="lazy"
-                            width="638"
+                            width="830"
                             height="638"
                             decoding="async"
                         >
@@ -177,7 +177,7 @@
                             alt="Manuel Puchner - Webentwickler & DevOps Engineer"
                             title="Manuel Puchner - Webentwickler & DevOps Engineer"
                             loading="lazy"
-                            width="638"
+                            width="830"
                             height="638"
                             decoding="async"
                         >
