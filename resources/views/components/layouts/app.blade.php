@@ -30,6 +30,7 @@
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Bold.woff2') }}" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-ExtraBold.woff2') }}" type="font/woff2" crossorigin>
 
+    <script>window.deferLoadingAlpine = true;</script>
     <!-- Render-blocking CSS: guarantees the first paint uses the styled layout.
          Async (preload+onload) CSS caused a flaky CLS ~1.0 when the stylesheet
          landed after first paint (page collapsed from unstyled 19078px to 5404px).

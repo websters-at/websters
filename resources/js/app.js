@@ -7,11 +7,11 @@ import.meta.glob([
     '../fonts/**',
 ]);
 
-Alpine.plugin(collapse);
-
-Alpine.plugin(intersect);
-
-window.Alpine = Alpine;
+// Use existing Alpine instance if Livewire already loaded one (prevents "multiple instances" warning)
+const AlpineInstance = window.Alpine || Alpine;
+AlpineInstance.plugin(collapse);
+AlpineInstance.plugin(intersect);
+window.Alpine = AlpineInstance;
 
 let started = false;
 function startAlpine() {
@@ -40,7 +40,10 @@ function startAlpine() {
             el.classList.add('below-fold');
         });
     }
-    Alpine.start();
+    // Don't double-start if Livewire already started Alpine
+    if (!AlpineInstance._x_dataStack && !document.documentElement._x_dataStack) {
+        AlpineInstance.start();
+    }
 }
 
 if ('requestIdleCallback' in window) {

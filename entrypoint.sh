@@ -8,6 +8,7 @@ wait-for-it mysql:3306 -t 30
 # Run pending migrations only (never wipe data in production)
 php artisan migrate --force
 
+php artisan optimize:clear
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache

@@ -53,6 +53,9 @@ WORKDIR /app
 
 COPY --from=composer /app/vendor/ /app/vendor/
 COPY . /app
+# Ensure only the fresh Vite build remains (host's stale public/build is ignored via .dockerignore,
+# but clean anyway to remove orphaned hashed files from previous layers)
+RUN rm -rf /app/public/build && mkdir -p /app/public/build
 COPY --from=assets /app/public/build/ /app/public/build/
 
 # Create storage directories, set permissions, and run cache commands in single layer

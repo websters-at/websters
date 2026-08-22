@@ -14,7 +14,11 @@ else
 fi
 
 echo "==> deploying new code into '$NEW' (active: '$ACTIVE')"
-sudo docker compose up -d --build "$NEW"
+if [ "$NEW" = "websters2" ]; then
+  sudo docker compose --profile green up -d --build "$NEW"
+else
+  sudo docker compose up -d --build "$NEW"
+fi
 
 echo "==> waiting for '$NEW' healthcheck..."
 st="starting"
