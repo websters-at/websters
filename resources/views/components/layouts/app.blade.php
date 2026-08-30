@@ -38,11 +38,16 @@
          must stay in higher-priority layers, so no inline unlayered reset here. -->
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
 
-    {{-- Cookie consent must load immediately (not deferred until interaction) – the banner's
-         inline script attaches submit handlers that call `window.LaravelCookieConsent` at click
-         time. When the consent script itself was also deferred until the same click, the
-         object didn't exist yet and the banner never dismissed (especially on mobile). --}}
-    <script src="{{ $cookieConsentSrc }}" defer></script>
+    <script>
+      // Cookie consent: load immediately (not deferred until click) – the banner's
+      // inline script calls `window.LaravelCookieConsent` at click time.
+      (function() {
+        var s = document.createElement('script');
+        s.src = {{ json_encode($cookieConsentSrc) }};
+        s.defer = true;
+        document.head.appendChild(s);
+      })();
+    </script>
 
     {{-- GTM and Livewire are deferred until the first real user interaction
          (pointer/keyboard/touch/scroll). Their JS bundles (gtag ~50KB, livewire ~150KB)
