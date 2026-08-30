@@ -115,6 +115,8 @@ services:
     labels: *websters-labels
 
   mysql:
+    ports:
+      - "10.8.1.1:3307:3306"
     container_name: mysql
     image: 'mysql:latest'
     restart: unless-stopped
@@ -137,6 +139,8 @@ services:
       - traefik
 
   redis:
+    ports:
+      - "10.8.1.1:6380:6379"
     container_name: redis
     image: 'redis:7-alpine'
     restart: unless-stopped

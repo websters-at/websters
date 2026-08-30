@@ -38,46 +38,41 @@
          must stay in higher-priority layers, so no inline unlayered reset here. -->
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
 
-    {{-- GTM, Livewire and cookie-consent are deferred until the first real user interaction
-         (pointer/keyboard/touch/scroll). Their JS bundles (gtag ~50KB, livewire ~150KB,
-         cookie-consent ~63KB) never parse during the load window, keeping the main thread
-         free for first paint. Scripts are cache-warmed right after window load so the first
-         interaction costs ~nothing. --}}
+    {{-- Cookie consent must load immediately (not deferred until interaction) – the banner's
+         inline script attaches submit handlers that call `window.LaravelCookieConsent` at click
+         time. When the consent script itself was also deferred until the same click, the
+         object didn't exist yet and the banner never dismissed (especially on mobile). --}}
+    <script src="{{ $cookieConsentSrc }}" defer></script>
+
+    {{-- GTM and Livewire are deferred until the first real user interaction
+         (pointer/keyboard/touch/scroll). Their JS bundles (gtag ~50KB, livewire ~150KB)
+         never parse during the load window, keeping the main thread free for first paint. --}}
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-WREHCH7Q7Y');
         (function () {
-            var scripts = [
-                {
-                    src: {!! json_encode($livewireSrc) !!},
-                    attrs: {
-                        'data-navigate-once': 'true',
-                        'data-csrf': {!! json_encode(csrf_token()) !!},
-                        'data-update-uri': {!! json_encode($livewireUpdateUri) !!}
-                    },
-                    guard: function () { return window.Livewire; }
+            var livewireCfg = {
+                src: {!! json_encode($livewireSrc) !!},
+                attrs: {
+                    'data-navigate-once': 'true',
+                    'data-csrf': {!! json_encode(csrf_token()) !!},
+                    'data-update-uri': {!! json_encode($livewireUpdateUri) !!}
                 },
-                {
-                    src: {!! json_encode($cookieConsentSrc) !!},
-                    attrs: {}
-                }
-            ];
-            var injected = {};
+                guard: function () { return window.Livewire; }
+            };
+            var injected = false;
             var events = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'keydown', 'touchstart', 'scroll', 'click', 'submit'];
-            function inject(cfg) {
-                if (injected[cfg.src] || (cfg.guard && cfg.guard())) return;
-                injected[cfg.src] = true;
+            function inject() {
+                if (injected || livewireCfg.guard()) return;
+                injected = true;
                 var s = document.createElement('script');
-                s.src = cfg.src;
-                for (var k in cfg.attrs) s.setAttribute(k, cfg.attrs[k]);
+                s.src = livewireCfg.src;
+                for (var k in livewireCfg.attrs) s.setAttribute(k, livewireCfg.attrs[k]);
                 document.body.appendChild(s);
             }
-            function loadAll() {
-                scripts.forEach(inject);
-            }
-            events.forEach(function (e) { window.addEventListener(e, loadAll, { passive: true }); });
+            events.forEach(function (e) { window.addEventListener(e, inject, { passive: true }); });
         })();
     </script>
 
