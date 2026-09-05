@@ -35,9 +35,11 @@ fi
 
 echo "==> '$NEW' healthy; letting traefik probe it (2 x 3s interval)..."
 sleep 8
+# Gate on the lightweight /up readiness probe, not the marketing page,
+# so asset slowness can't fail an otherwise good deploy.
 code=""
 for i in $(seq 1 15); do
-  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://websters.at/ || true)
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://websters.at/up || true)
   [ "$code" = "200" ] && break
   sleep 2
 done
@@ -53,10 +55,10 @@ echo "==> waiting for traefik to drop '$ACTIVE' (rechecking until stable 200)...
 code=""
 for i in $(seq 1 10); do
   sleep 2
-  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://websters.at/ || true)
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://websters.at/up || true)
   [ "$code" = "200" ] && break
 done
-curl -s -o /dev/null -w "site status: %{http_code}\n" https://websters.at/ || true
+curl -s -o /dev/null -w "site status: %{http_code}\n" https://websters.at/up || true
 if [ "$code" != "200" ]; then
   echo "WARNING: site returned '$code' after swap; re-running deploy may be needed." >&2
   exit 1

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\NewsletterEntry;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 
@@ -11,9 +13,26 @@ new class extends Component {
 
     public function save(): void
     {
+        $this->email = strtolower(trim($this->email));
+
         $this->validate([
-            'email' => 'required|email',
+            'email' => 'required|email:rfc|max:255|unique:newsletter_entries,email',
         ]);
+
+        $throttleKey = 'newsletter:' . request()->ip();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $this->toast(
+                type: 'error',
+                title: 'Langsam :)',
+                description: 'Bitte warte kurz und versuch es erneut.',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+            );
+            return;
+        }
+        RateLimiter::hit($throttleKey, 60);
 
         try {
             NewsletterEntry::create([
@@ -29,12 +48,18 @@ new class extends Component {
                 timeout: 3000,
             );
             $this->reset(['email']);
-        } catch (Exception $err) {
-            $this->reset(['email']);
+        } catch (QueryException $err) {
+            // Race between validation and insert (unique index is the arbiter).
+            if (($err->errorInfo[1] ?? null) == 1062) {
+                $description = 'Du bist schon registriert.';
+            } else {
+                report($err);
+                $description = 'Ein unerwarteter Fehler ist aufgetreten :(';
+            }
             $this->toast(
                 type: 'error',
                 title: 'Fehler',
-                description: 'Scheint so, als hättest du dich schon registiert.',
+                description: $description,
                 position: 'toast-bottom toast-end',
                 icon: 'o-x-circle',
                 css: 'alert-error',
@@ -82,6 +107,12 @@ new class extends Component {
                 class="mt-6 w-full flex flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-9 lg:flex-row lg:items-center lg:gap-x-4 lg:gap-y-0 xl:w-2/5 fade-up"
                 :class="{ 'show': show }"
                 style="transition-delay:.4s"
+                x-on:submit.prevent="
+                    loading = true;
+                    $wire.save()
+                        .then(() => loading = false)
+                        .catch(() => loading = false)
+                "
             >
                 <!-- Input -->
                 <div class="flex-1 flex flex-col">
@@ -101,17 +132,11 @@ new class extends Component {
                 <!-- Button -->
                 <div x-data="{ loading: false }" class="flex justify-end w-full lg:w-auto">
                     <button
-                        type="button"
+                        type="submit"
                         class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex fade-up"
                         :class="{ 'show': show }"
                         style="transition-delay:.55s"
                         x-bind:disabled="loading"
-                        @click="
-                            loading = true;
-                            $wire.save()
-                                .then(() => loading = false)
-                                .catch(() => loading = false)
-                        "
                     >
                         <span x-cloak x-show="loading" class="loading loading-spinner w-5 h-5"></span>
                         <span x-show="!loading">Senden</span>

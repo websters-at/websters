@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\Lead;
+use Illuminate\Support\Facades\RateLimiter;
 use Mary\Traits\Toast;
 
 new class extends Component {
@@ -14,10 +15,32 @@ new class extends Component {
 
     public function save(): void
     {
+        $this->name = trim($this->name);
+        $this->email = strtolower(trim($this->email));
+        $this->company = trim($this->company);
+        $this->message = trim($this->message);
+
         $this->validate([
-            'name' => 'required|min:2',
-            'email' => 'required|email',
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|email:rfc|max:255',
+            'company' => 'nullable|string|max:150',
+            'message' => 'nullable|string|max:5000',
         ]);
+
+        $throttleKey = 'contact:' . request()->ip();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $this->toast(
+                type: 'error',
+                title: 'Langsam :)',
+                description: 'Bitte warte kurz und versuch es erneut.',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+            );
+            return;
+        }
+        RateLimiter::hit($throttleKey, 60);
 
         try {
             Lead::create([
@@ -39,8 +62,8 @@ new class extends Component {
 
             $this->reset(['name', 'company', 'email', 'message']);
 
-        } catch (Exception $err) {
-            $this->reset(['name', 'company', 'email', 'message']);
+        } catch (\Throwable $err) {
+            report($err);
 
             $this->toast(
                 type: 'error',

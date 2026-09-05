@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\WebsitePackage;
+use App\Models\Lead;
+use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
-use App\Models\Lead;
 use Mary\Traits\Toast;
 
 new class extends Component {
@@ -13,12 +14,15 @@ new class extends Component {
     public string $email = "";
     public string $company = "";
     public string $message = "";
-    public int $package;
+    public ?int $package = null;
 
     #[On('package-selected')]
     public function updatePackageForm($package_id): void
     {
-        $this->package = $package_id;
+        $id = (int) $package_id;
+        if (in_array($id, [1, 2, 3], true)) {
+            $this->package = $id;
+        }
     }
 
     public array $packages = [
@@ -38,21 +42,44 @@ new class extends Component {
 
     public function save(): void
     {
+        $this->name = trim($this->name);
+        $this->email = strtolower(trim($this->email));
+        $this->company = trim($this->company);
+        $this->message = trim($this->message);
+
         $this->validate([
-            'name' => 'required|min:2',
-            'email' => 'required|email',
-            'package' => 'required'
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|email:rfc|max:255',
+            'company' => 'nullable|string|max:150',
+            'message' => 'nullable|string|max:5000',
+            'package' => 'required|integer|in:1,2,3'
         ]);
 
+        $throttleKey = 'package:' . request()->ip();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $this->toast(
+                type: 'error',
+                title: 'Langsam :)',
+                description: 'Bitte warte kurz und versuch es erneut.',
+                position: 'toast-bottom toast-end',
+                icon: 'o-x-circle',
+                css: 'alert-error',
+                timeout: 3000,
+                redirectTo: null
+            );
+            return;
+        }
+        RateLimiter::hit($throttleKey, 60);
+
         try {
-            $package_id = intval($this->package);
-            $package = $this->packages[$package_id - 1]['name'];
+            $package = collect($this->packages)->firstWhere('id', $this->package);
+            abort_if(! $package, 422, 'Ungültiges Paket.');
             WebsitePackage::create([
                 "name" => $this->name,
                 "email" => $this->email,
                 "company" => $this->company,
                 "message" => $this->message,
-                "package" => $package,
+                "package" => $package['name'],
             ]);
 
             $this->toast(
@@ -68,8 +95,8 @@ new class extends Component {
 
             $this->reset(['name', 'company', 'email', 'message', 'package']);
 
-        } catch (\Exception $err) {
-            $this->reset(['name', 'company', 'email', 'message', 'package']);
+        } catch (\Throwable $err) {
+            report($err);
             $this->toast(
                 type: 'error',
                 title: 'Hoppla – etwas ist schiefgegangen',

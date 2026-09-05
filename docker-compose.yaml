@@ -22,9 +22,10 @@ services:
       - REDIS_HOST=redis
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=6379
-    # Container healthcheck: app responds on :80
+    # Container healthcheck: lightweight framework readiness probe (checks app boot;
+    # use /up instead of / so asset slowness can't flap blue-green swaps)
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      test: ["CMD", "curl", "-f", "http://localhost:80/up"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -105,7 +106,7 @@ services:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=6379
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      test: ["CMD", "curl", "-f", "http://localhost:80/up"]
       interval: 10s
       timeout: 5s
       retries: 5

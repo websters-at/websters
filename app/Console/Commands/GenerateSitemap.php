@@ -27,19 +27,22 @@ class GenerateSitemap extends Command
      */
     public function handle(): void
     {
+        // NOTE: routes are the German Volt routes from routes/web.php.
+        // /leistungen/cloud + /leistungen/design are intentionally excluded:
+        // they render empty placeholders (no content, no SEO meta) as of 2026-09.
         SitemapGenerator::create('https://websters.at')
             ->getSitemap()
             ->add(Url::create('/'))
-            ->add(Url::create('/projects'))
-            ->add(Url::create('/contact'))
-            ->add(Url::create('/about'))
-            ->add(Url::create('/services'))
-            ->add(Url::create('/services/webdesign'))
-            ->add(Url::create('/services/consulting'))
-            ->add(Url::create('/services/software'))
-            ->add(Url::create('/imprint'))
-            ->add(Url::create('/data-privacy'))
-            ->add(Url::create('/terms'))
+            ->add(Url::create('/projekte'))
+            ->add(Url::create('/kontakt'))
+            ->add(Url::create('/ueber-uns'))
+            ->add(Url::create('/leistungen'))
+            ->add(Url::create('/leistungen/webdesign'))
+            ->add(Url::create('/leistungen/consulting'))
+            ->add(Url::create('/leistungen/software'))
+            ->add(Url::create('/impressum'))
+            ->add(Url::create('/datenschutz'))
+            ->add(Url::create('/agbs'))
             ->writeToFile(public_path('sitemap.xml'));
     }
 }

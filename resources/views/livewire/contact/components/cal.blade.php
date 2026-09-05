@@ -64,11 +64,19 @@ new class extends Component {};
 
         <!-- Inline Booking Widget -->
         <div
-            class="w-full mt-12 group fade-up"
+            class="w-full mt-12 group fade-up min-h-[540px]"
             :class="{ 'show': show }"
             style="transition-delay:.4s"
         >
             <div style="width:100%;height:100%;overflow:hidden" id="my-cal-inline-websters-meeting"></div>
+            <noscript>
+                <p class="mt-4 text-center text-sm text-slate-600">
+                    Das Buchungs-Widget benötigt JavaScript.
+                    <a class="underline font-semibold" href="https://cal.com/michi4/websters-meeting">Termin direkt auf cal.com buchen</a>
+                    oder schreib uns an
+                    <a class="underline font-semibold" href="mailto:office@websters.at">office@websters.at</a>.
+                </p>
+            </noscript>
         </div>
     </div>
 </section>
@@ -110,4 +118,18 @@ new class extends Component {};
     });
 
     Cal.ns["websters-meeting"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+
+    // Fallback: if the Cal.com embed is blocked (adblock/offline), show a booking link
+    // instead of leaving an empty gap.
+    setTimeout(function () {
+        var host = document.getElementById("my-cal-inline-websters-meeting");
+        if (host && !host.querySelector("iframe")) {
+            host.insertAdjacentHTML("afterend",
+                '<p class="mt-4 text-center text-sm text-slate-600">' +
+                'Das Buchungs-Widget konnte nicht geladen werden. ' +
+                '<a class="underline font-semibold" href="https://cal.com/michi4/websters-meeting">Termin direkt auf cal.com buchen</a> ' +
+                'oder ruf uns an: <a class="underline font-semibold" href="tel:+4367763177763">+43 677 63177763</a>.' +
+                "</p>");
+        }
+    }, 8000);
 </script>
