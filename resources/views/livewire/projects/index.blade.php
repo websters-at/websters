@@ -39,7 +39,7 @@ new class extends Component {
         */
 
         OpenGraph::setTitle('Projekte – Web-Apps, Websites & Games | Websters');
-        OpenGraph::setDescription('Echte Projekte von uns: Preisvergleich, Habit-Tracking, Band-Website, Browser-Game & mehr – alles live und klickbar.');
+        OpenGraph::setDescription('Echte Projekte von uns: Preisvergleich, Habit-Tracking, Band-Website, Browser-Game & mehr zum Anklicken.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
@@ -56,7 +56,7 @@ new class extends Component {
         */
 
         TwitterCard::setTitle('Unsere Projekte | Websters');
-        TwitterCard::setDescription('Echte Projekte: Web-Apps, Websites, Games & MVPs – alles live und klickbar.');
+        TwitterCard::setDescription('Echte Projekte: Web-Apps, Websites, Games & MVPs zum Anklicken.');
         TwitterCard::setSite('@WebstersAgency');
 
         /*
@@ -132,53 +132,45 @@ new class extends Component {
         [
             'title' => 'BeBetter',
             'tagline' => 'Gewohnheiten, die bleiben',
-            'badge' => 'Live',
-            'badge_color' => 'bg-success',
-            'kind' => 'PWA · Eigenes Produkt',
+            'kind' => 'PWA',
             'image' => asset('/assets/projects/bebetter.webp'),
             'image_mobile' => asset('/assets/projects/bebetter-mobile.webp'),
             'alt' => 'BeBetter – Habit-Tracking mit Year-Grid und Streak-Statistiken',
             'desc' => 'Gewohnheiten tracken, Tasks verwalten und Streak-Battles gegen Freunde gewinnen – als installierbare App mit Push-Erinnerungen, Foto-Verifizierung und Year-Grid im GitHub-Stil.',
-            'tags' => ['Vue 3', 'Express.js', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'PWA'],
+            'tags' => ['Vue', 'Express.js', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'PWA'],
             'link' => 'https://bebetter.websters.at/',
         ],
         [
             'title' => 'lebe-gesund.at',
             'tagline' => 'Ernährung · Energie · Balance',
-            'badge' => 'Live',
-            'badge_color' => 'bg-success',
-            'kind' => 'Website · Kundenprojekt',
+            'kind' => 'Website | Kundenprojekt',
             'image' => asset('/assets/projects/lebe-gesund.webp'),
             'image_mobile' => asset('/assets/projects/lebe-gesund-mobile.webp'),
             'alt' => 'lebe-gesund.at – Website für Ernährungstrainerin Ulrike Ruep',
             'desc' => 'Website für Ernährungstrainerin Ulrike Ruep: Ernährung, RINGANA-Partnerschaft, PranaVita und Biokybernetik – ruhig, klar und modern umgesetzt.',
-            'tags' => ['Vue 3', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis', 'Nginx'],
+            'tags' => ['Vue', 'Vite', 'Tailwind CSS'],
             'link' => 'https://lebe-gesund.at/',
         ],
         [
             'title' => 'MIRACLE',
             'tagline' => 'Hannah & Sophie · Gitarre & Gesang',
-            'badge' => 'Live',
-            'badge_color' => 'bg-success',
             'kind' => 'Band-Website',
             'image' => asset('/assets/projects/miracle.webp'),
             'image_mobile' => asset('/assets/projects/miracle-mobile.webp'),
             'alt' => 'MIRACLE – Band-Website mit Disco-Kugel, Gigs und Instagram-Reels',
-            'desc' => 'Offizielle Website des Duos Hannah (Gitarre) & Sophie (Gesang): Gigs, Reels und Disco-Kugel in 3D – zweisprachig auf Deutsch und Englisch.',
-            'tags' => ['Vue 3', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis'],
+            'desc' => 'Offizielle Website des Duos Hannah (Gitarre) & Sophie (Gesang): Gigs, Reels und Disco-Kugel in 3D.',
+            'tags' => ['Vue', 'Vite', 'Tailwind CSS'],
             'link' => 'https://miracle.websters.at/',
         ],
         [
             'title' => 'SpaceRunner',
             'tagline' => 'Solo · Koop · Multiplayer',
-            'badge' => 'Live · Spielbar',
-            'badge_color' => 'bg-success',
             'kind' => 'Browser-Game',
             'image' => asset('/assets/projects/spacerunner.webp'),
             'image_mobile' => asset('/assets/projects/spacerunner-mobile.webp'),
-            'alt' => 'SpaceRunner – Gameplay mit Plattformen, Coins und HUD',
+            'alt' => 'SpaceRunner – Hauptmenü mit Spielmodi',
             'desc' => 'Kostenloser Canvas-Platformer direkt im Browser: Solo, Koop und Multiplayer mit Seeded Runs, globalem Leaderboard und Highscores – ganz ohne Installation.',
-            'tags' => ['JavaScript', 'PHP', 'Node.js', 'Socket.IO', 'MariaDB', 'Nginx'],
+            'tags' => ['JavaScript', 'PHP', 'Node.js', 'Socket.IO', 'MariaDB'],
             'link' => 'https://spacerunner.websters.at/',
         ],
     ];
@@ -219,7 +211,7 @@ new class extends Component {
             :class="{ 'show': show }"
             style="transition-delay:.15s"
         >
-            Echte Projekte,<br class="hidden sm:block" /> live im Netz
+            Was wir so bauen
         </h1>
 
         <!-- Subtext -->
@@ -228,28 +220,8 @@ new class extends Component {
             :class="{ 'show': show }"
             style="transition-delay:.25s"
         >
-            Web-Apps, Websites und Games von uns – alles live, alles klickbar, alles mit echten Screenshots.
+            Web-Apps, Websites und Games – alles zum Anklicken.
         </p>
-
-        <!-- Stats -->
-        <div
-            class="mt-8 flex items-start justify-start gap-8 sm:gap-12 lg:justify-center fade-up"
-            :class="{ 'show': show }"
-            style="transition-delay:.3s"
-        >
-            <div class="flex flex-col items-start lg:items-center">
-                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">5×</span>
-                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">Projekte live</span>
-            </div>
-            <div class="flex flex-col items-start lg:items-center">
-                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">1×</span>
-                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">Prototyp im Archiv</span>
-            </div>
-            <div class="flex flex-col items-start lg:items-center">
-                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">100&nbsp;%</span>
-                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">echte Screenshots</span>
-            </div>
-        </div>
 
         <!-- Featured: PriceMatters -->
         <article
@@ -272,19 +244,9 @@ new class extends Component {
                                 decoding="async"
                             />
                         </picture>
-                        <div class="absolute left-4 top-4 rounded-full text-sm font-semibold text-white px-3 py-1 bg-primary">
-                            Featured
-                        </div>
                     </div>
-
-                    <div class="flex flex-col justify-center p-6 lg:p-10">
-                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                            <div class="font-bold text-brand-dark text-xl lg:text-2xl">PriceMatters</div>
-                            <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 bg-success">
-                                Live
-                            </div>
-                        </div>
-                        <p class="mt-1 text-sm font-semibold text-slate-500">Ehrlicher Preisvergleich · Eigenes Produkt</p>
+                        <div class="font-bold text-brand-dark text-xl lg:text-2xl">PriceMatters</div>
+                        <p class="mt-1 text-sm font-semibold text-slate-500">Ehrlicher Preisvergleich</p>
 
                         <p class="mt-4 text-sm font-medium text-neutral-500 lg:text-base">
                             Echte Grundpreise in €/kg, €/L und €/Stück für Amazon-Produkte –
@@ -292,10 +254,10 @@ new class extends Component {
                         </p>
 
                         <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Nuxt 3</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Nuxt</span>
                             <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">FastAPI</span>
-                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">PostgreSQL 16</span>
-                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Redis 7</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">PostgreSQL</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Redis</span>
                         </div>
 
                         <div class="mt-6">
@@ -341,13 +303,9 @@ new class extends Component {
 
                         <div class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 lg:mt-6">
                             <div class="font-bold text-brand-dark text-lg">{{ $card['title'] }}</div>
-
-                            <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 {{ $card['badge_color'] }}">
-                                {{ $card['badge'] }}
-                            </div>
                         </div>
 
-                        <p class="mt-1 text-sm font-semibold text-slate-500">{{ $card['tagline'] }} · {{ $card['kind'] }}</p>
+                        <p class="mt-1 text-sm font-semibold text-slate-500">{{ $card['tagline'] }} | {{ $card['kind'] }}</p>
 
                         <p class="mt-2 text-sm font-medium text-neutral-500">
                             {{ $card['desc'] }}
@@ -454,8 +412,7 @@ new class extends Component {
                     Dein Projekt als Nächstes?
                 </h2>
                 <p class="text-sm font-medium text-slate-600 leading-normal lg:text-base mt-3 w-full lg:w-2/5">
-                    Website, Web-App oder doch ein Game? Erzähl uns von deiner Idee –
-                    wir melden uns innerhalb von 24 Stunden.
+                    Website, Web-App oder doch ein Game? Erzähl uns von deiner Idee.
                 </p>
                 <a
                     href="{{ route('contact') }}"
