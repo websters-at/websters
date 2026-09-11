@@ -186,7 +186,7 @@ new class extends Component {
 
 
 <section
-    class="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-16 lg:mb-24"
+    class="relative overflow-hidden pt-36 pb-12 lg:pt-40 lg:pb-16 lg:mb-24"
     id="projects"
     x-data="{ show: false }"
     x-intersect="show = true"
