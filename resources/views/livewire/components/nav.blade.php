@@ -132,10 +132,8 @@ new class extends Component {
 
                         <li>
                             <a
-                                wire:navigate
-                                href="{{ route('about') }}"
+                                href="{{ route('home') }}#team"
                                 class="px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                                wire:current="underline-secondary"
                             >
                                 About
                             </a>
@@ -229,11 +227,9 @@ new class extends Component {
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="{{ route('about') }}"
-                            wire:navigate
+                            <a
+                            href="{{ route('home') }}#team"
                             class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#002a42] transition hover:text-[#ec65ba]"
-                            wire:current="underline-secondary"
                             @click="mobileMenuOpen = false; activeSection = null"
                         >
                             <span>About</span>

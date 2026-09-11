@@ -16,7 +16,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Projekte – Webdesign, Web-Apps, Games & Software aus Engerwitzdorf');
+        SEOMeta::setTitle('Projekte – Web-Apps, Websites, Games & Software | Websters');
         SEOMeta::setDescription(
             'Unsere Projekte: PriceMatters Preisvergleich, BeBetter Habit-Tracking, lebe-gesund.at, MIRACLE Band-Website, SpaceRunner Browser-Game u.v.m. – designed & entwickelt von Websters.'
         );
@@ -24,11 +24,11 @@ new class extends Component {
 
         SEOMeta::addKeyword([
             'Websters Projekte',
-            'Webdesign Referenzen Oberösterreich',
+            'Webdesign Referenzen',
             'PriceMatters',
             'BeBetter App',
             'SpaceRunner Game',
-            'Softwareentwicklung Engerwitzdorf',
+            'Softwareentwicklung Portfolio',
             'Webentwicklung Portfolio'
         ]);
 
@@ -39,7 +39,7 @@ new class extends Component {
         */
 
         OpenGraph::setTitle('Projekte – Web-Apps, Websites & Games | Websters');
-        OpenGraph::setDescription('Echte Projekte aus Engerwitzdorf: Preisvergleich, Habit-Tracking, Band-Website, Browser-Game & mehr.');
+        OpenGraph::setDescription('Echte Projekte von uns: Preisvergleich, Habit-Tracking, Band-Website, Browser-Game & mehr – alles live und klickbar.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
@@ -56,7 +56,7 @@ new class extends Component {
         */
 
         TwitterCard::setTitle('Unsere Projekte | Websters');
-        TwitterCard::setDescription('Echte Projekte: Web-Apps, Websites, Games & MVPs aus Engerwitzdorf.');
+        TwitterCard::setDescription('Echte Projekte: Web-Apps, Websites, Games & MVPs – alles live und klickbar.');
         TwitterCard::setSite('@WebstersAgency');
 
         /*
@@ -67,7 +67,7 @@ new class extends Component {
 
         JsonLd::setType('ItemList');
         JsonLd::setTitle('Projekte der Websters');
-        JsonLd::setDescription('Web-Apps, Websites, Browser-Game und MVPs – designed & entwickelt in Engerwitzdorf.');
+        JsonLd::setDescription('Web-Apps, Websites, Browser-Game und MVPs – designed & entwickelt von Websters.');
         JsonLd::setUrl($pageUrl);
 
         JsonLd::addValue('itemListElement', [
@@ -77,7 +77,7 @@ new class extends Component {
                 'item' => [
                     '@type' => 'WebApplication',
                     'name' => 'PriceMatters – Ehrlicher Preisvergleich',
-                    'description' => 'Echte Grundpreise (€/kg, €/L, €/Stück) für Amazon-Produkte, ohne Werbung und Fake-Rabatte.',
+                    'description' => 'Echte Grundpreise (€/kg, €/L, €/Stück) für Amazon-Produkte, inklusive Preisalarmen.',
                     'url' => 'https://pricematters.websters.at/'
                 ],
             ],
@@ -97,7 +97,7 @@ new class extends Component {
                 'item' => [
                     '@type' => 'WebSite',
                     'name' => 'lebe-gesund.at – Ernährung & Balance',
-                    'description' => 'Website für Ernährungstrainerin Ulrike Ruep aus Engerwitzdorf.',
+                    'description' => 'Website für Ernährungstrainerin Ulrike Ruep.',
                     'url' => 'https://lebe-gesund.at/'
                 ],
             ],
@@ -107,7 +107,7 @@ new class extends Component {
                 'item' => [
                     '@type' => 'WebSite',
                     'name' => 'MIRACLE – Band-Website',
-                    'description' => 'Offizielle Website des oberösterreichischen Duos Hannah & Sophie.',
+                    'description' => 'Offizielle Website des Duos Hannah & Sophie.',
                     'url' => 'https://miracle.websters.at/'
                 ],
             ],
@@ -131,14 +131,15 @@ new class extends Component {
     $liveProjects = [
         [
             'title' => 'BeBetter',
-            'tagline' => 'Habit-Tracking, das kleben bleibt',
+            'tagline' => 'Gewohnheiten, die bleiben',
             'badge' => 'Live',
             'badge_color' => 'bg-success',
             'kind' => 'PWA · Eigenes Produkt',
             'image' => asset('/assets/projects/bebetter.webp'),
+            'image_mobile' => asset('/assets/projects/bebetter-mobile.webp'),
             'alt' => 'BeBetter – Habit-Tracking mit Year-Grid und Streak-Statistiken',
             'desc' => 'Gewohnheiten tracken, Tasks verwalten und Streak-Battles gegen Freunde gewinnen – als installierbare App mit Push-Erinnerungen, Foto-Verifizierung und Year-Grid im GitHub-Stil.',
-            'tags' => ['Vue 3', 'Express', 'Prisma', 'PWA'],
+            'tags' => ['Vue 3', 'Express.js', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'PWA'],
             'link' => 'https://bebetter.websters.at/',
         ],
         [
@@ -148,21 +149,23 @@ new class extends Component {
             'badge_color' => 'bg-success',
             'kind' => 'Website · Kundenprojekt',
             'image' => asset('/assets/projects/lebe-gesund.webp'),
+            'image_mobile' => asset('/assets/projects/lebe-gesund-mobile.webp'),
             'alt' => 'lebe-gesund.at – Website für Ernährungstrainerin Ulrike Ruep',
-            'desc' => 'Website für Ernährungstrainerin Ulrike Ruep aus Engerwitzdorf: Ernährung, RINGANA-Partnerschaft, PranaVita und Biokybernetik – ruhig, klar und modern umgesetzt.',
-            'tags' => ['Vue 3', 'Tailwind CSS', 'GSAP'],
+            'desc' => 'Website für Ernährungstrainerin Ulrike Ruep: Ernährung, RINGANA-Partnerschaft, PranaVita und Biokybernetik – ruhig, klar und modern umgesetzt.',
+            'tags' => ['Vue 3', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis', 'Nginx'],
             'link' => 'https://lebe-gesund.at/',
         ],
         [
             'title' => 'MIRACLE',
-            'tagline' => 'Hannah & Sophie · Oberösterreich',
+            'tagline' => 'Hannah & Sophie · Gitarre & Gesang',
             'badge' => 'Live',
             'badge_color' => 'bg-success',
             'kind' => 'Band-Website',
             'image' => asset('/assets/projects/miracle.webp'),
+            'image_mobile' => asset('/assets/projects/miracle-mobile.webp'),
             'alt' => 'MIRACLE – Band-Website mit Disco-Kugel, Gigs und Instagram-Reels',
-            'desc' => 'Offizielle Website des Duos Hannah (Gitarre) & Sophie (Gesang): Gigs, Reels und Disco-Kugel in 3D – zweisprachig auf Deutsch und Englisch, mit MusicGroup-Schema.',
-            'tags' => ['Vue 3', 'GSAP', 'DE + EN'],
+            'desc' => 'Offizielle Website des Duos Hannah (Gitarre) & Sophie (Gesang): Gigs, Reels und Disco-Kugel in 3D – zweisprachig auf Deutsch und Englisch.',
+            'tags' => ['Vue 3', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis'],
             'link' => 'https://miracle.websters.at/',
         ],
         [
@@ -172,9 +175,10 @@ new class extends Component {
             'badge_color' => 'bg-success',
             'kind' => 'Browser-Game',
             'image' => asset('/assets/projects/spacerunner.webp'),
-            'alt' => 'SpaceRunner – Pixel-Platformer mit Spielmodi und Highscores',
+            'image_mobile' => asset('/assets/projects/spacerunner-mobile.webp'),
+            'alt' => 'SpaceRunner – Gameplay mit Plattformen, Coins und HUD',
             'desc' => 'Kostenloser Canvas-Platformer direkt im Browser: Solo, Koop und Multiplayer mit Seeded Runs, globalem Leaderboard und Highscores – ganz ohne Installation.',
-            'tags' => ['Canvas', 'Socket.IO', 'MariaDB'],
+            'tags' => ['JavaScript', 'PHP', 'Node.js', 'Socket.IO', 'MariaDB', 'Nginx'],
             'link' => 'https://spacerunner.websters.at/',
         ],
     ];
@@ -182,11 +186,21 @@ new class extends Component {
 
 
 <section
-    class="lg:pt-16 lg:mb-24"
+    class="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-16 lg:mb-24"
     id="projects"
     x-data="{ show: false }"
     x-intersect="show = true"
 >
+
+    <!-- Aurora wash -->
+    <div
+        class="absolute inset-0 -z-10 pointer-events-none"
+        style="
+            background:
+                radial-gradient(ellipse 60% 40% at 80% 8%, rgba(255, 122, 195, 0.28), transparent 68%),
+                radial-gradient(ellipse 55% 40% at 12% 22%, rgba(77, 200, 232, 0.28), transparent 68%);
+        "
+    ></div>
 
     <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
 
@@ -201,11 +215,11 @@ new class extends Component {
 
         <!-- Section Heading -->
         <h1
-            class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9 fade-up"
+            class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent sm:text-4xl lg:text-6xl mt-6 text-left lg:text-center w-full lg:leading-tight xl:mt-9 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.15s"
         >
-            Gebaut, gelauncht &amp; live
+            Echte Projekte,<br class="hidden sm:block" /> live im Netz
         </h1>
 
         <!-- Subtext -->
@@ -214,62 +228,88 @@ new class extends Component {
             :class="{ 'show': show }"
             style="transition-delay:.25s"
         >
-            Echte Produkte, echte Websites, echte Games – allesamt designed &amp; entwickelt in Engerwitzdorf. Schau dich um, alles ist live und klickbar.
+            Web-Apps, Websites und Games von uns – alles live, alles klickbar, alles mit echten Screenshots.
         </p>
+
+        <!-- Stats -->
+        <div
+            class="mt-8 flex items-start justify-start gap-8 sm:gap-12 lg:justify-center fade-up"
+            :class="{ 'show': show }"
+            style="transition-delay:.3s"
+        >
+            <div class="flex flex-col items-start lg:items-center">
+                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">5×</span>
+                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">Projekte live</span>
+            </div>
+            <div class="flex flex-col items-start lg:items-center">
+                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">1×</span>
+                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">Prototyp im Archiv</span>
+            </div>
+            <div class="flex flex-col items-start lg:items-center">
+                <span class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-3xl font-bold text-transparent lg:text-4xl">100&nbsp;%</span>
+                <span class="mt-1 text-xs font-semibold text-slate-500 lg:text-sm">echte Screenshots</span>
+            </div>
+        </div>
 
         <!-- Featured: PriceMatters -->
         <article
-            class="mt-12 w-full flex flex-col overflow-hidden rounded-2xl border border-neutral-200 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:mt-16 lg:grid lg:grid-cols-2 lg:rounded-[2rem] fade-up"
+            class="group mt-12 w-full lg:mt-16 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.35s"
         >
-            <div class="relative">
-                <img
-                    class="h-60 w-full object-cover object-top sm:h-72 lg:h-full lg:min-h-[26rem]"
-                    src="{{ asset('/assets/projects/pricematters.webp') }}"
-                    alt="PriceMatters – ehrlicher Preisvergleich mit Grundpreisen"
-                    loading="lazy"
-                    width="1440"
-                    height="900"
-                    decoding="async"
-                />
-                <div class="absolute left-4 top-4 rounded-full text-sm font-semibold text-white px-3 py-1 bg-primary">
-                    Featured
-                </div>
-            </div>
-
-            <div class="flex flex-col justify-center p-6 lg:p-10">
-                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                    <div class="font-bold text-brand-dark text-xl lg:text-2xl">PriceMatters</div>
-                    <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 bg-success">
-                        Live
+            <div class="rounded-2xl bg-gradient-to-br from-primary/70 via-neutral-200 to-secondary/70 p-px lg:rounded-[2rem] shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-all duration-300 group-hover:shadow-[0_24px_50px_-20px_rgba(0,42,66,0.35)]">
+                <div class="grid overflow-hidden rounded-[calc(1rem-1px)] bg-white lg:grid-cols-2 lg:rounded-[calc(2rem-1px)]">
+                    <div class="relative overflow-hidden">
+                        <picture>
+                            <source media="(max-width: 639px)" srcset="{{ asset('/assets/projects/pricematters-mobile.webp') }}" type="image/webp">
+                            <img
+                                class="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                src="{{ asset('/assets/projects/pricematters.webp') }}"
+                                alt="PriceMatters – ehrlicher Preisvergleich mit Grundpreisen"
+                                loading="lazy"
+                                width="1440"
+                                height="900"
+                                decoding="async"
+                            />
+                        </picture>
+                        <div class="absolute left-4 top-4 rounded-full text-sm font-semibold text-white px-3 py-1 bg-primary">
+                            Featured
+                        </div>
                     </div>
-                </div>
-                <p class="mt-1 text-sm font-semibold text-slate-500">Ehrlicher Preisvergleich · Eigenes Produkt</p>
 
-                <p class="mt-4 text-sm font-medium text-neutral-500 lg:text-base">
-                    Echte Grundpreise in €/kg, €/L und €/Stück für Amazon-Produkte –
-                    ganz ohne Werbung und Fake-Rabatte. DACH-first, auf Deutsch und
-                    Englisch, mit Preisalarmen und mehreren Marken-Domains.
-                </p>
+                    <div class="flex flex-col justify-center p-6 lg:p-10">
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                            <div class="font-bold text-brand-dark text-xl lg:text-2xl">PriceMatters</div>
+                            <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 bg-success">
+                                Live
+                            </div>
+                        </div>
+                        <p class="mt-1 text-sm font-semibold text-slate-500">Ehrlicher Preisvergleich · Eigenes Produkt</p>
 
-                <div class="mt-4 flex flex-wrap gap-2">
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Nuxt 3</span>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">FastAPI</span>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">PostgreSQL</span>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Redis</span>
-                </div>
+                        <p class="mt-4 text-sm font-medium text-neutral-500 lg:text-base">
+                            Echte Grundpreise in €/kg, €/L und €/Stück für Amazon-Produkte –
+                            inklusive Preisalarmen.
+                        </p>
 
-                <div class="mt-6">
-                    <a
-                        href="https://pricematters.websters.at/"
-                        target="_blank"
-                        rel="noopener"
-                        class="btn-fancy btn btn-sm text-white lg:btn-md btn-primary inline-flex items-center gap-2"
-                    >
-                        Live ansehen
-                        <x-icon name="fas.arrow-up-right-from-square" class="h-3.5 w-3.5" />
-                    </a>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Nuxt 3</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">FastAPI</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">PostgreSQL 16</span>
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Redis 7</span>
+                        </div>
+
+                        <div class="mt-6">
+                            <a
+                                href="https://pricematters.websters.at/"
+                                target="_blank"
+                                rel="noopener"
+                                class="btn-fancy btn btn-sm text-white lg:btn-md btn-primary inline-flex items-center gap-2"
+                            >
+                                Live ansehen
+                                <x-icon name="fas.arrow-up-right-from-square" class="h-3.5 w-3.5" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </article>
@@ -279,20 +319,25 @@ new class extends Component {
 
             @foreach ($liveProjects as $i => $card)
                 <article
-                    class="flex flex-col rounded-2xl border border-neutral-200 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up"
+                    class="group flex flex-col rounded-2xl border border-neutral-200 bg-white p-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:justify-between lg:rounded-[2rem] lg:p-6 fade-up transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-18px_rgba(0,42,66,0.35)]"
                     :class="{ 'show': show }"
                     style="transition-delay:.{{ 45 + $i * 10 }}s"
                 >
                     <div>
-                        <img
-                            class="mb-4 h-52 w-full rounded-lg object-cover object-top sm:h-64 lg:mb-6 lg:h-72 lg:rounded-2xl"
-                            src="{{ $card['image'] }}"
-                            alt="{{ $card['alt'] }}"
-                            loading="lazy"
-                            width="1440"
-                            height="900"
-                            decoding="async"
-                        />
+                        <div class="mb-4 overflow-hidden rounded-lg lg:mb-6 lg:rounded-2xl">
+                            <picture>
+                                <source media="(max-width: 639px)" srcset="{{ $card['image_mobile'] }}" type="image/webp">
+                                <img
+                                    class="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    src="{{ $card['image'] }}"
+                                    alt="{{ $card['alt'] }}"
+                                    loading="lazy"
+                                    width="1440"
+                                    height="900"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
 
                         <div class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 lg:mt-6">
                             <div class="font-bold text-brand-dark text-lg">{{ $card['title'] }}</div>
@@ -331,80 +376,96 @@ new class extends Component {
 
         <!-- Archive: NightCrown -->
         <article
-            class="mt-6 w-full flex flex-col overflow-hidden rounded-2xl border border-neutral-200 shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:mt-8 lg:grid lg:grid-cols-[1fr_1.4fr] lg:rounded-[2rem] fade-up"
+            class="mt-6 w-full lg:mt-8 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.85s"
         >
-            <div class="flex flex-col justify-center p-6 lg:p-10 order-2 lg:order-1">
-                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                    <div class="font-bold text-brand-dark text-xl">NightCrown</div>
-                    <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 bg-neutral">
-                        Archiv
+            <div class="grid overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-slate-50 to-white shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:grid-cols-[1fr_1.4fr] lg:rounded-[2rem]">
+                <div class="flex flex-col justify-center p-6 lg:p-10 order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                        <div class="font-bold text-brand-dark text-xl">NightCrown</div>
+                        <div class="rounded-full text-sm font-semibold text-white px-2 py-0.5 bg-neutral">
+                            Archiv
+                        </div>
+                    </div>
+                    <p class="mt-1 text-sm font-semibold text-slate-500">Nightlife-App · MVP-Prototyp · pausiert</p>
+
+                    <p class="mt-4 text-sm font-medium text-neutral-500">
+                        „Own the Night“ als App-Prototyp: Swipe-Feed, Leaderboard und
+                        Rewards-System mit Wallet – als MVP gestartet und aktuell pausiert.
+                    </p>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">React</span>
+                        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Supabase</span>
+                        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Tailwind CSS</span>
+                        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Framer Motion</span>
+                    </div>
+
+                    <div class="mt-6">
+                        <a
+                            href="https://nightcrown.websters.at/"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-sm lg:btn-md btn-outline inline-flex items-center gap-2"
+                        >
+                            Prototyp ansehen
+                            <x-icon name="fas.arrow-up-right-from-square" class="h-3.5 w-3.5" />
+                        </a>
                     </div>
                 </div>
-                <p class="mt-1 text-sm font-semibold text-slate-500">Nightlife-App · MVP-Prototyp · pausiert</p>
 
-                <p class="mt-4 text-sm font-medium text-neutral-500">
-                    „Own the Night“ als App-Prototyp: Swipe-Feed, Leaderboard und
-                    Rewards-System mit Wallet – ehrlicherweise unfertig und aktuell
-                    pausiert. Trotzdem drin, weil auch Experimente zu uns gehören.
-                </p>
-
-                <div class="mt-4 flex flex-wrap gap-2">
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">React</span>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Supabase</span>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Vite</span>
+                <div class="relative overflow-hidden order-1 lg:order-2">
+                    <picture>
+                        <source media="(max-width: 639px)" srcset="{{ asset('/assets/projects/nightcrown-mobile.webp') }}" type="image/webp">
+                        <img
+                            class="h-auto w-full object-cover grayscale"
+                            src="{{ asset('/assets/projects/nightcrown.webp') }}"
+                            alt="NightCrown – Nightlife-App-Prototyp mit Login-Screen"
+                            loading="lazy"
+                            width="1440"
+                            height="900"
+                            decoding="async"
+                        />
+                    </picture>
                 </div>
-
-                <div class="mt-6">
-                    <a
-                        href="https://nightcrown.websters.at/"
-                        target="_blank"
-                        rel="noopener"
-                        class="btn btn-sm lg:btn-md btn-outline inline-flex items-center gap-2"
-                    >
-                        Prototyp ansehen
-                        <x-icon name="fas.arrow-up-right-from-square" class="h-3.5 w-3.5" />
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative order-1 lg:order-2">
-                <img
-                    class="h-60 w-full object-cover object-top grayscale sm:h-72 lg:h-full lg:min-h-[22rem]"
-                    src="{{ asset('/assets/projects/nightcrown.webp') }}"
-                    alt="NightCrown – Nightlife-App-Prototyp mit Login-Screen"
-                    loading="lazy"
-                    width="1440"
-                    height="900"
-                    decoding="async"
-                />
             </div>
         </article>
 
         <!-- CTA -->
         <div
-            class="mt-12 w-full lg:mt-16 flex flex-col items-center text-center fade-up"
+            class="mt-12 w-full lg:mt-16 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.95s"
         >
-            <h2
-                class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-xl font-bold text-transparent lg:text-3xl"
-            >
-                Dein Projekt als Nächstes?
-            </h2>
-            <p class="text-sm font-medium text-slate-600 leading-normal lg:text-base mt-3 w-full lg:w-2/5">
-                Website, Web-App oder doch ein Game? Erzähl uns von deiner Idee –
-                wir melden uns innerhalb von 24 Stunden.
-            </p>
-            <a
-                href="{{ route('contact') }}"
-                wire:navigate
-                class="btn-fancy btn btn-md text-white lg:btn-lg mt-6 btn-primary inline-flex items-center gap-2"
-            >
-                Projekt anfragen
-                <x-icon name="fas.arrow-right" class="h-4 w-4" />
-            </a>
+            <div class="relative flex flex-col items-center overflow-hidden rounded-2xl px-6 py-12 text-center lg:rounded-[3rem] lg:py-16">
+                <div
+                    class="absolute inset-0 -z-10 pointer-events-none"
+                    style="
+                        background:
+                            radial-gradient(ellipse 80% 60% at 70% 20%, rgba(77, 200, 232, 0.55), transparent 68%),
+                            radial-gradient(ellipse 70% 60% at 20% 80%, rgba(255, 122, 192, 0.5), transparent 68%),
+                            linear-gradient(180deg, #f7eaff 0%, #fde2ea 100%);
+                    "
+                ></div>
+                <h2
+                    class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-xl font-bold text-transparent lg:text-3xl"
+                >
+                    Dein Projekt als Nächstes?
+                </h2>
+                <p class="text-sm font-medium text-slate-600 leading-normal lg:text-base mt-3 w-full lg:w-2/5">
+                    Website, Web-App oder doch ein Game? Erzähl uns von deiner Idee –
+                    wir melden uns innerhalb von 24 Stunden.
+                </p>
+                <a
+                    href="{{ route('contact') }}"
+                    wire:navigate
+                    class="btn-fancy btn btn-md text-white lg:btn-lg mt-6 btn-primary inline-flex items-center gap-2"
+                >
+                    Projekt anfragen
+                    <x-icon name="fas.arrow-right" class="h-4 w-4" />
+                </a>
+            </div>
         </div>
 
     </div>
