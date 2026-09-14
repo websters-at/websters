@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
     <!-- GTM - defer to avoid blocking -->
+    <script>if (typeof CSSPropertyRule === 'undefined') { document.documentElement.classList.add('no-at-property'); }</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
