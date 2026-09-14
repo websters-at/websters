@@ -220,7 +220,7 @@ new class extends Component {
             :class="{ 'show': show }"
             style="transition-delay:.25s"
         >
-            Web-Apps, Websites und Games – alles zum Anklicken.
+            Web-Apps, Websites und Games.
         </p>
 
         <!-- Featured: PriceMatters -->
@@ -245,6 +245,8 @@ new class extends Component {
                             />
                         </picture>
                     </div>
+
+                    <div class="flex flex-col justify-center p-6 lg:p-10">
                         <div class="font-bold text-brand-dark text-xl lg:text-2xl">PriceMatters</div>
                         <p class="mt-1 text-sm font-semibold text-slate-500">Ehrlicher Preisvergleich</p>
 
