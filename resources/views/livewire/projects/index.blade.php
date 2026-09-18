@@ -2,12 +2,11 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
     public function mount(): void {
-        $siteUrl = 'https://websters.at';
+        $siteUrl = rtrim(config('app.url'), '/');
         $pageUrl = route('projects');
 
         /*
@@ -16,7 +15,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Projekte – Web-Apps, Websites, Games & Software | Websters');
+        SEOMeta::setTitle('Projekte – Web-Apps, Websites, Games & Software');
         SEOMeta::setDescription(
             'Unsere Projekte: PriceMatters Preisvergleich, BeBetter Habit-Tracking, lebe-gesund.at, MIRACLE Band-Website, SpaceRunner Browser-Game u.v.m. – designed & entwickelt von Websters.'
         );
@@ -59,69 +58,10 @@ new class extends Component {
         TwitterCard::setDescription('Echte Projekte: Web-Apps, Websites, Games & MVPs zum Anklicken.');
         TwitterCard::setSite('@WebstersAgency');
 
-        /*
-        |--------------------------------------------------------------------------
-        | JSON-LD: PROJECTS AS ITEMLIST
-        |--------------------------------------------------------------------------
-        */
-
-        JsonLd::setType('ItemList');
-        JsonLd::setTitle('Projekte der Websters');
-        JsonLd::setDescription('Web-Apps, Websites, Browser-Game und MVPs – designed & entwickelt von Websters.');
-        JsonLd::setUrl($pageUrl);
-
-        JsonLd::addValue('itemListElement', [
-            [
-                '@type' => 'ListItem',
-                'position' => 1,
-                'item' => [
-                    '@type' => 'WebApplication',
-                    'name' => 'PriceMatters – Ehrlicher Preisvergleich',
-                    'description' => 'Echte Grundpreise (€/kg, €/L, €/Stück) für Amazon-Produkte, inklusive Preisalarmen.',
-                    'url' => 'https://pricematters.websters.at/'
-                ],
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 2,
-                'item' => [
-                    '@type' => 'MobileApplication',
-                    'name' => 'BeBetter – Habit-Tracking PWA',
-                    'description' => 'Gewohnheiten tracken, Tasks verwalten und Streak-Battles gegen Freunde gewinnen.',
-                    'url' => 'https://bebetter.websters.at/'
-                ],
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 3,
-                'item' => [
-                    '@type' => 'WebSite',
-                    'name' => 'lebe-gesund.at – Ernährung & Balance',
-                    'description' => 'Website für Ernährungstrainerin Ulrike Ruep.',
-                    'url' => 'https://lebe-gesund.at/'
-                ],
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 4,
-                'item' => [
-                    '@type' => 'WebSite',
-                    'name' => 'MIRACLE – Band-Website',
-                    'description' => 'Offizielle Website des Duos Hannah & Sophie.',
-                    'url' => 'https://miracle.websters.at/'
-                ],
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 5,
-                'item' => [
-                    '@type' => 'VideoGame',
-                    'name' => 'SpaceRunner – Browser-Platformer',
-                    'description' => 'Kostenloser Canvas-Platformer: Solo, Koop & Multiplayer mit globalem Leaderboard.',
-                    'url' => 'https://spacerunner.websters.at/'
-                ],
-            ],
-        ]);
+        // NOTE: JsonLd::setType()/addValue() calls are intentionally NOT used here:
+        // verified 2026-09 that mount-time JsonLd mutations never reach the rendered
+        // output (only config defaults are emitted). The ItemList is rendered
+        // explicitly at the bottom of this file instead.
     }
 };
 
@@ -266,7 +206,7 @@ new class extends Component {
                             <a
                                 href="https://pricematters.websters.at/"
                                 target="_blank"
-                                rel="noopener"
+                                rel="noopener noreferrer"
                                 class="btn-fancy btn btn-sm text-white lg:btn-md btn-primary inline-flex items-center gap-2"
                             >
                                 Live ansehen
@@ -323,7 +263,7 @@ new class extends Component {
                     <a
                         href="{{ $card['link'] }}"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         class="btn-fancy btn btn-sm text-white lg:btn-md mt-4 btn-primary inline-flex items-center justify-center gap-2"
                     >
                         Live ansehen
@@ -366,7 +306,7 @@ new class extends Component {
                         <a
                             href="https://nightcrown.websters.at/"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
                             class="btn btn-sm lg:btn-md btn-outline inline-flex items-center gap-2"
                         >
                             Prototyp ansehen
@@ -429,3 +369,23 @@ new class extends Component {
 
     </div>
 </section>
+
+@php
+    // Explicit ItemList JSON-LD (see mount() note above): rendered verbatim so
+    // crawlers actually receive it. Google merges multiple ld+json blocks.
+    $projectSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ItemList',
+        'name' => 'Projekte der Websters',
+        'description' => 'Web-Apps, Websites, Browser-Game und MVPs – designed & entwickelt von Websters.',
+        'url' => route('projects'),
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'item' => ['@type' => 'WebApplication', 'name' => 'PriceMatters – Ehrlicher Preisvergleich', 'description' => 'Echte Grundpreise (€/kg, €/L, €/Stück) für Amazon-Produkte, inklusive Preisalarmen.', 'url' => 'https://pricematters.websters.at/']],
+            ['@type' => 'ListItem', 'position' => 2, 'item' => ['@type' => 'MobileApplication', 'name' => 'BeBetter – Habit-Tracking PWA', 'description' => 'Gewohnheiten tracken, Tasks verwalten und Streak-Battles gegen Freunde gewinnen.', 'url' => 'https://bebetter.websters.at/']],
+            ['@type' => 'ListItem', 'position' => 3, 'item' => ['@type' => 'WebSite', 'name' => 'lebe-gesund.at – Ernährung & Balance', 'description' => 'Website für Ernährungstrainerin Ulrike Ruep.', 'url' => 'https://lebe-gesund.at/']],
+            ['@type' => 'ListItem', 'position' => 4, 'item' => ['@type' => 'WebSite', 'name' => 'MIRACLE – Band-Website', 'description' => 'Offizielle Website des Duos Hannah & Sophie.', 'url' => 'https://miracle.websters.at/']],
+            ['@type' => 'ListItem', 'position' => 5, 'item' => ['@type' => 'VideoGame', 'name' => 'SpaceRunner – Browser-Platformer', 'description' => 'Kostenloser Canvas-Platformer: Solo, Koop & Multiplayer mit globalem Leaderboard.', 'url' => 'https://spacerunner.websters.at/']],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">{!! json_encode($projectSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>

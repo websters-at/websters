@@ -20,13 +20,7 @@ new class extends Component {
         $this->company = trim($this->company);
         $this->message = trim($this->message);
 
-        $this->validate([
-            'name' => 'required|string|min:2|max:100',
-            'email' => 'required|email:rfc|max:255',
-            'company' => 'nullable|string|max:150',
-            'message' => 'nullable|string|max:5000',
-        ]);
-
+        // Throttle BEFORE validation so invalid-payload floods also cost budget.
         $throttleKey = 'contact:' . request()->ip();
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $this->toast(
@@ -41,6 +35,13 @@ new class extends Component {
             return;
         }
         RateLimiter::hit($throttleKey, 60);
+
+        $this->validate([
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|email:rfc|max:255',
+            'company' => 'nullable|string|max:150',
+            'message' => 'nullable|string|max:5000',
+        ]);
 
         try {
             Lead::create([

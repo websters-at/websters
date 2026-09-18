@@ -2,27 +2,16 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class TrustProxies extends Middleware
 {
-    protected $proxies = '*'; // Trust all proxies (use with caution)
+    // Only the reverse proxies in front of this app (Traefik/Caddy on the
+    // Docker networks + RFC1918). Never '*': with '*' any direct caller can
+    // spoof X-Forwarded-For and defeat IP-based throttling (see form save()).
+    protected $proxies = ['172.16.0.0/12', '10.0.0.0/8', '192.168.0.0/16'];
     protected $headers = Request::HEADER_X_FORWARDED_FOR
                      | Request::HEADER_X_FORWARDED_HOST
-                     | Request::HEADER_X_FORWARDED_PORT
-                     | Request::HEADER_X_FORWARDED_PROTO
-                     | Request::HEADER_X_FORWARDED_TRAEFIK;
-
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-        return $next($request);
-    }
+                     | Request::HEADER_X_FORWARDED_PROTO;
 }

@@ -3,7 +3,7 @@ set -e
 
 echo "Database is ready! Running migrations..."
 
-wait-for-it mysql:3306 -t 30
+wait-for-it "${DB_HOST:-mysql}:${DB_PORT:-3306}" -t 30
 
 # Run pending migrations only (never wipe data in production)
 php artisan migrate --force

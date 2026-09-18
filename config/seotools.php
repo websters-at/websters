@@ -68,7 +68,7 @@ return [
             'site_name'   => 'Websters',
             'locale'      => 'de_AT',
             'images'      => [
-                'https://websters.at/assets/images/logo-og.jpg',
+                'https://websters.at/assets/logo-og.jpg',
             ],
         ],
     ],
@@ -83,7 +83,7 @@ return [
 
             'title'       => 'Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf',
             'description' => 'Webdesign ab 990€, individuelle Webentwicklung & Custom Software ab 3.490€ für Unternehmen in Österreich & Deutschland.',
-            'image'       => 'https://websters.at/assets/images/logo-jsonld.jpg',
+            'image'       => 'https://websters.at/assets/logo-jsonld.jpg',
         ],
     ],
 
@@ -163,9 +163,9 @@ return [
                 'https://github.com/websters-at',
             ],
 
-            'logo'  => 'https://websters.at/assets/images/logo-jsonld.jpg',
+            'logo'  => 'https://websters.at/assets/logo-jsonld.jpg',
             'image' => [
-                'https://websters.at/assets/images/logo-jsonld.jpg',
+                'https://websters.at/assets/logo-jsonld.jpg',
             ],
 
             'priceRange' => '€€-€€€',

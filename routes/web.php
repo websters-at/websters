@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Volt::route('/', 'home.index')
@@ -11,8 +12,8 @@ Volt::route('/projekte', 'projects.index')
 Volt::route('/kontakt', 'contact.index')
     ->name('contact');
 
-Volt::route('/ueber-uns', 'about.index')
-    ->name('about');
+// About lives at /#team (nav links there since 2026-09); keep the old URL working.
+Route::redirect('/ueber-uns', '/#team', 301);
 
 Volt::route('/leistungen', 'services.index')
     ->name('services');

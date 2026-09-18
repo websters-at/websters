@@ -1,5 +1,5 @@
 # === Composer Dependencies Stage === #
-FROM dunglas/frankenphp AS base
+FROM dunglas/frankenphp:1 AS base
 
 RUN install-php-extensions \
 	pdo_mysql \

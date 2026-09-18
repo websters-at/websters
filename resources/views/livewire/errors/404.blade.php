@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     {!! SEO::generate() !!}
+    {{-- 404 must never be indexed (crawl budget, soft-404 risk) --}}
+    <meta name="robots" content="noindex, follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch.png') }}">

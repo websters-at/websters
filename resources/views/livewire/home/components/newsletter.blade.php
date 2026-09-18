@@ -15,10 +15,7 @@ new class extends Component {
     {
         $this->email = strtolower(trim($this->email));
 
-        $this->validate([
-            'email' => 'required|email:rfc|max:255|unique:newsletter_entries,email',
-        ]);
-
+        // Throttle BEFORE validation so invalid-payload floods also cost budget.
         $throttleKey = 'newsletter:' . request()->ip();
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $this->toast(
@@ -34,6 +31,10 @@ new class extends Component {
         }
         RateLimiter::hit($throttleKey, 60);
 
+        $this->validate([
+            'email' => 'required|email:rfc|max:255|unique:newsletter_entries,email',
+        ]);
+
         try {
             NewsletterEntry::create([
                 "email" => $this->email,
@@ -48,9 +49,11 @@ new class extends Component {
                 timeout: 3000,
             );
             $this->reset(['email']);
-        } catch (QueryException $err) {
+        } catch (\Throwable $err) {
             // Race between validation and insert (unique index is the arbiter).
-            if (($err->errorInfo[1] ?? null) == 1062) {
+            // MySQL 1062, SQLite/Postgres via SQLSTATE 23000/23505.
+            $code = $err instanceof QueryException ? ($err->errorInfo[1] ?? $err->errorInfo[0] ?? null) : null;
+            if ($code == 1062 || $code === '23000' || $code === '23505') {
                 $description = 'Du bist schon registriert.';
             } else {
                 report($err);
