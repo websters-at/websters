@@ -6,8 +6,9 @@ services:
       target: production
     restart: unless-stopped
     pull_policy: build
+    mem_limit: 1g
     ports:
-      - '42069:80'
+      - '127.0.0.1:42069:80'
     volumes: []
     depends_on:
       mysql:
@@ -119,8 +120,9 @@ services:
     ports:
       - "10.8.1.1:3307:3306"
     container_name: mysql
-    image: 'mysql:latest'
+    image: 'mysql:9'
     restart: unless-stopped
+    mem_limit: 1g
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -145,6 +147,7 @@ services:
     container_name: redis
     image: 'redis:7-alpine'
     restart: unless-stopped
+    mem_limit: 256m
     command: ['redis-server', '--appendonly', 'yes', '--requirepass', '${REDIS_PASSWORD}']
     volumes:
       - './redis/data:/data'

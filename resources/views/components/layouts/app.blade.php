@@ -30,7 +30,7 @@
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-Bold.woff2') }}" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="{{ Vite::asset('resources/fonts/Poppins-ExtraBold.woff2') }}" type="font/woff2" crossorigin>
 
-    <script>window.deferLoadingAlpine = true;</script>
+    <script>if (typeof CSSPropertyRule === 'undefined') { document.documentElement.classList.add('no-at-property'); }</script>
     <!-- Render-blocking CSS: guarantees the first paint uses the styled layout.
          Async (preload+onload) CSS caused a flaky CLS ~1.0 when the stylesheet
          landed after first paint (page collapsed from unstyled 19078px to 5404px).
@@ -44,36 +44,20 @@
          URL carries a content-hash ?id= cache-buster, so it's cacheable forever. --}}
     <script src="{{ $cookieConsentSrc }}" defer></script>
 
-    {{-- GTM and Livewire are deferred until the first real user interaction
-         (pointer/keyboard/touch/scroll). Their JS bundles (gtag ~50KB, livewire ~150KB)
-         never parse during the load window, keeping the main thread free for first paint. --}}
+    {{-- Livewire loads eagerly but deferred (non-blocking for first paint): its
+         bundled Alpine must be the ONLY Alpine instance on the page. app.js
+         reuses window.Alpine for its collapse/intersect plugins and never calls
+         Alpine.start() itself — Livewire.start() owns startup. (Loading Livewire
+         lazily on first interaction created a second Alpine instance instead:
+         Livewire overwrote window.Alpine, warned, and never booted any component,
+         silently breaking every $wire form with zero console errors.) --}}
+    <script src="{{ $livewireSrc }}" data-navigate-once="true" data-csrf="{{ csrf_token() }}" data-update-uri="{{ $livewireUpdateUri }}" defer></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-WREHCH7Q7Y');
-        (function () {
-            var livewireCfg = {
-                src: {!! json_encode($livewireSrc) !!},
-                attrs: {
-                    'data-navigate-once': 'true',
-                    'data-csrf': {!! json_encode(csrf_token()) !!},
-                    'data-update-uri': {!! json_encode($livewireUpdateUri) !!}
-                },
-                guard: function () { return window.Livewire; }
-            };
-            var injected = false;
-            var events = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'keydown', 'touchstart', 'scroll', 'click', 'submit'];
-            function inject() {
-                if (injected || livewireCfg.guard()) return;
-                injected = true;
-                var s = document.createElement('script');
-                s.src = livewireCfg.src;
-                for (var k in livewireCfg.attrs) s.setAttribute(k, livewireCfg.attrs[k]);
-                document.body.appendChild(s);
-            }
-            events.forEach(function (e) { window.addEventListener(e, inject, { passive: true }); });
-        })();
     </script>
 
     @vite(['resources/js/app.js'])

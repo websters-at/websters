@@ -15,10 +15,7 @@ new class extends Component {
     {
         $this->email = strtolower(trim($this->email));
 
-        $this->validate([
-            'email' => 'required|email:rfc|max:255|unique:newsletter_entries,email',
-        ]);
-
+        // Throttle BEFORE validation so invalid-payload floods also cost budget.
         $throttleKey = 'newsletter:' . request()->ip();
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $this->toast(
@@ -34,6 +31,10 @@ new class extends Component {
         }
         RateLimiter::hit($throttleKey, 60);
 
+        $this->validate([
+            'email' => 'required|email:rfc|max:255|unique:newsletter_entries,email',
+        ]);
+
         try {
             NewsletterEntry::create([
                 "email" => $this->email,
@@ -48,9 +49,11 @@ new class extends Component {
                 timeout: 3000,
             );
             $this->reset(['email']);
-        } catch (QueryException $err) {
+        } catch (\Throwable $err) {
             // Race between validation and insert (unique index is the arbiter).
-            if (($err->errorInfo[1] ?? null) == 1062) {
+            // MySQL 1062, SQLite/Postgres via SQLSTATE 23000/23505.
+            $code = $err instanceof QueryException ? ($err->errorInfo[1] ?? $err->errorInfo[0] ?? null) : null;
+            if ($code == 1062 || $code === '23000' || $code === '23505') {
                 $description = 'Du bist schon registriert.';
             } else {
                 report($err);
@@ -102,11 +105,12 @@ new class extends Component {
                 Lust auf Angebote? <br> Trage dich ein
             </h1>
 
-            <!-- Form -->
+            <!-- Form (x-data owns `loading` so both submit-handler and button see it) -->
             <form
                 class="mt-6 w-full flex flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-9 lg:flex-row lg:items-center lg:gap-x-4 lg:gap-y-0 xl:w-2/5 fade-up"
                 :class="{ 'show': show }"
                 style="transition-delay:.4s"
+                x-data="{ loading: false }"
                 x-on:submit.prevent="
                     loading = true;
                     $wire.save()
@@ -129,8 +133,8 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- Button -->
-                <div x-data="{ loading: false }" class="flex justify-end w-full lg:w-auto">
+                <!-- Button (shares the form's `loading` scope above) -->
+                <div class="flex justify-end w-full lg:w-auto">
                     <button
                         type="submit"
                         class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex fade-up"

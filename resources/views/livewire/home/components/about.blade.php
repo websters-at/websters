@@ -50,7 +50,7 @@ new class extends Component {
                 <div
                     class="mt-4 flex flex-wrap items-center justify-center gap-3 lg:mt-5"
                 >
-                    <a wire:navigate href="{{route('about')}}" class="btn btn-sm lg:btn-md btn-primary mt-4 btn-fancy text-white">Mehr zu Websters</a>
+                    <a href="#team" class="btn btn-sm lg:btn-md btn-primary mt-4 btn-fancy text-white">Mehr zu Websters</a>
                     <a href="#contact" class="jiggle-every-few-seconds btn btn-sm btn-neutral lg:btn-md mt-4 btn-fancy text-white">Schreibe uns</a>
                 </div>
 

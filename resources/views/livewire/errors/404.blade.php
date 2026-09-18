@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     {!! SEO::generate() !!}
+    {{-- 404 must never be indexed (crawl budget, soft-404 risk) --}}
+    <meta name="robots" content="noindex, follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch.png') }}">
@@ -14,6 +16,7 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
     <!-- GTM - defer to avoid blocking -->
+    <script>if (typeof CSSPropertyRule === 'undefined') { document.documentElement.classList.add('no-at-property'); }</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}

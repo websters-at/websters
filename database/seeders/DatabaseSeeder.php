@@ -17,10 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Admin password must come from the environment — never commit one.
+        // Usage: ADMIN_PASSWORD=... php artisan db:seed
+        abort_if(empty(env('ADMIN_PASSWORD')), 500, 'ADMIN_PASSWORD env is required to seed the admin user.');
+
         User::factory()->create([
             'name' => 'Websters Admin',
             'email' => 'office@websters.at',
-            'password' => bcrypt('Ujfv24ML8t.stY#'),
+            'password' => bcrypt(env('ADMIN_PASSWORD')),
         ]);
     }
 }

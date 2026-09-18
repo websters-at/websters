@@ -47,14 +47,7 @@ new class extends Component {
         $this->company = trim($this->company);
         $this->message = trim($this->message);
 
-        $this->validate([
-            'name' => 'required|string|min:2|max:100',
-            'email' => 'required|email:rfc|max:255',
-            'company' => 'nullable|string|max:150',
-            'message' => 'nullable|string|max:5000',
-            'package' => 'required|integer|in:1,2,3'
-        ]);
-
+        // Throttle BEFORE validation so invalid-payload floods also cost budget.
         $throttleKey = 'package:' . request()->ip();
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $this->toast(
@@ -71,9 +64,17 @@ new class extends Component {
         }
         RateLimiter::hit($throttleKey, 60);
 
+        $this->validate([
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|email:rfc|max:255',
+            'company' => 'nullable|string|max:150',
+            'message' => 'nullable|string|max:5000',
+            'package' => 'required|integer|in:1,2,3'
+        ]);
+
         try {
+            // 'in:1,2,3' above is the real guard; firstWhere cannot miss for valid ids.
             $package = collect($this->packages)->firstWhere('id', $this->package);
-            abort_if(! $package, 422, 'Ungültiges Paket.');
             WebsitePackage::create([
                 "name" => $this->name,
                 "email" => $this->email,

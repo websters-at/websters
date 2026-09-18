@@ -1,43 +1,57 @@
+# SAFE local-dev variant. Deliberately shares NOTHING with prod:
+# different container names, no published ports, no real secrets.
+# Copy to .env and fill in values; never commit real passwords.
 services:
-  websters:
-    container_name: websters
+  websters-dev:
     build:
       context: .
       target: production
-    restart: always
-    ports:
-      - "42069:80"
-      #- "443:443" # HTTPS
-      #- "443:443/udp" # HTTP/3
-    volumes:
-      - caddy_data:/data
-      - caddy_config:/config
+    restart: "no"
+    # No ports published on purpose: reach the app via `docker exec` + curl,
+    # or add a traefik router with a dev-only hostname.
+    volumes: []
     depends_on:
-      mysql:
+      mysql-dev:
+        condition: service_healthy
+      redis-dev:
         condition: service_healthy
     environment:
-      - DB_HOST=mysql
+      - DB_HOST=mysql-dev
+      - DB_DATABASE=${MYSQL_DATABASE:-webstersdb}
+      - DB_USERNAME=${MYSQL_USER:-websters}
+      - DB_PASSWORD=${MYSQL_PASSWORD:?set MYSQL_PASSWORD in your shell or .env}
+      - REDIS_HOST=redis-dev
+      - REDIS_PASSWORD=${REDIS_PASSWORD:?set REDIS_PASSWORD in your shell or .env}
+      - REDIS_PORT=6379
 
-  mysql:
-    container_name: mysql
-    image: mysql:latest
-    restart: unless-stopped
+  mysql-dev:
+    image: 'mysql:9'
+    restart: "no"
     environment:
-      MYSQL_DATABASE: webstersdb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-webstersdb}
+      MYSQL_USER: ${MYSQL_USER:-websters}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in your shell or .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in your shell or .env}
     volumes:
-      - mysql_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
+      - mysql_data_dev:/var/lib/mysql
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 5s
       timeout: 5s
       retries: 10
 
+  redis-dev:
+    image: 'redis:7-alpine'
+    restart: "no"
+    command: ['redis-server', '--appendonly', 'yes', '--requirepass', '${REDIS_PASSWORD:?set REDIS_PASSWORD}']
+    volumes:
+      - redis_data_dev:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD:?set REDIS_PASSWORD}", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
 volumes:
-  caddy_data:
-  caddy_config:
-  mysql_data:
+  mysql_data_dev:
+  redis_data_dev:

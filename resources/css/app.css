@@ -559,3 +559,53 @@ body.js-anim .fade-up.below-fold.show {
 .group {
     isolation: isolate;
 }
+
+/* Fallback for browsers without @property support (Firefox < 128, older ESR):
+   Tailwind v4 gradients and daisyUI theme components compute their colors
+   through registered custom properties; without @property support those
+   resolve to nothing and buttons, badges and gradient headlines render
+   transparent/invisible. These rules are scoped to .no-at-property, which is
+   only ever added by the tiny head script on affected browsers, so modern
+   browsers are completely unaffected. Colors mirror the @theme tokens above
+   (verified against Chromium computed values). */
+.no-at-property .btn-primary {
+    background-color: #FF7AC3;
+    border-color: #FF7AC3;
+    color: #fff;
+}
+.no-at-property .btn-primary:hover {
+    background-color: #f061ad;
+    border-color: #f061ad;
+}
+.no-at-property .btn-secondary {
+    background-color: #4dc8e8;
+    border-color: #4dc8e8;
+    color: #fff;
+}
+.no-at-property .btn-secondary:hover {
+    background-color: #35b9dd;
+    border-color: #35b9dd;
+}
+.no-at-property .btn-neutral {
+    background-color: #002a42;
+    border-color: #002a42;
+    color: #fff;
+}
+.no-at-property .btn-neutral:hover {
+    background-color: #0a3a5c;
+    border-color: #0a3a5c;
+}
+.no-at-property .btn-outline {
+    background-color: transparent;
+    border-color: #002a42;
+    color: #002a42;
+}
+.no-at-property .badge-secondary {
+    background-color: #4dc8e8;
+    border-color: #4dc8e8;
+    color: #fff;
+}
+.no-at-property .bg-clip-text.text-transparent {
+    color: #002a42;
+    background-image: none;
+}
