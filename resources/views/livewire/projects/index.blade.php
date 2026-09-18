@@ -171,19 +171,21 @@ new class extends Component {
         >
             <div class="rounded-2xl bg-gradient-to-br from-primary/70 via-neutral-200 to-secondary/70 p-px lg:rounded-[2rem] shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-all duration-300 group-hover:shadow-[0_24px_50px_-20px_rgba(0,42,66,0.35)]">
                 <div class="grid overflow-hidden rounded-[calc(1rem-1px)] bg-white lg:grid-cols-2 lg:rounded-[calc(2rem-1px)]">
-                    <div class="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[24rem]">
-                        <picture>
-                            <source media="(max-width: 639px)" srcset="{{ asset('/assets/projects/pricematters-mobile.webp') }}" type="image/webp">
-                            <img
-                                class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                                src="{{ asset('/assets/projects/pricematters.webp') }}"
-                                alt="PriceMatters – ehrlicher Preisvergleich mit Grundpreisen"
-                                loading="lazy"
-                                width="1440"
-                                height="900"
-                                decoding="async"
-                            />
-                        </picture>
+                    <div class="p-4 sm:p-6 lg:p-8">
+                        <div class="relative aspect-[16/10] overflow-hidden rounded-xl lg:aspect-auto lg:h-full lg:min-h-[22rem] lg:rounded-2xl">
+                            <picture>
+                                <source media="(max-width: 639px)" srcset="{{ asset('/assets/projects/pricematters-mobile.webp') }}" type="image/webp">
+                                <img
+                                    class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                                    src="{{ asset('/assets/projects/pricematters.webp') }}"
+                                    alt="PriceMatters – ehrlicher Preisvergleich mit Grundpreisen"
+                                    loading="lazy"
+                                    width="1440"
+                                    height="900"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
                     </div>
 
                     <div class="flex flex-col justify-center p-6 lg:p-10">
