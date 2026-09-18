@@ -72,7 +72,7 @@ new class extends Component {
         [
             'title' => 'BeBetter',
             'tagline' => 'Gewohnheiten, die bleiben',
-            'kind' => 'PWA',
+            'kind' => 'PWA | Android-App',
             'image' => asset('/assets/projects/bebetter.webp'),
             'image_mobile' => asset('/assets/projects/bebetter-mobile.webp'),
             'alt' => 'BeBetter – Habit-Tracking mit Year-Grid und Streak-Statistiken',
