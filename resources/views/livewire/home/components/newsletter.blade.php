@@ -105,11 +105,12 @@ new class extends Component {
                 Lust auf Angebote? <br> Trage dich ein
             </h1>
 
-            <!-- Form -->
+            <!-- Form (x-data owns `loading` so both submit-handler and button see it) -->
             <form
                 class="mt-6 w-full flex flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-9 lg:flex-row lg:items-center lg:gap-x-4 lg:gap-y-0 xl:w-2/5 fade-up"
                 :class="{ 'show': show }"
                 style="transition-delay:.4s"
+                x-data="{ loading: false }"
                 x-on:submit.prevent="
                     loading = true;
                     $wire.save()
@@ -132,8 +133,8 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- Button -->
-                <div x-data="{ loading: false }" class="flex justify-end w-full lg:w-auto">
+                <!-- Button (shares the form's `loading` scope above) -->
+                <div class="flex justify-end w-full lg:w-auto">
                     <button
                         type="submit"
                         class="btn-fancy btn items-center justify-center whitespace-nowrap text-sm font-medium font-poppins bg-primary text-white px-5 py-2 rounded-xl flex fade-up"
