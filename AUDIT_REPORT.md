@@ -244,20 +244,41 @@ volumes and `storage/logs/` is dockerignored → logs die on replace; no Sentry/
 
 ---
 
-## Phase 6 — E2E journeys (read-only: GETs driven, submits deliberately NOT executed — no staging, would write prod data)
+## Phase 6 — E2E journeys (driven on dev.websters.at against the scratch dev DB)
 
-1. **Discover → services → webdesign → package select:** `/`→`/leistungen`→`/leistungen/webdesign`
-   all 200; pricing `wire:click selectPackage(1|2|3)` present; event now coerced+validated
-   server-side (`in:1,2,3`). Submit step not executed (would create WebsitePackage row).
-2. **Contact a human:** `/kontakt` 200; Cal embed present with new fallback; contact-data map
-   present (iframe untitled — proposed fix); home contact form renders with required labels.
-   Submit not executed (would create Lead row).
-3. **Newsletter signup:** form renders on `/`; Enter-to-submit fixed; duplicate path now
-   rule-first + race-safe. Submit not executed (would create NewsletterEntry row).
+1. **Newsletter signup (PROVEN):** filled email + clicked real submit → `livewire/update 200` →
+   row in dev `newsletter_entries` (verified via mysql, then deleted). Invalid email keeps
+   input (validation UX). Fixed en route: my Enter-submit change had scoped `loading` to a
+   child `x-data` (submit silently dead) — moved `x-data` to the `<form>`, removed shadowing
+   child scope. Test rows cleaned up (dev tables back to 0/0).
+2. **Contact submit (PROVEN):** filled name/email via input events + clicked submit →
+   `livewire/update 200` → row in dev `leads` (verified, then deleted).
+3. **Discover → services → webdesign → package select:** `/`→`/leistungen`→`/leistungen/webdesign`
+   all 200; pricing `wire:click selectPackage(1|2|3)` present; event coerced+validated
+   server-side (`in:1,2,3`). Package submit not executed (same code path as proven contact).
 4. **Legal/admin:** `/impressum /datenschutz /agbs` 200; `/admin` 302 → `/admin/login` 200.
-5. **Dead ends found (not fixed, content calls):** blank `/leistungen/cloud`, `/leistungen/design`;
-   `quoteflow-cta` never included; `href="#"` in team/blog/cta; `cta→#contact` anchor has no
-   `id="contact"` target (home contact section does: `contact.blade.php:66`).
+5. **Dead ends (not fixed, content calls):** blank `/leistungen/cloud`, `/leistungen/design`;
+   `quoteflow-cta` never included; `href="#"` in team/blog/cta.
+
+### [CRITICAL] All Livewire forms were silently dead (double Alpine instance) — FIXED on dev
+**Where:** `resources/views/components/layouts/app.blade.php:46-60` (before fix),
+`resources/js/app.js:10-47` (before fix); endpoint `POST /livewire/update`
+**Evidence:** E2E on dev (before fix): `window.Livewire.all().length === 0` despite 12
+`[wire:id]` components in DOM; clicking submit produced zero `livewire/update` requests,
+zero toasts, zero DB rows, zero console errors. Root cause proven by downloading the
+served bundle (`curl .../livewire/livewire.min.js`, 150178 bytes): it contains
+`window.Alpine.__fromLivewire===void 0 && <warn "multiple instances">` then overwrites
+`window.Alpine` and starts its own instance — while app.js had already started a
+separate bundled Alpine at idle time. Second start skips initialized DOM → zero booted
+components. The bundle ignores `window.deferLoadingAlpine`. Prod shows the same signature:
+read-only `SELECT COUNT(*)` on prod DB → **0 leads, 1 newsletter, 1 package** — consistent
+with forms never completing a submit.
+**Impact:** Every contact/newsletter/package submit silently does nothing, for every user.
+**Fix:** DONE on dev — Livewire now loads as a normal deferred script (non-blocking, before
+the app module); app.js reuses `window.Alpine` for collapse/intersect plugins and never
+calls `Alpine.start()` (Livewire.start() owns the single instance). Re-tested: 12 booted
+components, no Alpine warning, `livewire/update 200`, DB rows created. Needs prod deploy
+to take effect there.
 
 ## Phase 7 — Tests
 - Suite NOT runnable here: `vendor/` absent locally (no composer binary), and `tests/` is
@@ -272,29 +293,48 @@ volumes and `storage/logs/` is dockerignored → logs die on replace; no Sentry/
 - Proposed: CI running `composer install + pint + phpunit + npm build + docker build` on every
   change, plus new tests for duplicate-newsletter, package OOB, and overlong-input cases.
 
-## Fix log (this audit — all re-verified, none deployed)
-1. Rate limits (5/min/IP) + bounds + normalization + keep-input-on-failure in all 3 forms.
-2. Newsletter: `unique` rule, race-safe duplicate message, typo fix, Enter-to-submit.
-3. Package: `?int=null`, `in:1,2,3`, safe lookup, guarded event handler.
-4. Sitemap generator + `sitemap.xml` synced to real routes; `robots.txt` gains `Sitemap:`.
-5. Cal.com noscript + timeout fallback.
-6. `env/.env.prod` aligned to redis + explicit mail default (template only).
-7. `start.sh` refuses to clobber existing `.env` without `--force`.
-8. Healthchecks + deploy gates → `/up`.
+## Fix log (round 2, on dev branch — re-verified live on dev.websters.at, NOT yet on prod)
+9. Single Alpine owned by Livewire (fixes silently-dead forms): Livewire via eager
+   `<script defer>`, app.js reuses `window.Alpine` + plugins, never starts it.
+10. Newsletter `loading` scope fix (form owns `x-data`, shadowing child removed).
+11. Throttle moved before validation in all 3 forms; newsletter catches `\Throwable`
+    with MySQL/SQLite/Postgres duplicate codes; dead `abort_if` removed.
+12. SEO: projects title single suffix (verified live), explicit ItemList JSON-LD block
+    (verified valid: LocalBusiness + ItemList), OG image host via `config('app.url')`,
+    `seotools.php` social image paths fixed (verified 200), 404 `noindex` meta,
+    `/ueber-uns` 301 → `/#team` + dropped from sitemap (verified live).
+13. `rel="noopener noreferrer"` on all 6 project links.
+14. TrustProxies wired correctly (App class), restricted to private ranges, no-op
+    `handle()` removed; `42069` bound to localhost.
+15. Seeder admin password from `ADMIN_PASSWORD` env (aborts if empty).
+16. Entrypoint waits on `${DB_HOST}` (fixes dev waiting on prod `mysql`).
+17. Pins: `frankenphp:1`, `mysql:9` (9.7 running — 8.4 would downgrade the datadir);
+    mem_limits on prod websters/mysql/redis; `compose.dev.yaml` rewritten collision-free.
+18. Dev-stack isolation: own Traefik middlewares + report-only CSP, dev DBs on internal
+    network, DB renamed to `webstersdb_dev`, non-admin user, deploy dirty-check guard,
+    `teardown-dev.sh` written.
+19. `scripts/mysql-backup.sh` (versioned dumps + header check + retention; cron line proposed).
+20. Prod `.env` chmod 600.
 
-## Scorecard
-- Phase 1 Frontend: mostly clean after fixes; open: blank cloud/design pages, burger keyboard, focus ring, dead links cleanup → **Conditional**
-- Phase 2 Backend/API: hardened (validation/rate-limit/error paths); open: admin policies/audit, structured logging → **Conditional**
-- Phase 3 Security: baseline ok (CSRF, no SQLi/uploads, npm clean, APP_DEBUG=false); open: secrets-in-git rotation, CSP, TrustProxies/42069, image pinning, GA pre-consent → **Conditional**
-- Phase 4 Data/DB: schema understood, migrations reversible, no N+1; open: **no backups**, constraints/indexes → **No-Go item present**
-- Phase 5 Infra/Deploy: blue-green + gates improved; open: **no CI**, rollback manual, queue worker missing, logs ephemeral → **No-Go item present**
-- Phase 6 E2E: GET journeys clean; submits unverified without staging.
-- Phase 7 Testing: skeleton only, not runnable here.
+## Scorecard (round 2)
+- Phase 1 Frontend: clean after fixes; open L/M: blank cloud/design pages, burger keyboard,
+  focus ring, dead-link cleanup → **Conditional**
+- Phase 2 Backend/API: E2E-proven on dev (submits persist); open: admin policies/audit,
+  structured logging → **Conditional**
+- Phase 3 Security: baseline ok + TrustProxies/seeder/42069 fixed; open: **secrets rotation**,
+  CSP enforcing, image digests, GA pre-consent → **Conditional**
+- Phase 4 Data/DB: backup *script* exists, cron + restore-test still open; constraints/indexes
+  open → **No-Go item present**
+- Phase 5 Infra/Deploy: blue-green + `/up` gates + mem limits + teardown plan; open: **no CI**,
+  manual rollback, queue worker, ephemeral logs → **No-Go item present**
+- Phase 6 E2E: newsletter + contact proven end-to-end on dev (rows created + cleaned).
+- Phase 7 Testing: suite still not runnable (no vendor locally, tests/ excluded from image).
 
 ## Verdict: **Conditional Go**
-Ship the fixed code (it strictly reduces risk), but genuine production readiness is blocked by:
-1. **Rotate + purge committed secrets** (`env/.env.prod`, APP_KEY reuse, dev creds, seeder password)
-2. **Backups that have been restore-tested** (mysqldump cron + off-host + runbook)
-3. **Migration + rollback policy** (migrate-once outside twins, downgrade runbook)
-4. **Placeholder pages decision** (fill / noindex / unroute cloud + design + consulting + software)
-Deploying the audit fixes themselves to prod is a human call — not done here.
+Merge + deploy fixes the silently-dead forms (the highest-value item: prod currently
+collects nothing) plus everything in Fix log rounds 1–2. Genuine readiness still blocked by:
+1. **Rotate + purge committed secrets** (unchanged — needs human)
+2. **Backups scheduled + restore-tested** (script ready, cron + test open)
+3. **Migration + rollback policy** (unchanged — needs human)
+4. **Placeholder pages decision** (unchanged — needs human)
+5. **No CI** (unchanged — needs human)
