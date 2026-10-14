@@ -18,9 +18,9 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('IT-Consulting aus Engerwitzdorf – Prozessoptimierung & Digitalisierung');
+        SEOMeta::setTitle('IT-Consulting Oberösterreich – Prozesse & Digitalisierung');
         SEOMeta::setDescription(
-            'IT-Consulting aus Engerwitzdorf: Prozessoptimierung, digitale Transformation, Automatisierung & IT-Strategie. Optimieren Sie Ihre Geschäftsprozesse nachhaltig.'
+            'IT-Consulting für KMU: Prozessoptimierung, Digitalisierung & Automatisierung aus Oberösterreich – für Unternehmen in Österreich & Deutschland.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -224,30 +224,94 @@ new class extends Component {
 };
 ?>
 
-<div class="min-h-screen flex items-center justify-center bg-slate-50">
-    <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
-        <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center">
-            <div
-                class="mx-auto mt-6 bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-center text-4xl font-semibold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-1/2"
-            >
-
+<div class="font-poppins" x-data="{ show: false }" x-intersect="show = true">
+    <!-- HERO -->
+    <section class="relative pt-24 pb-16 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.2] z-[-1]" style="background-image:linear-gradient(#4bc8e7 1px, transparent 1px),linear-gradient(90deg, #4bc8e7 1px, transparent 1px);background-size:50px 50px;"></div>
+        <div class="max-w-7xl mx-auto px-4 xl:px-4 flex flex-col items-start">
+            <div class="inline-flex items-center rounded-full badge badge-secondary badge-lg px-3 py-1.5 text-xs sm:text-sm text-white fade-up" :class="{ 'show': show }">IT-Consulting</div>
+            <h1 class="bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-3xl font-bold text-transparent lg:text-5xl mt-8 sm:w-2/3 md:w-3/4 lg:mt-9 lg:leading-tight xl:w-3/5 fade-up" :class="{ 'show': show }" style="transition-delay:.1s">
+                IT-Consulting aus Engerwitzdorf: Prozesse optimieren, digitalisieren, automatisieren
+            </h1>
+            <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5 fade-up" :class="{ 'show': show }" style="transition-delay:.2s">
+                Wir analysieren deine Geschäftsprozesse und machen sie schneller, günstiger und fehlerfrei: Prozessoptimierung, digitale Transformation, Automatisierung und IT-Strategie für KMU und Startups in Österreich und Deutschland.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3 lg:mt-5 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
+                <a href="/kontakt" class="btn btn-sm lg:btn-md btn-primary mt-4 btn-fancy text-white">Beratung anfragen</a>
+                <a href="#consulting-leistungen" class="btn btn-sm btn-neutral lg:btn-md mt-4 btn-fancy text-white">Leistungen</a>
             </div>
-            <div
-                class="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-full bg-slate-200 px-8 py-2"
-            >
-      <span
-          class="bg-gradient-to-b bg-primary from-slate-800 to-slate-600 bg-clip-text text-3xl font-semibold text-transparent lg:py-1.5 lg:text-5xl"
-      >
-in arbeit
-</span>
-            </div>
+        </div>
+    </section>
 
-            <x-button
-                link="/"
-                label="zurück zur startseite"
-                class="btn-primary mt-10"
-            >
-            </x-button>
+    <!-- LEISTUNGEN -->
+    <section class="py-12 lg:py-16" id="consulting-leistungen">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0">
+            <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark fade-up" :class="{ 'show': show }">Unsere Consulting-Leistungen</h2>
+            <p class="mt-4 text-sm lg:text-base text-slate-600 max-w-2xl fade-up" :class="{ 'show': show }">Technik verstehen wir – aber wir sprechen Business. Jede Empfehlung ist umsetzbar kalkuliert, kein Berater-Blabla.</p>
+            <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                @foreach([
+                    ['Prozessoptimierung', 'Wir finden manuelle Engpässe und Medienbrüche in deinen Abläufen und designen schlanke, digitale Prozesse – messbar schneller und günstiger.'],
+                    ['Digitalisierung & Transformation', 'Strategische Roadmap statt Aktionismus: Was digitalisieren, in welcher Reihenfolge, mit welchem ROI. Inklusive Change-Begleitung fürs Team.'],
+                    ['Automatisierung', 'Python-Skripte, Workflow-Automatisierung und Systemintegration, die Routinearbeit eliminieren – oft mit Amortisation in wenigen Monaten.'],
+                    ['Software-Auswahl & Implementierung', 'Neutrale Beratung bei Tool- und Software-Entscheidungen plus Begleitung bei Einführung, Migration und Schulung.'],
+                ] as [$t, $d])
+                    <div class="rounded-2xl border border-slate-200 bg-white/60 p-5 fade-up" :class="{ 'show': show }">
+                        <div class="font-semibold text-brand-dark md:text-lg">{{ $t }}</div>
+                        <p class="mt-2 text-sm text-neutral-600">{{ $d }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- ABLAUF -->
+    <section class="py-12 lg:py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0">
+            <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark fade-up" :class="{ 'show': show }">So läuft die Beratung ab</h2>
+            <div class="mt-8 grid gap-4 md:grid-cols-4">
+                @foreach([
+                    ['1. Kennenlernen', 'Kostenloses Erstgespräch: Wo drückt der Schuh, was soll besser werden, was darf es bringen?'],
+                    ['2. Analyse', 'Wir schauen uns Prozesse, Systeme und Zahlen an – vor Ort oder remote – und finden die größten Hebel.'],
+                    ['3. Konzept & Roadmap', 'Priorisierte Maßnahmen mit Aufwand, Nutzen und Zeitplan. Du entscheidest, was umgesetzt wird.'],
+                    ['4. Umsetzung & Begleitung', 'Auf Wunsch setzen wir alles selbst um – oder begleiten dein Team. Inklusive Erfolgsmessung.'],
+                ] as [$t, $d])
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5 fade-up" :class="{ 'show': show }">
+                        <div class="font-semibold text-brand-dark">{{ $t }}</div>
+                        <p class="mt-2 text-sm text-neutral-600">{{ $d }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pb-12 lg:pb-16" id="faq">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0">
+            <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark fade-up" :class="{ 'show': show }">Häufige Fragen zum IT-Consulting</h2>
+            @php
+                $faqs = [
+                    ['q' => 'Was kostet IT-Consulting bei Websters?', 'a' => 'Das Erstgespräch ist kostenlos. Analysen und Konzepte kalkulieren wir als Festpreis nach einem kurzen Scoping – typische Einstiegsprojekte für KMU liegen im niedrigen vierstelligen Bereich. Du weißt vorher exakt, was du bekommst.'],
+                    ['q' => 'Für wen lohnt sich Prozessoptimierung?', 'a' => 'Für jedes Unternehmen mit wiederkehrenden manuellen Abläufen: Angebotserstellung, Rechnungsverarbeitung, Datenpflege, Reportings. Schon wenige automatisierte Stunden pro Woche amortisieren die Beratung meist in Monaten.'],
+                    ['q' => 'Setzt ihr die Empfehlungen auch um?', 'a' => 'Ja – das unterscheidet uns von reinen Beratern. Als Software-Agentur implementieren wir Automatisierungen, Integrationen und Tools direkt selbst. Oder wir begleiten dein internes Team bei der Umsetzung.'],
+                    ['q' => 'Arbeitet ihr auch remote?', 'a' => 'Ja. Analyse-Workshops laufen vor Ort in Engerwitzdorf/Linz oder remote per Video. Umsetzung und Betreuung funktionieren vollständig remote – für Kunden in ganz Österreich und Deutschland.'],
+                    ['q' => 'Was ist der Unterschied zu einer großen Beratungsfirma?', 'a' => 'Direkter Draht zu den Leuten, die umsetzen – keine Junioren-Armee, keine 100-Seiten-Folien ohne Wirkung. Wir sind Techniker mit Business-Verständnis und haften für Ergebnisse statt nur Empfehlungen zu liefern.'],
+                    ['q' => 'Helft ihr auch bei Software-Auswahl (ERP, CRM)?', 'a' => 'Ja. Wir beraten neutral bei der Auswahl von ERP-, CRM- und Branchensoftware, bewerten Angebote technisch und begleiten Einführung, Datenmigration und Schulung.'],
+                ];
+                $faqSchema = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn($f) => ['@type' => 'Question', 'name' => $f['q'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']]], $faqs)];
+            @endphp
+            <div class="mt-6 space-y-3">
+                @foreach($faqs as $faq)
+                    <div class="rounded-2xl border border-slate-200 bg-white/60 p-4 fade-up" :class="{ 'show': show }">
+                        <div class="font-semibold text-brand-dark">{{ $faq['q'] }}</div>
+                        <p class="mt-2 text-sm text-neutral-600 lg:text-base">{{ $faq['a'] }}</p>
+                    </div>
+                @endforeach
+            </div>
+            <script type="application/ld+json">@json($faqSchema)</script>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href="/kontakt" class="btn btn-primary text-white">Kostenloses Erstgespräch</a>
+                <a href="/leistungen/software" class="btn btn-neutral text-white">Software-Entwicklung</a>
+            </div>
         </div>
     </section>
 </div>

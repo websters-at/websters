@@ -21,7 +21,7 @@ new class extends Component {
 
         SEOMeta::setTitle('Impressum');
         SEOMeta::setDescription(
-            'Impressum von Websters e.U.: Libellenweg 13, 4209 Engerwitzdorf. IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und österreichischem Unternehmensgesetz.'
+            'Impressum von Websters e.U.: Libellenweg 13, 4209 Engerwitzdorf. Rechtliche Informationen gemäß §5 ECG, §25 MedienG und UGB.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -167,13 +167,13 @@ new class extends Component {
                     Impressum
                 </div>
 
-                    <div
+                    <h1
                         class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
                         :class="{ 'show': show }"
                         style="transition-delay:.3s"
                     >
                         Rechtliche Informationen & Offenlegung
-                    </div>
+                    </h1>
 
                     <p
                         class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"

@@ -73,6 +73,19 @@ new class extends Component {};
                         'a' => 'Natürlich. Wir zeigen dir passende Beispiele aus deiner Branche. Viele Kunden sind auch bereit, über ihre Erfahrungen mit uns zu berichten.'
                     ],
                 ];
+
+                $faqSchema = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'FAQPage',
+                    'mainEntity' => array_map(
+                        fn($f) => [
+                            '@type' => 'Question',
+                            'name' => $f['q'],
+                            'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']],
+                        ],
+                        $faqs
+                    ),
+                ];
             @endphp
 
             @foreach ($faqs as $index => $faq)
@@ -120,4 +133,5 @@ new class extends Component {};
         </div>
 
     </div>
+    <script type="application/ld+json">@json($faqSchema)</script>
 </section>

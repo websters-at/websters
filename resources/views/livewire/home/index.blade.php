@@ -13,7 +13,7 @@ new class extends Component {
         $siteUrl = 'https://websters.at';
         SEOMeta::setTitle('Webdesign & Softwareentwicklung aus Engerwitzdorf');
         SEOMeta::setDescription(
-            'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Engerwitzdorf für Unternehmen und Startups in Österreich.'
+            'Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ & IT-Consulting aus Engerwitzdorf für Unternehmen und Startups in Österreich und Deutschland.'
         );
         SEOMeta::setCanonical($siteUrl);
         SEOMeta::addKeyword([
@@ -45,7 +45,7 @@ new class extends Component {
 
 // --- Twitter Card ---
         TwitterCard::setTitle('Webdesign & Softwareentwicklung aus Engerwitzdorf | Websters');
-        TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Engerwitzdorf.');
+        TwitterCard::setDescription('Webdesign ab 990€, IT-Consulting & individuelle Softwareentwicklung aus Oberösterreich für Österreich & Deutschland.');
         TwitterCard::setUrl($siteUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
@@ -53,7 +53,7 @@ new class extends Component {
 // --- JSON-LD ---
         JsonLd::setType('ProfessionalService');
         JsonLd::setTitle('Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf');
-        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Engerwitzdorf.');
+        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Oberösterreich für Österreich und Deutschland.');
         JsonLd::setUrl($siteUrl);
 
         JsonLd::addValues([

@@ -17,7 +17,7 @@ new class extends Component {
 
         SEOMeta::setTitle('Projekte – Web-Apps, Websites, Games & Software');
         SEOMeta::setDescription(
-            'Unsere Projekte: PriceMatters Preisvergleich, BeBetter Habit-Tracking, lebe-gesund.at, MIRACLE Band-Website, SpaceRunner Browser-Game u.v.m. – designed & entwickelt von Websters.'
+            'Referenzen von Websters: Preisvergleich, Habit-Tracker, Websites, Games & Web-Apps – echte Projekte aus Engerwitzdorf zum Anklicken.'
         );
         SEOMeta::setCanonical($pageUrl);
 
@@ -176,7 +176,7 @@ new class extends Component {
                             <picture>
                                 <source media="(max-width: 639px)" srcset="{{ asset('/assets/projects/pricematters-mobile.webp') }}" type="image/webp">
                                 <img
-                                    class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                                    class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                                     src="{{ asset('/assets/projects/pricematters.webp') }}"
                                     alt="PriceMatters – ehrlicher Preisvergleich mit Grundpreisen"
                                     loading="lazy"
@@ -234,7 +234,7 @@ new class extends Component {
                             <picture>
                                 <source media="(max-width: 639px)" srcset="{{ $card['image_mobile'] }}" type="image/webp">
                                 <img
-                                    class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                    class="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                                     src="{{ $card['image'] }}"
                                     alt="{{ $card['alt'] }}"
                                     loading="lazy"

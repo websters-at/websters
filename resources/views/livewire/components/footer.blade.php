@@ -28,6 +28,38 @@ new class extends Component {
             <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
                 <a
                     class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-600 before:bg-slate-300"
+                    href="{{ route('webdesign.linz') }}"
+                    wire:navigate
+                    title="Webdesign Linz"
+                >Linz</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.wels') }}"
+                    wire:navigate
+                    title="Webdesign Wels"
+                >Wels</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.steyr') }}"
+                    wire:navigate
+                    title="Webdesign Steyr"
+                >Steyr</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('tools.domain') }}"
+                    wire:navigate
+                    title="Domain prüfen – gratis Domain-Check"
+                >Domain-Check</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-600 before:bg-slate-300"
                     href="{{ route('imprint') }}"
                     wire:navigate
                     title="Impressum"

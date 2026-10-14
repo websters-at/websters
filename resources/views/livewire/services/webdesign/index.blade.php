@@ -47,7 +47,7 @@ new class extends Component {
         */
 
         OpenGraph::setTitle('Webdesign Linz – Websites ab 990€ | Websters');
-        OpenGraph::setDescription('Starter 990€, Komplett 1.990€, Premium ab 2.990€. Webdesign aus Engerwitzdorf mit SEO & Responsive Design.');
+        OpenGraph::setDescription('Starter 990€, Komplett 1.990€, Premium ab 2.990€. Webdesign aus Engerwitzdorf mit SEO & Responsive Design für Unternehmen in Österreich.');
         OpenGraph::setUrl($pageUrl);
         OpenGraph::setSiteName('Websters');
         OpenGraph::setType('website');
@@ -64,7 +64,7 @@ new class extends Component {
         */
 
         TwitterCard::setTitle('Webdesign Linz ab 990€ | Websters');
-        TwitterCard::setDescription('Starter: 990€, Komplett: 1.990€, Premium ab 2.990€. Professionelles Webdesign aus Engerwitzdorf.');
+        TwitterCard::setDescription('Starter: 990€, Komplett: 1.990€, Premium ab 2.990€. Professionelles Webdesign aus Oberösterreich für Österreich & Deutschland.');
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
         TwitterCard::setSite('@WebstersAgency');
 
