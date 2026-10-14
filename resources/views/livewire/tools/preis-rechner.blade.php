@@ -3,13 +3,13 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use App\Models\Lead;
 use Illuminate\Support\Facades\RateLimiter;
 use Mary\Traits\Toast;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     use Toast;
 
     public string $name = '';
@@ -43,13 +43,15 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('WebApplication');
-        JsonLd::setTitle('Website Kosten Rechner von Websters');
-        JsonLd::setDescription('Interaktiver Rechner für Website-, Software- und Beratungskosten mit sofortiger Schätzung.');
-        JsonLd::setUrl($pageUrl);
-        JsonLd::addValue('applicationCategory', 'UtilitiesApplication');
-        JsonLd::addValue('operatingSystem', 'Webbrowser');
-        JsonLd::addValue('offers', ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR']);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'WebApplication';
+$schema['name'] = 'Website Kosten Rechner von Websters';
+$schema['description'] = 'Interaktiver Rechner für Website-, Software- und Beratungskosten mit sofortiger Schätzung.';
+$schema['url'] = $pageUrl;
+$schema['applicationCategory'] = 'UtilitiesApplication';
+$schema['operatingSystem'] = 'Webbrowser';
+$schema['offers'] = ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR'];
+$this->pageSchema = $schema;
     }
 
     public function requestOffer(): void
@@ -297,3 +299,6 @@ function preisRechner() {
     };
 }
 </script>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

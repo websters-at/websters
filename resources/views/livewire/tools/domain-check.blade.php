@@ -3,12 +3,12 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use App\Services\DomainAvailability;
 use Illuminate\Support\Facades\RateLimiter;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public string $query = '';
     public ?array $results = null;
     public ?string $error = null;
@@ -41,13 +41,15 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('WebApplication');
-        JsonLd::setTitle('Domain-Check von Websters');
-        JsonLd::setDescription('Kostenlos prüfen, ob eine Domain (.at, .com, .de, .eu, .org, .net) verfügbar ist – mit Alternativ-Vorschlägen.');
-        JsonLd::setUrl($pageUrl);
-        JsonLd::addValue('applicationCategory', 'UtilitiesApplication');
-        JsonLd::addValue('operatingSystem', 'Webbrowser');
-        JsonLd::addValue('offers', ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR']);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'WebApplication';
+$schema['name'] = 'Domain-Check von Websters';
+$schema['description'] = 'Kostenlos prüfen, ob eine Domain (.at, .com, .de, .eu, .org, .net) verfügbar ist – mit Alternativ-Vorschlägen.';
+$schema['url'] = $pageUrl;
+$schema['applicationCategory'] = 'UtilitiesApplication';
+$schema['operatingSystem'] = 'Webbrowser';
+$schema['offers'] = ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR'];
+$this->pageSchema = $schema;
     }
 
     public function search(): void
@@ -223,3 +225,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

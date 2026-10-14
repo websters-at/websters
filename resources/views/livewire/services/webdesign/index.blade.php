@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
 
     public function mount(): void
     {
@@ -74,13 +74,14 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::setType('Service');
-        JsonLd::setTitle('Webdesign Dienstleistungen in Engerwitzdorf');
-        JsonLd::setDescription('Professionelles Webdesign mit transparenten Preisen: Starter, Komplett und Premium.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Service';
+$schema['name'] = 'Webdesign Dienstleistungen in Engerwitzdorf';
+$schema['description'] = 'Professionelles Webdesign mit transparenten Preisen: Starter, Komplett und Premium.';
+$schema['url'] = $pageUrl;
 
         // Provider (deine Firma)
-        JsonLd::addValue('provider', [
+$schema['provider'] = [
             '@type' => 'ProfessionalService',
             'name' => 'Websters',
             'description' => 'Webdesign Agentur aus Engerwitzdorf, Österreich',
@@ -102,7 +103,7 @@ new class extends Component {
                 'email' => 'office@websters.at'
             ],
             'areaServed' => ['AT', 'DE']
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -110,7 +111,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('offers', [
+$schema['offers'] = [
             [
                 '@type' => 'Offer',
                 'name' => 'Website Starter Paket',
@@ -168,7 +169,7 @@ new class extends Component {
                 ],
                 'availability' => 'https://schema.org/InStock'
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -176,7 +177,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('availableChannel', [
+$schema['availableChannel'] = [
             '@type' => 'ServiceChannel',
             'serviceLocation' => [
                 '@type' => 'Place',
@@ -188,7 +189,8 @@ new class extends Component {
                     'addressCountry' => 'AT'
                 ]
             ]
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -207,3 +209,6 @@ new class extends Component {
 
 
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

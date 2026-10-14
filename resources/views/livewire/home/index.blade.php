@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
 
     public function mount(): void
     {
@@ -51,12 +51,14 @@ new class extends Component {
         TwitterCard::setSite('@WebstersAgency');
 
 // --- JSON-LD ---
-        JsonLd::setType('ProfessionalService');
-        JsonLd::setTitle('Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf');
-        JsonLd::setDescription('Webdesign, Softwareentwicklung & IT-Consulting aus Oberösterreich für Österreich und Deutschland.');
-        JsonLd::setUrl($siteUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'ProfessionalService';
+$schema['name'] = 'Websters – Webdesign & Softwareentwicklung aus Engerwitzdorf';
+$schema['description'] = 'Webdesign, Softwareentwicklung & IT-Consulting aus Oberösterreich für Österreich und Deutschland.';
+$schema['url'] = $siteUrl;
+$this->pageSchema = $schema;
 
-        JsonLd::addValues([
+$schema = array_merge($schema, [
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Libellenweg 13',
@@ -134,3 +136,6 @@ new class extends Component {
 
 
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

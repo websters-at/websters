@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -73,13 +73,14 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::setType('Service');
-        JsonLd::setTitle('IT-Consulting & Prozessoptimierung');
-        JsonLd::setDescription('IT-Beratung für digitale Transformation, Effizienzsteigerung & Prozessoptimierung.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Service';
+$schema['name'] = 'IT-Consulting & Prozessoptimierung';
+$schema['description'] = 'IT-Beratung für digitale Transformation, Effizienzsteigerung & Prozessoptimierung.';
+$schema['url'] = $pageUrl;
 
-        JsonLd::addValue('serviceType', 'IT Consulting');
-        JsonLd::addValue('category', 'BusinessConsulting');
+$schema['serviceType'] = 'IT Consulting';
+$schema['category'] = 'BusinessConsulting';
 
         /*
         |--------------------------------------------------------------------------
@@ -87,7 +88,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('provider', [
+$schema['provider'] = [
             '@type' => 'ProfessionalService',
             'name' => 'Websters',
             'description' => 'IT-Consulting & Prozessoptimierung für Unternehmen in Österreich',
@@ -128,7 +129,7 @@ new class extends Component {
                     'knowsAbout' => ['Software Implementation', 'Process Automation', 'System Integration']
                 ]
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -136,7 +137,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('offers', [
+$schema['offers'] = [
             [
                 '@type' => 'Offer',
                 'name' => 'IT-Consulting Initialanalyse',
@@ -162,7 +163,7 @@ new class extends Component {
                 'priceCurrency' => 'EUR',
                 'price' => 0
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -170,11 +171,11 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('areaServed', [
+$schema['areaServed'] = [
             ['@type' => 'State', 'name' => 'Oberösterreich'],
             ['@type' => 'Country', 'name' => 'Österreich'],
             ['@type' => 'Country', 'name' => 'Deutschland']
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -182,7 +183,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('hasOfferCatalog', [
+$schema['hasOfferCatalog'] = [
             '@type' => 'OfferCatalog',
             'name' => 'IT-Consulting Katalog',
             'itemListElement' => [
@@ -219,7 +220,8 @@ new class extends Component {
                     ]
                 ],
             ]
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -315,3 +317,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

@@ -2,10 +2,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void {
 
         $siteUrl = 'https://websters.at';
@@ -71,13 +71,14 @@ new class extends Component {
         */
 
         // Grundstruktur
-        JsonLd::setType('WebPage');
-        JsonLd::setTitle('Allgemeine Geschäftsbedingungen der Websters');
-        JsonLd::setDescription('Rechtliche Bestimmungen, Vertragsbedingungen & AGB.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'WebPage';
+$schema['name'] = 'Allgemeine Geschäftsbedingungen der Websters';
+$schema['description'] = 'Rechtliche Bestimmungen, Vertragsbedingungen & AGB.';
+$schema['url'] = $pageUrl;
 
         // Rechtsinformationen
-        JsonLd::addValues([
+$schema = array_merge($schema, [
             'datePublished' => '2025-11-30',
             'dateModified'  => '2025-11-30',
             'jurisdiction'  => 'AT',
@@ -94,7 +95,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('mainEntity', [
+$schema['mainEntity'] = [
             '@type' => 'Organization',
             'name' => 'Websters e.U.',
             'legalName' => 'Websters e.U.',
@@ -132,7 +133,7 @@ new class extends Component {
             ],
 
             'priceRange' => '€€-€€€'
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -140,7 +141,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('hasPart', [
+$schema['hasPart'] = [
             [
                 '@type' => 'WebPageElement',
                 'name' => 'Honorarvereinbarung',
@@ -166,7 +167,7 @@ new class extends Component {
                 'name' => 'Vertragslaufzeit & Kündigung',
                 'description' => 'Regelungen zur Dauer von Projekten & Beendigungsmodalitäten'
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -174,10 +175,11 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('areaServed', [
+$schema['areaServed'] = [
             ['@type' => 'Country', 'name' => 'Österreich'],
             ['@type' => 'Country', 'name' => 'Deutschland']
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -635,3 +637,6 @@ new class extends Component {
         </div>
     </div>
 </section>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

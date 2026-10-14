@@ -2,10 +2,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void {
         $siteUrl = 'https://websters.at';
         $pageUrl = route('services');
@@ -66,12 +66,13 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::setType('ItemList');
-        JsonLd::setTitle('Dienstleistungen der Websters');
-        JsonLd::setDescription('Alle Services im Überblick: Webdesign, Softwareentwicklung, IT-Consulting, DevOps, UI/UX und moderne Webentwicklung.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'ItemList';
+$schema['name'] = 'Dienstleistungen der Websters';
+$schema['description'] = 'Alle Services im Überblick: Webdesign, Softwareentwicklung, IT-Consulting, DevOps, UI/UX und moderne Webentwicklung.';
+$schema['url'] = $pageUrl;
 
-        JsonLd::addValue('itemListElement', [
+$schema['itemListElement'] = [
             [
                 '@type' => 'ListItem',
                 'position' => 1,
@@ -122,7 +123,7 @@ new class extends Component {
                     'url' => route('design')
                 ],
             ],
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -130,7 +131,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('mainEntity', [
+$schema['mainEntity'] = [
             '@type' => 'Organization',
             'name' => 'Websters',
             'description' => 'Full-Service Webagentur aus Linz für Webdesign, Softwareentwicklung und IT-Consulting.',
@@ -151,7 +152,8 @@ new class extends Component {
                 'email' => 'office@websters.at'
             ],
             'priceRange' => '€€-€€€'
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -284,9 +286,13 @@ new class extends Component {
                 @endforeach
             </div>
             <script type="application/ld+json">@json($faqSchema)</script>
+            <p class="mt-6 text-sm text-slate-500">Ratgeber: <a href="/ratgeber/website-kosten-oesterreich" class="underline font-semibold">Was kostet eine Website?</a> · <a href="/ratgeber/webdesign-angebot-vergleich" class="underline font-semibold">Angebote vergleichen</a></p>
         </div>
     </section>
 
     <livewire:services.components.cta />
     <livewire:home.components.newsletter />
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -75,12 +75,14 @@ new class extends Component {
         | Google zeigt Impressumsdaten besser mit Organization/LocalBusiness an.
         */
 
-        JsonLd::setType('Organization');
-        JsonLd::setTitle('Impressum – Websters');
-        JsonLd::setDescription('Rechtliche Informationen gemäß ECG, MedienG und österreichischem Unternehmensrecht.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Organization';
+$schema['name'] = 'Impressum – Websters';
+$schema['description'] = 'Rechtliche Informationen gemäß ECG, MedienG und österreichischem Unternehmensrecht.';
+$schema['url'] = $pageUrl;
+$this->pageSchema = $schema;
 
-        JsonLd::addValues([
+$schema = array_merge($schema, [
             'name' => 'Websters',
             'legalName' => 'Websters e.U.',
             'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung, Medienproduktion.',
@@ -399,3 +401,6 @@ new class extends Component {
         </div>
     </div>
 </section>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

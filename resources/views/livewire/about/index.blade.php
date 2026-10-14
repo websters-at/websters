@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
 
     public function mount(): void
     {
@@ -84,13 +84,14 @@ new class extends Component {
         |
         */
 
-        JsonLd::setType('AboutPage');
-        JsonLd::setTitle('Unser Team – Websters');
-        JsonLd::setDescription('Vorstellung des Websters-Teams: Experten für Webdesign, DevOps und Softwareentwicklung.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'AboutPage';
+$schema['name'] = 'Unser Team – Websters';
+$schema['description'] = 'Vorstellung des Websters-Teams: Experten für Webdesign, DevOps und Softwareentwicklung.';
+$schema['url'] = $pageUrl;
 
         // Team-Mitglieder (alte Struktur beibehalten, aber semantisch verbessert)
-        JsonLd::addValue('about', [
+$schema['about'] = [
             [
                 '@type' => 'Person',
                 'name' => 'Michael Rüp',
@@ -140,10 +141,10 @@ new class extends Component {
                     'CI/CD Pipelines'
                 ]
             ]
-        ]);
+        ];
 
         // Unternehmensdaten (leicht optimiert, aber originalgetreu)
-        JsonLd::addValue('mainEntity', [
+$schema['mainEntity'] = [
             '@type' => 'Organization',
             'name' => 'Websters',
             'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung und Medienproduktion aus Engerwitzdorf.',
@@ -195,7 +196,8 @@ new class extends Component {
                     'priceCurrency' => 'EUR'
                 ]
             ]
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -227,3 +229,6 @@ in arbeit
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

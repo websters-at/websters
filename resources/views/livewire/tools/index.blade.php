@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -31,10 +31,12 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('CollectionPage');
-        JsonLd::setTitle('Gratis Tools von Websters');
-        JsonLd::setDescription('Übersicht aller kostenlosen Websters-Tools.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'CollectionPage';
+$schema['name'] = 'Gratis Tools von Websters';
+$schema['description'] = 'Übersicht aller kostenlosen Websters-Tools.';
+$schema['url'] = $pageUrl;
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -81,3 +83,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

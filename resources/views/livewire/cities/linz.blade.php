@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -34,16 +34,18 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('Service');
-        JsonLd::setTitle('Webdesign Linz');
-        JsonLd::setDescription('Professionelles Webdesign für Unternehmen in Linz und Umgebung.');
-        JsonLd::setUrl($pageUrl);
-        JsonLd::addValue('provider', ['@type' => 'Organization', '@id' => 'https://websters.at/#organization']);
-        JsonLd::addValue('areaServed', ['@type' => 'City', 'name' => 'Linz']);
-        JsonLd::addValue('offers', [
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Service';
+$schema['name'] = 'Webdesign Linz';
+$schema['description'] = 'Professionelles Webdesign für Unternehmen in Linz und Umgebung.';
+$schema['url'] = $pageUrl;
+$schema['provider'] = ['@type' => 'Organization', '@id' => 'https://websters.at/#organization'];
+$schema['areaServed'] = ['@type' => 'City', 'name' => 'Linz'];
+$schema['offers'] = [
             '@type' => 'Offer', 'name' => 'Website Starter Linz', 'priceCurrency' => 'EUR', 'price' => 990,
             'itemOffered' => ['@type' => 'Service', 'name' => 'Webdesign Linz'],
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -133,3 +135,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

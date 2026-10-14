@@ -89,87 +89,10 @@ return [
 
     'json-ld' => [
         'defaults' => [
-            '@context'    => 'https://schema.org',
-
-            // LocalBusiness ist für eine Webagentur mit physischer Adresse optimal
-            '@type'       => 'LocalBusiness',
-            '@id'         => 'https://websters.at/#websters',
-
-            'name'        => 'Websters',
-            'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung & Medienproduktion mit Sitz in Engerwitzdorf, Österreich.',
-            'url'         => 'https://websters.at',
-            'telephone'   => '+43 677 63177763',
-            'email'       => 'office@websters.at',
-
-            'address' => [
-                '@type'           => 'PostalAddress',
-                'streetAddress'   => 'Libellenweg 13',
-                'addressLocality' => 'Engerwitzdorf',
-                'postalCode'      => '4209',
-                'addressRegion'   => 'Oberösterreich',
-                'addressCountry'  => 'AT',
-            ],
-
-            'geo' => [
-                '@type'     => 'GeoCoordinates',
-                'latitude'  => 48.338742140853945,
-                'longitude' => 14.343424971406712,
-            ],
-
-            'contactPoint' => [
-                '@type'             => 'ContactPoint',
-                'contactType'       => 'customer service',
-                'availableLanguage' => ['de-AT', 'de-DE'],
-                'telephone'         => '+43 677 63177763',
-                'email'             => 'office@websters.at',
-                'hoursAvailable'    => [
-                    '@type'     => 'OpeningHoursSpecification',
-                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                    'opens'     => '09:00',
-                    'closes'    => '17:00',
-                ],
-            ],
-
-            // Angebote mit echten Preisen; "auf Anfrage" ohne Fake-Preis (kein 0€)
-            'makesOffer' => [
-                [
-                    '@type'        => 'Offer',
-                    'name'         => 'Webdesign Starter',
-                    'description'  => 'Professionelles Webdesign für kleine Unternehmen und Startups.',
-                    'price'        => '990',
-                    'priceCurrency'=> 'EUR',
-                ],
-                [
-                    '@type'        => 'Offer',
-                    'name'         => 'IT-Consulting & Prozessoptimierung',
-                    'description'  => 'Digitalisierungsberatung und Prozessoptimierung für Unternehmen.',
-                ],
-                [
-                    '@type'        => 'Offer',
-                    'name'         => 'Custom Software Entwicklung',
-                    'description'  => 'Maßgeschneiderte Softwarelösungen für spezifische Geschäftsprozesse.',
-                    'price'        => '3490',
-                    'priceCurrency'=> 'EUR',
-                ],
-                [
-                    '@type'        => 'Offer',
-                    'name'         => 'Individualsoftware-Entwicklung',
-                    'description'  => 'Komplette Individualsoftware für komplexe Geschäftsanforderungen.',
-                ],
-            ],
-
-            'sameAs' => [
-                'https://www.instagram.com/websters.at/',
-                'https://github.com/websters-at',
-            ],
-
-            'logo'  => 'https://websters.at/assets/logo-jsonld.jpg',
-            'image' => [
-                'https://websters.at/assets/logo-jsonld.jpg',
-            ],
-
-            'priceRange' => '€€-€€€',
-            'areaServed' => ['AT', 'DE'],
+            // Absichtlich leer: Ein globaler LocalBusiness-Blob würde auf JEDER Seite
+            // rendern und per array_merge sogar setType() der Seiten überstimmen
+            // (deshalb zeigten alle Seiten LocalBusiness statt Article/Service).
+            // Organisation/Website stehen global im Layout, Details pro Seite im Mount.
         ],
     ],
 ];

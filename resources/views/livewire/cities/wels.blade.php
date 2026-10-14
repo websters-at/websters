@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -34,16 +34,18 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('Service');
-        JsonLd::setTitle('Webdesign Wels');
-        JsonLd::setDescription('Professionelles Webdesign für Unternehmen in Wels und Umgebung.');
-        JsonLd::setUrl($pageUrl);
-        JsonLd::addValue('provider', ['@type' => 'Organization', '@id' => 'https://websters.at/#organization']);
-        JsonLd::addValue('areaServed', ['@type' => 'City', 'name' => 'Wels']);
-        JsonLd::addValue('offers', [
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Service';
+$schema['name'] = 'Webdesign Wels';
+$schema['description'] = 'Professionelles Webdesign für Unternehmen in Wels und Umgebung.';
+$schema['url'] = $pageUrl;
+$schema['provider'] = ['@type' => 'Organization', '@id' => 'https://websters.at/#organization'];
+$schema['areaServed'] = ['@type' => 'City', 'name' => 'Wels'];
+$schema['offers'] = [
             '@type' => 'Offer', 'name' => 'Website Starter Wels', 'priceCurrency' => 'EUR', 'price' => 990,
             'itemOffered' => ['@type' => 'Service', 'name' => 'Webdesign Wels'],
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -133,3 +135,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

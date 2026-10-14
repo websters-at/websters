@@ -44,6 +44,13 @@
   https://websters.at/tools/preis-rechner
 - Tool-Übersicht: https://websters.at/tools
 
+## Ratgeber
+
+- Was kostet eine Website in Österreich? (Preis-Tabelle 2026):
+  https://websters.at/ratgeber/website-kosten-oesterreich
+- Webdesign-Angebot vergleichen (7-Punkte-Check):
+  https://websters.at/ratgeber/webdesign-angebot-vergleich
+
 ## Seiten
 
 - Start: https://websters.at/

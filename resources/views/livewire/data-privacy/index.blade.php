@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -71,12 +71,13 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::setType('PrivacyPolicy');
-        JsonLd::setTitle('Datenschutzerklärung – Websters');
-        JsonLd::setDescription('Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'PrivacyPolicy';
+$schema['name'] = 'Datenschutzerklärung – Websters';
+$schema['description'] = 'Datenschutzerklärung gemäß DSGVO und österreichischem Datenschutzgesetz.';
+$schema['url'] = $pageUrl;
 
-        JsonLd::addValues([
+$schema = array_merge($schema, [
             'datePublished' => '2025-11-30',
             'dateModified' => '2025-11-30',
             'jurisdiction' => 'AT',
@@ -102,7 +103,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('dataController', [
+$schema['dataController'] = [
             '@type' => 'Organization',
             'name' => 'Websters e.U.',
             'legalName' => 'Websters e.U.',
@@ -128,7 +129,7 @@ new class extends Component {
                 'email' => 'office@websters.at',
                 'telephone' => '+43 677 63177763'
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -136,11 +137,11 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('processesPersonalData', [
+$schema['processesPersonalData'] = [
             'ContactData' => ['Name', 'Email', 'Phone number'],
             'TechnicalData' => ['IP address', 'Browser type', 'Device information'],
             'UsageData' => ['Page visits', 'Click behavior', 'Session duration']
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -148,11 +149,11 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('legalBasis', [
+$schema['legalBasis'] = [
             'Art. 6 Abs. 1 lit. a DSGVO' => 'Einwilligung',
             'Art. 6 Abs. 1 lit. b DSGVO' => 'Vertragserfüllung',
             'Art. 6 Abs. 1 lit. f DSGVO' => 'Berechtigtes Interesse'
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -160,13 +161,14 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('thirdPartyRecipients', [
+$schema['thirdPartyRecipients'] = [
             [
                 'name' => 'Oracle Cloud Infrastructure',
                 'purpose' => 'Hosting der Website',
                 'location' => 'EU'
             ]
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -708,3 +710,6 @@ new class extends Component {
         </div>
     </div>
 </section>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

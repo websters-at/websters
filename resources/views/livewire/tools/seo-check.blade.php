@@ -3,12 +3,12 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use App\Services\SeoCheck;
 use Illuminate\Support\Facades\RateLimiter;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public string $url = '';
     public ?array $result = null;
     public ?string $error = null;
@@ -37,13 +37,15 @@ new class extends Component {
         TwitterCard::setUrl($pageUrl);
         TwitterCard::setImage($siteUrl . '/assets/images/logo-jsonld.jpg');
 
-        JsonLd::setType('WebApplication');
-        JsonLd::setTitle('SEO Check von Websters');
-        JsonLd::setDescription('Kostenloser Selbstcheck für Suchmaschinenoptimierung.');
-        JsonLd::setUrl($pageUrl);
-        JsonLd::addValue('applicationCategory', 'UtilitiesApplication');
-        JsonLd::addValue('operatingSystem', 'Webbrowser');
-        JsonLd::addValue('offers', ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR']);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'WebApplication';
+$schema['name'] = 'SEO Check von Websters';
+$schema['description'] = 'Kostenloser Selbstcheck für Suchmaschinenoptimierung.';
+$schema['url'] = $pageUrl;
+$schema['applicationCategory'] = 'UtilitiesApplication';
+$schema['operatingSystem'] = 'Webbrowser';
+$schema['offers'] = ['@type' => 'Offer', 'price' => 0, 'priceCurrency' => 'EUR'];
+$this->pageSchema = $schema;
     }
 
     public function analyze(): void
@@ -164,3 +166,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

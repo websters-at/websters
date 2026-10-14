@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -75,12 +75,14 @@ new class extends Component {
         | Vollständig, sauber strukturiert, perfekt für Google Maps & Local SEO.
         */
 
-        JsonLd::setType('LocalBusiness');
-        JsonLd::setTitle('Websters – Kontakt & Standort');
-        JsonLd::setDescription('Webdesign, Individualsoftware & IT-Consulting aus Engerwitzdorf.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'LocalBusiness';
+$schema['name'] = 'Websters – Kontakt & Standort';
+$schema['description'] = 'Webdesign, Individualsoftware & IT-Consulting aus Engerwitzdorf.';
+$schema['url'] = $pageUrl;
+$this->pageSchema = $schema;
 
-        JsonLd::addValues([
+$schema = array_merge($schema, [
             'name' => 'Websters',
             'description' => 'IT-Dienstleistung, Webdesign, Softwareentwicklung & Medienproduktion und IT-Consulting in Oberösterreich.',
             'image' => $siteUrl . '/assets/images/logo-jsonld.jpg',
@@ -168,3 +170,6 @@ new class extends Component {
 
 
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif

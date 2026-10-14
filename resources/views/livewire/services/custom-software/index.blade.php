@@ -3,10 +3,10 @@
 use Livewire\Volt\Component;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 new class extends Component {
+    public ?array $pageSchema = null;
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
@@ -73,10 +73,11 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::setType('Service');
-        JsonLd::setTitle('Individualsoftware Entwicklung');
-        JsonLd::setDescription('Custom Software, Web-Apps & Business-Lösungen für Unternehmen.');
-        JsonLd::setUrl($pageUrl);
+$schema = ['@context' => 'https://schema.org'];
+$schema['@type'] = 'Service';
+$schema['name'] = 'Individualsoftware Entwicklung';
+$schema['description'] = 'Custom Software, Web-Apps & Business-Lösungen für Unternehmen.';
+$schema['url'] = $pageUrl;
 
         /*
         |--------------------------------------------------------------------------
@@ -84,7 +85,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('provider', [
+$schema['provider'] = [
             '@type' => 'Organization',
             'name' => 'Websters',
             'description' => 'Spezialisiert auf individuelle Softwareentwicklung in Österreich',
@@ -125,7 +126,7 @@ new class extends Component {
                     'knowsAbout' => ['Backend', 'DevOps', 'Deployment']
                 ]
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -133,7 +134,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('offers', [
+$schema['offers'] = [
             [
                 '@type' => 'Offer',
                 'name' => 'Custom Software Basis',
@@ -182,7 +183,7 @@ new class extends Component {
                     'priceCurrency' => 'EUR'
                 ]
             ]
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -190,13 +191,13 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('knowsAbout', [
+$schema['knowsAbout'] = [
             'Languages'    => ['PHP', 'Typescript', 'JavaScript', 'Python'],
             'Frameworks'   => ['Laravel', 'Livewire', 'Vue.js', 'React', 'Next.js'],
             'Databases'    => ['MySQL', 'PostgreSQL', 'SQLite'],
             'Tools'        => ['Git', 'Docker', 'AWS', 'DigitalOcean'],
             'Methods'      => ['Agile', 'Scrum', 'TDD']
-        ]);
+        ];
 
         /*
         |--------------------------------------------------------------------------
@@ -204,7 +205,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        JsonLd::addValue('audience', [
+$schema['audience'] = [
             [
                 '@type' => 'Audience',
                 'audienceType' => 'Businesses',
@@ -220,7 +221,8 @@ new class extends Component {
                 'audienceType' => 'Enterprise',
                 'name' => 'Großunternehmen'
             ]
-        ]);
+        ];
+$this->pageSchema = $schema;
     }
 };
 ?>
@@ -342,3 +344,6 @@ new class extends Component {
         </div>
     </section>
 </div>
+@if(!empty($pageSchema))
+<script type="application/ld+json">@json($pageSchema)</script>
+@endif
