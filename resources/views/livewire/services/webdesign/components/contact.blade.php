@@ -195,7 +195,7 @@ new class extends Component {
                             label="E-Mail Adresse"
                             wire:model="email"
                             type="email"
-                            placeholder="Email Adresse"
+                            placeholder="E-Mail-Adresse"
                         />
                     </div>
 
