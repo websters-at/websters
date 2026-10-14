@@ -285,6 +285,22 @@ $this->pageSchema = $schema;
                         vor allem mit sogenannten Analyseprogrammen. Detaillierte Informationen zu diesen
                         Analyseprogrammen finden Sie in der folgenden Datenschutzerklärung.
                     </p>
+                    <h4 class="font-semibold text-slate-800">
+                        Externe Dienste auf dieser Website
+                    </h4>
+                    <p>
+                        <span class="font-semibold">Umami Analytics (eigener Server, cookielos):</span>
+                        Zur Reichweitenmessung nutzen wir die selbst gehostete, cookielose Software Umami.
+                        Es werden keine Cookies gesetzt und keine Daten an Dritte übertragen.
+                    </p>
+                    <p>
+                        <span class="font-semibold">Cal.com Terminbuchung & Google Maps (erst nach Einwilligung):</span>
+                        Das Buchungs-Widget (Cal.com, USA) und die Karte (Google Maps, USA) laden erst, wenn Sie
+                        auf „laden & einwilligen" klicken. Dabei werden u.&nbsp;a. IP-Adresse und Browserdaten an den
+                        jeweiligen Anbieter in den USA übertragen. Ihre Einwilligung speichern wir lokal in Ihrem
+                        Browser; Sie können sie jederzeit widerrufen, indem Sie die Website-Daten in Ihrem Browser
+                        löschen und die Inhalte nicht erneut laden.
+                    </p>
                 </div>
             </div>
 

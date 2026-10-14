@@ -62,13 +62,18 @@ new class extends Component {};
             deine Fragen oder eine persönliche Beratung.
         </p>
 
-        <!-- Inline Booking Widget -->
+        <!-- Inline Booking Widget (2-Klick-Datenschutz: lädt erst nach Einwilligung) -->
         <div
             class="w-full mt-12 group fade-up min-h-[540px]"
             :class="{ 'show': show }"
             style="transition-delay:.4s"
         >
             <div style="width:100%;height:100%;overflow:hidden" id="my-cal-inline-websters-meeting"></div>
+            <div id="cal-consent-box" class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
+                <p class="text-sm font-semibold text-brand-dark">Online-Terminbuchung laden?</p>
+                <p class="mt-2 text-sm text-slate-600">Das Buchungs-Widget wird von Cal.com (USA) geladen – dabei werden Daten an Cal.com übertragen. <a class="underline font-semibold" href="https://cal.com/michi4/websters-meeting" target="_blank" rel="noopener noreferrer">Alternativ direkt auf cal.com buchen</a>.</p>
+                <button type="button" id="cal-consent-btn" class="btn btn-sm btn-primary mt-4 text-white">Widget laden & einwilligen</button>
+            </div>
             <noscript>
                 <p class="mt-4 text-center text-sm text-slate-600">
                     Das Buchungs-Widget benötigt JavaScript.
@@ -82,54 +87,75 @@ new class extends Component {};
 </section>
 
 <script type="text/javascript">
-    (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document;
-        C.Cal = C.Cal || function () {
-            let cal = C.Cal;
-            let ar = arguments;
-            if (!cal.loaded) {
-                cal.ns = {};
-                cal.q = cal.q || [];
-                d.head.appendChild(d.createElement("script")).src = A;
-                cal.loaded = true;
-            }
-            if (ar[0] === L) {
-                const api = function () { p(api, arguments); };
-                const namespace = ar[1];
-                api.q = api.q || [];
-                if (typeof namespace === "string") {
-                    cal.ns[namespace] = cal.ns[namespace] || api;
-                    p(cal.ns[namespace], ar);
-                    p(cal, ["initNamespace", namespace]);
-                } else p(cal, ar);
-                return;
-            }
-            p(cal, ar);
-        };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
+    (function () {
+        var KEY = 'websters-consent-cal';
+        var box = document.getElementById('cal-consent-box');
+        var btn = document.getElementById('cal-consent-btn');
 
-    Cal("init", "websters-meeting", {origin:"https://app.cal.com"});
+        function loadCal() {
+            if (window.__calLoaded) return;
+            window.__calLoaded = true;
+            if (box) box.style.display = 'none';
+            (function (C, A, L) {
+                var p = function (a, ar) { a.q.push(ar); };
+                var d = C.document;
+                C.Cal = C.Cal || function () {
+                    var cal = C.Cal;
+                    var ar = arguments;
+                    if (!cal.loaded) {
+                        cal.ns = {};
+                        cal.q = cal.q || [];
+                        d.head.appendChild(d.createElement('script')).src = A;
+                        cal.loaded = true;
+                    }
+                    if (ar[0] === L) {
+                        var api = function () { p(api, arguments); };
+                        var namespace = ar[1];
+                        api.q = api.q || [];
+                        if (typeof namespace === 'string') {
+                            cal.ns[namespace] = cal.ns[namespace] || api;
+                            p(cal.ns[namespace], ar);
+                            p(cal, ['initNamespace', namespace]);
+                        } else p(cal, ar);
+                        return;
+                    }
+                    p(cal, ar);
+                };
+            })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-    Cal.ns["websters-meeting"]("inline", {
-        elementOrSelector:"#my-cal-inline-websters-meeting",
-        config: {"layout":"month_view"},
-        calLink: "michi4/websters-meeting",
-    });
+            Cal('init', 'websters-meeting', {origin:'https://app.cal.com'});
 
-    Cal.ns["websters-meeting"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+            Cal.ns['websters-meeting']('inline', {
+                elementOrSelector: '#my-cal-inline-websters-meeting',
+                config: {'layout':'month_view'},
+                calLink: 'michi4/websters-meeting',
+            });
 
-    // Fallback: if the Cal.com embed is blocked (adblock/offline), show a booking link
-    // instead of leaving an empty gap.
-    setTimeout(function () {
-        var host = document.getElementById("my-cal-inline-websters-meeting");
-        if (host && !host.querySelector("iframe")) {
-            host.insertAdjacentHTML("afterend",
-                '<p class="mt-4 text-center text-sm text-slate-600">' +
-                'Das Buchungs-Widget konnte nicht geladen werden. ' +
-                '<a class="underline font-semibold" href="https://cal.com/michi4/websters-meeting">Termin direkt auf cal.com buchen</a> ' +
-                'oder ruf uns an: <a class="underline font-semibold" href="tel:+4367763177763">+43 677 63177763</a>.' +
-                "</p>");
+            Cal.ns['websters-meeting']('ui', {'hideEventTypeDetails':false,'layout':'month_view'});
+
+            // Fallback: if the Cal.com embed is blocked (adblock/offline), show a booking link
+            // instead of leaving an empty gap.
+            setTimeout(function () {
+                var host = document.getElementById('my-cal-inline-websters-meeting');
+                if (host && !host.querySelector('iframe')) {
+                    host.insertAdjacentHTML('afterend',
+                        '<p class="mt-4 text-center text-sm text-slate-600">' +
+                        'Das Buchungs-Widget konnte nicht geladen werden. ' +
+                        '<a class="underline font-semibold" href="https://cal.com/michi4/websters-meeting">Termin direkt auf cal.com buchen</a> ' +
+                        'oder ruf uns an: <a class="underline font-semibold" href="tel:+4367763177763">+43 677 63177763</a>.' +
+                        '</p>');
+                }
+            }, 8000);
         }
-    }, 8000);
+
+        try {
+            if (window.localStorage && localStorage.getItem(KEY) === '1') loadCal();
+            else if (btn) btn.addEventListener('click', function () {
+                try { localStorage.setItem(KEY, '1'); } catch (e) {}
+                loadCal();
+            });
+        } catch (e) {
+            if (btn) btn.addEventListener('click', loadCal);
+        }
+    })();
 </script>
