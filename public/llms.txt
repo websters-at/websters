@@ -38,8 +38,11 @@
 
 ## Gratis Tools
 
-- Domain-Check (.at, .com, .de, .eu, .org, .net + Alternativen, Anfrage per Anruf/Mail):
+- Domain-Check (.at, .com, .de, .org, .net + Alternativen, Anfrage per Anruf/Mail):
   https://websters.at/tools/domain-check
+- Website Preis-Rechner (Kosten-Schätzung in 1 Minute + Angebots-Anfrage):
+  https://websters.at/tools/preis-rechner
+- Tool-Übersicht: https://websters.at/tools
 
 ## Seiten
 

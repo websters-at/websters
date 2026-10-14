@@ -33,6 +33,10 @@ Route::get('/sitemap.xml', function () {
         ['/webdesign-wels', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-steyr', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/preis-rechner', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/seo-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/cookie-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools', 0.6, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/impressum', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
         ['/datenschutz', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
         ['/agbs', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
@@ -80,6 +84,18 @@ Volt::route('/webdesign-steyr', 'cities.steyr')
 
 Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
+
+Volt::route('/tools/preis-rechner', 'tools.preis-rechner')
+    ->name('tools.calculator');
+
+Volt::route('/tools/seo-check', 'tools.seo-check')
+    ->name('tools.seo');
+
+Volt::route('/tools/cookie-check', 'tools.cookie-check')
+    ->name('tools.cookies');
+
+Volt::route('/tools', 'tools.index')
+    ->name('tools.index');
 
 Volt::route('/impressum', 'imprint.index')
     ->name('imprint');

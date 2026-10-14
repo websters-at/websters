@@ -59,6 +59,14 @@ new class extends Component {
                 <span class="h-3 border-l border-l-neutral-300"></span>
 
                 <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('tools.calculator') }}"
+                    wire:navigate
+                    title="Website Preis-Rechner"
+                >Preis-Rechner</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
                     class="relative whitespace-nowrap text-sm font-poppins font-medium text-slate-600 before:bg-slate-300"
                     href="{{ route('imprint') }}"
                     wire:navigate
