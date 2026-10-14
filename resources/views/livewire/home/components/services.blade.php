@@ -11,25 +11,23 @@ new class extends Component {
     $cards = [
         [
             'title' => 'Webentwicklung',
-            'badge' => 'web',
+            'badge' => 'Websites',
             'badge_color' => 'bg-primary',
             'icon' => 'fas.paint-brush',
-            'image' => asset('/assets/service-bgs/bg-linear-1.webp'),
-            'image_fallback' => asset('/assets/service-bgs/bg-linear-1.png'),
-            'alt' => 'Webdeisgn/entwicklung',
-            'desc' => 'Auf der suche nach einer professionellen Unternehmenswebsite, Marketingseiten oder Webapplikationen? Dann ist dieses Paket genau das richtige für dich.',
+            'image' => asset('/assets/website.png'),
+            'alt' => 'Webdesign Beispiel – moderne responsive Unternehmenswebsite',
+            'desc' => 'Auf der Suche nach einer professionellen Unternehmenswebsite, Marketingseiten oder Webapplikationen? Dann ist dieses Paket genau das richtige für dich.',
             'button' => 'Mehr zu Webentwicklung erfahren',
             'btn_color' => 'btn-primary',
             'link' => route('webdesign'),
         ],
         [
             'title' => 'Individual Software',
-            'badge' => 'custom',
+            'badge' => 'Custom',
             'badge_color' => 'bg-secondary',
             'icon' => 'fas.rocket',
-            'image' => asset('/assets/service-bgs/bg-linear-4.webp'),
-            'image_fallback' => asset('/assets/service-bgs/bg-linear-4.png'),
-            'alt' => 'Custom Software',
+            'image' => asset('/assets/services-software.svg'),
+            'alt' => 'Individualsoftware Entwicklung – Web-App Programmierung',
             'desc' => 'Du bist ein Start-up ohne Entwicklungserfahrung oder benötigst eine individuell entwickelte Software für interne Abläufe? Dann passt dieses Paket perfekt zu dir.',
             'button' => 'Mehr zu Individual Software erfahren',
             'btn_color' => 'btn-secondary',
@@ -37,12 +35,11 @@ new class extends Component {
         ],
         [
             'title' => 'IT-Consulting',
-            'badge' => 'analysis',
+            'badge' => 'Beratung',
             'badge_color' => 'bg-primary',
             'icon' => 'fas.chart-diagram',
-            'image' => asset('/assets/service-bgs/bg-linear-3.webp'),
-            'image_fallback' => asset('/assets/service-bgs/bg-linear-3.png'),
-            'alt' => 'IT-Consulting',
+            'image' => asset('/assets/services-hero.svg'),
+            'alt' => 'IT-Consulting – Prozessoptimierung und Digitalisierung',
             'desc' => 'Ineffiziente Prozesse? Fehlende Software-Infrastruktur? Wir helfen dir dabei deine Unternehmensprozesse zu analysieren und zu optimieren.',
             'button' => 'Mehr zu IT-Consulting erfahren',
             'btn_color' => 'btn-primary',
@@ -72,13 +69,13 @@ new class extends Component {
         </div>
 
         <!-- Section Heading -->
-        <h1
+        <h2
             class="bg-gradient-to-b from-[#002a42] to-slate-500 bg-clip-text font-poppins text-2xl font-bold text-transparent lg:text-5xl mt-6 text-left lg:text-center w-full lg:w-1/2 lg:leading-tight xl:mt-9 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.15s"
         >
             Unsere Dienstleistungen
-        </h1>
+        </h2>
 
         <!-- Subtext -->
         <p
@@ -99,18 +96,13 @@ new class extends Component {
                     style="transition-delay:.{{ 35 + $i * 10 }}s"
                 >
                     <div>
-                        <picture>
-                            <source srcset="{{ $card['image'] }}" type="image/webp">
-                            <img
-                                class="mb-4 h-40 w-full rounded-lg object-cover object-left-top lg:mb-6 lg:h-52 lg:rounded-2xl"
-                                src="{{ $card['image_fallback'] }}"
-                                alt="{{ $card['alt'] }}"
-                                loading="lazy"
-                                width="720"
-                                height="516"
-                                decoding="async"
-                            />
-                        </picture>
+                        <img
+                            class="mb-4 h-40 w-full rounded-lg object-contain object-center lg:mb-6 lg:h-52 lg:rounded-2xl bg-slate-50 p-2"
+                            src="{{ $card['image'] }}"
+                            alt="{{ $card['alt'] }}"
+                            loading="lazy"
+                            decoding="async"
+                        />
 
                         <x-icon
                             name="{{ $card['icon'] }}"

@@ -10,7 +10,7 @@ new class extends Component {
     public function mount(): void
     {
         $siteUrl = 'https://websters.at';
-        $pageUrl = $siteUrl . '/data-privacy';
+        $pageUrl = route('data-privacy');
 
         /*
         |--------------------------------------------------------------------------
@@ -193,13 +193,13 @@ new class extends Component {
                     Datenschutz
                 </div>
 
-                <div
+                <h1
                     class="mt-6 bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text text-2xl font-poppins font-bold text-transparent lg:text-4xl lg:leading-tight lg:mt-8 fade-up"
                     :class="{ 'show': show }"
                     style="transition-delay:.25s"
                 >
                     Datenschutzerklärung
-                </div>
+                </h1>
 
                 <p
                     class="mt-4 text-sm font-poppins text-slate-600 sm:w-4/5 lg:w-3/5 fade-up"

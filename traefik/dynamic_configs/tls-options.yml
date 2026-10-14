@@ -1,0 +1,56 @@
+# Shared TLS options for maximum compatibility with strict corporate networks
+# (managed trust stores, TLS-intercepting proxies, old middleboxes).
+#
+# - minVersion TLS 1.2: TLS 1.0/1.1 are dead; being explicit protects against
+#   default changes and documents the floor corporate auditors ask about.
+# - cipherSuites: Go secure defaults, explicit (no CBC-SHA legacy, no 3DES).
+# - curvePreferences: X25519 first, P-256 fallback (broadest client support).
+# - sniStrict: false — never hard-fail clients with odd SNI (some corporate
+#   proxies mangle/omit SNI on re-connects).
+# - alpnProtocols: h2 + http/1.1 so HTTP/2-fearing middleboxes negotiate down
+#   instead of failing.
+#
+# NOTE: OCSP stapling is NOT supported by Traefik v3 (upstream limitation).
+# Corporate clients doing hard-fail OCSP must reach the LE responder over
+# plain HTTP (port 80) — keep outbound port 80 open for yr*.o.lencr.org.
+# The other big handshake win (ECDSA certs) comes from
+# --certificatesresolvers.letsencrypt.acme.keytype=EC256 in the Traefik
+# static config; it applies automatically at the next renewal.
+#
+# DEPLOY: copy this file to the Traefik host dir:
+#   /home/ubuntu/websters/traefik/dynamic_configs/tls-options.yml
+# Referenced by websters-at routers via tls.options=modern-corporate@file.
+tls:
+  # Clients WITHOUT SNI (legacy corporate systems, old Java stacks, middlebox
+  # probes) otherwise get Traefik's self-signed "TRAEFIK DEFAULT CERT", which
+  # strict corporate gateways log as invalid-cert and can poison IP reputation.
+  # defaultGeneratedCert reuses the existing LE cert from acme.json (same
+  # main+sans -> no new issuance, no rate-limit risk) and serves it as fallback.
+  stores:
+    default:
+      defaultGeneratedCert:
+        resolver: letsencrypt
+        domain:
+          main: websters.at
+          sans:
+            - www.websters.at
+  options:
+    modern-corporate:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+        - TLS_AES_128_GCM_SHA256
+        - TLS_AES_256_GCM_SHA384
+        - TLS_CHACHA20_POLY1305_SHA256
+      curvePreferences:
+        - X25519
+        - CurveP256
+      sniStrict: false
+      alpnProtocols:
+        - h2
+        - http/1.1

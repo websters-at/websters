@@ -15,36 +15,15 @@
 @endphp
 <section
     class="mt-12 lg:mt-16 bg-slate-50 py-8 md:py-12 lg:py-16"
-    x-data="{
-        show: false,
-        initMarquee() {
-                const marqueeContent = this.$el.querySelector('.marquee-content');
-                if (!marqueeContent) return;
-
-                const containerWidth = this.$el.offsetWidth;
-                let totalWidth = marqueeContent.scrollWidth;
-
-                let i = 0;
-
-                while (totalWidth < containerWidth * 2) {
-                    const clone = marqueeContent.children[i].cloneNode(true);
-                    marqueeContent.appendChild(clone);
-                    totalWidth = marqueeContent.scrollWidth;
-                    i++;
-
-                    if (i > 20) break;
-                }
-            }
-    }"
-    x-init="initMarquee()"
+    x-data="{ show: false }"
     x-intersect="show = true"
 >
     <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <!-- Heading -->
         <div class="mb-8 lg:mb-16 text-left lg:text-center fade-up" :class="{ 'show': show }">
-            <h1 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
+            <h2 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mb-4">
                 Unsere Haupttechnologien
-            </h1>
+            </h2>
             <p class="text-sm lg:text-base font-poppins text-slate-600 max-w-2xl lg:mx-auto">
                 Wir setzen auf moderne Technologien und Frameworks, um skalierbare, performante und zukunftssichere
                 Lösungen für unsere Kunden zu entwickeln.
@@ -61,26 +40,33 @@
                 class="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-slate-50 to-transparent z-10">
             </div>
 
-            <!-- Scrolling content -->
-            <ul class="marquee-content flex items-center h-full w-max gap-8 lg:gap-12">
-                @foreach ($logos as $logo)
-                    <li class="flex-shrink-0 h-full flex items-center justify-center">
-                        <a href="{{ $logo['href'] }}" target="_blank" rel="noopener noreferrer">
-                            <picture>
-                                <source srcset="{{ $logo['webpSrc'] }}" type="image/webp">
-                                <img
-                                    class="h-12 lg:h-14 w-auto max-w-none transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
-                                    src="{{ $logo['src'] }}"
-                                    alt="{{ $logo['alt'] }}"
-                                    title="{{ $logo['title'] }}"
-                                    width="{{ $logo['width'] }}"
-                                    height="{{ $logo['height'] }}"
-                                    decoding="async"
-                                >
-                            </picture>
-                        </a>
-                    </li>
-                @endforeach
+            <!-- Scrolling content: EXACTLY two identical halves (second one
+                 aria-hidden) so translateX(0 -> -50%) loops seamlessly.
+                 Spacing via per-item margin (not container gap) keeps both
+                 halves pixel-identical. Pure CSS animation = GPU-composited,
+                 no JS cloning, no layout thrash. -->
+            <ul class="marquee-content flex items-center h-full w-max">
+                @for ($rep = 0; $rep < 2; $rep++)
+                    @foreach ($logos as $logo)
+                        <li class="flex-shrink-0 h-full flex items-center justify-center mr-8 lg:mr-12"@if($rep === 1) aria-hidden="true"@endif>
+                            <a href="{{ $logo['href'] }}" target="_blank" rel="noopener noreferrer"@if($rep === 1) tabindex="-1"@endif>
+                                <picture>
+                                    <source srcset="{{ $logo['webpSrc'] }}" type="image/webp">
+                                    <img
+                                        class="h-12 lg:h-14 w-auto max-w-none transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
+                                        src="{{ $logo['src'] }}"
+                                        alt="{{ $logo['alt'] }}"
+                                        title="{{ $logo['title'] }}"
+                                        width="{{ $logo['width'] }}"
+                                        height="{{ $logo['height'] }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </picture>
+                            </a>
+                        </li>
+                    @endforeach
+                @endfor
             </ul>
         </div>
 

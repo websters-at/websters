@@ -27,14 +27,14 @@ new class extends Component {
 
     <div class="max-w-7xl mx-auto px-4 xl:px-4 flex flex-col items-start z-[1000]">
 
-        <div
+        <h1
             class="bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-3xl font-bold font-poppins text-transparent
             lg:text-5xl mt-8 sm:w-2/3 md:w-3/4 lg:mt-9 lg:leading-tight xl:w-3/5 fade-up"
             :class="{ 'show': show }"
             style="transition-delay:.1s"
         >
             Clean, modern, überzeugend. Dein neuer Webauftritt?
-        </div>
+        </h1>
 
         <p
             class="text-sm font-poppins font-medium text-brand-dark leading-normal lg:leading-normal lg:text-base mt-4

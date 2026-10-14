@@ -20,11 +20,11 @@ new class extends Component {
              :class="{ 'show': show }"
              style="transition-delay:.05s">
 
-            <h1
+            <h2
                 class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-2/3 md:w-1/2 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-2/3"
             >
                 Häufige Fragen zu Websters
-            </h1>
+            </h2>
 
             <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5">
                 Alles über unsere Webagentur, unsere Dienstleistungen und wie wir arbeiten.
@@ -41,7 +41,10 @@ new class extends Component {
             <!-- FAQ ITEM TEMPLATE -->
             @php $delay = 0.25; @endphp
 
-            @foreach([
+            @php
+                // Zentrale FAQ-Daten: rendern UND als FAQPage-Schema (siehe unten).
+                // GEO-Wirkung: Google FAQ-Rich-Results + zitierfähige Antworten für KI-Suchen.
+                $faqs = [
                     1 => [
                         'q' => 'Was bietet Websters genau an?',
                         'a' => 'Wir entwickeln maßgeschneiderte Web-Lösungen: Von professionellen Websites über komplexe Web-Apps bis hin zu Custom Software. Unser Portfolio umfasst responsive Webdesign, API-Entwicklung, Python-Skripte, Scraper, Backup-Lösungen und Systemintegrationen. Jedes Projekt wird individuell auf deine Anforderungen zugeschnitten.'
@@ -81,7 +84,23 @@ new class extends Component {
                         'q' => 'Könnt ihr auch bestehende Projekte übernehmen?',
                         'a' => 'Absolut! Wir übernehmen gerne bestehende Projekte und entwickeln diese weiter. Egal ob Wartung, Erweiterungen oder komplette Neuentwicklung – wir analysieren dein bestehendes System und finden die optimale Lösung. Auch Legacy-Systeme und Code-Basen anderer Entwickler sind für uns kein Problem.'
                     ],
-                ] as $id => $faq)
+                ];
+
+                $faqSchema = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'FAQPage',
+                    'mainEntity' => array_map(
+                        fn($f) => [
+                            '@type' => 'Question',
+                            'name' => $f['q'],
+                            'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']],
+                        ],
+                        array_values($faqs)
+                    ),
+                ];
+            @endphp
+
+            @foreach($faqs as $id => $faq)
 
                 <div
                     class="group rounded-2xl border border-slate-200 bg-white/60 hover:border-slate-300 transition-all fade-up"
@@ -139,4 +158,5 @@ new class extends Component {
             @endforeach
         </div>
     </div>
+    <script type="application/ld+json">@json($faqSchema)</script>
 </section>

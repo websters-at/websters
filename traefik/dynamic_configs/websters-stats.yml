@@ -1,0 +1,44 @@
+# Umami analytics via same-origin https://websters.at/stats/* (instead of the
+# stats.websters.at subdomain).
+#
+# WHY: strict corporate firewalls / DNS filters (FortiGate, Palo Alto, Zscaler,
+# Cisco Umbrella) commonly block third-party-looking tracking subdomains such
+# as stats.*. Proxying the tracker + beacon endpoint through the main domain
+# removes the extra DNS lookup, the extra TLS handshake and the extra
+# blocklist surface: the page behaves identically inside corporate networks.
+#
+# HOW: stripPrefix turns /stats/script.js -> /script.js and
+# /stats/api/send -> /api/send on the umami service. The blade snippet pins
+# the beacon via data-host-url="https://websters.at/stats".
+#
+# DEPLOY: copy this file to the Traefik host dir:
+#   /home/ubuntu/websters/traefik/dynamic_configs/websters-stats.yml
+# (Traefik file provider has watch=true, no restart needed.)
+http:
+  routers:
+    websters-stats:
+      rule: "Host(`websters.at`) && PathPrefix(`/stats`)"
+      entryPoints:
+        - https
+      priority: 2000
+      middlewares:
+        - websters-stats-strip
+      service: websters-stats
+      tls:
+        certResolver: letsencrypt
+        # MUST match the tls.options of the websters-at docker routers:
+        # same Host+SNI with different TLS options makes Traefik fall back
+        # to default TLS options for all of them.
+        options: modern-corporate@file
+
+  middlewares:
+    websters-stats-strip:
+      stripPrefix:
+        prefixes:
+          - /stats
+
+  services:
+    websters-stats:
+      loadBalancer:
+        servers:
+          - url: "http://umami:3000"

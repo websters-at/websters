@@ -41,7 +41,7 @@ new class extends Component {};
     <div class="max-w-6xl mx-auto px-4 xl:px-0 flex flex-col items-start lg:items-center">
 
         <!-- Headline -->
-        <h2
+        <h1
             class="bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-3xl font-bold font-poppins text-transparent
                    lg:text-5xl mt-8 sm:w-2/3 md:w-3/4 lg:mt-9 lg:leading-tight xl:w-3/5
                    text-left lg:text-center mx-0 lg:mx-auto fade-up"
@@ -49,7 +49,7 @@ new class extends Component {};
             style="transition-delay:.2s"
         >
             Buche einen Termin mit unserem Team
-        </h2>
+        </h1>
 
         <!-- Subtext -->
         <p

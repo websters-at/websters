@@ -36,9 +36,17 @@ new class extends Component {
         ]);
 
         try {
-            NewsletterEntry::create([
+            \App\Models\NewsletterEntry::create([
                 "email" => $this->email,
             ]);
+
+            // Welcome mail AFTER storing: a mail outage must never lose the signup.
+            try {
+                \Illuminate\Support\Facades\Mail::to($this->email)
+                    ->send(new \App\Mail\NewsletterWelcomeMail($this->email));
+            } catch (\Throwable $mailErr) {
+                report($mailErr);
+            }
             $this->toast(
                 type: 'success',
                 title: 'Erfolg!',
@@ -97,13 +105,13 @@ new class extends Component {
             ></div>
 
             <!-- Headline -->
-            <h1
+            <h2
                 class="mx-auto mt-6 text-center text-2xl text-brand-dark font-poppins font-bold sm:w-1/2 md:w-2/5 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-1/3 fade-up"
                 :class="{ 'show': show }"
                 style="transition-delay:.25s"
             >
                 Lust auf Angebote? <br> Trage dich ein
-            </h1>
+            </h2>
 
             <!-- Form (x-data owns `loading` so both submit-handler and button see it) -->
             <form
@@ -127,8 +135,8 @@ new class extends Component {
                             name="email"
                             type="email"
                             required
-                            aria-label="Email Adresse"
-                            placeholder="Email Adresse"
+                            aria-label="E-Mail-Adresse"
+                            placeholder="E-Mail-Adresse"
                         />
                     </div>
                 </div>

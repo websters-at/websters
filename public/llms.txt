@@ -1,0 +1,50 @@
+# Websters — websters.at
+
+> Österreichische Webagentur & Softwareentwicklung aus Engerwitzdorf (Oberösterreich).
+> Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€, IT-Consulting.
+> Kunden: Unternehmen und Startups in Österreich und Deutschland.
+
+## Wer wir sind
+
+- **Name:** Websters
+- **Sitz:** Libellenweg 13, 4209 Engerwitzdorf, Oberösterreich, Österreich
+- **Kontakt:** office@websters.at, +43 677 63177763
+- **Team:** Michael, Stevan, Manuel — HTL-Absolventen, Webentwicklung & DevOps
+- **Profile:** https://github.com/websters-at, https://www.instagram.com/websters.at/
+
+## Leistungen
+
+- **Webdesign & Websites ab 990€:** Starter (990€, 1–3 Seiten), Komplett (1.990€, bis 8 Seiten),
+  Premium (ab 2.990€). Responsiv, SEO-optimiert, WordPress & Laravel. Details: https://websters.at/leistungen/webdesign
+- **Individualsoftware ab 3.490€:** Web-Apps, Prozess-Tools, Business-Software, MVPs für Startups.
+  Details: https://websters.at/leistungen/software
+- **IT-Consulting:** Prozessoptimierung, Digitalisierung, Automatisierung, IT-Strategie.
+  Details: https://websters.at/leistungen/consulting
+- **Technologien:** Laravel, Livewire, Python, WordPress, Tailwind CSS, Docker, MySQL/PostgreSQL
+
+## Preise (Stand 2026, alle netto ggf. zzgl. USt)
+
+- Website Starter: 990€ — Komplett: 1.990€ — Premium: ab 2.990€
+- Custom Software: ab 3.490€
+- Laufend: Hosting + Domain + optionales Wartungspaket (Updates, Backups, Support)
+
+## Häufige Fragen (kurz)
+
+- **Was kostet eine professionelle Website in Österreich?** Ab 990€ (Starter, 1–3 Seiten),
+  1.990€ (Komplett, bis 8 Seiten), ab 2.990€ (Premium/Web-Apps). Dauer: 2–8 Wochen je nach Umfang.
+- **Macht Websters auch bestehende Projekte?** Ja: Wartung, Erweiterung, Neuentwicklung, auch Legacy-Code.
+- **Wo ist Websters tätig?** Engerwitzdorf bei Linz, Projekte in ganz Österreich und Deutschland.
+- **Kontakt/Buchung:** https://websters.at/kontakt (Terminbuchung, Karte, Formular)
+
+## Gratis Tools
+
+- Domain-Check (.at, .com, .de, .eu, .org, .net + Alternativen, Anfrage per Anruf/Mail):
+  https://websters.at/tools/domain-check
+
+## Seiten
+
+- Start: https://websters.at/
+- Leistungen: https://websters.at/leistungen
+- Projekte/Referenzen: https://websters.at/projekte
+- Kontakt: https://websters.at/kontakt
+- Sitemap: https://websters.at/sitemap.xml

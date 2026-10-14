@@ -44,12 +44,20 @@ new class extends Component {
         ]);
 
         try {
-            Lead::create([
+            $lead = Lead::create([
                 "name" => $this->name,
                 "email" => $this->email,
                 "company" => $this->company,
                 "message" => $this->message,
             ]);
+
+            // Notify inbox AFTER storing: a mail outage must never lose the lead.
+            try {
+                \Illuminate\Support\Facades\Mail::to(config('mail.from.address', 'office@websters.at'))
+                    ->send(new \App\Mail\ContactLeadMail($lead));
+            } catch (\Throwable $mailErr) {
+                report($mailErr);
+            }
 
             $this->toast(
                 type: 'success',
@@ -102,11 +110,11 @@ new class extends Component {
                     Nachricht senden
                 </div>
 
-                <h1
+                <h2
                     class="mt-8 bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:w-4/5 md:w-3/5 lg:mt-9 lg:w-11/12 lg:text-4xl lg:leading-tight"
                 >
                     Wir sind für dich da
-                </h1>
+                </h2>
 
                 <p class="mt-4 text-sm font-medium text-slate-600 sm:w-1/2 lg:w-11/12">
                     Melde dich bei unserem Entwicklerteam, wenn du Unterstützung brauchst,
@@ -154,11 +162,11 @@ new class extends Component {
 
                     <div class="flex w-full flex-col fade-up" :class="{ 'show': show }" style="transition-delay:.4s">
                         <x-input
-                            label="Email-Adresse"
+                            label="E-Mail-Adresse"
                             required="true"
                             wire:model="email"
                             type="email"
-                            placeholder="Email-Adresse"
+                            placeholder="E-Mail-Adresse"
                         />
                     </div>
 

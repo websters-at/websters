@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 Volt::route('/', 'home.index')
     ->name('home');
@@ -14,6 +16,40 @@ Volt::route('/kontakt', 'contact.index')
 
 // About lives at /#team (nav links there since 2026-09); keep the old URL working.
 Route::redirect('/ueber-uns', '/#team', 301);
+
+Route::get('/sitemap.xml', function () {
+    // Dynamische Sitemap (Single Source of Truth): nur indexierbare Routen.
+    // Design-/Cloud-Stubs sind noindex und bleiben bewusst draußen.
+    $pages = [
+        // [path, priority, changefreq]
+        ['/', 1.0, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/leistungen', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/leistungen/webdesign', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/leistungen/software', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/leistungen/consulting', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/projekte', 0.8, Url::CHANGE_FREQUENCY_WEEKLY],
+        ['/kontakt', 0.8, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-linz', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-wels', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-steyr', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/impressum', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
+        ['/datenschutz', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
+        ['/agbs', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
+    ];
+
+    $sitemap = Sitemap::create();
+    foreach ($pages as [$path, $priority, $freq]) {
+        $sitemap->add(
+            Url::create($path)
+                ->setLastModificationDate(now())
+                ->setChangeFrequency($freq)
+                ->setPriority($priority)
+        );
+    }
+
+    return $sitemap->toResponse(request());
+})->name('sitemap');
 
 Volt::route('/leistungen', 'services.index')
     ->name('services');
@@ -32,6 +68,18 @@ Volt::route('/leistungen/design', 'services.design.index')
 
 Volt::route('/leistungen/cloud', 'services.cloud.index')
     ->name('cloud');
+
+Volt::route('/webdesign-linz', 'cities.linz')
+    ->name('webdesign.linz');
+
+Volt::route('/webdesign-wels', 'cities.wels')
+    ->name('webdesign.wels');
+
+Volt::route('/webdesign-steyr', 'cities.steyr')
+    ->name('webdesign.steyr');
+
+Volt::route('/tools/domain-check', 'tools.domain-check')
+    ->name('tools.domain');
 
 Volt::route('/impressum', 'imprint.index')
     ->name('imprint');
