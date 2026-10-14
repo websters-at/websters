@@ -33,6 +33,8 @@ Route::get('/sitemap.xml', function () {
         ['/webdesign-wels', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-steyr', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-wien', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-graz', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-salzburg', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/preis-rechner', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/seo-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -87,6 +89,12 @@ Volt::route('/webdesign-steyr', 'cities.steyr')
 
 Volt::route('/webdesign-wien', 'cities.wien')
     ->name('webdesign.wien');
+
+Volt::route('/webdesign-graz', 'cities.graz')
+    ->name('webdesign.graz');
+
+Volt::route('/webdesign-salzburg', 'cities.salzburg')
+    ->name('webdesign.salzburg');
 
 Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
