@@ -5,6 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     {!! SEO::generate() !!}
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- Globale Structured Data: Organisation + Website. Gilt für alle Seiten,
+         versorgt Google Rich Snippets UND KI-Suchen (Perplexity, ChatGPT,
+         Gemini) mit zitierfähigen Fakten: Wer, Wo, Was, Wie erreichbar. --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@graph": [
+            {
+                "@@type": "Organization",
+                "@@id": "https://websters.at/#organization",
+                "name": "Websters",
+                "url": "https://websters.at",
+                "logo": "https://websters.at/assets/websters-full-logo.png",
+                "description": "Websters aus Engerwitzdorf (Oberösterreich): Webdesign ab 990€, individuelle Softwareentwicklung ab 3.490€ und IT-Consulting für Unternehmen und Startups in Österreich und Deutschland.",
+                "email": "office@websters.at",
+                "telephone": "+43 677 63177763",
+                "address": {
+                    "@@type": "PostalAddress",
+                    "streetAddress": "Libellenweg 13",
+                    "addressLocality": "Engerwitzdorf",
+                    "postalCode": "4209",
+                    "addressRegion": "Oberösterreich",
+                    "addressCountry": "AT"
+                },
+                "areaServed": [
+                    {"@@type": "Country", "name": "Österreich"},
+                    {"@@type": "Country", "name": "Deutschland"}
+                ],
+                "knowsAbout": ["Webdesign", "Webentwicklung", "Individualsoftware", "Custom Software", "IT-Consulting", "WordPress", "Laravel", "Suchmaschinenoptimierung", "Digitalisierung"],
+                "sameAs": [
+                    "https://github.com/websters-at",
+                    "https://www.instagram.com/websters.at/",
+                    "https://www.facebook.com/profile.php?id=61569509807621"
+                ],
+                "contactPoint": {
+                    "@@type": "ContactPoint",
+                    "telephone": "+43 677 63177763",
+                    "email": "office@websters.at",
+                    "contactType": "sales",
+                    "areaServed": ["AT", "DE"],
+                    "availableLanguage": ["de", "en"]
+                }
+            },
+            {
+                "@@type": "WebSite",
+                "@@id": "https://websters.at/#website",
+                "url": "https://websters.at",
+                "name": "Websters",
+                "inLanguage": "de-AT",
+                "publisher": {"@@id": "https://websters.at/#organization"}
+            }
+        ]
+    }
+    </script>
 
     <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
@@ -53,14 +107,12 @@
          silently breaking every $wire form with zero console errors.) --}}
     <script src="{{ $livewireSrc }}" data-navigate-once="true" data-csrf="{{ csrf_token() }}" data-update-uri="{{ $livewireUpdateUri }}" defer></script>
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-WREHCH7Q7Y');
-    </script>
-
     @vite(['resources/js/app.js'])
+{{-- Privacy-friendly analytics (self-hosted Umami, cookieless) proxied via
+     same-origin /stats so strict corporate firewalls that block third-party
+     tracking subdomains still load the page identically. data-host-url pins
+     the beacon endpoint to the same proxy path. --}}
+<script defer src="/stats/script.js" data-website-id="49c74336-0f48-46b5-82d7-16d4f34e625a" data-host-url="https://websters.at/stats"></script>
 </head>
 
 <body class="flex flex-col min-h-screen">

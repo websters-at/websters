@@ -40,6 +40,7 @@ services:
       - "traefik.http.routers.${ROUTER_NAME}.entrypoints=https"
       - "traefik.http.routers.${ROUTER_NAME}.tls=true"
       - "traefik.http.routers.${ROUTER_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}.tls.options=modern-corporate@file"
       # --- Router (static assets: long-lived immutable cache) ---
       # Dedicated router so Cache-Control only applies to /assets/ and /build/.
       # Higher priority wins over the catch-all router for these paths.
@@ -47,6 +48,7 @@ services:
       - "traefik.http.routers.${ROUTER_NAME}-static.entrypoints=https"
       - "traefik.http.routers.${ROUTER_NAME}-static.tls=true"
       - "traefik.http.routers.${ROUTER_NAME}-static.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}-static.tls.options=modern-corporate@file"
       - "traefik.http.routers.${ROUTER_NAME}-static.priority=1000"
       - "traefik.http.routers.${ROUTER_NAME}-static.middlewares=security-headers@docker,static-cache@docker"
       - "traefik.http.routers.${ROUTER_NAME}-static.service=${ROUTER_NAME}"
@@ -56,19 +58,29 @@ services:
       - "traefik.http.routers.${ROUTER_NAME}-secondary.entrypoints=https"
       - "traefik.http.routers.${ROUTER_NAME}-secondary.tls=true"
       - "traefik.http.routers.${ROUTER_NAME}-secondary.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${ROUTER_NAME}-secondary.tls.options=modern-corporate@file"
       - "traefik.http.routers.${ROUTER_NAME}-secondary.middlewares=redirect-to-main"
       # --- Middleware: www -> apex ---
       - "traefik.http.middlewares.redirect-to-main.redirectregex.regex=^https?://${SECONDARY_DOMAIN}/(.*)"
       - "traefik.http.middlewares.redirect-to-main.redirectregex.replacement=https://${DOMAIN}/$$1"
       - "traefik.http.middlewares.redirect-to-main.redirectregex.permanent=true"
       # --- Security headers ---
+      # Hardened for strict corporate networks (Zscaler/FortiGate/Palo Alto):
+      # everything the site needs is same-origin except the Cal.com booking
+      # widget (script+iframe+API on /kontakt), the Google Maps iframe
+      # (/kontakt) and the self-hosted Umami analytics proxied via /stats.
+      # No other external origin is fetched anywhere -> allowlist stays tight.
+      # X-Frame-Options is kept for legacy corporate browsers without CSP
+      # support (frame-ancestors covers modern ones). X-XSS-Protection is
+      # intentionally ABSENT (deprecated; can introduce XSS in old IE).
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-Content-Type-Options=nosniff"
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-Frame-Options=DENY"
-      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.X-XSS-Protection=1; mode=block"
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Referrer-Policy=strict-origin-when-cross-origin"
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Permissions-Policy=geolocation=(), microphone=(), camera=()"
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Cross-Origin-Opener-Policy=same-origin"
       - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Cross-Origin-Resource-Policy=same-origin"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Origin-Agent-Cluster=?1"
+      - "traefik.http.middlewares.security-headers.headers.customresponseheaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.cal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://app.cal.com; frame-src 'self' https://app.cal.com https://www.google.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
       - "traefik.http.middlewares.security-headers.headers.stsseconds=31536000"
       - "traefik.http.middlewares.security-headers.headers.stsincludesubdomains=true"
       - "traefik.http.middlewares.security-headers.headers.stspreload=true"

@@ -15,9 +15,9 @@
                 Das Team
             </div>
 
-            <h1 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mt-6">
+            <h2 class="text-xl lg:text-3xl font-poppins font-bold bg-gradient-to-b from-[#002a42] to-slate-600 bg-clip-text mt-6">
                 Das Websters Team - Webentwicklung Linz
-            </h1>
+            </h2>
 
             <p class="mt-4 text-sm font-poppins font-medium text-shadow-slate-600 sm:w-1/2 lg:w-2/5">
                 Unser Antrieb: Einzigartige Köpfe, die im Miteinander Großes bewegen. Gemeinsam setzen wir Maßstäbe in Webdesign & Softwareentwicklung.
@@ -88,15 +88,6 @@
                             rel="noopener noreferrer"
                         >
                             <x-icon name="fab.instagram"  class="h-4 text-brand-dark opacity-60" />
-                        </a>
-                        <a
-                            class="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 p-2 lg:h-11 lg:w-11 lg:p-3"
-                            href="https://homelab.stevan.sexidude.com"
-                            title="Stevan V. Persönliche Website - Websters" aria-label="Stevan V. Persönliche Website"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <x-icon name="fas.globe"  class="h-4 text-brand-dark opacity-60" />
                         </a>
                     </div>
 

@@ -11,19 +11,11 @@
     <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
 
-    <!-- Preconnect to critical origins -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-
-    <!-- GTM - defer to avoid blocking -->
+    <!-- No third-party origins on error pages: everything is same-origin so
+         strict corporate firewalls render the 404 exactly like everywhere else. -->
     <script>if (typeof CSSPropertyRule === 'undefined') { document.documentElement.classList.add('no-at-property'); }</script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-WREHCH7Q7Y');
-    </script>
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-WREHCH7Q7Y"></script>
+    {{-- Cookieless analytics via the same-origin /stats proxy (see app layout). --}}
+    <script defer src="/stats/script.js" data-website-id="49c74336-0f48-46b5-82d7-16d4f34e625a" data-host-url="https://websters.at/stats"></script>
 
     @cookieconsentscripts
 

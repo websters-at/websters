@@ -47,7 +47,8 @@ RUN apt-get update && apt-get install -y wait-for-it && \
 
 # Switch to PHP production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
-    echo 'memory_limit = 256M' >> "$PHP_INI_DIR/php.ini"
+    echo 'memory_limit = 256M' >> "$PHP_INI_DIR/php.ini" && \
+    echo 'expose_php = Off' >> "$PHP_INI_DIR/php.ini"
 
 WORKDIR /app
 

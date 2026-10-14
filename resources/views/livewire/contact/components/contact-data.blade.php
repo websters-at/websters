@@ -84,14 +84,21 @@ new class extends Component {};
             </div>
 
             <!-- MAP -->
-            <iframe
-                class="h-52 w-full rounded-3xl lg:h-full fade-up"
-                :class="{ 'show': show }"
-                style="transition-delay:.6s"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2652.1333489629924!2d14.343424971406712!3d48.338742140853945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773987b8b44c3f1%3A0x6f3f5a985f346e86!2sLibellenweg%2013%2C%204209%20Au%C3%9Fertreffling!5e0!3m2!1sde!2sat!4v1764518723414!5m2!1sde!2sat"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div class="w-full fade-up" :class="{ 'show': show }" style="transition-delay:.6s">
+                <iframe
+                    class="h-52 w-full rounded-3xl lg:h-full"
+                    title="Karte: Websters Standort, Libellenweg 13, 4209 Engerwitzdorf"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2652.1333489629924!2d14.343424971406712!3d48.338742140853945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773987b8b44c3f1%3A0x6f3f5a985f346e86!2sLibellenweg%2013%2C%204209%20Au%C3%9Fertreffling!5e0!3m2!1sde!2sat!4v1764518723414!5m2!1sde!2sat"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+                {{-- Fallback for strict corporate networks that block Google Maps:
+                     the address stays reachable instead of an empty box. --}}
+                <p class="mt-3 text-sm text-slate-500">
+                    Karte lädt nicht?
+                    <a class="underline font-semibold" href="https://www.google.com/maps/search/?api=1&query=Libellenweg+13+4209+Engerwitzdorf" target="_blank" rel="noopener noreferrer">Auf Google Maps öffnen</a>
+                </p>
+            </div>
 
         </div>
     </div>
