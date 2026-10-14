@@ -20,7 +20,25 @@ class LeadResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Envelope;
 
-    protected static ?string $recordTitleAttribute = 'email';
+    protected static ?string $navigationLabel = 'Anfragen';
+
+    protected static ?string $modelLabel = 'Anfrage';
+
+    protected static ?string $pluralModelLabel = 'Anfragen';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) static::getModel()::whereDate('created_at', today())->count();
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Anfragen von heute';
+    }
 
     public static function form(Schema $schema): Schema
     {
