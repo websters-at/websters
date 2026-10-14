@@ -375,7 +375,11 @@ html, body{
 }
 
 .marquee-content {
-    animation: scroll 160s linear infinite;
+    /* Constant-speed loop (~50px/s over one identical half): fast enough to
+       feel alive, slow enough to read. Seamless because the markup renders
+       exactly two identical halves and the keyframes move precisely -50%. */
+    animation: scroll 42s linear infinite;
+    will-change: transform;
 }
 
 .marquee-content:hover {
@@ -385,6 +389,12 @@ html, body{
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+        animation: none;
+    }
 }
 
 @keyframes popIn {
@@ -498,7 +508,11 @@ html, body{
 body.js-anim .fade-up.below-fold {
     opacity: 0;
     transform: translateY(25px) scale(.98);
-    transition: all .8s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Scoped to opacity+transform ONLY (never `all`): cards that ALSO carry
+       hover transitions (hover:-translate-y-*, group-hover:scale-*, shadows
+       via Tailwind's `translate`/`scale` properties) would otherwise inherit
+       this 0.8s timing and every hover would feel delayed/laggy. */
+    transition: opacity .8s cubic-bezier(0.22, 1, 0.36, 1), transform .8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.js-anim .fade-up.below-fold.show {
