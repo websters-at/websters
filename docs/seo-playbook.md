@@ -55,6 +55,9 @@
    `/`, `/leistungen/webdesign`, `/leistungen/software`, `/leistungen/consulting`,
    alle `/webdesign-*`, alle `/tools/*`, beide `/ratgeber/*`, `/kontakt`, `/projekte`.
 5. **Bing Webmaster** (`bing.com/webmasters`): Import aus Search Console (1 Klick).
+   **IndexNow läuft bereits:** Key-File `public/3c44….txt` deployed, Push per
+   `docker exec <websters-container> php artisan seo:indexnow` (40 URLs, HTTP 202
+   bestätigt 15.10.). Nach neuen Seiten erneut ausführen.
 6. Wöchentlich 15 Min: Leistung (neue Queries = Content-Ideen), Abdeckung (Fehler = 0),
    Core Web Vitals grün, Links (Footer-Backlinks angekommen?).
 
