@@ -19,7 +19,7 @@ new class extends Component {
         | Kürzer, schärfer, perfekte Länge (40–60 Zeichen).
         */
 
-        SEOMeta::setTitle('Kontakt');
+        SEOMeta::setTitle('Kontakt – Webdesign, Software & Beratung anfragen');
         SEOMeta::setDescription(
             'Kontaktieren Sie Websters für Webdesign ab 990€, Individualsoftware ab 3.490€ & IT-Consulting. Kostenlose Erstberatung unter +43 677 63177763.'
         );

@@ -56,6 +56,7 @@ $this->pageSchema = $schema;
         $key = 'cookiecheck:' . request()->ip();
         if (RateLimiter::tooManyAttempts($key, 6)) {
             $this->error = 'Bitte kurz warten (Schutz vor Missbrauch).';
+            $this->dispatch('check-done');
 
             return;
         }
@@ -64,16 +65,19 @@ $this->pageSchema = $schema;
         $url = SeoCheck::normalizeUrl($this->url);
         if ($url === null) {
             $this->error = 'Bitte eine gültige öffentliche URL eingeben (z. B. beispiel.at).';
+            $this->dispatch('check-done');
 
             return;
         }
         $res = CookieCheck::analyze($url);
         if (! ($res['ok'] ?? false)) {
             $this->error = $res['error'];
+            $this->dispatch('check-done');
 
             return;
         }
         $this->result = $res;
+        $this->dispatch('check-done');
     }
 };
 ?>
@@ -89,11 +93,12 @@ $this->pageSchema = $schema;
             <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5 fade-up" :class="{ 'show': show }" style="transition-delay:.2s">
                 URL eingeben – wir listen Drittanbieter, bekannte Tracker und Cookies auf und sagen dir, ob dein Cookie-Banner reicht.
             </p>
-            <form wire:submit="analyze" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
+            <form wire:submit="analyze" x-data="{ busy: false }" @submit="busy = true" @check-done.window="busy = false" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
                 <div class="flex flex-col sm:flex-row gap-2">
                     <input type="text" wire:model="url" required maxlength="120" autocomplete="off" spellcheck="false" placeholder="z. B. deine-website.at" class="input input-bordered w-full text-brand-dark">
-                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" wire:loading.attr="disabled">
-                        <span wire:loading.remove>Prüfen</span><span wire:loading>Prüfe …</span>
+                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" :disabled="busy">
+                        <span x-show="!busy">Prüfen</span>
+                        <span x-show="busy" x-cloak class="flex items-center gap-2"><span class="loading loading-spinner loading-xs"></span>Prüfe …</span>
                     </button>
                 </div>
                 @if($error)<p class="mt-3 text-sm text-red-600">{{ $error }}</p>@endif
@@ -101,7 +106,7 @@ $this->pageSchema = $schema;
         </div>
     </section>
 
-    <div wire:loading class="pb-12">
+    <div x-data="{ busy: false }" @submit.window="busy = true" @check-done.window="busy = false" x-show="busy" x-cloak class="pb-12">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
             <div class="rounded-2xl border border-slate-200 bg-white/60 p-6 animate-pulse">
                 <div class="h-6 w-1/3 rounded bg-slate-200"></div>
@@ -126,6 +131,14 @@ $this->pageSchema = $schema;
                         @foreach($result['trackers'] as $t)<span class="badge badge-error text-white">{{ $t }}</span>@endforeach
                     </div>
                     <p class="mt-3 text-sm text-neutral-600">Diese Dienste brauchen vor dem Laden eine echte Einwilligung (Cookie-Banner mit Opt-in). Ohne Banner: Abmahngefahr.</p>
+                @endif
+
+                @if(count($result['gated'] ?? []) > 0)
+                    <h2 class="mt-8 text-xl font-bold text-brand-dark">Sauber gelöst (erst nach Einwilligung)</h2>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        @foreach($result['gated'] as $t)<span class="badge badge-success text-white">{{ $t }} ✓ 2-Klick</span>@endforeach
+                    </div>
+                    <p class="mt-3 text-sm text-neutral-600">Diese Dienste laden erst nach Klick (2-Klick-Lösung) – vorbildlich umgesetzt.</p>
                 @endif
 
                 @if(count($result['third']) > 0)

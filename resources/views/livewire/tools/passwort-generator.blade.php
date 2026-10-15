@@ -72,11 +72,30 @@ new class extends Component {
                     <input type="range" min="8" max="64" x-model.number="len" @input="generate()" class="range range-primary w-full">
                 </div>
                 <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
-                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="upper" @change="generate()" class="checkbox checkbox-primary checkbox-sm" checked> A–Z</label>
-                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="lower" @change="generate()" class="checkbox checkbox-primary checkbox-sm" checked> a–z</label>
-                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="digits" @change="generate()" class="checkbox checkbox-primary checkbox-sm" checked> 0–9</label>
-                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="symbols" @change="generate()" class="checkbox checkbox-primary checkbox-sm" checked> Symbole</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="upper" @change="preset='';generate()" class="checkbox checkbox-primary checkbox-sm" checked> A–Z</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="lower" @change="preset='';generate()" class="checkbox checkbox-primary checkbox-sm" checked> a–z</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="digits" @change="preset='';generate()" class="checkbox checkbox-primary checkbox-sm" checked> 0–9</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" x-model="symbols" @change="preset='';generate()" class="checkbox checkbox-primary checkbox-sm" checked> Symbole</label>
                 </div>
+                <details class="mt-4 rounded-xl border border-slate-200 bg-white/70">
+                    <summary class="cursor-pointer px-4 py-3 text-sm font-semibold text-brand-dark">Erweiterte Einstellungen</summary>
+                    <div class="px-4 pb-4 space-y-3 text-sm">
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="pr in presets" :key="pr.v">
+                                <button type="button" @click="applyPreset(pr.v)" class="btn btn-xs" :class="preset === pr.v ? 'btn-primary text-white' : 'btn-ghost border border-slate-300'" x-text="pr.l"></button>
+                            </template>
+                        </div>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="checkbox" x-model="noAmbiguous" @change="preset='';generate()" class="checkbox checkbox-primary checkbox-sm mt-0.5" checked>
+                            <span>Verwechslungsgefährdete Zeichen ausschließen <span class="font-mono text-slate-500">(0 O 1 l I |)</span></span>
+                        </label>
+                        <label class="block">
+                            <span class="font-semibold text-brand-dark">Eigene Ausschlüsse <span class="font-normal text-slate-500">(z. B. § für Oracle/DB-Systeme)</span></span>
+                            <input type="text" x-model="exclude" @input="generate()" maxlength="40" placeholder="z. B. §$%&/" class="input input-bordered input-sm w-full mt-1 font-mono text-brand-dark">
+                        </label>
+                        <p class="text-xs text-slate-500">Zeichenvorrat: <span class="font-mono" x-text="pool().length + ' Zeichen'"></span> · Sonderwunsch-Systeme (Oracle, alte DBs, Router) verbieten oft §, Leerzeichen oder Quotes – einfach oben eintragen.</p>
+                    </div>
+                </details>
                 <div class="mt-4 flex items-center gap-3">
                     <button type="button" @click="generate()" class="btn btn-neutral text-white">Neu generieren</button>
                     <div class="text-sm text-slate-600">Stärke: <strong x-text="strength"></strong> (~<span x-text="bits"></span> Bit)</div>
@@ -117,13 +136,35 @@ new class extends Component {
 function pwGen() {
     return {
         pw: '', len: 20, upper: true, lower: true, digits: true, symbols: true,
+        noAmbiguous: true, exclude: '', preset: 'max',
         copied: false, strength: '', bits: 0,
+        presets: [
+            {v: 'max', l: 'Maximal'},
+            {v: 'balanced', l: 'Ausgewogen'},
+            {v: 'oracle', l: 'Oracle & DB-sicher'},
+            {v: 'pin', l: 'PIN'},
+            {v: 'readable', l: 'Gut lesbar'},
+        ],
+        applyPreset(v) {
+            this.preset = v;
+            if (v === 'max') { this.len = 24; this.upper = this.lower = this.digits = this.symbols = true; this.noAmbiguous = true; this.exclude = ''; }
+            if (v === 'balanced') { this.len = 16; this.upper = this.lower = this.digits = true; this.symbols = false; this.noAmbiguous = true; this.exclude = ''; }
+            if (v === 'oracle') { this.len = 16; this.upper = this.lower = this.digits = true; this.symbols = false; this.noAmbiguous = true; this.exclude = '§ $%&/\'"`'; }
+            if (v === 'pin') { this.len = 6; this.upper = this.lower = this.symbols = false; this.digits = true; this.noAmbiguous = false; this.exclude = ''; }
+            if (v === 'readable') { this.len = 18; this.upper = this.lower = true; this.digits = this.symbols = false; this.noAmbiguous = true; this.exclude = ''; }
+            this.generate();
+        },
         pool() {
             let p = '';
             if (this.upper) p += 'ABCDEFGHJKLMNPQRSTUVWXYZ';
             if (this.lower) p += 'abcdefghijkmnopqrstuvwxyz';
             if (this.digits) p += '23456789';
             if (this.symbols) p += '!@#$%^&*-_+=?';
+            if (this.noAmbiguous) p = p.replace(/[0O1lI|]/g, '');
+            if (this.exclude) {
+                const ban = new Set(this.exclude.split(''));
+                p = [...p].filter(c => !ban.has(c)).join('');
+            }
             return p || 'x';
         },
         generate() {

@@ -55,6 +55,7 @@ $this->pageSchema = $schema;
         $key = 'seocheck:' . request()->ip();
         if (RateLimiter::tooManyAttempts($key, 6)) {
             $this->error = 'Bitte kurz warten (Schutz vor Missbrauch).';
+            $this->dispatch('check-done');
 
             return;
         }
@@ -63,16 +64,19 @@ $this->pageSchema = $schema;
         $url = SeoCheck::normalizeUrl($this->url);
         if ($url === null) {
             $this->error = 'Bitte eine gültige öffentliche URL eingeben (z. B. beispiel.at).';
+            $this->dispatch('check-done');
 
             return;
         }
         $res = SeoCheck::analyze($url);
         if (! ($res['ok'] ?? false)) {
             $this->error = $res['error'];
+            $this->dispatch('check-done');
 
             return;
         }
         $this->result = $res;
+        $this->dispatch('check-done');
     }
 };
 ?>
@@ -88,11 +92,12 @@ $this->pageSchema = $schema;
             <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5 fade-up" :class="{ 'show': show }" style="transition-delay:.2s">
                 URL eingeben, 11 SEO-Faktoren prüfen lassen – mit Punktestand und konkreten Tipps. Dauert Sekunden.
             </p>
-            <form wire:submit="analyze" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
+            <form wire:submit="analyze" x-data="{ busy: false }" @submit="busy = true" @check-done.window="busy = false" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
                 <div class="flex flex-col sm:flex-row gap-2">
                     <input type="text" wire:model="url" required maxlength="120" autocomplete="off" spellcheck="false" placeholder="z. B. deine-website.at" class="input input-bordered w-full text-brand-dark">
-                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" wire:loading.attr="disabled">
-                        <span wire:loading.remove>Prüfen</span><span wire:loading>Prüfe …</span>
+                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" :disabled="busy">
+                        <span x-show="!busy">Prüfen</span>
+                        <span x-show="busy" x-cloak class="flex items-center gap-2"><span class="loading loading-spinner loading-xs"></span>Prüfe …</span>
                     </button>
                 </div>
                 @if($error)<p class="mt-3 text-sm text-red-600">{{ $error }}</p>@endif
@@ -100,7 +105,7 @@ $this->pageSchema = $schema;
         </div>
     </section>
 
-    <div wire:loading class="pb-12">
+    <div x-data="{ busy: false }" @submit.window="busy = true" @check-done.window="busy = false" x-show="busy" x-cloak class="pb-12">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
             <div class="rounded-2xl border border-slate-200 bg-white/60 p-6 animate-pulse">
                 <div class="h-6 w-1/3 rounded bg-slate-200"></div>

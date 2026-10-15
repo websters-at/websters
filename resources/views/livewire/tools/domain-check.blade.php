@@ -58,6 +58,7 @@ $this->pageSchema = $schema;
         $key = 'domain-check:' . request()->ip();
         if (RateLimiter::tooManyAttempts($key, 10)) {
             $this->error = 'Bitte kurz warten und erneut versuchen (Schutz vor Missbrauch).';
+            $this->dispatch('search-done');
 
             return;
         }
@@ -67,6 +68,7 @@ $this->pageSchema = $schema;
         if ($normalized === null) {
             $this->error = 'Bitte einen gültigen Domain-Namen eingeben (z. B. wunschname oder wunschname.at).';
             $this->results = null;
+            $this->dispatch('search-done');
 
             return;
         }
@@ -74,6 +76,7 @@ $this->pageSchema = $schema;
         $stem = strtok($normalized, '.');
         $this->searched = $stem;
         $this->results = DomainAvailability::checkName($stem);
+        $this->dispatch('search-done');
     }
 
     public function mailHref(string $domain): string
@@ -97,16 +100,16 @@ $this->pageSchema = $schema;
                 Gib deinen Wunschnamen ein – wir prüfen live .at, .com, .de, .org und .net und schlagen Alternativen vor. Ist sie frei, ruf einfach an oder schick uns eine Mail.
             </p>
 
-            <form wire:submit="search" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
+            <form wire:submit="search" x-data="{ busy: false }" @submit="busy = true" @search-done.window="busy = false" class="mt-6 w-full sm:w-2/3 md:w-1/2 fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
                 <div class="flex flex-col sm:flex-row gap-2">
                     <input
                         type="text" wire:model="query" required maxlength="60" autocomplete="off" spellcheck="false"
                         placeholder="z. B. meinefirma"
                         class="input input-bordered w-full text-brand-dark"
                     >
-                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" wire:loading.attr="disabled">
-                        <span wire:loading.remove>Domain prüfen</span>
-                        <span wire:loading>Prüfe …</span>
+                    <button type="submit" class="btn btn-primary text-white whitespace-nowrap" :disabled="busy">
+                        <span x-show="!busy">Domain prüfen</span>
+                        <span x-show="busy" x-cloak class="flex items-center gap-2"><span class="loading loading-spinner loading-xs"></span>Prüfe …</span>
                     </button>
                 </div>
                 @if($error)
@@ -116,7 +119,7 @@ $this->pageSchema = $schema;
         </div>
     </section>
 
-    <div wire:loading class="pb-12 lg:pb-16">
+    <div x-data="{ busy: false }" @submit.window="busy = true" @search-done.window="busy = false" x-show="busy" x-cloak class="pb-12 lg:pb-16">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
             <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 @for($i = 0; $i < 5; $i++)
