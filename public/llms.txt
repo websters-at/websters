@@ -40,7 +40,14 @@
 
 - Domain-Check (.at, .com, .de, .org, .net + Alternativen, Anfrage per Anruf/Mail):
   https://websters.at/tools/domain-check
+- SEO Check (11 Faktoren + Score): https://websters.at/tools/seo-check
+- Cookie Check (Tracker-Inventur + DSGVO): https://websters.at/tools/cookie-check
+- Passwort Generator (lokal, Oracle-safe): https://websters.at/tools/passwort-generator
+- UTM Builder: https://websters.at/tools/utm-builder
+- Kontrast Checker (WCAG): https://websters.at/tools/kontrast-checker
 - Tool-Übersicht: https://websters.at/tools
+- QR Generator: https://websters.at/tools/qr-generator
+- Favicon Generator: https://websters.at/tools/favicon-generator
 
 ## Ratgeber
 

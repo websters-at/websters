@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     {!! SEO::generate() !!}
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#002a42">
     {{-- Globale Structured Data: Organisation + Website. Gilt für alle Seiten,
          versorgt Google Rich Snippets UND KI-Suchen (Perplexity, ChatGPT,
          Gemini) mit zitierfähigen Fakten: Wer, Wo, Was, Wie erreichbar. --}}

@@ -46,6 +46,8 @@ Route::get('/sitemap.xml', function () {
         ['/tools/passwort-generator', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/utm-builder', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/kontrast-checker', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/qr-generator', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/favicon-generator', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/website-kosten-oesterreich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/webdesign-angebot-vergleich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/nis2-oesterreich-kmu', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -148,6 +150,12 @@ Volt::route('/tools/utm-builder', 'tools.utm-builder')
 
 Volt::route('/tools/kontrast-checker', 'tools.kontrast-checker')
     ->name('tools.contrast');
+
+Volt::route('/tools/qr-generator', 'tools.qr-generator')
+    ->name('tools.qr');
+
+Volt::route('/tools/favicon-generator', 'tools.favicon-generator')
+    ->name('tools.favicon');
 
 Volt::route('/tools', 'tools.index')
     ->name('tools.index');

@@ -77,6 +77,10 @@ $this->pageSchema = $schema;
                 ['u' => '/tools/passwort-generator', 'b' => null, 't' => 'Passwort Generator', 'd' => 'Starke Zufalls-Passwörter direkt im Browser – privat, gratis, mit Stärke-Anzeige und Oracle-Safe-Modus.', 'c' => 'Passwort erstellen', 'i' => 'M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z M8 8V6a4 4 0 0 1 8 0v2 M12 13v3'],
                 ['u' => '/tools/kontrast-checker', 'b' => null, 't' => 'Kontrast Checker', 'd' => 'Farben auf WCAG-Kontrast prüfen – mit AA/AAA-Urteil für barrierefreies Design.', 'c' => 'Kontrast testen', 'i' => 'M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M18.4 5.6l-2.1 2.1 M7.7 16.3l-2.1 2.1 M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z'],
             ]],
+            ['t' => 'Medien & Assets', 'd' => 'QR-Codes und Favicons in Sekunden selbst machen.', 'tools' => [
+                ['u' => '/tools/qr-generator', 'b' => 'Neu', 't' => 'QR Generator', 'd' => 'QR-Codes für Links und Texte erstellen – lokal im Browser, mit PNG- und SVG-Download.', 'c' => 'QR erstellen', 'i' => 'M4 4h5v5H4z M15 4h5v5h-5z M4 15h5v5H4z M15 15h2v2h-2z M19 15h1v1h-1z M15 19h1v1h-1z M19 19h1v1h-1z M17 17h2v2h-2z'],
+                ['u' => '/tools/favicon-generator', 'b' => 'Neu', 't' => 'Favicon Generator', 'd' => 'Favicon aus Emoji oder Buchstabe bauen – als PNG in allen Größen laden.', 'c' => 'Favicon bauen', 'i' => 'M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z'],
+            ]],
         ];
     @endphp
 
