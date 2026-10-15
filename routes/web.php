@@ -51,6 +51,8 @@ Route::get('/sitemap.xml', function () {
         ['/branchen/arzt-praxis-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/branchen/gastro-restaurant-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/branchen/handwerk-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/immobilien-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/hotel-tourismus-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools', 0.6, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/impressum', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
         ['/datenschutz', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
@@ -161,6 +163,12 @@ Volt::route('/branchen/gastro-restaurant-website', 'branchen.gastro')
 
 Volt::route('/branchen/handwerk-website', 'branchen.handwerk')
     ->name('branchen.handwerk');
+
+Volt::route('/branchen/immobilien-website', 'branchen.immobilien')
+    ->name('branchen.immobilien');
+
+Volt::route('/branchen/hotel-tourismus-website', 'branchen.hotel')
+    ->name('branchen.hotel');
 
 Volt::route('/impressum', 'imprint.index')
     ->name('imprint');

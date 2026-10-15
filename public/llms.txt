@@ -58,6 +58,8 @@
 - Ärzte & Praxen: https://websters.at/branchen/arzt-praxis-website
 - Gastro & Restaurants: https://websters.at/branchen/gastro-restaurant-website
 - Handwerk & Gewerbe: https://websters.at/branchen/handwerk-website
+- Immobilien & Makler: https://websters.at/branchen/immobilien-website
+- Hotels & Tourismus: https://websters.at/branchen/hotel-tourismus-website
 
 ## Seiten
 

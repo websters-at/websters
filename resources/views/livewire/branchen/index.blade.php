@@ -62,6 +62,8 @@ new class extends Component {
                 ['u' => '/branchen/arzt-praxis-website', 't' => 'Ärzte & Praxen', 'd' => 'Online-Terminbuchung, Leistungen, Barrierefreiheit – volle Kalender statt Telefon-Warteschleife.'],
                 ['u' => '/branchen/gastro-restaurant-website', 't' => 'Gastro & Restaurants', 'd' => 'Speisekarte, Reservierung, Bewertungen – Tische füllen statt Stühle zählen.'],
                 ['u' => '/branchen/handwerk-website', 't' => 'Handwerk & Gewerbe', 'd' => 'Vorher-Nachher, Angebots-Anfrage, Local SEO – Aufträge statt Kaltakquise.'],
+                ['u' => '/branchen/immobilien-website', 't' => 'Immobilien & Makler', 'd' => 'Exposés, Objekte und Anfragen, die Besichtigungen bringen – statt Portal-Provision.'],
+                ['u' => '/branchen/hotel-tourismus-website', 't' => 'Hotels & Tourismus', 'd' => 'Direktbuchung, Mehrsprachigkeit, Bewertungen – Betten füllen statt Provision zahlen.'],
             ] as $i => $b)
                 <a href="{{ $b['u'] }}" wire:navigate class="group rounded-2xl border border-slate-200 bg-white/60 p-6 hover:border-brand-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up" :class="{ 'show': show }" style="transition-delay:.{{ 5 + $i * 5 }}s">
                     <div class="font-bold text-brand-dark text-xl">{{ $b['t'] }} <span class="inline-block transition-transform group-hover:translate-x-1">→</span></div>
