@@ -40,8 +40,6 @@
 
 - Domain-Check (.at, .com, .de, .org, .net + Alternativen, Anfrage per Anruf/Mail):
   https://websters.at/tools/domain-check
-- Website Preis-Rechner (Kosten-Schätzung in 1 Minute + Angebots-Anfrage):
-  https://websters.at/tools/preis-rechner
 - Tool-Übersicht: https://websters.at/tools
 
 ## Ratgeber
@@ -50,6 +48,8 @@
   https://websters.at/ratgeber/website-kosten-oesterreich
 - Webdesign-Angebot vergleichen (7-Punkte-Check):
   https://websters.at/ratgeber/webdesign-angebot-vergleich
+- NIS2 Österreich KMU-Check (Betroffenheit, Schwellen, Pflichten):
+  https://websters.at/ratgeber/nis2-oesterreich-kmu
 
 ## Seiten
 

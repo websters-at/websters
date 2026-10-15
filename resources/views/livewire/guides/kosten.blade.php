@@ -80,7 +80,7 @@ $this->pageSchema = $schema;
                             </tbody>
                         </table>
                     </div>
-                    <p class="mt-3 text-sm text-slate-500">Unsere Preise transparent aufgeschlüsselt: <a href="/leistungen/webdesign" class="underline font-semibold">Webdesign-Pakete</a> – oder in 1 Minute selbst kalkulieren: <a href="/tools/preis-rechner" class="underline font-semibold">Preis-Rechner</a>.</p>
+                    <p class="mt-3 text-sm text-slate-500">Unsere Preise transparent aufgeschlüsselt: <a href="/leistungen/webdesign" class="underline font-semibold">Webdesign-Pakete</a>.</p>
                 </section>
                 <section>
                     <h2 class="text-2xl lg:text-3xl font-bold text-brand-dark">Was treibt den Preis?</h2>
@@ -115,7 +115,7 @@ $this->pageSchema = $schema;
             <aside class="h-fit rounded-2xl bg-brand-dark text-white p-6 lg:sticky lg:top-6">
                 <div class="font-bold text-lg">Dein Preis in 1 Minute</div>
                 <p class="mt-2 text-sm opacity-80">Rechner ausfüllen, Schätzung sehen, Festpreis-Angebot anfordern.</p>
-                <a href="/tools/preis-rechner" class="btn btn-primary btn-sm mt-4 text-white">Zum Preis-Rechner</a>
+                <a href="/kontakt" class="btn btn-primary btn-sm mt-4 text-white">Kostenloses Angebot einholen</a>
                 <a href="/kontakt" class="btn btn-ghost btn-sm mt-2 text-white">Direkt anfragen</a>
             </aside>
         </div>

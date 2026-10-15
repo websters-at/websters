@@ -91,7 +91,7 @@ $this->pageSchema = $schema;
             <aside class="h-fit rounded-2xl bg-brand-dark text-white p-6 lg:sticky lg:top-6">
                 <div class="font-bold text-lg">Unser Angebot zum Vergleich</div>
                 <p class="mt-2 text-sm opacity-80">Leg uns daneben: Festpreis, alles schriftlich, Referenzen zum Anklicken.</p>
-                <a href="/tools/preis-rechner" class="btn btn-primary btn-sm mt-4 text-white">Preis selbst kalkulieren</a>
+                <a href="/kontakt" class="btn btn-primary btn-sm mt-4 text-white">Angebot einholen</a>
                 <a href="/kontakt" class="btn btn-ghost btn-sm mt-2 text-white">Angebot einholen</a>
             </aside>
         </div>

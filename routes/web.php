@@ -38,7 +38,6 @@ Route::get('/sitemap.xml', function () {
         ['/webdesign-innsbruck', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-klagenfurt', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
-        ['/tools/preis-rechner', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/seo-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/cookie-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/passwort-generator', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -46,6 +45,7 @@ Route::get('/sitemap.xml', function () {
         ['/tools/kontrast-checker', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/website-kosten-oesterreich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/webdesign-angebot-vergleich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/ratgeber/nis2-oesterreich-kmu', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools', 0.6, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/impressum', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
         ['/datenschutz', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
@@ -110,8 +110,10 @@ Volt::route('/webdesign-klagenfurt', 'cities.klagenfurt')
 Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
 
-Volt::route('/tools/preis-rechner', 'tools.preis-rechner')
-    ->name('tools.calculator');
+// ARCHIVIERT (Preis-Rechner pausiert): Route + Datei bleiben erhalten,
+// Reaktivieren = auskommentieren entfernen + Sitemap/Gate/Footer/llms zurück.
+// Volt::route('/tools/preis-rechner', 'tools.preis-rechner')
+//     ->name('tools.calculator');
 
 Volt::route('/tools/seo-check', 'tools.seo-check')
     ->name('tools.seo');
@@ -136,6 +138,9 @@ Volt::route('/ratgeber/website-kosten-oesterreich', 'guides.kosten')
 
 Volt::route('/ratgeber/webdesign-angebot-vergleich', 'guides.vergleich')
     ->name('guides.vergleich');
+
+Volt::route('/ratgeber/nis2-oesterreich-kmu', 'guides.nis2')
+    ->name('guides.nis2');
 
 Volt::route('/impressum', 'imprint.index')
     ->name('imprint');
