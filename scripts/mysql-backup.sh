@@ -18,16 +18,22 @@ mkdir -p "$BACKUP_DIR"
 OUT="$BACKUP_DIR/webstersdb-$STAMP.sql.gz"
 
 docker exec "$MYSQL_CONTAINER" mysqldump \
-  --single-transaction --quick --routines --triggers \
+  --single-transaction --quick --skip-lock-tables --skip-masking-policies \
   -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" \
   | gzip > "$OUT"
+# NOTE: no --routines/--triggers: webstersdb has none, and MySQL 9's masking-policy
+# dump requires privileges we deliberately don't grant the backup user.
 
-# Verify the dump is restorable SQL, not an error page.
-if ! gzip -dc "$OUT" | head -c 200 | grep -q "MariaDB dump\|MySQL dump"; then
+# Verify the dump is restorable SQL, not an error page (via temp file to
+# avoid SIGPIPE tripping pipefail).
+HDR="$(mktemp)"
+gzip -dc "$OUT" | head -c 300 > "$HDR" || true
+if ! grep -q "MariaDB dump\|MySQL dump" "$HDR"; then
   echo "ERROR: dump header check failed for $OUT" >&2
-  rm -f "$OUT"
+  rm -f "$HDR" "$OUT"
   exit 1
 fi
+rm -f "$HDR"
 
 find "$BACKUP_DIR" -name 'webstersdb-*.sql.gz' -mtime +"$RETENTION_DAYS" -delete
 echo "OK: $OUT ($(du -h "$OUT" | cut -f1))"
