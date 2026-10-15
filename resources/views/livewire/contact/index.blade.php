@@ -165,6 +165,29 @@ $schema = array_merge($schema, [
 <div>
     <livewire:contact.components.cal/>
     <livewire:contact.components.contact-data/>
+    <section class="pb-12 lg:pb-16" id="faq">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0">
+            <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark font-poppins">Fragen zur Kontaktaufnahme</h2>
+            @php
+                $faqs = [
+                    ['q' => 'Wie schnell meldet ihr euch?', 'a' => 'Meist innerhalb von 24 Stunden an Werktagen – oft schneller. Bei eiligen Projekten einfach anrufen: +43 677 63177763.'],
+                    ['q' => 'Wo findet ein Erstgespräch statt?', 'a' => 'Per Video, telefonisch oder persönlich in Engerwitzdorf bei Linz – und für größere Projekte auch bei dir vor Ort in ganz Österreich und Deutschland.'],
+                    ['q' => 'Muss ich schon genau wissen, was ich will?', 'a' => 'Nein. Beschreib einfach dein Ziel – wir übersetzen es in ein konkretes Angebot mit Festpreis. Das Erstgespräch ist kostenlos und unverbindlich.'],
+                    ['q' => 'Kann ich auch direkt einen Termin buchen?', 'a' => 'Ja, oben auf dieser Seite über die Online-Terminbuchung – oder direkt auf cal.com. Alternativ per Mail an office@websters.at.'],
+                ];
+                $faqSchema = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn($f) => ['@type' => 'Question', 'name' => $f['q'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']]], $faqs)];
+            @endphp
+            <div class="mt-6 space-y-3 font-poppins">
+                @foreach($faqs as $faq)
+                    <div class="rounded-2xl border border-slate-200 bg-white/60 p-4">
+                        <div class="font-semibold text-brand-dark">{{ $faq['q'] }}</div>
+                        <p class="mt-2 text-sm text-neutral-600 lg:text-base">{{ $faq['a'] }}</p>
+                    </div>
+                @endforeach
+            </div>
+            <script type="application/ld+json">@json($faqSchema)</script>
+        </div>
+    </section>
     <livewire:home.components.newsletter/>
 
 
