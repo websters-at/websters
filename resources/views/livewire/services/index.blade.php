@@ -16,7 +16,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('Leistungen – Webdesign, Softwareentwicklung & IT-Consulting');
+        SEOMeta::setTitle('Leistungen – Webdesign, Software & Consulting');
         SEOMeta::setDescription(
             'Webdesign ab 990€, Custom Software ab 3.490€ & IT-Consulting aus Oberösterreich für Unternehmen in Österreich & Deutschland.'
         );

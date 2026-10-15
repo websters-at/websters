@@ -18,7 +18,7 @@ new class extends Component {
         |--------------------------------------------------------------------------
         */
 
-        SEOMeta::setTitle('IT-Consulting Oberösterreich – Prozesse & Digitalisierung');
+        SEOMeta::setTitle('IT-Consulting – Prozesse & Digitalisierung');
         SEOMeta::setDescription(
             'IT-Consulting für KMU: Prozessoptimierung, Digitalisierung & Automatisierung aus Oberösterreich – für Unternehmen in Österreich & Deutschland.'
         );

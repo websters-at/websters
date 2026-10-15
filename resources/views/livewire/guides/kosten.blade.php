@@ -61,7 +61,7 @@ $this->pageSchema = $schema;
     </section>
 
     <article class="pb-8">
-        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 grid-cols-1 lg:grid-cols-[1fr_340px] [&>*]:min-w-0">
             <div class="space-y-8">
                 <section>
                     <h2 class="text-2xl lg:text-3xl font-bold text-brand-dark">Kurzantwort: 490€ bis 3.000€+ für die meisten Websites</h2>

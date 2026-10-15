@@ -62,7 +62,7 @@ new class extends Component {
     </section>
 
     <article class="pb-8">
-        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 grid-cols-1 lg:grid-cols-[1fr_340px] [&>*]:min-w-0">
             <div class="space-y-8">
                 <section>
                     <h2 class="text-2xl lg:text-3xl font-bold text-brand-dark">Kurzantwort: unter 50 Mitarbeitern meist nein – aber …</h2>

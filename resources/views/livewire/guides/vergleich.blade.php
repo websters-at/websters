@@ -61,7 +61,7 @@ $this->pageSchema = $schema;
     </section>
 
     <article class="pb-8">
-        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div class="max-w-7xl mx-auto px-4 xl:px-0 grid gap-8 grid-cols-1 lg:grid-cols-[1fr_340px] [&>*]:min-w-0">
             <div class="space-y-4">
                 @foreach([
                     ['1. Leistungsumfang schwarz auf weiß', 'Steht exakt drin, wie viele Seiten, welche Funktionen, wie viele Korrekturrunden? Vage Formulierungen („moderne Website") sind ein Warnsignal. Unser Tipp: Fordere eine Leistungsliste mit Häkchen.'],
