@@ -54,7 +54,6 @@ class CookieCheck
         // Text-Links wie Social-Profile – die übertragen nichts von selbst).
         preg_match_all('/(?:src|data-src|action|poster|srcset)=["\'](https?:\/\/[^"\']+)/i', $html, $m);
         $srcHosts = [];
-        $gatedHosts = [];
         foreach (($m[1] ?? []) as $link) {
             // srcset kann mehrere URLs enthalten – erste reicht.
             $link = trim(explode(',', $link)[0]);
@@ -64,11 +63,6 @@ class CookieCheck
             }
             if (in_array($h, ['www.w3.org', 'schema.org'], true)) {
                 continue;
-            }
-            // data-src (+ Consent-Box im HTML) = 2-Klick-Lösung: lädt erst nach Einwilligung.
-            $full = 'src="' . $link . '"';
-            if (str_contains($html, 'data-src="' . $link . '"') && ! str_contains($html, $full)) {
-                $gatedHosts[$h] = true;
             }
             $srcHosts[$h] = ($srcHosts[$h] ?? 0) + 1;
         }
@@ -99,15 +93,23 @@ class CookieCheck
             }
         }
 
-        // Tracker, die nur hinter Consent-Gating vorkommen (data-src/Platzhalter),
-        // sind technisch sauber gelöst – sie zählen nicht als Verstoß.
+        // Tracker, die nur hinter Consent-Gating vorkommen (data-src/Platzhalter,
+        // JS-Strings, reine Text-Links) laden nichts von selbst – sie zählen
+        // nicht als Verstoß, sondern als sauber gelöst.
         $gatedLabels = [];
         $gatedByHost = [
             'app.cal.com' => 'Cal.com Booking',
             'www.google.com' => 'Google Maps',
         ];
         foreach ($gatedByHost as $gatedHost => $label) {
-            if (isset($found[$label]) && isset($gatedHosts[$gatedHost])) {
+            if (! isset($found[$label])) {
+                continue;
+            }
+            $pattern = '/(?<![\w-])(?:src|poster|action)\s*=\s*"https?:\/\/(?:[^"\/]*\.)?'
+                . preg_quote($gatedHost, '/') . '(?![\w.-])/i';
+            $stylesheet = '/<link[^>]+rel=["\'](?:stylesheet|preload|preconnect)[^>]+href=["\']https?:\/\/'
+                . preg_quote($gatedHost, '/') . '(?![\w.-])/i';
+            if (! preg_match($pattern, $html) && ! preg_match($stylesheet, $html)) {
                 $gatedLabels[$label] = true;
             }
         }
