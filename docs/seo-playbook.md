@@ -6,6 +6,12 @@
 > Entscheidungen). Alles mit `[MENSCH]` braucht den Menschen, alles mit `[KI]`
 > kannst du vorbereiten. Nichts überspringen, nichts erfinden.
 
+## 0. START HERE (Reihenfolge für den Menschen)
+
+1. **Search Console** (4.1) → 2. **Unternehmensprofil** (4.2) → 3. **SMTP-Daten
+   liefern** (4.3) → 4. **Fortinet** (4.4) → 5. laufend **Backlinks/Citations** (4.5)
+   + **Video-Workflow** (5, wöchentlich nach 4.1).
+
 ## 1. Projekt-Steckbrief
 
 - **Firma:** Websters (e.U., Solo, Sitz Engerwitzdorf, Libellenweg 13, 4209)
@@ -17,7 +23,10 @@
   Laravel-Log im Container `storage/logs/laravel.log`
 - **Admin:** `https://websters.at/admin` (Filament: Anfragen, Newsletter, Dashboard-Stats, CSV-Export)
 - **Analytics:** Umami auf `stats.websters.at`, Tracking via Same-Origin `/stats/*`
-- **Mail:** `office@websters.at` (Purelymail). Formular-Mails aktiv nach SMTP-Eintrag (TODO unten).
+- **Mail:** `office@websters.at` (Purelymail). DNS komplett: MX/SPF/DKIM/DMARC ✓.
+  Formular-Mails aktiv nach SMTP-Eintrag (TODO 4.3).
+- **Backups:** Tägliches Vollbackup von `/home/ubuntu` durch den Menschen (Server-Seite).
+  Repo-Script `scripts/mysql-backup.sh` nur noch für manuelle Dumps.
 - **Telefon:** +43 677 63177763
 
 ## 2. Technische Konventionen (für Code-Arbeit)
@@ -30,19 +39,21 @@
 - Keine erfundenen Personen/Fakten (Solo-e.U.!). Preise nur wie auf /leistungen.
 - Vor jedem Deploy: `php -l` auf geänderte PHP-Dateien.
 
-## 3. Was live ist (nicht erneut prüfen)
+## 3. Was live ist (nicht erneut prüfen, Stand 15.10.2026)
 
-- Security-Header + CSP, HSTS, OCSP-Hinweis dokumentiert, EC256 ab Renewal Dez 2026
-- SEO: 1 H1/Seite, dynamische Sitemap (30+ URLs), llms.txt, deterministische Schemas
-  (Organization, Service, Article, FAQPage, ItemList, LocalBusiness, WebApplication)
-- 8 Stadtseiten (Linz, Wels, Steyr, Wien, Graz, Salzburg, Innsbruck, Klagenfurt)
-- 8 Tools (/tools: Domain-Check, Preis-Rechner, SEO-Check, Cookie-Check,
-  Passwort-Generator, UTM-Builder, Kontrast-Checker) + 2 Ratgeber
+- Security-Header + CSP, HSTS, EC256 ab Renewal Dez 2026, valides Default-Cert (auch ohne SNI)
+- SEO: 1 H1/Seite, dynamische Sitemap (40 URLs), llms.txt + llms-full.txt, deterministische
+  Schemas (Organization, Service, Article, FAQPage, ItemList, LocalBusiness, WebApplication)
+- 11 Stadtseiten (alle Landeshauptstädte), 6 Branchenseiten + Hub, 3 Ratgeber
+- 9 Tools (/tools: Domain-Check, SEO-Check, Cookie-Check, Passwort-Generator,
+  UTM-Builder, Kontrast-Checker, QR-Generator, Favicon-Generator; Preis-Rechner archiviert)
 - Consent-Gating (Cal.com, Google Maps), Cookie-Banner, Datenschutz mit Prozessoren
+- Strukturierter Footer (Leistungen, Regionen, Tools, Rechtliches)
 - Footer-Backlinks auf eigenen Properties (lebe-gesund.at, miracle, PriceMatters,
   SpaceRunner, BeBetter); NightCrown/deal-radar ohne Frontend → bewusst ohne
 - Admin mit Leads/Newsletter/Stats/CSV; Kontakt- + Newsletter-Formular mit
   Rate-Limit, DB-Speicherung, Mail-Versand (wartet auf SMTP)
+- IndexNow-Push für Bing/Yandex/DuckDuckGo (HTTP 202); Google braucht Search Console (4.1)
 
 ## 4. Offene Tasks für den MENSCHEN (mit KI zusammen)
 
@@ -50,10 +61,10 @@
 1. `https://search.google.com/search-console` → **Property hinzufügen → Domain** → `websters.at`.
 2. TXT-Record bei Cloudflare setzen (`dash.cloudflare.com → websters.at → DNS → Add record`,
    Typ TXT, Name `@`, Inhalt aus Schritt 1) → in Console **Bestätigen**. Checkpoint: grüner Haken.
-3. **Sitemaps → `sitemap.xml` senden.** Checkpoint: „Erfolgreich, 30+ URLs".
+3. **Sitemaps → `sitemap.xml` senden.** Checkpoint: „Erfolgreich, 40 URLs".
 4. **URL-Prüfung** je URL: testen → **Indexierung beantragen**:
    `/`, `/leistungen/webdesign`, `/leistungen/software`, `/leistungen/consulting`,
-   alle `/webdesign-*`, alle `/tools/*`, beide `/ratgeber/*`, `/kontakt`, `/projekte`.
+   alle `/webdesign-*`, alle `/tools/*`, alle `/ratgeber/*`, alle `/branchen/*`, `/kontakt`, `/projekte`.
 5. **Bing Webmaster** (`bing.com/webmasters`): Import aus Search Console (1 Klick).
    **IndexNow läuft bereits:** Key-File `public/3c44….txt` deployed, Push per
    `docker exec <websters-container> php artisan seo:indexnow` (40 URLs, HTTP 202
@@ -66,7 +77,14 @@
 2. Primärkategorie **`Webdesigner`** + `Softwareunternehmen` + `Internetmarketingdienst`.
 3. Adresse exakt wie Impressum. **Anzahl Mitarbeiter: „Nur ich"** (Solo-e.U.).
 4. Verifizierung (Video/Postkarte) abschließen. Checkpoint: Status „Verifiziert".
-5. Dienste aus `docs/`-Liste eintragen (alle echten; **keine Mobile Apps**).
+5. Dienste exakt so eintragen (alle echten; **keine Mobile Apps**):
+   Webdesign, Website-Erstellung, Homepage-Erstellung, Responsive Webdesign,
+   WordPress-Website, Landingpage, Website-Relaunch, SEO, Website-Wartung,
+   Individualsoftware, Custom Software, Web-App-Entwicklung, API-Entwicklung,
+   Systemintegration, Prozessautomatisierung, MVP-Entwicklung, Python-Entwicklung,
+   Laravel-Entwicklung, IT-Consulting, Prozessoptimierung, Digitalisierungsberatung.
+   Eigene Dienste zusätzlich: „IT-Consulting", „Prozessoptimierung",
+   „Digitalisierungsberatung" (Wortlaut wie Website).
 6. Öffnungszeiten, 10+ Fotos (Dateinamen mit Keywords), Produkte
    (Starter 990€, Komplett 1.990€, Software ab 3.490€) mit Links.
 7. 5 ehrliche Bewertungen organisieren (niemals kaufen), alle beantworten.
@@ -90,7 +108,7 @@
 - Keine Fake-Bewertungen, keine gekauften Links/Farmen, kein Keyword-Stuffing
   im Profilnamen, keine erfundenen Personen/Fakten auf der Website.
 
-## 6. Video-Trick: „Das weiß niemand über Google" (Edward Sturm)
+## 5. Video-Trick: „Das weiß niemand über Google" (Edward Sturm)
 
 - **Video:** `https://youtube.com/shorts/XhVnZjyQQZA` („Nobody knows this about Google")
 - **Verifizierter Hook aus der Beschreibung:** „Öffnen Sie die Google Search Console: …"
@@ -110,7 +128,7 @@
   4. Unter „Suchdarstellung" prüfen, ob **AI Overviews / Generative AI** auftauchen —
      sobald ja: exakt diese Queries mit Definitions-Absätzen (40–60 Wörter) füttern.
 
-## 7. Zeitplan realistisch
+## 6. Zeitplan realistisch
 
 - Woche 1–2: Indexierung, erste Impressionen. Monat 1–3: Long-Tail (Städte, Preise,
   FAQs, Tools) + erste KI-Zitate. Monat 3–6: kompetitive Keywords angreifbar
