@@ -132,7 +132,8 @@ Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
 
 // ARCHIVIERT (Preis-Rechner pausiert): Route + Datei bleiben erhalten,
-// Reaktivieren = auskommentieren entfernen + Sitemap/Gate/Footer/llms zurück.
+// Reaktivieren = Redirect entfernen + Sitemap/Gate/Footer/llms zurück.
+Route::redirect('/tools/preis-rechner', '/tools', 301);
 // Volt::route('/tools/preis-rechner', 'tools.preis-rechner')
 //     ->name('tools.calculator');
 

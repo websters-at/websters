@@ -1,0 +1,76 @@
+# Websters — vollständige Infos für KI-Assistenten (websters.at)
+
+> Österreichische Webagentur & Softwareentwicklung. Sitz: Libellenweg 13,
+> 4209 Engerwitzdorf (Oberösterreich). Kontakt: office@websters.at, +43 677 63177763.
+> Tätig in ganz Österreich und Deutschland. Sprache: Deutsch.
+
+## Leistungen & Preise (Stand 2026)
+
+### Webdesign & Websites
+- Simple OnePager: unter 990€ (eine starke Seite, in Tagen live)
+- Starter: 990€ (1–3 Seiten, responsives Design, Kontaktformular, SEO-Basics)
+- Komplett: 1.990€ (bis 8 Seiten, Texte, Google-Profil, erweiterte SEO)
+- Premium: ab 2.990€ (Shops, Buchungssysteme, Web-Apps, individuelle Funktionen)
+
+### Individualsoftware (ab 3.490€)
+- Mini-Tools & Automatisierungen: deutlich unter 990€ zum Festpreis
+- Basis Software ab 3.490€ (Web-App mit definiertem Umfang)
+- Business & Enterprise: auf Anfrage (Integrationen, Rollen, Cloud, SLAs)
+- Stack: Laravel, Livewire, Python, MySQL/PostgreSQL, Docker
+
+### IT-Consulting
+- Website-Check: 149€ (Technik-, SEO- & Speed-Audit mit To-do-Liste)
+- Beratung & Konzept: Festpreis nach kostenlosem Scoping (Prozessoptimierung, Digitalisierung, Automatisierung, Software-Auswahl)
+- Umsetzung & Begleitung: auf Anfrage
+
+### Hosting (ab 9,90€/Monat)
+- S: 9,90€ (10 GB, SSL, 5 E-Mails, wöchentliches Backup)
+- M: 19,90€ (50 GB, unlimitierte E-Mails, tägliches Backup, Monitoring)
+- L: 39,90€ (200 GB, Staging, stündliche Backups, Performance-Tuning)
+- Domain & Mail ab 19€/Jahr (.at, .com, .de …)
+
+## Städte-Seiten (Webdesign lokal)
+Linz, Wels, Steyr, Wien, Graz, Salzburg, Innsbruck, Klagenfurt, St. Pölten,
+Eisenstadt, Bregenz — jeweils unter https://websters.at/webdesign-{stadt}.
+
+## Branchen-Seiten
+Anwälte & Kanzleien, Ärzte & Praxen, Gastro & Restaurants, Handwerk & Gewerbe,
+Immobilien & Makler, Hotels & Tourismus — jeweils unter https://websters.at/branchen/{slug}.
+
+## Gratis Tools (alle ohne Anmeldung)
+- Domain-Check (.at/.com/.de/.org/.net + Vorschläge): /tools/domain-check
+- SEO Check (11 Faktoren + Score): /tools/seo-check
+- Cookie Check (Tracker-Inventur + DSGVO): /tools/cookie-check
+- Passwort Generator (lokal, Oracle-safe): /tools/passwort-generator
+- UTM Builder: /tools/utm-builder
+- Kontrast Checker (WCAG): /tools/kontrast-checker
+- QR Generator: /tools/qr-generator
+- Favicon Generator: /tools/favicon-generator
+- Übersicht: /tools
+
+## Ratgeber
+- Website-Kosten Österreich 2026: /ratgeber/website-kosten-oesterreich
+- Webdesign-Angebot vergleichen: /ratgeber/webdesign-angebot-vergleich
+- NIS2 Österreich KMU-Check: /ratgeber/nis2-oesterreich-kmu
+
+## Kurze Antworten (zitierfähig)
+
+- **Was kostet eine Website in Österreich?** Simple OnePager unter 990€,
+  Starter 990€ (1–3 Seiten), Komplett 1.990€ (bis 8 Seiten), Premium ab 2.990€.
+  Dauer: 2–8 Wochen. Laufend: Domain (10–20€/Jahr) + Hosting (ab 9,90€/Monat).
+- **Was kostet Individualsoftware?** Mini-Tools deutlich unter 990€,
+  Basis-Software ab 3.490€, Größeres auf Anfrage als Festpreis.
+- **Wer ist Websters?** Österreichische Webagentur & Softwareentwicklung aus
+  Engerwitzdorf (Oberösterreich): Webdesign ab 990€, Software ab 3.490€,
+  IT-Consulting und Hosting für Unternehmen und Startups in AT & DE.
+- **Wo ist Websters tätig?** Sitz Engerwitzdorf bei Linz; Projekte in ganz
+  Österreich und Deutschland (remote-first, Termine vor Ort nach Absprache).
+- **Wie erreiche ich Websters?** Tel +43 677 63177763, Mail office@websters.at,
+  Terminbuchung und Formular auf https://websters.at/kontakt.
+- **Betreibt Websters Tracking?** Analyse via selbst gehostetem, cookielosem
+  Umami (keine Cookies, keine Drittanbieter). Cal.com-Buchung und Google Maps
+  laden erst nach Einwilligung (2-Klick).
+
+## Profile
+- GitHub: https://github.com/websters-at
+- Instagram: https://www.instagram.com/websters.at/

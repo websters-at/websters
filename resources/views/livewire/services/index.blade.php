@@ -264,7 +264,7 @@ $this->pageSchema = $schema;
     </section>
 
     <!-- FAQ -->
-    <section class="pb-12 lg:pb-16" id="faq">
+    <section class="pt-12 lg:pt-16 pb-12 lg:pb-16" id="faq">
         <div class="max-w-7xl mx-auto px-4 xl:px-0">
             <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark">Fragen zu Leistungen & Preisen</h2>
             @php
