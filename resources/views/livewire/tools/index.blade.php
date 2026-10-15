@@ -48,18 +48,8 @@ $this->pageSchema = $schema;
                 Gratis Tools für deinen Web-Erfolg
             </h1>
             <p class="text-sm font-medium text-brand-dark leading-normal lg:text-base mt-4 sm:w-2/3 md:w-1/2 xl:w-2/5 fade-up" :class="{ 'show': show }" style="transition-delay:.15s">
-                Kostenlos, ohne Anmeldung, sofort nutzbar – schick die Seite gern an Kunden und Bekannte weiter.
+                Ohne Anmeldung, sofort nutzbar.
             </p>
-        </div>
-    </section>
-
-    <section class="pb-6">
-        <div class="max-w-7xl mx-auto px-4 xl:px-0">
-            <div class="flex flex-wrap gap-x-8 gap-y-2 text-sm text-slate-500 fade-up" :class="{ 'show': show }" style="transition-delay:.2s">
-                <span><strong class="text-brand-dark">7 Tools</strong> online</span>
-                <span><strong class="text-brand-dark">100 % gratis</strong> & ohne Anmeldung</span>
-                <span><strong class="text-brand-dark">Privat:</strong> alles läuft in deinem Browser oder auf unserem Server in AT</span>
-            </div>
         </div>
     </section>
 
@@ -72,9 +62,9 @@ $this->pageSchema = $schema;
                 ['u' => '/tools/seo-check', 'b' => null, 't' => 'SEO Check', 'd' => '11 SEO-Faktoren in Sekunden geprüft: Title, H1, Bilder, Speed & mehr – mit Punktestand und Tipps.', 'c' => 'Website testen', 'i' => 'M3 11l18-8-8 18-2-8-8-2z'],
                 ['u' => '/tools/utm-builder', 'b' => null, 't' => 'UTM Builder', 'd' => 'Saubere Tracking-Links für Newsletter & Ads in Sekunden bauen und kopieren.', 'c' => 'Link bauen', 'i' => 'M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7 M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7'],
             ]],
-            ['t' => 'Sicherheit & Design', 'd' => 'DSGVO, Passwörter, Barrierefreiheit – Profi-Checks gratis.', 'tools' => [
+            ['t' => 'Sicherheit & Design', 'd' => 'DSGVO, Passwörter, Barrierefreiheit.', 'tools' => [
                 ['u' => '/tools/cookie-check', 'b' => null, 't' => 'Cookie Check', 'd' => 'Welche Tracker und Drittanbieter lädt deine Website? Inventur in Sekunden mit DSGVO-Einschätzung.', 'c' => 'Tracker finden', 'i' => 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'],
-                ['u' => '/tools/passwort-generator', 'b' => null, 't' => 'Passwort Generator', 'd' => 'Starke Zufalls-Passwörter direkt im Browser – privat, gratis, mit Stärke-Anzeige und Oracle-Safe-Modus.', 'c' => 'Passwort erstellen', 'i' => 'M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z M8 8V6a4 4 0 0 1 8 0v2 M12 13v3'],
+                ['u' => '/tools/passwort-generator', 'b' => null, 't' => 'Passwort Generator', 'd' => 'Starke Zufalls-Passwörter direkt im Browser – mit Stärke-Anzeige und Oracle-Safe-Modus.', 'c' => 'Passwort erstellen', 'i' => 'M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z M8 8V6a4 4 0 0 1 8 0v2 M12 13v3'],
                 ['u' => '/tools/kontrast-checker', 'b' => null, 't' => 'Kontrast Checker', 'd' => 'Farben auf WCAG-Kontrast prüfen – mit AA/AAA-Urteil für barrierefreies Design.', 'c' => 'Kontrast testen', 'i' => 'M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M18.4 5.6l-2.1 2.1 M7.7 16.3l-2.1 2.1 M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z'],
             ]],
             ['t' => 'Medien & Assets', 'd' => 'QR-Codes und Favicons in Sekunden selbst machen.', 'tools' => [
@@ -113,7 +103,7 @@ $this->pageSchema = $schema;
             <h2 class="text-2xl lg:text-4xl font-bold text-brand-dark fade-up" :class="{ 'show': show }">Fragen zu den Tools</h2>
             @php
                 $faqs = [
-                    ['q' => 'Sind die Tools wirklich kostenlos?', 'a' => 'Ja, alle 7 Tools sind gratis und ohne Anmeldung nutzbar. Serverseitige Prüfungen (Domain, SEO, Cookies) laufen auf unserer Infrastruktur in Österreich, alles andere direkt in deinem Browser.'],
+                    ['q' => 'Muss ich mich anmelden?', 'a' => 'Nein. Alle Tools funktionieren sofort ohne Konto. Serverseitige Prüfungen (Domain, SEO, Cookies) laufen auf unserer Infrastruktur in Österreich, alles andere direkt in deinem Browser.'],
                     ['q' => 'Werden meine Eingaben gespeichert?', 'a' => 'Nein. Domain-, URL- und Farbeingaben werden nur für die Prüfung verwendet und nicht gespeichert. Passwörter verlassen dein Gerät grundsätzlich nie.'],
                     ['q' => 'Kann ich ein Tool für meine Website vorschlagen?', 'a' => 'Gerne – ruf an oder schreib uns. Wenn es vielen hilft, bauen wir es.'],
                 ];

@@ -100,7 +100,6 @@ $this->pageSchema = $schema;
     <section class="relative pt-24 pb-12 lg:pt-40 lg:pb-16 overflow-hidden">
         <div class="absolute inset-0 opacity-[0.2] z-[-1]" style="background-image:linear-gradient(#4bc8e7 1px, transparent 1px),linear-gradient(90deg, #4bc8e7 1px, transparent 1px);background-size:50px 50px;"></div>
         <div class="max-w-7xl mx-auto px-4 xl:px-4 flex flex-col items-start">
-            <div class="inline-flex items-center rounded-full badge badge-secondary badge-lg px-3 py-1.5 text-xs sm:text-sm text-white">Gratis Tool</div>
             <h1 class="bg-gradient-to-b from-brand-dark to-slate-600 bg-clip-text text-3xl font-bold text-transparent lg:text-5xl mt-8 sm:w-2/3 md:w-3/4 lg:mt-9 lg:leading-tight xl:w-3/5">
                 Website Kosten Rechner: dein Preis in 1 Minute
             </h1>
