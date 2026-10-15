@@ -35,7 +35,7 @@ fi
 
 echo "==> smoke-testing '$NEW' directly (bypasses traefik: /up alone can't catch broken Blade)..."
 SMOKE_OK=true
-for path in / /projekte /kontakt /leistungen /leistungen/webdesign /leistungen/software /leistungen/consulting /leistungen/design /leistungen/cloud /webdesign-linz /webdesign-wels /webdesign-steyr /webdesign-wien /webdesign-graz /webdesign-salzburg /tools /tools/domain-check /tools/preis-rechner /tools/seo-check /tools/cookie-check /ratgeber/website-kosten-oesterreich /ratgeber/webdesign-angebot-vergleich /impressum /datenschutz /agbs /sitemap.xml /llms.txt /up; do
+for path in / /projekte /kontakt /leistungen /leistungen/webdesign /leistungen/software /leistungen/consulting /leistungen/design /leistungen/cloud /webdesign-linz /webdesign-wels /webdesign-steyr /webdesign-wien /webdesign-graz /webdesign-salzburg /webdesign-innsbruck /webdesign-klagenfurt /tools /tools/domain-check /tools/preis-rechner /tools/seo-check /tools/cookie-check /tools/passwort-generator /tools/utm-builder /tools/kontrast-checker /ratgeber/website-kosten-oesterreich /ratgeber/webdesign-angebot-vergleich /impressum /datenschutz /agbs /sitemap.xml /llms.txt /up; do
   code=$(docker exec "$NEW" curl -s -o /dev/null -w '%{http_code}' --max-time 10 "http://localhost:80$path" 2>/dev/null || echo 000)
   if [ "$code" != "200" ]; then
     echo "SMOKE-FAIL: $path -> $code" >&2

@@ -35,10 +35,15 @@ Route::get('/sitemap.xml', function () {
         ['/webdesign-wien', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-graz', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-salzburg', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-innsbruck', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-klagenfurt', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/preis-rechner', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/seo-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/cookie-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/passwort-generator', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/utm-builder', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/tools/kontrast-checker', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/website-kosten-oesterreich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/webdesign-angebot-vergleich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools', 0.6, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -96,6 +101,12 @@ Volt::route('/webdesign-graz', 'cities.graz')
 Volt::route('/webdesign-salzburg', 'cities.salzburg')
     ->name('webdesign.salzburg');
 
+Volt::route('/webdesign-innsbruck', 'cities.innsbruck')
+    ->name('webdesign.innsbruck');
+
+Volt::route('/webdesign-klagenfurt', 'cities.klagenfurt')
+    ->name('webdesign.klagenfurt');
+
 Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
 
@@ -107,6 +118,15 @@ Volt::route('/tools/seo-check', 'tools.seo-check')
 
 Volt::route('/tools/cookie-check', 'tools.cookie-check')
     ->name('tools.cookies');
+
+Volt::route('/tools/passwort-generator', 'tools.passwort-generator')
+    ->name('tools.password');
+
+Volt::route('/tools/utm-builder', 'tools.utm-builder')
+    ->name('tools.utm');
+
+Volt::route('/tools/kontrast-checker', 'tools.kontrast-checker')
+    ->name('tools.contrast');
 
 Volt::route('/tools', 'tools.index')
     ->name('tools.index');

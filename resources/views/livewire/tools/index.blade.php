@@ -80,6 +80,24 @@ $this->pageSchema = $schema;
                 <p class="mt-2 text-sm text-neutral-600">Welche Tracker und Drittanbieter lädt deine Website? Inventur in Sekunden mit DSGVO-Einschätzung.</p>
                 <span class="btn btn-sm btn-primary mt-4 text-white">Tracker finden</span>
             </a>
+            <a href="/tools/passwort-generator" wire:navigate class="rounded-2xl border border-slate-200 bg-white/60 p-6 hover:border-brand-dark hover:shadow-lg transition-all fade-up" :class="{ 'show': show }" style="transition-delay:.25s">
+                <div class="inline-flex items-center rounded-full badge badge-secondary badge-lg px-3 py-1.5 text-xs text-white">Neu</div>
+                <div class="mt-3 font-bold text-brand-dark text-xl">Passwort Generator</div>
+                <p class="mt-2 text-sm text-neutral-600">Starke Zufalls-Passwörter direkt im Browser – privat, gratis, mit Stärke-Anzeige.</p>
+                <span class="btn btn-sm btn-primary mt-4 text-white">Passwort erstellen</span>
+            </a>
+            <a href="/tools/utm-builder" wire:navigate class="rounded-2xl border border-slate-200 bg-white/60 p-6 hover:border-brand-dark hover:shadow-lg transition-all fade-up" :class="{ 'show': show }" style="transition-delay:.3s">
+                <div class="inline-flex items-center rounded-full badge badge-secondary badge-lg px-3 py-1.5 text-xs text-white">Neu</div>
+                <div class="mt-3 font-bold text-brand-dark text-xl">UTM Builder</div>
+                <p class="mt-2 text-sm text-neutral-600">Saubere Tracking-Links für Newsletter & Ads in Sekunden bauen und kopieren.</p>
+                <span class="btn btn-sm btn-primary mt-4 text-white">Link bauen</span>
+            </a>
+            <a href="/tools/kontrast-checker" wire:navigate class="rounded-2xl border border-slate-200 bg-white/60 p-6 hover:border-brand-dark hover:shadow-lg transition-all fade-up" :class="{ 'show': show }" style="transition-delay:.35s">
+                <div class="inline-flex items-center rounded-full badge badge-secondary badge-lg px-3 py-1.5 text-xs text-white">Neu</div>
+                <div class="mt-3 font-bold text-brand-dark text-xl">Kontrast Checker</div>
+                <p class="mt-2 text-sm text-neutral-600">Farben auf WCAG-Kontrast prüfen – mit AA/AAA-Urteil für barrierefreies Design.</p>
+                <span class="btn btn-sm btn-primary mt-4 text-white">Kontrast testen</span>
+            </a>
         </div>
     </section>
 </div>

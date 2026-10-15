@@ -76,6 +76,22 @@ new class extends Component {
 
                 <a
                     class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.innsbruck') }}"
+                    wire:navigate
+                    title="Webdesign Innsbruck"
+                >Innsbruck</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.klagenfurt') }}"
+                    wire:navigate
+                    title="Webdesign Klagenfurt"
+                >Klagenfurt</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
                     href="{{ route('tools.domain') }}"
                     wire:navigate
                     title="Domain prüfen – gratis Domain-Check"
