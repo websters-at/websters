@@ -92,6 +92,30 @@ new class extends Component {
 
                 <a
                     class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.stpoelten') }}"
+                    wire:navigate
+                    title="Webdesign St. Pölten"
+                >St. Pölten</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.eisenstadt') }}"
+                    wire:navigate
+                    title="Webdesign Eisenstadt"
+                >Eisenstadt</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
+                    href="{{ route('webdesign.bregenz') }}"
+                    wire:navigate
+                    title="Webdesign Bregenz"
+                >Bregenz</a>
+                <span class="h-3 border-l border-l-neutral-300"></span>
+
+                <a
+                    class="whitespace-nowrap text-sm font-poppins font-medium text-slate-600"
                     href="{{ route('branchen.index') }}"
                     wire:navigate
                     title="Branchenlösungen"

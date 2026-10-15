@@ -37,6 +37,9 @@ Route::get('/sitemap.xml', function () {
         ['/webdesign-salzburg', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-innsbruck', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-klagenfurt', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-st-poelten', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-eisenstadt', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/webdesign-bregenz', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/domain-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/seo-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools/cookie-check', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -113,6 +116,15 @@ Volt::route('/webdesign-innsbruck', 'cities.innsbruck')
 
 Volt::route('/webdesign-klagenfurt', 'cities.klagenfurt')
     ->name('webdesign.klagenfurt');
+
+Volt::route('/webdesign-st-poelten', 'cities.st-poelten')
+    ->name('webdesign.stpoelten');
+
+Volt::route('/webdesign-eisenstadt', 'cities.eisenstadt')
+    ->name('webdesign.eisenstadt');
+
+Volt::route('/webdesign-bregenz', 'cities.bregenz')
+    ->name('webdesign.bregenz');
 
 Volt::route('/tools/domain-check', 'tools.domain-check')
     ->name('tools.domain');
