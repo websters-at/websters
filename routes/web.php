@@ -21,14 +21,20 @@ Route::get('/sitemap.xml', function () {
     // Dynamische Sitemap (Single Source of Truth): nur indexierbare Routen.
     // Design-/Cloud-Stubs sind noindex und bleiben bewusst draußen.
     $pages = [
-        // [path, priority, changefreq]
-        ['/', 1.0, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/leistungen', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/leistungen/webdesign', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/leistungen/software', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/leistungen/consulting', 0.9, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/projekte', 0.8, Url::CHANGE_FREQUENCY_WEEKLY],
-        ['/kontakt', 0.8, Url::CHANGE_FREQUENCY_MONTHLY],
+        // [path, priority, changefreq, images[]]
+        ['/', 1.0, Url::CHANGE_FREQUENCY_WEEKLY, [
+            '/assets/logo-og.jpg', '/assets/team.png', '/assets/websters-full-logo.png',
+        ]],
+        ['/leistungen', 0.9, Url::CHANGE_FREQUENCY_WEEKLY, ['/assets/services-hero.svg']],
+        ['/leistungen/webdesign', 0.9, Url::CHANGE_FREQUENCY_WEEKLY, ['/assets/website.png']],
+        ['/leistungen/software', 0.9, Url::CHANGE_FREQUENCY_WEEKLY, ['/assets/services-software.svg']],
+        ['/leistungen/consulting', 0.9, Url::CHANGE_FREQUENCY_WEEKLY, []],
+        ['/projekte', 0.8, Url::CHANGE_FREQUENCY_WEEKLY, [
+            '/assets/projects/pricematters.webp', '/assets/projects/bebetter.webp',
+            '/assets/projects/lebe-gesund.webp', '/assets/projects/miracle.webp',
+            '/assets/projects/spacerunner.webp', '/assets/projects/nightcrown.webp',
+        ]],
+        ['/kontakt', 0.8, Url::CHANGE_FREQUENCY_MONTHLY, ['/assets/team.png']],
         ['/webdesign-linz', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-wels', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/webdesign-steyr', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
@@ -65,13 +71,17 @@ Route::get('/sitemap.xml', function () {
     ];
 
     $sitemap = Sitemap::create();
-    foreach ($pages as [$path, $priority, $freq]) {
-        $sitemap->add(
-            Url::create($path)
-                ->setLastModificationDate(now())
-                ->setChangeFrequency($freq)
-                ->setPriority($priority)
-        );
+    foreach ($pages as $page) {
+        [$path, $priority, $freq] = $page;
+        $images = $page[3] ?? [];
+        $url = Url::create($path)
+            ->setLastModificationDate(now())
+            ->setChangeFrequency($freq)
+            ->setPriority($priority);
+        foreach ($images as $img) {
+            $url->addImage(url($img));
+        }
+        $sitemap->add($url);
     }
 
     return $sitemap->toResponse(request());
