@@ -13,7 +13,7 @@ new class extends Component {
         $siteUrl = 'https://websters.at';
         $pageUrl = $siteUrl . '/branchen';
 
-        SEOMeta::setTitle('Branchenlösungen – Websites für Anwalt, Arzt, Gastro & Handwerk');
+        SEOMeta::setTitle('Branchen-Websites: Anwalt, Arzt, Gastro, Handwerk');
         SEOMeta::setDescription(
             'Webdesign nach Branche: Kanzlei, Praxis, Gastronomie & Handwerk – Websites ab 990€ mit den Funktionen, die deine Kunden wirklich brauchen.'
         );
