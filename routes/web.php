@@ -46,6 +46,11 @@ Route::get('/sitemap.xml', function () {
         ['/ratgeber/website-kosten-oesterreich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/webdesign-angebot-vergleich', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/ratgeber/nis2-oesterreich-kmu', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/anwalt-kanzlei-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/arzt-praxis-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/gastro-restaurant-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
+        ['/branchen/handwerk-website', 0.7, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/tools', 0.6, Url::CHANGE_FREQUENCY_MONTHLY],
         ['/impressum', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
         ['/datenschutz', 0.3, Url::CHANGE_FREQUENCY_YEARLY],
@@ -141,6 +146,21 @@ Volt::route('/ratgeber/webdesign-angebot-vergleich', 'guides.vergleich')
 
 Volt::route('/ratgeber/nis2-oesterreich-kmu', 'guides.nis2')
     ->name('guides.nis2');
+
+Volt::route('/branchen', 'branchen.index')
+    ->name('branchen.index');
+
+Volt::route('/branchen/anwalt-kanzlei-website', 'branchen.anwalt')
+    ->name('branchen.anwalt');
+
+Volt::route('/branchen/arzt-praxis-website', 'branchen.arzt')
+    ->name('branchen.arzt');
+
+Volt::route('/branchen/gastro-restaurant-website', 'branchen.gastro')
+    ->name('branchen.gastro');
+
+Volt::route('/branchen/handwerk-website', 'branchen.handwerk')
+    ->name('branchen.handwerk');
 
 Volt::route('/impressum', 'imprint.index')
     ->name('imprint');

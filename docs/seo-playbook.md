@@ -87,7 +87,27 @@
 - Keine Fake-Bewertungen, keine gekauften Links/Farmen, kein Keyword-Stuffing
   im Profilnamen, keine erfundenen Personen/Fakten auf der Website.
 
-## 5. Zeitplan realistisch
+## 6. Video-Trick: „Das weiß niemand über Google" (Edward Sturm)
+
+- **Video:** `https://youtube.com/shorts/XhVnZjyQQZA` („Nobody knows this about Google")
+- **Verifizierter Hook aus der Beschreibung:** „Öffnen Sie die Google Search Console: …"
+  (Volltext war bot-geschützt nicht lesbar — exakten Trick bitte in 1 Satz bestätigen!)
+- **Wahrscheinlichster Inhalt** (Sturm-Themen 2026 + Kommentar-Hinweis auf „Generative AI"-Tab):
+  In der Search Console unter **Leistung** nach Queries filtern, bei denen man auf
+  **Position 4–20 bei vielen Impressionen** steht, und genau diese Seiten pushen
+  (Titel schärfen, FAQ dazu, interne Links) — plus Sichtbarkeit in **AI Overviews**
+  beobachten. Unsere Seiten sind dafür bereits vorbereitet (FAQ-Schemas, llms.txt,
+  zitierfähige Definitionen).
+- **Workflow (wöchentlich, 10 Min, [MENSCH + KI]):**
+  1. Search Console → Leistung → Zeitraum 28 Tage → nach Impressionen sortieren.
+  2. Queries mit Position 4–20 notieren (das sind die „fast oben"-Chancen).
+  3. Pro Query **eine** Aktion: Titel/Description schärfen ODER FAQ-Absatz ergänzen
+     ODER internen Link von einer starken Seite setzen (Änderungen mir/Code-KI geben,
+     ich baue sie ein + deploye).
+  4. Unter „Suchdarstellung" prüfen, ob **AI Overviews / Generative AI** auftauchen —
+     sobald ja: exakt diese Queries mit Definitions-Absätzen (40–60 Wörter) füttern.
+
+## 7. Zeitplan realistisch
 
 - Woche 1–2: Indexierung, erste Impressionen. Monat 1–3: Long-Tail (Städte, Preise,
   FAQs, Tools) + erste KI-Zitate. Monat 3–6: kompetitive Keywords angreifbar

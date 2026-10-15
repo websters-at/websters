@@ -51,6 +51,14 @@
 - NIS2 Österreich KMU-Check (Betroffenheit, Schwellen, Pflichten):
   https://websters.at/ratgeber/nis2-oesterreich-kmu
 
+## Branchen
+
+- Übersicht: https://websters.at/branchen
+- Anwälte & Kanzleien: https://websters.at/branchen/anwalt-kanzlei-website
+- Ärzte & Praxen: https://websters.at/branchen/arzt-praxis-website
+- Gastro & Restaurants: https://websters.at/branchen/gastro-restaurant-website
+- Handwerk & Gewerbe: https://websters.at/branchen/handwerk-website
+
 ## Seiten
 
 - Start: https://websters.at/
